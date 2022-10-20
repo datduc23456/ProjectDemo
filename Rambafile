@@ -1,0 +1,27 @@
+### Headers settings
+company: dat.nguyen
+
+### Xcode project settings
+project_name: ProjectDemo
+xcodeproj_path: ProjectDemo.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: ProjectDemo
+
+# The file path for new modules
+project_file_path: ProjectDemo/Modules
+
+# The Xcode group path to new modules
+project_group_path: ProjectDemo/Modules
+
+### Dependencies settings section
+podfile_path: Podfile
+
+### Templates
+templates:
+- {name: VIPER}
+- {name: MVVMC}
+
+# Run [ generamba gen test1 mvvmc ]
+# Run [ generamba gen test1 viper ]

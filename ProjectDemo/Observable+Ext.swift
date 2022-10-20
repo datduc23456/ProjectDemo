@@ -2,7 +2,7 @@
 //  Observable+Ext.swift
 //  MVVMRx
 //
-//  Created by TRUC.HOANGDINH on 8/8/20.
+//  Created by Nguyễn Đạt on 8/8/20.
 //  Copyright © 2020 storm. All rights reserved.
 //
 
