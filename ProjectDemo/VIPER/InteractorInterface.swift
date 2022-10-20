@@ -29,13 +29,6 @@ extension InteractorInterface {
         }
     }
     
-    func fetchDataSupportChat(_ completion: @escaping (ChatRoom?)->Void) {
-        ChatService.fetchSupportChatRoom().subscribe(onNext: { ret in
-            completion(ret.first(where: {$0.isSupportChat}))
-        }, onError: { error in
-            completion(nil)
-        }).disposed(by: self)
-    }
 }
 
 extension Disposable {

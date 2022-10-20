@@ -11,17 +11,21 @@ import UIKit
 final class {{ module_info.name }}Wireframe: {{ module_info.name }}WireframeInterface {
 
     static func generateModule(_ payload: Any?) -> UIViewController {
-        let initialViewController = R.storyboard.{{ module_info.name }}ViewController.instantiateInitialViewController()!
-        initialViewController.payload = payload
-        let vc = initialViewController.topViewController as! {{ module_info.name }}ViewController
+        let initialViewController = {{ module_info.name }}ViewController()
+        // initialViewController.payload = payload
+        // let vc = initialViewController.topViewController as! {{ module_info.name }}ViewController
         let wireframe = {{ module_info.name }}Wireframe()
         let interactor = {{ module_info.name }}Interactor()
         let presenter = {{ module_info.name }}Presenter(
-            view: vc,
+            view: initialViewController,
             interactor: interactor,
             wireframe: wireframe)
         interactor.output = presenter
-        vc.presenter = presenter
+        initialViewController.presenter = presenter
         return initialViewController
+    }
+
+	func handleError(_ error: Error, _ completion: (() -> Void)?) {
+        
     }
 }

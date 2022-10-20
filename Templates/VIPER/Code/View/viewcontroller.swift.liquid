@@ -8,23 +8,10 @@
 
 import UIKit
 
-final class {{ module_info.name }}ViewController: AppBaseViewController {
+final class {{ module_info.name }}ViewController: UIViewController {
 
     // MARK: - Properties
-
-    var presenter: {{ module_info.name }}PresenterInterface!
-
-    override var pageHtml: URL? {
-        // TODO: 変更してね
-        return R.file.indexHtml()
-    }
-
-    override var pageCallbacks: [String: (Data?) -> Void] {
-        return [
-            "foo": { [unowned self] body in
-            }
-        ]
-    }
+	var presenter: {{ module_info.name }}PresenterInterface!
 }
 
 // MARK: - {{ module_info.name }}ViewInterface
