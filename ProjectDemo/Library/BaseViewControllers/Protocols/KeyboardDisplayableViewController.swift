@@ -105,7 +105,7 @@ extension KeyboardDisplayableViewController {
                 }
             )
         ]
-        keyboardSubscribers?.forEach {$0.disposed(by: self)}
+//        keyboardSubscribers?.forEach {$0.disposed(by: self)}
     }
 
     public func unsubscribeKeyboardEvents() {
