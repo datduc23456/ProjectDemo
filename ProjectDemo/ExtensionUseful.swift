@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import UIKit
+
+private var payloadKey = 1
 
 extension Optional {
     func isNil(value: Wrapped) -> Wrapped {
@@ -60,5 +63,47 @@ extension Data {
         } catch {
             print("Json From Data: ?? :D ??")
         }
+    }
+}
+
+extension UIViewController {
+    public var payload: Any? {
+        get {
+            return objc_getAssociatedObject(self, &payloadKey)
+        }
+        set {
+            objc_setAssociatedObject(self, &payloadKey, newValue, .OBJC_ASSOCIATION_RETAIN)
+            if let nav = self as? UINavigationController {
+                nav.viewControllers.first?.payload = newValue
+            }
+            if let tab = self as? UITabBarController {
+                tab.viewControllers?.forEach({ vc in
+                    vc.payload = newValue
+                })
+            }
+        }
+    }
+    
+    func add(_ child: UIViewController) {
+        addChild(child)
+        view.addSubview(child.view)
+        child.view.frame = view.frame
+        child.didMove(toParent: self)
+    }
+    
+    func remove() {
+        guard parent != nil else {
+            return
+        }
+        
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
+    }
+}
+
+extension UIViewController {
+    func appWindow() -> UIWindow {
+        return ((UIApplication.shared.delegate?.window)!)!
     }
 }

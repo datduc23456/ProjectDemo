@@ -12,7 +12,7 @@ final class {{ module_info.name }}Wireframe: {{ module_info.name }}WireframeInte
 
     static func generateModule(_ payload: Any?) -> UIViewController {
         let initialViewController = {{ module_info.name }}ViewController()
-        // initialViewController.payload = payload
+        initialViewController.payload = payload
         // let vc = initialViewController.topViewController as! {{ module_info.name }}ViewController
         let wireframe = {{ module_info.name }}Wireframe()
         let interactor = {{ module_info.name }}Interactor()
