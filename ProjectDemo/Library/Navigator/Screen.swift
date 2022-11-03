@@ -17,3 +17,25 @@ public enum NavigateTransions: String {
     case push
     case present
 }
+
+enum AppScreens: String, Screen, CaseIterable {
+    case example
+    
+    var path: String {
+        return rawValue
+    }
+    
+    var transition: NavigateTransions {
+        switch self {
+        default:
+            return .push
+        }
+    }
+    
+    func createViewController(_ payload: Any? = nil) -> UIViewController {
+        switch self {
+            case .example:
+                return ExampleWireframe.generateModule(payload)
+        }
+    }
+}

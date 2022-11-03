@@ -11,9 +11,8 @@ import UIKit
 final class ExampleWireframe: ExampleWireframeInterface {
 
     static func generateModule(_ payload: Any?) -> UIViewController {
-        let initialViewController = ExampleViewController()
+        let initialViewController = UIStoryboard(name: "ExampleViewController", bundle: nil).instantiateInitialViewController() as! ExampleViewController
         initialViewController.payload = payload
-        // let vc = initialViewController.topViewController as! ExampleViewController
         let wireframe = ExampleWireframe()
         let interactor = ExampleInteractor()
         let presenter = ExamplePresenter(

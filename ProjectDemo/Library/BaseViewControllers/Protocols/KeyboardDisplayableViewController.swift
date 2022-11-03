@@ -64,7 +64,7 @@ extension KeyboardDisplayableViewController {
                                   left: originInset.left,
                                   bottom: keyboardFrame.height,
                                   right: originInset.right)
-        guard originInset.bottom < keyboardFrame.height, scrollView.adjustedContentInset.bottom < keyboardFrame.height else { return }
+//        guard originInset.bottom < keyboardFrame.height, scrollView.adjustedContentInset.bottom < keyboardFrame.height else { return }
         scrollView.contentInset = insets
         scrollView.scrollIndicatorInsets = insets
     }

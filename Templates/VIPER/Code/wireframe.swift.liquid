@@ -11,7 +11,7 @@ import UIKit
 final class {{ module_info.name }}Wireframe: {{ module_info.name }}WireframeInterface {
 
     static func generateModule(_ payload: Any?) -> UIViewController {
-        let initialViewController = {{ module_info.name }}ViewController()
+        let initialViewController = UIStoryboard(name: "{{ module_info.name }}ViewController", bundle: nil).instantiateInitialViewController() as! {{ module_info.name }}ViewController
         initialViewController.payload = payload
         // let vc = initialViewController.topViewController as! {{ module_info.name }}ViewController
         let wireframe = {{ module_info.name }}Wireframe()

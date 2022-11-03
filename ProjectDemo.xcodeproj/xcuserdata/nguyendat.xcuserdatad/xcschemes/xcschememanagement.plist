@@ -7,11 +7,26 @@
 		<key>ProjectDemo.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>0</integer>
+		</dict>
+		<key>ProjectDemoDev.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>ProjectDemoDev_STG.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>18177E5829079CB2006B2849</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>185DC6BC29000D760056C910</key>
 		<dict>
 			<key>primary</key>
