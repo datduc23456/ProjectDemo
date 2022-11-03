@@ -158,6 +158,7 @@
 		184CEB972913C82A003492CD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				185DC6D429000F030056C910 /* CoordinatorType.swift */,
 				185DC6D629000F4A0056C910 /* ExtensionUseful.swift */,
 				185DC6DA2900DF940056C910 /* UIViewController+Reactive.swift */,
 				185DC6D8290010900056C910 /* Observable+Ext.swift */,
@@ -199,7 +200,6 @@
 				185DC6C929000D790056C910 /* Assets.xcassets */,
 				185DC6CB29000D790056C910 /* LaunchScreen.storyboard */,
 				185DC6CE29000D790056C910 /* Info.plist */,
-				185DC6D429000F030056C910 /* CoordinatorType.swift */,
 				32C03B96A82510979C520910 /* Modules */,
 			);
 			path = ProjectDemo;
