@@ -22,6 +22,7 @@ podfile_path: Podfile
 templates:
 - {name: VIPER}
 - {name: MVVMC}
+- {name: MVP}
 
 # Run [ generamba gen test1 mvvmc ]
 # Run [ generamba gen test1 viper ]
