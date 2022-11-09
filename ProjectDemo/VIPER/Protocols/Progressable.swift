@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 public protocol Progressable {
     func showLoading()
@@ -18,29 +19,15 @@ extension Progressable where Self: UIViewController {
 
     public func showLoading() {
         view.endEditing(true)
-        if let superview = view.superview {
-//            ActivityIndicatorManager.shared.show(parent: superview)
-        } else {
-//            NSObject.runAfterDelay(delayMSec: 100) { [weak self] in
-//                guard let weakSelf = self else { return }
-//                weakSelf.showLoading()
-//            }
-        }
+        ProgressHUD.show()
     }
 
     public func showLoading(message: String) {
         view.endEditing(true)
-        if let superview = view.superview {
-//            ActivityIndicatorManager.shared.show(parent: superview, message: message)
-        } else {
-//            NSObject.runAfterDelay(delayMSec: 100) { [weak self] in
-//                guard let weakSelf = self else { return }
-//                weakSelf.showLoading(message: message)
-//            }
-        }
+        ProgressHUD.show(message)
     }
 
     public func hideLoading() {
-//        ActivityIndicatorManager.shared.hide()
+        ProgressHUD.dismiss()
     }
 }

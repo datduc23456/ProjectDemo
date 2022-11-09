@@ -8,7 +8,6 @@
 
 import Foundation
 
-/// エラーハンドリング可能
 public protocol ErrorHandleable {
     func handleError(_ error: Error, _ completion: (() -> Void)?)
 }

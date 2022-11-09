@@ -61,6 +61,12 @@
 		185DC702290109AF0056C910 /* KeyboardDisplayableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC701290109AF0056C910 /* KeyboardDisplayableViewController.swift */; };
 		185DC704290136420056C910 /* BaseNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC703290136420056C910 /* BaseNavigator.swift */; };
 		185DC7072901367F0056C910 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC7062901367E0056C910 /* Screen.swift */; };
+		18F19828291A63CC00E4D911 /* ServiceCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F19827291A63CC00E4D911 /* ServiceCore.swift */; };
+		18F19829291A63CC00E4D911 /* ServiceCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F19827291A63CC00E4D911 /* ServiceCore.swift */; };
+		18F1982B291A64C200E4D911 /* CoreTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1982A291A64C200E4D911 /* CoreTargetType.swift */; };
+		18F1982C291A64C200E4D911 /* CoreTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1982A291A64C200E4D911 /* CoreTargetType.swift */; };
+		18F1982F291A676B00E4D911 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1982E291A676B00E4D911 /* BaseModel.swift */; };
+		18F19830291A676B00E4D911 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1982E291A676B00E4D911 /* BaseModel.swift */; };
 		4505B88542B7CE6E6B466969 /* ExampleInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD217B066DD36734A6E4AFA /* ExampleInterfaces.swift */; };
 		B2DDCAF28156F4313F22B841 /* ExamplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2553AC6158B6416DB0AC9375 /* ExamplePresenter.swift */; };
 		BF110FDE6C09949C01DC7DE3 /* Pods_ProjectDemoDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8E5DB9DD9433416DE63F91 /* Pods_ProjectDemoDev.framework */; };
@@ -99,6 +105,9 @@
 		185DC701290109AF0056C910 /* KeyboardDisplayableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDisplayableViewController.swift; sourceTree = "<group>"; };
 		185DC703290136420056C910 /* BaseNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigator.swift; sourceTree = "<group>"; };
 		185DC7062901367E0056C910 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		18F19827291A63CC00E4D911 /* ServiceCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCore.swift; sourceTree = "<group>"; };
+		18F1982A291A64C200E4D911 /* CoreTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTargetType.swift; sourceTree = "<group>"; };
+		18F1982E291A676B00E4D911 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		2553AC6158B6416DB0AC9375 /* ExamplePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExamplePresenter.swift; sourceTree = "<group>"; };
 		3709257DE909AD10105B3B61 /* Pods-ProjectDemoDev.projectdemo dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemoDev.projectdemo dev.xcconfig"; path = "Target Support Files/Pods-ProjectDemoDev/Pods-ProjectDemoDev.projectdemo dev.xcconfig"; sourceTree = "<group>"; };
 		4BD217B066DD36734A6E4AFA /* ExampleInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleInterfaces.swift; sourceTree = "<group>"; };
@@ -190,6 +199,9 @@
 		185DC6BF29000D760056C910 /* ProjectDemo */ = {
 			isa = PBXGroup;
 			children = (
+				18F1982D291A675D00E4D911 /* Model */,
+				18F1982A291A64C200E4D911 /* CoreTargetType.swift */,
+				18F19826291A63A700E4D911 /* Services */,
 				184CEB972913C82A003492CD /* Extension */,
 				185DC6FA290108D40056C910 /* Library */,
 				185DC6E02900E14B0056C910 /* VIPER */,
@@ -261,6 +273,22 @@
 				185DC7062901367E0056C910 /* Screen.swift */,
 			);
 			path = Navigator;
+			sourceTree = "<group>";
+		};
+		18F19826291A63A700E4D911 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				18F19827291A63CC00E4D911 /* ServiceCore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		18F1982D291A675D00E4D911 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18F1982E291A676B00E4D911 /* BaseModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		32C03B96A82510979C520910 /* Modules */ = {
@@ -478,7 +506,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F19829291A63CC00E4D911 /* ServiceCore.swift in Sources */,
 				18177E5B29079CB2006B2849 /* InteractorInterface.swift in Sources */,
+				18F19830291A676B00E4D911 /* BaseModel.swift in Sources */,
 				18177E5C29079CB2006B2849 /* Progressable.swift in Sources */,
 				18177E5D29079CB2006B2849 /* UIViewController+Reactive.swift in Sources */,
 				18177E5E29079CB2006B2849 /* ViewController.swift in Sources */,
@@ -499,6 +529,7 @@
 				18177E6D29079CB2006B2849 /* ExampleInterfaces.swift in Sources */,
 				18177E6E29079CB2006B2849 /* ExamplePresenter.swift in Sources */,
 				18177E6F29079CB2006B2849 /* Screen.swift in Sources */,
+				18F1982C291A64C200E4D911 /* CoreTargetType.swift in Sources */,
 				18177E7029079CB2006B2849 /* BaseNavigator.swift in Sources */,
 				18177E7129079CB2006B2849 /* ExampleInteractor.swift in Sources */,
 				18177E7229079CB2006B2849 /* ExampleWireframe.swift in Sources */,
@@ -510,7 +541,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F19828291A63CC00E4D911 /* ServiceCore.swift in Sources */,
 				185DC6E62900E1600056C910 /* InteractorInterface.swift in Sources */,
+				18F1982F291A676B00E4D911 /* BaseModel.swift in Sources */,
 				185DC6EF2900E1860056C910 /* Progressable.swift in Sources */,
 				185DC6DB2900DF950056C910 /* UIViewController+Reactive.swift in Sources */,
 				185DC6C529000D760056C910 /* ViewController.swift in Sources */,
@@ -531,6 +564,7 @@
 				4505B88542B7CE6E6B466969 /* ExampleInterfaces.swift in Sources */,
 				B2DDCAF28156F4313F22B841 /* ExamplePresenter.swift in Sources */,
 				185DC7072901367F0056C910 /* Screen.swift in Sources */,
+				18F1982B291A64C200E4D911 /* CoreTargetType.swift in Sources */,
 				185DC704290136420056C910 /* BaseNavigator.swift in Sources */,
 				FE3AD96B5561EEFFE421A0A9 /* ExampleInteractor.swift in Sources */,
 				E5EDA75719D6B0F2DFB8B03B /* ExampleWireframe.swift in Sources */,

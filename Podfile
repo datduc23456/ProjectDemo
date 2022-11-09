@@ -12,6 +12,8 @@ target 'ProjectDemo' do
   use_frameworks!
 
   # Pods for ProjectDemo
+  pod 'ProgressHUD'
+  pod 'Moya'
   rxswift
 end
 
@@ -19,7 +21,9 @@ target 'ProjectDemoDev' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for ProjectDemo
+  # Pods for ProjectDemoDev
+  pod 'ProgressHUD'
+  pod 'Moya'
   rxswift
 end
 
