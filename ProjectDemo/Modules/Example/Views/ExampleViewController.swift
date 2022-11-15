@@ -12,6 +12,19 @@ final class ExampleViewController: UIViewController {
 
     // MARK: - Properties
 	var presenter: ExamplePresenterInterface!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let a = TestObjc.init()
+        
+        a.changeValue()
+        a.changeValue("abc")
+        a.counter = 1
+        
+        // a.value is unwrapped
+        print("\(a.value.isEmpty)")
+        print("\(a.counter)")
+    }
 }
 
 // MARK: - ExampleViewInterface
