@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E45665419FCFEC8C8E9D4F9 /* Pods_ProjectDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B2414DA08014923CBA236D6 /* Pods_ProjectDemo.framework */; };
 		11F96FBD4B87C9B619D4A842 /* ExampleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62ADE0F7C8308801B5592DA9 /* ExampleViewController.storyboard */; };
+		181189632924DFB900E9D883 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181189622924DFB900E9D883 /* UIView+Ext.swift */; };
 		18177E5B29079CB2006B2849 /* InteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC6E52900E1600056C910 /* InteractorInterface.swift */; };
 		18177E5C29079CB2006B2849 /* Progressable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC6EE2900E1860056C910 /* Progressable.swift */; };
 		18177E5D29079CB2006B2849 /* UIViewController+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC6DA2900DF940056C910 /* UIViewController+Reactive.swift */; };
@@ -61,12 +62,10 @@
 		185DC702290109AF0056C910 /* KeyboardDisplayableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC701290109AF0056C910 /* KeyboardDisplayableViewController.swift */; };
 		185DC704290136420056C910 /* BaseNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC703290136420056C910 /* BaseNavigator.swift */; };
 		185DC7072901367F0056C910 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC7062901367E0056C910 /* Screen.swift */; };
+		1899F2972924CC6700D2D978 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899F2952924CC6700D2D978 /* TabbarViewController.swift */; };
+		1899F2982924CC6700D2D978 /* TabbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1899F2962924CC6700D2D978 /* TabbarViewController.xib */; };
 		18C3AC0A2923286A00183695 /* TestObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C3AC092923286A00183695 /* TestObjc.m */; };
 		18C3AC0B2923286A00183695 /* TestObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C3AC092923286A00183695 /* TestObjc.m */; };
-		18C3AC12292335BF00183695 /* r4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C3AC11292335AC00183695 /* r4.framework */; };
-		18C3AC13292335BF00183695 /* r4.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 18C3AC11292335AC00183695 /* r4.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		18C3AC14292335CF00183695 /* r4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C3AC11292335AC00183695 /* r4.framework */; };
-		18C3AC15292335CF00183695 /* r4.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 18C3AC11292335AC00183695 /* r4.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		18F19828291A63CC00E4D911 /* ServiceCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F19827291A63CC00E4D911 /* ServiceCore.swift */; };
 		18F19829291A63CC00E4D911 /* ServiceCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F19827291A63CC00E4D911 /* ServiceCore.swift */; };
 		18F1982B291A64C200E4D911 /* CoreTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1982A291A64C200E4D911 /* CoreTargetType.swift */; };
@@ -81,16 +80,6 @@
 		FE3AD96B5561EEFFE421A0A9 /* ExampleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BD6CF6744DEF5278C14CBF /* ExampleInteractor.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		18C3AC10292335AC00183695 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18C3AC0C292335AC00183695 /* r4.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 18F199F2291E24F800E4D911;
-			remoteInfo = r4;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		18C3AC16292335CF00183695 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -98,7 +87,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				18C3AC15292335CF00183695 /* r4.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,7 +97,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				18C3AC13292335BF00183695 /* r4.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +106,7 @@
 /* Begin PBXFileReference section */
 		03E135D3F555EAFD8CBD2955 /* ExampleWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleWireframe.swift; sourceTree = "<group>"; };
 		180BBA7509645CA488791B48 /* ExampleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
+		181189622924DFB900E9D883 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		18177E8029079CB2006B2849 /* ProjectDemoDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectDemoDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18177E8129079CB2006B2849 /* ProjectDemo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ProjectDemo copy-Info.plist"; path = "/Users/nguyendat/Desktop/ProjectDemo/ProjectDemo copy-Info.plist"; sourceTree = "<absolute>"; };
 		185DC6BD29000D760056C910 /* ProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,10 +134,11 @@
 		185DC701290109AF0056C910 /* KeyboardDisplayableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDisplayableViewController.swift; sourceTree = "<group>"; };
 		185DC703290136420056C910 /* BaseNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigator.swift; sourceTree = "<group>"; };
 		185DC7062901367E0056C910 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		1899F2952924CC6700D2D978 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		1899F2962924CC6700D2D978 /* TabbarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabbarViewController.xib; sourceTree = "<group>"; };
 		18C3AC062923285300183695 /* TestObjc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestObjc.h; sourceTree = "<group>"; };
 		18C3AC072923286A00183695 /* ProjectDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjectDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		18C3AC092923286A00183695 /* TestObjc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestObjc.m; sourceTree = "<group>"; };
-		18C3AC0C292335AC00183695 /* r4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = r4.xcodeproj; path = r4/r4.xcodeproj; sourceTree = SOURCE_ROOT; };
 		18F19827291A63CC00E4D911 /* ServiceCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCore.swift; sourceTree = "<group>"; };
 		18F1982A291A64C200E4D911 /* CoreTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTargetType.swift; sourceTree = "<group>"; };
 		18F1982E291A676B00E4D911 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
@@ -172,7 +161,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18C3AC14292335CF00183695 /* r4.framework in Frameworks */,
 				BF110FDE6C09949C01DC7DE3 /* Pods_ProjectDemoDev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,7 +169,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18C3AC12292335BF00183695 /* r4.framework in Frameworks */,
 				0E45665419FCFEC8C8E9D4F9 /* Pods_ProjectDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +198,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		181189612924D5B400E9D883 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		184CEB972913C82A003492CD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +213,7 @@
 				185DC6DA2900DF940056C910 /* UIViewController+Reactive.swift */,
 				185DC6D8290010900056C910 /* Observable+Ext.swift */,
 				185DC6DC2900E0050056C910 /* Array+Ext.swift */,
+				181189622924DFB900E9D883 /* UIView+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -246,7 +241,7 @@
 		185DC6BF29000D760056C910 /* ProjectDemo */ = {
 			isa = PBXGroup;
 			children = (
-				18C3AC0C292335AC00183695 /* r4.xcodeproj */,
+				181189612924D5B400E9D883 /* Helper */,
 				18C3AC042923283D00183695 /* Objc */,
 				18F1982D291A675D00E4D911 /* Model */,
 				18F1982A291A64C200E4D911 /* CoreTargetType.swift */,
@@ -263,6 +258,8 @@
 				185DC6CE29000D790056C910 /* Info.plist */,
 				32C03B96A82510979C520910 /* Modules */,
 				18C3AC072923286A00183695 /* ProjectDemo-Bridging-Header.h */,
+				1899F2952924CC6700D2D978 /* TabbarViewController.swift */,
+				1899F2962924CC6700D2D978 /* TabbarViewController.xib */,
 			);
 			path = ProjectDemo;
 			sourceTree = "<group>";
@@ -332,14 +329,6 @@
 				18C3AC092923286A00183695 /* TestObjc.m */,
 			);
 			path = Objc;
-			sourceTree = "<group>";
-		};
-		18C3AC0D292335AC00183695 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				18C3AC11292335AC00183695 /* r4.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		18F19826291A63A700E4D911 /* Services */ = {
@@ -460,12 +449,6 @@
 			mainGroup = 185DC6B429000D760056C910;
 			productRefGroup = 185DC6BE29000D760056C910 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 18C3AC0D292335AC00183695 /* Products */;
-					ProjectRef = 18C3AC0C292335AC00183695 /* r4.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				185DC6BC29000D760056C910 /* ProjectDemo */,
@@ -473,16 +456,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		18C3AC11292335AC00183695 /* r4.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = r4.framework;
-			remoteRef = 18C3AC10292335AC00183695 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		18177E7629079CB2006B2849 /* Resources */ = {
@@ -502,6 +475,7 @@
 			files = (
 				185DC6CD29000D790056C910 /* LaunchScreen.storyboard in Resources */,
 				185DC6CA29000D790056C910 /* Assets.xcassets in Resources */,
+				1899F2982924CC6700D2D978 /* TabbarViewController.xib in Resources */,
 				185DC6C829000D760056C910 /* Main.storyboard in Resources */,
 				11F96FBD4B87C9B619D4A842 /* ExampleViewController.storyboard in Resources */,
 			);
@@ -639,10 +613,12 @@
 				185DC6C529000D760056C910 /* ViewController.swift in Sources */,
 				185DC6C129000D760056C910 /* AppDelegate.swift in Sources */,
 				185DC6FD290109360056C910 /* BaseViewController.swift in Sources */,
+				1899F2972924CC6700D2D978 /* TabbarViewController.swift in Sources */,
 				185DC6D529000F040056C910 /* CoordinatorType.swift in Sources */,
 				185DC6E42900E15B0056C910 /* PresenterInterface.swift in Sources */,
 				185DC702290109AF0056C910 /* KeyboardDisplayableViewController.swift in Sources */,
 				185DC6E22900E1560056C910 /* ViewInterface.swift in Sources */,
+				181189632924DFB900E9D883 /* UIView+Ext.swift in Sources */,
 				185DC6E82900E1670056C910 /* InteractorOutputInterface.swift in Sources */,
 				185DC6C329000D760056C910 /* SceneDelegate.swift in Sources */,
 				185DC700290109840056C910 /* BackFromNextHandleable.swift in Sources */,

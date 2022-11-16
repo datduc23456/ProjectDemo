@@ -11,14 +11,26 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    static var shared: AppDelegate {
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+            assertionFailure()
+            exit(0)
+        }
+        return delegate
+    }
+    
+    var appRootViewController: TabbarViewController {
+        return window!.rootViewController as! TabbarViewController
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let vc = AppScreens.example.createViewController()
         let navigation: UINavigationController = .init(rootViewController: vc)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        window?.rootViewController = navigation
+        window?.rootViewController = TabbarViewController()
         window?.makeKeyAndVisible()
         return true
     }

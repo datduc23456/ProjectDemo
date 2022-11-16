@@ -23,4 +23,21 @@
     _value = newValue;
 }
 
+-(void) callBackExp:(void (^)(BOOL)) callBack {
+    if (callBack) {
+        
+    }
+}
+
+-(void) a:(void (^)(int)) callBack {
+    if (callBack) {
+        callBack(1);
+    }
+}
+
+-(void) b {
+    [self a:^(int result) {
+        
+    }];
+}
 @end
