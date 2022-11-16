@@ -8,25 +8,33 @@
 
 import UIKit
 
-final class ExampleViewController: UIViewController {
+final class ExampleViewController: BaseViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     // MARK: - Properties
 	var presenter: ExamplePresenterInterface!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let a = TestObjc.init()
-        
-        a.changeValue()
-        a.changeValue("abc")
-        a.counter = 1
-        
-        // a.value is unwrapped
-        print("\(a.value.isEmpty)")
-        print("\(a.counter)")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(BaseWithCollectionTableViewCell.self, forCellReuseIdentifier: BaseWithCollectionTableViewCell.className)
     }
 }
 
 // MARK: - ExampleViewInterface
 extension ExampleViewController: ExampleViewInterface {
+}
+
+extension ExampleViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: BaseWithCollectionTableViewCell.className, for: indexPath) as! BaseWithCollectionTableViewCell
+        
+        let a = FlowLayoutAttribute.init(itemSize: CGSize(), estimatedItemSize: CGSize(), minimumInteritemSpacing: 4.0, minimumLineSpacing: 4.0, footerReferenceSize: CGSize(), headerReferenceSize: CGSize())
+        return cell
+    }
 }

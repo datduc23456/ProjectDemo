@@ -19,6 +19,7 @@ open class BaseViewController: UIViewController {
 //        initializePopGesture()
 //        handleDidFirstLayoutSubviews()
 //        handleViewWillLayoutSubviews {}
+        self.view.backgroundColor = APP_COLOR
     }
     
     public convenience init(navigator: BaseNavigator) {

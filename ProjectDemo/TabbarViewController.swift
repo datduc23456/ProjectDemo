@@ -7,43 +7,79 @@
 
 import UIKit
 
-class TabbarViewController: UITabBarController {
+class TabbarItem: UIView {
+    var index: Int!
+    var selectedAction: VoidCallBack!
+    var imageView: UIImageView!
+    
+    init(frame: CGRect, index: Int, selectedAction: @escaping VoidCallBack) {
+        super.init(frame: frame)
+        self.index = index
+        self.selectedAction = selectedAction
+        let imageView = UIImageView.init(image: UIImage(named: "ic_tabbar\(index+1)"))
+        self.imageView = imageView
+        self.addSubview(imageView)
+        imageView.center = self.center
+        self.addTapGestureRecognizer(action: { [weak self] in
+            guard let `self` = self else { return }
+            self.selectedAction()
+            self.imageView.image = UIImage(named: "ic_tabbar\(index+1)_selected")
+        })
+    }
+    
+    func unselected() {
+        self.imageView.image = UIImage(named: "ic_tabbar\(index+1)")
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
+class TabbarViewController: UITabBarController {
+    
+    let customTabbarHeight: CGFloat = 54
+    var listVc: [UIViewController] = [AppScreens.example.createViewController(), AppScreens.example.createViewController(), AppScreens.example.createViewController(), AppScreens.example.createViewController(), AppScreens.example.createViewController()]
+    var countVc: Int {
+        return listVc.count
+    }
+    var items: [TabbarItem] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.viewControllers = [AppScreens.example.createViewController(), AppScreens.example.createViewController()]
+        self.viewControllers = listVc
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .red
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: (AppDelegate.shared.window?.bounds.width)! / 2, height: 84))
-        view.backgroundColor = .yellow
-        let view1 = UIView(frame: CGRect(x: 0, y: 0, width: (AppDelegate.shared.window?.bounds.width)! / 2, height: 84))
-        view1.backgroundColor = .blue
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view1.translatesAutoresizingMaskIntoConstraints = false
+        stackView.borderWidth = 1
+        stackView.borderColor = UIColor(hex: "#3F4249")
+        stackView.backgroundColor = UIColor(hex: "#191C23")
+        stackView.cornerRadius = 16
+        let frame = CGRect(x: 0, y: 0, width: (CommonUtil.SCREEN_WIDTH - 32) / CGFloat(countVc), height: customTabbarHeight)
         self.view.addSubview(stackView)
-        
-        view.widthAnchor.constraint(equalToConstant: (AppDelegate.shared.window?.bounds.width)! / 2).isActive = true
-        view1.widthAnchor.constraint(equalToConstant: (AppDelegate.shared.window?.bounds.width)! / 2).isActive = true
-        
         stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -AppDelegate.shared.window!.safeAreaInsets.bottom).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: 84).isActive = true
-        stackView.addArrangedSubview(view)
-        stackView.addArrangedSubview(view1)
-//        stackView.addArrangedSubview()
-        self.tabBarController?.tabBar.isHidden = true
-        for (index, item) in self.tabBar.items!.enumerated() {
-            if index == 0 {
-                item.image = UIImage(named: "ic_arrow_back")
-            } else {
-//                ic_arrow_discount
-                item.image = UIImage(named: "ic_arrow_discount")
+        stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16).isActive = true
+        stackView.heightAnchor.constraint(equalToConstant: 54).isActive = true
+        for (index, _) in self.tabBar.items!.enumerated() {
+            let tabbarItem = TabbarItem(frame: frame, index: index, selectedAction: {})
+            stackView.addArrangedSubview(tabbarItem)
+            tabbarItem.translatesAutoresizingMaskIntoConstraints = false
+            tabbarItem.widthAnchor.constraint(equalToConstant: (CommonUtil.SCREEN_WIDTH - 32) / CGFloat(countVc)).isActive = true
+            tabbarItem.selectedAction = { [weak self] in
+                guard let `self` = self else { return }
+                self.unselectAll()
+                self.selectedViewController = self.listVc[index]
             }
+            self.items.append(tabbarItem)
+        }
+        self.tabBar.isHidden = true
+    }
+    
+    func unselectAll() {
+        for item in items {
+            item.unselected()
         }
     }
+    
 }
