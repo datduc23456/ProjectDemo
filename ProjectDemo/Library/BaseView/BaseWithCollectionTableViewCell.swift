@@ -16,7 +16,7 @@ struct FlowLayoutAttribute {
     var headerReferenceSize: CGSize
 }
 
-class BaseWithCollectionTableViewCell: UITableViewCell {
+class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell {
     
     var isFirstLoad: Bool = true
     
@@ -38,7 +38,7 @@ class BaseWithCollectionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func initWithCollectionView<T: UICollectionViewCell>(_ attribute: FlowLayoutAttribute, _ type: T.Type) {
+    func initWithCollectionView(_ attribute: FlowLayoutAttribute) {
         if isFirstLoad {
             let collectionView = BaseCollectionBuilder().withCell(T.self)
                 .withEstimatedItemSize(attribute.estimatedItemSize)
