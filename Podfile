@@ -14,6 +14,7 @@ target 'ProjectDemo' do
   # Pods for ProjectDemo
   pod 'ProgressHUD'
   pod 'Moya'
+  pod 'FSPagerView'
   rxswift
 end
 
@@ -24,6 +25,7 @@ target 'ProjectDemoDev' do
   # Pods for ProjectDemoDev
   pod 'ProgressHUD'
   pod 'Moya'
+  pod 'FSPagerView'
   rxswift
 end
 
