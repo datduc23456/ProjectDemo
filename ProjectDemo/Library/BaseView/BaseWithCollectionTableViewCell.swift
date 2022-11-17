@@ -12,7 +12,6 @@ enum HomeCollectionViewType {
 }
 
 struct FlowLayoutAttribute {
-    var itemSize: CGSize
     var estimatedItemSize: CGSize
     var minimumInteritemSpacing: CGFloat
     var minimumLineSpacing: CGFloat
@@ -21,7 +20,7 @@ struct FlowLayoutAttribute {
     var scrollDirection: UICollectionView.ScrollDirection
 }
 
-class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
+class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var collectionView: UICollectionView!
     
@@ -52,7 +51,6 @@ class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell,
         guard let flowLayout = flowLayout else { return }
         let collectionView = BaseCollectionBuilder().withCell(T.self)
             .withEstimatedItemSize(flowLayout.estimatedItemSize)
-            .withItemSize(flowLayout.itemSize)
             .withFooterReferenceSize(flowLayout.footerReferenceSize)
             .withHeaderReferenceSize(flowLayout.headerReferenceSize)
             .withSpacingInGrid(flowLayout.minimumLineSpacing)
@@ -60,22 +58,32 @@ class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell,
             .withScrollDirection(flowLayout.scrollDirection)
             .build()
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(collectionView)
-        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        contentView.addSubview(collectionView)
+        collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         self.collectionView = collectionView
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.className, for: indexPath) as! T
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flowLayout = flowLayout else {
+            return UICollectionViewFlowLayout.automaticSize
+        }
+        if flowLayout.estimatedItemSize == UICollectionViewFlowLayout.automaticSize {
+            return CGSize(width: 0, height: 0)
+        }
+        return flowLayout.estimatedItemSize
     }
 }

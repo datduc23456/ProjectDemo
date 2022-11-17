@@ -98,6 +98,17 @@
 		18F19830291A676B00E4D911 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1982E291A676B00E4D911 /* BaseModel.swift */; };
 		3AF863B897C2C5555F5C367F /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30D3933AA80D5FF507CA45D3 /* HomeViewController.storyboard */; };
 		4505B88542B7CE6E6B466969 /* ExampleInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD217B066DD36734A6E4AFA /* ExampleInterfaces.swift */; };
+		522BFD8229267C08006B9BDF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522BFD8129267C08006B9BDF /* HeaderView.swift */; };
+		522BFD8329267C08006B9BDF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522BFD8129267C08006B9BDF /* HeaderView.swift */; };
+		522BFD8529267C12006B9BDF /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522BFD8429267C12006B9BDF /* HeaderView.xib */; };
+		522BFD8629267C12006B9BDF /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522BFD8429267C12006B9BDF /* HeaderView.xib */; };
+		522BFD89292684F4006B9BDF /* GengesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522BFD87292684F4006B9BDF /* GengesCollectionViewCell.swift */; };
+		522BFD8A292684F4006B9BDF /* GengesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522BFD87292684F4006B9BDF /* GengesCollectionViewCell.swift */; };
+		522BFD8B292684F4006B9BDF /* GengesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522BFD88292684F4006B9BDF /* GengesCollectionViewCell.xib */; };
+		522BFD8C292684F4006B9BDF /* GengesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522BFD88292684F4006B9BDF /* GengesCollectionViewCell.xib */; };
+		522BFD8E29268602006B9BDF /* GengesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522BFD8D29268602006B9BDF /* GengesTableViewCell.swift */; };
+		522BFD8F29268602006B9BDF /* GengesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522BFD8D29268602006B9BDF /* GengesTableViewCell.swift */; };
+		522BFD9029269909006B9BDF /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899F2952924CC6700D2D978 /* TabbarViewController.swift */; };
 		527F93B62925257D0065FE10 /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F93B52925257D0065FE10 /* CommonUtil.swift */; };
 		527F93B8292530320065FE10 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F93B7292530320065FE10 /* Constant.swift */; };
 		527F93B9292530C20065FE10 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F93B7292530320065FE10 /* Constant.swift */; };
@@ -202,6 +213,11 @@
 		3709257DE909AD10105B3B61 /* Pods-ProjectDemoDev.projectdemo dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemoDev.projectdemo dev.xcconfig"; path = "Target Support Files/Pods-ProjectDemoDev/Pods-ProjectDemoDev.projectdemo dev.xcconfig"; sourceTree = "<group>"; };
 		4964708C44877482A284A4A8 /* HomeInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		4BD217B066DD36734A6E4AFA /* ExampleInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleInterfaces.swift; sourceTree = "<group>"; };
+		522BFD8129267C08006B9BDF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaderView.swift; path = ProjectDemo/Modules/home/Views/TableViewCell/HeaderView.swift; sourceTree = SOURCE_ROOT; };
+		522BFD8429267C12006B9BDF /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HeaderView.xib; path = ProjectDemo/Modules/home/Views/TableViewCell/HeaderView.xib; sourceTree = SOURCE_ROOT; };
+		522BFD87292684F4006B9BDF /* GengesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GengesCollectionViewCell.swift; path = ProjectDemo/Modules/home/Views/CollectionViewCell/GengesCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		522BFD88292684F4006B9BDF /* GengesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GengesCollectionViewCell.xib; path = ProjectDemo/Modules/home/Views/CollectionViewCell/GengesCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		522BFD8D29268602006B9BDF /* GengesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GengesTableViewCell.swift; path = ProjectDemo/Modules/home/Views/TableViewCell/GengesTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		527F93B52925257D0065FE10 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommonUtil.swift; path = ProjectDemo/CommonUtil.swift; sourceTree = SOURCE_ROOT; };
 		527F93B7292530320065FE10 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		527F93BB292532EB0065FE10 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
@@ -284,6 +300,8 @@
 				1811897929260A9200E9D883 /* TrendingCollectionViewCell.xib */,
 				1811897E29260B6100E9D883 /* TopRatingCollectionViewCell.swift */,
 				1811897F29260B6100E9D883 /* TopRatingCollectionViewCell.xib */,
+				522BFD87292684F4006B9BDF /* GengesCollectionViewCell.swift */,
+				522BFD88292684F4006B9BDF /* GengesCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -304,6 +322,9 @@
 				181189862926370300E9D883 /* TopRatingTableViewCell.swift */,
 				181189892926375B00E9D883 /* TrendingTableViewCell.swift */,
 				1811898C2926377F00E9D883 /* CinemaPopularTableViewCell.swift */,
+				522BFD8D29268602006B9BDF /* GengesTableViewCell.swift */,
+				522BFD8129267C08006B9BDF /* HeaderView.swift */,
+				522BFD8429267C12006B9BDF /* HeaderView.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -605,6 +626,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18177E7729079CB2006B2849 /* LaunchScreen.storyboard in Resources */,
+				522BFD8629267C12006B9BDF /* HeaderView.xib in Resources */,
+				522BFD8C292684F4006B9BDF /* GengesCollectionViewCell.xib in Resources */,
 				1811897D29260A9200E9D883 /* TrendingCollectionViewCell.xib in Resources */,
 				18177E7829079CB2006B2849 /* Assets.xcassets in Resources */,
 				18177E7A29079CB2006B2849 /* ExampleViewController.storyboard in Resources */,
@@ -623,11 +646,13 @@
 				185DC6CD29000D790056C910 /* LaunchScreen.storyboard in Resources */,
 				1811897C29260A9200E9D883 /* TrendingCollectionViewCell.xib in Resources */,
 				1811896C2925E0FF00E9D883 /* CinemaPopularCollectionViewCell.xib in Resources */,
+				522BFD8529267C12006B9BDF /* HeaderView.xib in Resources */,
 				185DC6CA29000D790056C910 /* Assets.xcassets in Resources */,
 				1899F2982924CC6700D2D978 /* TabbarViewController.xib in Resources */,
 				11F96FBD4B87C9B619D4A842 /* ExampleViewController.storyboard in Resources */,
 				181189762925E35000E9D883 /* Nexa Light.otf in Resources */,
 				181189742925E35000E9D883 /* Nexa Regular.otf in Resources */,
+				522BFD8B292684F4006B9BDF /* GengesCollectionViewCell.xib in Resources */,
 				3AF863B897C2C5555F5C367F /* HomeViewController.storyboard in Resources */,
 				1811898229260B6100E9D883 /* TopRatingCollectionViewCell.xib in Resources */,
 				181189722925E35000E9D883 /* Nexa Bold.otf in Resources */,
@@ -729,6 +754,7 @@
 				18F19830291A676B00E4D911 /* BaseModel.swift in Sources */,
 				18177E5C29079CB2006B2849 /* Progressable.swift in Sources */,
 				18177E5D29079CB2006B2849 /* UIViewController+Reactive.swift in Sources */,
+				522BFD8329267C08006B9BDF /* HeaderView.swift in Sources */,
 				18177E5F29079CB2006B2849 /* AppDelegate.swift in Sources */,
 				18177E6029079CB2006B2849 /* BaseViewController.swift in Sources */,
 				18177E6129079CB2006B2849 /* CoordinatorType.swift in Sources */,
@@ -742,6 +768,7 @@
 				18177E6729079CB2006B2849 /* BackFromNextHandleable.swift in Sources */,
 				18177E6829079CB2006B2849 /* Array+Ext.swift in Sources */,
 				527F93C929253D0E0065FE10 /* BaseWithCollectionTableViewCell.swift in Sources */,
+				522BFD9029269909006B9BDF /* TabbarViewController.swift in Sources */,
 				181189882926370300E9D883 /* TopRatingTableViewCell.swift in Sources */,
 				18177E6929079CB2006B2849 /* Observable+Ext.swift in Sources */,
 				527F93D32925555B0065FE10 /* ABCTableViewCell.swift in Sources */,
@@ -757,11 +784,13 @@
 				18177E6F29079CB2006B2849 /* Screen.swift in Sources */,
 				18C3AC0B2923286A00183695 /* TestObjc.m in Sources */,
 				181189662925C62B00E9D883 /* ABC1CollectionViewCell.swift in Sources */,
+				522BFD8F29268602006B9BDF /* GengesTableViewCell.swift in Sources */,
 				18F1982C291A64C200E4D911 /* CoreTargetType.swift in Sources */,
 				18177E7029079CB2006B2849 /* BaseNavigator.swift in Sources */,
 				18118984292635C700E9D883 /* HomeViewController.swift in Sources */,
 				18177E7129079CB2006B2849 /* ExampleInteractor.swift in Sources */,
 				1811898B2926375B00E9D883 /* TrendingTableViewCell.swift in Sources */,
+				522BFD8A292684F4006B9BDF /* GengesCollectionViewCell.swift in Sources */,
 				18177E7229079CB2006B2849 /* ExampleWireframe.swift in Sources */,
 				18177E7329079CB2006B2849 /* ExampleViewController.swift in Sources */,
 				527F93BD292532EB0065FE10 /* BaseCollectionView.swift in Sources */,
@@ -809,12 +838,15 @@
 				18C3AC0A2923286A00183695 /* TestObjc.m in Sources */,
 				1811897A29260A9200E9D883 /* TrendingCollectionViewCell.swift in Sources */,
 				181189872926370300E9D883 /* TopRatingTableViewCell.swift in Sources */,
+				522BFD89292684F4006B9BDF /* GengesCollectionViewCell.swift in Sources */,
 				18F1982B291A64C200E4D911 /* CoreTargetType.swift in Sources */,
 				185DC704290136420056C910 /* BaseNavigator.swift in Sources */,
 				FE3AD96B5561EEFFE421A0A9 /* ExampleInteractor.swift in Sources */,
+				522BFD8229267C08006B9BDF /* HeaderView.swift in Sources */,
 				181189652925C62B00E9D883 /* ABC1CollectionViewCell.swift in Sources */,
 				1811896A2925E0FF00E9D883 /* CinemaPopularCollectionViewCell.swift in Sources */,
 				E5EDA75719D6B0F2DFB8B03B /* ExampleWireframe.swift in Sources */,
+				522BFD8E29268602006B9BDF /* GengesTableViewCell.swift in Sources */,
 				527F93D22925555B0065FE10 /* ABCTableViewCell.swift in Sources */,
 				CEF0B8A71A19B0A98E5309E0 /* ExampleViewController.swift in Sources */,
 				161A91E0EAE15B542476FE7B /* HomeInterfaces.swift in Sources */,

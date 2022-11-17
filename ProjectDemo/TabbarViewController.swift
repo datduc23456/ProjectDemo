@@ -47,7 +47,12 @@ class TabbarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = APP_COLOR
         self.viewControllers = listVc
+        var height: CGFloat = 10
+        if let safeAreaInsets = AppDelegate.shared.window?.safeAreaInsets.bottom, safeAreaInsets != 0 {
+            height = 0
+        }
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +62,7 @@ class TabbarViewController: UITabBarController {
         stackView.cornerRadius = 16
         let frame = CGRect(x: 0, y: 0, width: (CommonUtil.SCREEN_WIDTH - 32) / CGFloat(countVc), height: customTabbarHeight)
         self.view.addSubview(stackView)
-        stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -AppDelegate.shared.window!.safeAreaInsets.bottom).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -AppDelegate.shared.window!.safeAreaInsets.bottom - height).isActive = true
         stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16).isActive = true
         stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16).isActive = true
         stackView.heightAnchor.constraint(equalToConstant: 54).isActive = true
@@ -73,6 +78,15 @@ class TabbarViewController: UITabBarController {
             }
             self.items.append(tabbarItem)
         }
+        
+        
+//        for item in self.viewControllers ?? [] {
+//
+//            var inset = item.view.safeAreaInsets
+//            inset.bottom = customTabbarHeight
+//            item.additionalSafeAreaInsets = inset
+//        }
+        
         self.tabBar.isHidden = true
     }
     
