@@ -18,7 +18,7 @@ final class ExampleViewController: BaseViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(BaseWithCollectionTableViewCell.self, forCellReuseIdentifier: BaseWithCollectionTableViewCell.className)
+        tableView.register(ABCTableViewCell.self, forCellReuseIdentifier: ABCTableViewCell.className)
     }
 }
 
@@ -32,9 +32,8 @@ extension ExampleViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BaseWithCollectionTableViewCell.className, for: indexPath) as! BaseWithCollectionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ABCTableViewCell.className, for: indexPath) as! ABCTableViewCell
         
-        let a = FlowLayoutAttribute.init(itemSize: CGSize(), estimatedItemSize: CGSize(), minimumInteritemSpacing: 4.0, minimumLineSpacing: 4.0, footerReferenceSize: CGSize(), headerReferenceSize: CGSize())
         return cell
     }
 }

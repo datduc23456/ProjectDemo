@@ -20,6 +20,7 @@ public enum NavigateTransions: String {
 
 enum AppScreens: String, Screen, CaseIterable {
     case example
+    case home
     
     var path: String {
         return rawValue
@@ -34,8 +35,10 @@ enum AppScreens: String, Screen, CaseIterable {
     
     func createViewController(_ payload: Any? = nil) -> UIViewController {
         switch self {
-            case .example:
-                return ExampleWireframe.generateModule(payload)
+        case .example:
+            return ExampleWireframe.generateModule(payload)
+        case .home:
+            return HomeWireframe.generateModule(payload)
         }
     }
 }

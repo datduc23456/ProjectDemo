@@ -1,13 +1,13 @@
 //
-//  ABCTableViewCell.swift
+//  TrendingTableViewCell.swift
 //  ProjectDemo
 //
-//  Created by MacBook Pro on 17/11/2022.
+//  Created by Nguyễn Đạt on 17/11/2022.
 //
 
 import UIKit
 
-class ABCTableViewCell: BaseWithCollectionTableViewCell<ABC1CollectionViewCell> {
+class TrendingTableViewCell: BaseWithCollectionTableViewCell<TrendingCollectionViewCell> {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -16,8 +16,6 @@ class ABCTableViewCell: BaseWithCollectionTableViewCell<ABC1CollectionViewCell> 
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-    
+
 }

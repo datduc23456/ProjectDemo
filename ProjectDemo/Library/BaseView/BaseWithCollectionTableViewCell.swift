@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum HomeCollectionViewType {
+    case home
+}
+
 struct FlowLayoutAttribute {
     var itemSize: CGSize
     var estimatedItemSize: CGSize
@@ -14,15 +18,22 @@ struct FlowLayoutAttribute {
     var minimumLineSpacing: CGFloat
     var footerReferenceSize: CGSize
     var headerReferenceSize: CGSize
+    var scrollDirection: UICollectionView.ScrollDirection
 }
 
-class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell {
+class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var isFirstLoad: Bool = true
+    var collectionView: UICollectionView!
+    
+    var flowLayout: FlowLayoutAttribute? {
+        return nil
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        print("style")
+        self.backgroundColor = .clear
+        initWithCollectionView()
+        print("Register: \(T.self)")
     }
     
     required init?(coder: NSCoder) {
@@ -31,30 +42,40 @@ class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell 
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("awakeFromNib")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func initWithCollectionView(_ attribute: FlowLayoutAttribute) {
-        if isFirstLoad {
-            let collectionView = BaseCollectionBuilder().withCell(T.self)
-                .withEstimatedItemSize(attribute.estimatedItemSize)
-                .withItemSize(attribute.itemSize)
-                .withFooterReferenceSize(attribute.footerReferenceSize)
-                .withHeaderReferenceSize(attribute.headerReferenceSize)
-                .withSpacingInGrid(attribute.minimumLineSpacing)
-                .withSpacingInRow(attribute.minimumInteritemSpacing)
-                .build()
-            collectionView.translatesAutoresizingMaskIntoConstraints = false
-            self.addSubview(collectionView)
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-            collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-            isFirstLoad = !isFirstLoad
-        }
+    func initWithCollectionView() {
+        guard let flowLayout = flowLayout else { return }
+        let collectionView = BaseCollectionBuilder().withCell(T.self)
+            .withEstimatedItemSize(flowLayout.estimatedItemSize)
+            .withItemSize(flowLayout.itemSize)
+            .withFooterReferenceSize(flowLayout.footerReferenceSize)
+            .withHeaderReferenceSize(flowLayout.headerReferenceSize)
+            .withSpacingInGrid(flowLayout.minimumLineSpacing)
+            .withSpacingInRow(flowLayout.minimumInteritemSpacing)
+            .withScrollDirection(flowLayout.scrollDirection)
+            .build()
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(collectionView)
+        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        self.collectionView = collectionView
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.className, for: indexPath) as! T
+        return cell
     }
 }

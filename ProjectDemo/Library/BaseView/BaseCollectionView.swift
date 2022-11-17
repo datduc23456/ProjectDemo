@@ -13,7 +13,7 @@ protocol FactoryUICollectionView {
 
 extension FactoryUICollectionView where Self: BaseCollectionView {
     static func createWith<T: UICollectionViewCell>(_ type: T.Type) -> Self {
-        let collectionView = BaseCollectionView()
+        let collectionView = BaseCollectionView(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: UICollectionViewLayout())
         collectionView.registerCell(for: T.className)
         return collectionView as! Self
     }
@@ -59,8 +59,15 @@ class BaseCollectionBuilder {
         return self
     }
     
+    func withScrollDirection(_ scroll: UICollectionView.ScrollDirection) -> BaseCollectionBuilder {
+        flowLayout.scrollDirection = scroll
+        return self
+    }
+    
     func build() -> BaseCollectionView {
         self.collectionView.collectionViewLayout = flowLayout
+        self.collectionView.isScrollEnabled = true
+        self.collectionView.collectionViewLayout.invalidateLayout()
         return self.collectionView
     }
 }
