@@ -11,8 +11,13 @@ import Moya
 
 open class BaseViewController: UIViewController {
 
+    var myNavigationBar: NavigationBarView?
     public var currentRootViewController: UIViewController?
     public private(set) var navigator: BaseNavigator!
+    
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +31,13 @@ open class BaseViewController: UIViewController {
         self.init(nibName: nil, bundle: nil)
         self.navigator = navigator
         self.navigator.delegate = self
+    }
+    
+    func initCustomNavigation<T:NavigationBarView>(_ type: NavigationBarType) -> T {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        let nav = NavigationBarView.initUsingAutoLayout(type, view: view) as! T
+        myNavigationBar = nav
+        return nav
     }
 }
 
@@ -41,7 +53,7 @@ extension BaseViewController {
 
 extension BaseViewController {
 
-    open func currentViewController(from: UIViewController? = nil) -> UIViewController? {
+    public func currentViewController(from: UIViewController? = nil) -> UIViewController? {
         if let from = from {
             if let presented = from.presentedViewController {
                 return currentViewController(from: presented)

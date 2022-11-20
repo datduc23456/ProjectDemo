@@ -151,3 +151,37 @@ extension String {
         }
     }
 }
+
+extension UIColor {
+    public class func colorWith(hexStr: String, alpha: CGFloat = 1) -> UIColor {
+        let scanner = Scanner(string: hexStr.replacingOccurrences(of: "#", with: "") as String)
+        var color: UInt64 = 0
+        return scanner.scanHexInt64(&color)
+            ? UIColor(red: CGFloat((color & 0xFF0000) >> 16) / 255.0,
+                      green: CGFloat((color & 0x00FF00) >> 8) / 255.0,
+                      blue: CGFloat(color & 0x0000FF) / 255.0,
+                      alpha: alpha)
+            : .white
+    }
+}
+
+extension Date {
+    func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
+        return calendar.dateComponents(Set(components), from: self)
+    }
+
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
+    }
+}
+
+extension String {
+    func toDate(timeZone: TimeZone = TimeZone(abbreviation: "UTC") ?? TimeZone.current, dateFormat: String = "yyyy-mm-dd") -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = dateFormat
+        dateFormatter.timeZone = timeZone
+        let date = dateFormatter.date(from: self)
+        return date
+    }
+}

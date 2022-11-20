@@ -22,10 +22,32 @@ final class HomePresenter {
 }
 
 extension HomePresenter: HomePresenterInterface {
+    
+    func viewDidLoad() {
+        self.interactor.getMoviePopular()
+        self.interactor.getGenresList()
+        self.interactor.getTopRate()
+    }
+    
+    func viewWillAppear(_ animated: Bool) {
+
+    }
 }
 
 extension HomePresenter: HomeInteractorOutputInterface {
-
+    
+    func getMoviePopular(_ response: MovieResponse) {
+        view?.getMoviePopular(response)
+    }
+    
+    func getGenresList(_ response: GenreResponse) {
+        view?.getGenresList(response)
+    }
+    
+    func getTopRate(_ response: MovieResponse) {
+        view?.getTopRate(response)
+    }
+    
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()
         wireframe.handleError(error, completion)

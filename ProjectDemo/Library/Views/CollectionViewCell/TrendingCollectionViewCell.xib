@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TrendingCollectionViewCell" customModule="ProjectDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="137" height="168"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="137" height="168"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Black_adam" translatesAutoresizingMaskIntoConstraints="NO" id="O6n-Va-lf0">
+                        <rect key="frame" x="0.0" y="0.0" width="137" height="168"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="O6n-Va-lf0" secondAttribute="bottom" id="4zu-bj-TbP"/>
+                <constraint firstItem="O6n-Va-lf0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="M1U-sE-4rT"/>
+                <constraint firstAttribute="trailing" secondItem="O6n-Va-lf0" secondAttribute="trailing" id="O0k-9z-Yyn"/>
+                <constraint firstItem="O6n-Va-lf0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jfB-qx-aGW"/>
+            </constraints>
+            <size key="customSize" width="137" height="168"/>
+            <connections>
+                <outlet property="image" destination="O6n-Va-lf0" id="sK2-uN-p6X"/>
+            </connections>
+            <point key="canvasLocation" x="93.89312977099236" y="28.87323943661972"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Black_adam" width="40.666667938232422" height="40.666667938232422"/>
+    </resources>
+</document>

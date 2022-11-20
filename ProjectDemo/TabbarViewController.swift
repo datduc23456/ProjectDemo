@@ -23,8 +23,11 @@ class TabbarItem: UIView {
         self.addTapGestureRecognizer(action: { [weak self] in
             guard let `self` = self else { return }
             self.selectedAction()
-            self.imageView.image = UIImage(named: "ic_tabbar\(index+1)_selected")
         })
+    }
+    
+    func selected() {
+        self.imageView.image = UIImage(named: "ic_tabbar\(index+1)_selected")
     }
     
     func unselected() {
@@ -39,7 +42,7 @@ class TabbarItem: UIView {
 class TabbarViewController: UITabBarController {
     
     let customTabbarHeight: CGFloat = 54
-    var listVc: [UIViewController] = [AppScreens.home.createViewController(), AppScreens.example.createViewController(), AppScreens.example.createViewController(), AppScreens.example.createViewController(), AppScreens.example.createViewController()]
+    var listVc: [UIViewController] = [AppScreens.example.createViewController(), AppScreens.example.createViewController(), AppScreens.home.createViewController(), AppScreens.example.createViewController(), AppScreens.example.createViewController()]
     var countVc: Int {
         return listVc.count
     }
@@ -74,11 +77,13 @@ class TabbarViewController: UITabBarController {
             tabbarItem.selectedAction = { [weak self] in
                 guard let `self` = self else { return }
                 self.unselectAll()
+                tabbarItem.selected()
                 self.selectedViewController = self.listVc[index]
             }
             self.items.append(tabbarItem)
         }
         
+        self.items[2].selectedAction()
         
 //        for item in self.viewControllers ?? [] {
 //

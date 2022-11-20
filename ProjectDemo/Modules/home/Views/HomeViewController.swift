@@ -12,33 +12,63 @@ final class HomeViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     // MARK: - Properties
 	var presenter: HomePresenterInterface!
+    var tableViewDataSource: [HomeTableViewDataSource] = HomeTableViewDataSource.allCases
+    var data: [String: Any] = [:]
+    var storedOffset: CGFloat = 0
     
     override func viewDidLoad() {
         tableView.register(TopRatingTableViewCell.self, forCellReuseIdentifier: TopRatingTableViewCell.className)
         tableView.register(CinemaPopularTableViewCell.self, forCellReuseIdentifier: CinemaPopularTableViewCell.className)
         tableView.register(TrendingTableViewCell.self, forCellReuseIdentifier: TrendingTableViewCell.className)
-        tableView.register(GengesTableViewCell.self, forCellReuseIdentifier: GengesTableViewCell.className)
+        tableView.registerCell(for: PageCinemaTableViewCell.className)
+        tableView.registerCell(for: NewMovieTableViewCell.className)
+        tableView.registerCell(for: GengesListTableViewCell.className)
         tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
-        //customTabbarHeight
-        
         tableView.sectionFooterHeight = 0
+        let navigation: HomeNavigationView = initCustomNavigation(.home)
+        presenter.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        presenter.viewWillAppear(animated)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight, right: 0)
     }
 }
 
 // MARK: - HomeViewInterface
 extension HomeViewController: HomeViewInterface {
+    func getMoviePopular(_ response: MovieResponse) {
+        let listMovie = response.results
+        let first8 = Array(listMovie.prefix(8))
+        self.data.updateValue(response.results, forKey: "\(HomeTableViewDataSource.popular)")
+        self.data.updateValue(first8, forKey: "\(HomeTableViewDataSource.pageView)")
+        tableView.reloadSections(IndexSet([2]), with: .none)
+        tableView.reloadSections(IndexSet([1]), with: .none)
+    }
+    
+    func getGenresList(_ response: GenreResponse) {
+        let genres = [Genre()] + response.genres
+        self.data.updateValue(genres, forKey: "\(HomeTableViewDataSource.genges)")
+        tableView.reloadSections(IndexSet([0]), with: .none)
+    }
+    
+    func getTopRate(_ response: MovieResponse) {
+        let listMovie = response.results
+        let first5 = Array(listMovie.prefix(5))
+        var cut : ArraySlice<Movie> = []
+        cut = listMovie[5 ..< listMovie.endIndex]
+        self.data.updateValue(first5, forKey: "\(HomeTableViewDataSource.topRating)")
+        self.data.updateValue(Array(cut), forKey: "\(HomeTableViewDataSource.trending)")
+        tableView.reloadSections(IndexSet([4]), with: .none)
+    }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return tableViewDataSource.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,56 +76,69 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = indexPath.section
-        switch section {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CinemaPopularTableViewCell.className, for: indexPath) as! CinemaPopularTableViewCell
+        let item = tableViewDataSource[indexPath.section]
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: GengesListTableViewCell.className, for: indexPath) as! GengesListTableViewCell
+            cell.collectionView.collectionViewLayout.invalidateLayout()
+            if let data = self.data["\(item)"] as? [Genre] {
+                let first4 = Array(data.prefix(4))
+                cell.payload = first4
+            }
             return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: TopRatingTableViewCell.className, for: indexPath) as! TopRatingTableViewCell
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: TrendingTableViewCell.className, for: indexPath) as! TrendingTableViewCell
-            return cell
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: GengesTableViewCell.className, for: indexPath) as! GengesTableViewCell
-            return cell
-        default:
-            return UITableViewCell()
         }
+        
+        let T = item.typeOfCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: T.className, for: indexPath)
+        cell.selectionStyle = .none
+        if let baseCell = cell as? BaseWithCollectionTableViewCell<CinemaPopularCollectionViewCell, Movie>, let data = self.data["\(item)"] as? [Movie] {
+            baseCell.listPayload = data
+        }
+        
+        if let baseCell = cell as? BaseWithCollectionTableViewCell<GengesCollectionViewCell, Genre>, let data = self.data["\(item)"] as? [Genre] {
+            baseCell.listPayload = data
+        }
+        
+        if let baseCell = cell as? BaseWithCollectionTableViewCell<TopRatingCollectionViewCell, Movie>, let data = self.data["\(item)"] as? [Movie] {
+            baseCell.listPayload = data
+        }
+        
+        if let baseCell = cell as? PageCinemaTableViewCell, let data = self.data["\(item)"] as? [Movie] {
+            baseCell.listPayload = data
+        }
+        
+        if let baseCell = cell as? BaseWithCollectionTableViewCell<TrendingCollectionViewCell, Movie>, let data = self.data["\(item)"] as? [Movie] {
+            baseCell.listPayload = data
+        }
+        
+        if item == .newMovie, let movieCell = cell as? NewMovieTableViewCell {
+            movieCell.configGradientLayer()
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView") as! HeaderView
-        headerView.contentView.backgroundColor = APP_COLOR
-            headerView.lbTitle.text = "ABC" // set this however is appropriate for your app's model
+        let item = tableViewDataSource[section]
+        let titleHeader = item.titleOfHeader()
+        if !titleHeader.isEmpty {
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView") as! HeaderView
+            headerView.contentView.backgroundColor = APP_COLOR
+            headerView.lbTitle.text = titleHeader
             headerView.sectionNumber = section
             headerView.delegate = self
-        return headerView
+            return headerView
+        }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
+        let item = tableViewDataSource[section]
+        let titleHeader = item.titleOfHeader()
+        return titleHeader.isEmpty ? 0 : 60
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = indexPath.section
-        switch section {
-        case 0:
-            return 212
-        case 1:
-            return 146
-        case 2:
-            return 158
-        case 3:
-            return 40
-        default:
-            return 0
-        }
+        let item = tableViewDataSource[indexPath.section]
+        return item.heightForRow()
     }
 }
 

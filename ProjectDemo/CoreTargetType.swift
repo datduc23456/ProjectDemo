@@ -9,17 +9,58 @@ import Foundation
 import Moya
 
 enum CoreTargetType: TargetType {
-    
-    case example
+    case movieTopRated
+    case nowPlaying
+    case popular
+    case detail(Int)
+    case genreId(genreId: Int)
+    case genreList
+    case searchMovie(query: String, page: Int)
+    case TVshowPopular(page: Int)
+    case TVshowTopRate(page: Int)
+    case TVshowLastest(page: Int)
+    case TVshowDetail
+    case searchTVshow(query: String, page: Int)
+    case personPopular(page: Int)
+    case personDetail(personId: Int)
+    case searchPerson(query: String, page: Int)
     case upload([String: Any])
     case download(url: String, fileName: String?)
     
-    var baseURL: URL { return URL(string: "")! }
+    var baseURL: URL { return URL(string: "https://api.themoviedb.org/3/")! }
     
     var path: String {
         switch self {
-        case .example:
-            return ""
+        case .movieTopRated:
+            return "movie/top_rated"
+        case .nowPlaying:
+            return "movie/now_playing"
+        case .popular:
+            return "movie/popular"
+        case .detail(let id):
+            return "movie/\(id)"
+        case .genreId:
+            return "discover/movie"
+        case .searchMovie:
+            return "search/movie"
+        case .TVshowPopular:
+            return "tv/popular"
+        case .TVshowTopRate:
+            return "tv/top_rated"
+        case .TVshowLastest:
+            return "tv/airing_today"
+        case .TVshowDetail:
+            return "tv/100"
+        case .searchTVshow:
+            return "search/tv"
+        case .personPopular:
+            return "person/popular"
+        case .personDetail(let personId):
+            return "person/\(personId)"
+        case .searchPerson:
+            return "search/person"
+        case .genreList:
+            return "genre/movie/list"
         default:
             return ""
         }
@@ -27,17 +68,53 @@ enum CoreTargetType: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .example, .download:
+        case .download:
             return .get
         case .upload:
             return .put
+        default:
+            return .get
         }
+    }
+    
+    var params: [String : Any] {
+        var defaultParams: [String: Any] = ["api_key": "63cbd7bb8ca53a31817a418b2cfb7e6a", "language": "en-US"]
+        switch self {
+        case .popular:
+            defaultParams.updateValue("1", forKey: "page")
+        case .detail:
+            defaultParams.updateValue("videos,credits,recommendations,reviews", forKey: "append_to_response")
+        case .genreId(let genreId):
+            defaultParams.updateValue(genreId, forKey: "with_genres")
+        case .searchMovie(let query, let page):
+            defaultParams.updateValue(query, forKey: "query")
+            defaultParams.updateValue(page, forKey: "page")
+        case .TVshowPopular(let page):
+            defaultParams.updateValue(page, forKey: "page")
+        case .TVshowTopRate(let page):
+            defaultParams.updateValue(page, forKey: "page")
+        case .TVshowLastest(let page):
+            defaultParams.updateValue(page, forKey: "page")
+        case .TVshowDetail:
+            defaultParams.updateValue("videos", forKey: "append_to_response")
+        case .searchTVshow(let query, let page):
+            defaultParams.updateValue(query, forKey: "query")
+            defaultParams.updateValue(page, forKey: "page")
+        case .personPopular(let page):
+            defaultParams.updateValue(page, forKey: "page")
+        case .personDetail:
+            defaultParams.updateValue("movie_credits,images,tv_credits", forKey: "append_to_response")
+        case .searchPerson(let query, let page):
+            defaultParams.updateValue(query, forKey: "query")
+            defaultParams.updateValue(page, forKey: "page")
+        default:
+            break
+        }
+        return defaultParams
     }
     
     var task: Task {
         switch self {
-        case .example:
-            return .requestPlain
         case .upload(let params):
             var formData = [MultipartFormData]()
             for (key, value) in params {
@@ -53,6 +130,8 @@ enum CoreTargetType: TargetType {
             return .uploadMultipart(formData)
         case .download(_, _):
             return .downloadDestination(downloadDestination)
+        default:
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     

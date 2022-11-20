@@ -12,4 +12,31 @@ final class HomeInteractor {
 }
 
 extension HomeInteractor: HomeInteractorInterface {
+    
+    func getMoviePopular() {
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.popular, successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getMoviePopular(response)
+        }, failureBlock: { _ in
+            
+        })
+    }
+    
+    func getGenresList() {
+        ServiceCore.shared.request(GenreResponse.self, targetType: CoreTargetType.genreList, successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getGenresList(response)
+        }, failureBlock: { _ in
+            
+        })
+    }
+    
+    func getTopRate() {
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.movieTopRated, successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getTopRate(response)
+        }, failureBlock: { _ in
+            
+        })
+    }
 }

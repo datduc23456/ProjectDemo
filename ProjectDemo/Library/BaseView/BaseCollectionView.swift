@@ -70,9 +70,13 @@ class BaseCollectionBuilder {
 }
 
 class BaseCollectionView: UICollectionView {
-
+    
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
+        self.backgroundColor = APP_COLOR
+        self.bounces = true
+        self.showsHorizontalScrollIndicator = false
+//        self.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 50)
     }
     
     required init?(coder: NSCoder) {

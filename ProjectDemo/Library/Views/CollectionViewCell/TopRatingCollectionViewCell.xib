@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nexa Bold.otf">
+            <string>Nexa-Bold</string>
+        </array>
+        <array key="Nexa Regular.otf">
+            <string>NexaRegular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TopRatingCollectionViewCell" customModule="ProjectDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="490" height="146"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="490" height="146"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Black_adam" translatesAutoresizingMaskIntoConstraints="NO" id="6X4-I7-bCY">
+                        <rect key="frame" x="20" y="8" width="86" height="130"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="86" id="Ms3-Jn-7yC"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFG-GX-K9O">
+                        <rect key="frame" x="121" y="12" width="100" height="22"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFZ-wy-KQm">
+                                <rect key="frame" x="0.0" y="0.0" width="48.666666666666664" height="22"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPG-LB-StQ">
+                                        <rect key="frame" x="6" y="5" width="20" height="15"/>
+                                        <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star" translatesAutoresizingMaskIntoConstraints="NO" id="kGF-Cx-Y9P">
+                                        <rect key="frame" x="28.666666666666657" y="4.6666666666666679" width="13" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="13" id="aHa-Fn-feI"/>
+                                            <constraint firstAttribute="width" constant="13" id="eeN-i9-hqT"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.78039215689999997" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="hPG-LB-StQ" secondAttribute="bottom" constant="2" id="8Tj-H9-slq"/>
+                                    <constraint firstItem="hPG-LB-StQ" firstAttribute="leading" secondItem="vFZ-wy-KQm" secondAttribute="leading" constant="6" id="Ytm-1e-pFf"/>
+                                    <constraint firstAttribute="trailing" secondItem="kGF-Cx-Y9P" secondAttribute="trailing" constant="7" id="bmZ-ij-zBr"/>
+                                    <constraint firstItem="kGF-Cx-Y9P" firstAttribute="centerY" secondItem="vFZ-wy-KQm" secondAttribute="centerY" id="i0h-Eo-Weq"/>
+                                    <constraint firstItem="hPG-LB-StQ" firstAttribute="top" secondItem="vFZ-wy-KQm" secondAttribute="top" constant="5" id="vSH-Ci-daH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPd-zs-Tjq">
+                                <rect key="frame" x="48.666666666666657" y="0.0" width="3" height="22"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="3" id="A5K-Je-xGU"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cau-fV-N2Q">
+                                <rect key="frame" x="51.666666666666657" y="0.0" width="48.333333333333343" height="22"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTu-38-EOg">
+                                        <rect key="frame" x="6" y="4" width="36.333333333333336" height="15"/>
+                                        <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.30980392159999998" green="0.30588235289999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="nTu-38-EOg" firstAttribute="top" secondItem="cau-fV-N2Q" secondAttribute="top" constant="4" id="N9Z-w3-Vb9"/>
+                                    <constraint firstItem="nTu-38-EOg" firstAttribute="leading" secondItem="cau-fV-N2Q" secondAttribute="leading" constant="6" id="S9N-os-1x7"/>
+                                    <constraint firstAttribute="trailing" secondItem="nTu-38-EOg" secondAttribute="trailing" constant="6" id="Tif-fV-3vw"/>
+                                    <constraint firstAttribute="bottom" secondItem="nTu-38-EOg" secondAttribute="bottom" constant="3" id="req-7J-qnQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="cau-fV-N2Q" firstAttribute="width" secondItem="vFZ-wy-KQm" secondAttribute="width" id="912-1O-C8d"/>
+                            <constraint firstAttribute="width" constant="100" id="ISA-ky-5e2"/>
+                            <constraint firstAttribute="height" constant="22" id="Rwi-fI-Eoc"/>
+                        </constraints>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Quiet on t..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rel-6M-SLR">
+                        <rect key="frame" x="121" y="42" width="361" height="16"/>
+                        <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLx-64-wQZ">
+                        <rect key="frame" x="121" y="66" width="361" height="14"/>
+                        <attributedString key="attributedText">
+                            <fragment content="All Quiet on t...dbkahdjkashdjksahdjkhsakd">
+                                <attributes>
+                                    <color key="NSColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="14" name="NexaRegular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRR-iA-HAo">
+                        <rect key="frame" x="438.66666666666669" y="126" width="32.333333333333314" height="12"/>
+                        <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivk-8L-tVl">
+                        <rect key="frame" x="8" y="116" width="10.333333333333336" height="21"/>
+                        <attributedString key="attributedText">
+                            <fragment content="1">
+                                <attributes>
+                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <font key="NSFont" size="18" name="Phosphate-Inline"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.24705882352941178" green="0.25882352941176467" blue="0.28627450980392155" alpha="0.0" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="FLx-64-wQZ" firstAttribute="trailing" secondItem="Rel-6M-SLR" secondAttribute="trailing" id="0FW-jd-nS4"/>
+                <constraint firstAttribute="bottom" secondItem="Ivk-8L-tVl" secondAttribute="bottom" constant="9" id="18Z-b9-S9y"/>
+                <constraint firstItem="Ivk-8L-tVl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="32r-A9-HPr"/>
+                <constraint firstAttribute="bottom" secondItem="PRR-iA-HAo" secondAttribute="bottom" constant="8" id="AES-vu-jNP"/>
+                <constraint firstAttribute="top" secondItem="6X4-I7-bCY" secondAttribute="top" constant="-8" id="HmC-wx-fL2"/>
+                <constraint firstItem="JFG-GX-K9O" firstAttribute="bottom" secondItem="Rel-6M-SLR" secondAttribute="top" constant="-8" id="OtD-9H-4Eo"/>
+                <constraint firstItem="6X4-I7-bCY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="RMl-0d-AFA"/>
+                <constraint firstItem="JFG-GX-K9O" firstAttribute="leading" secondItem="6X4-I7-bCY" secondAttribute="trailing" constant="15" id="WSa-Ul-pxA"/>
+                <constraint firstAttribute="trailing" secondItem="Rel-6M-SLR" secondAttribute="trailing" constant="8" id="WgU-DK-YXo"/>
+                <constraint firstItem="FLx-64-wQZ" firstAttribute="leading" secondItem="Rel-6M-SLR" secondAttribute="leading" id="eVB-IR-YKA"/>
+                <constraint firstItem="FLx-64-wQZ" firstAttribute="top" secondItem="Rel-6M-SLR" secondAttribute="bottom" constant="8" id="fNK-Yg-9Qk"/>
+                <constraint firstItem="JFG-GX-K9O" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="gia-r5-4Cf"/>
+                <constraint firstAttribute="bottom" secondItem="6X4-I7-bCY" secondAttribute="bottom" constant="8" id="juu-32-OZ8"/>
+                <constraint firstItem="Rel-6M-SLR" firstAttribute="leading" secondItem="JFG-GX-K9O" secondAttribute="leading" id="uVY-hz-uQf"/>
+                <constraint firstAttribute="trailing" secondItem="PRR-iA-HAo" secondAttribute="trailing" constant="19" id="x6n-QF-ftw"/>
+            </constraints>
+            <size key="customSize" width="490" height="226"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                    <real key="value" value="1"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" red="0.24705882352941178" green="0.25882352941176467" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="8"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="image" destination="6X4-I7-bCY" id="vTK-zt-3yD"/>
+                <outlet property="lbGenres" destination="FLx-64-wQZ" id="Fvs-He-fdF"/>
+                <outlet property="lbTitle" destination="Rel-6M-SLR" id="8db-9M-gfV"/>
+                <outlet property="lbVoteAvg" destination="hPG-LB-StQ" id="NL4-gz-FJv"/>
+                <outlet property="lbYear" destination="nTu-38-EOg" id="rhZ-PW-lPD"/>
+            </connections>
+            <point key="canvasLocation" x="465.64885496183206" y="49.295774647887328"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Black_adam" width="40.666667938232422" height="40.666667938232422"/>
+        <image name="ic_star" width="16" height="16"/>
+    </resources>
+</document>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nexa Regular.otf">
+            <string>NexaRegular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PeoplePopularCollectionViewCell" customModule="ProjectDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="183"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="120" height="183"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ogd-b6-Huh">
+                        <rect key="frame" x="7" y="-7" width="106" height="106"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="106" id="Vy7-Fc-71A"/>
+                            <constraint firstAttribute="width" constant="106" id="yiu-XO-qKn"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrs-vp-tyK">
+                        <rect key="frame" x="7" y="107" width="106" height="14"/>
+                        <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Producer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abV-CS-XdN">
+                        <rect key="frame" x="6.9999999999999964" y="128" width="53.666666666666657" height="12"/>
+                        <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="12"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="mrs-vp-tyK" firstAttribute="top" secondItem="ogd-b6-Huh" secondAttribute="bottom" constant="8" id="1KM-q0-cDg"/>
+                <constraint firstItem="ogd-b6-Huh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="X3c-vD-lgD"/>
+                <constraint firstItem="mrs-vp-tyK" firstAttribute="leading" secondItem="ogd-b6-Huh" secondAttribute="leading" id="abY-op-vQl"/>
+                <constraint firstItem="abV-CS-XdN" firstAttribute="leading" secondItem="mrs-vp-tyK" secondAttribute="leading" id="drc-oA-FYQ"/>
+                <constraint firstItem="mrs-vp-tyK" firstAttribute="trailing" secondItem="ogd-b6-Huh" secondAttribute="trailing" id="ftl-aA-dfx"/>
+                <constraint firstItem="ogd-b6-Huh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="-7" id="iYU-ss-GoA"/>
+                <constraint firstItem="abV-CS-XdN" firstAttribute="top" secondItem="mrs-vp-tyK" secondAttribute="bottom" constant="7" id="nTJ-1n-Ii0"/>
+            </constraints>
+            <size key="customSize" width="120" height="183"/>
+            <point key="canvasLocation" x="6" y="-7"/>
+        </collectionViewCell>
+    </objects>
+</document>

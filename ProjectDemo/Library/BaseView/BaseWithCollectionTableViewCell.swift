@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum HomeCollectionViewType {
-    case home
-}
-
 struct FlowLayoutAttribute {
     var estimatedItemSize: CGSize
     var minimumInteritemSpacing: CGFloat
@@ -20,9 +16,14 @@ struct FlowLayoutAttribute {
     var scrollDirection: UICollectionView.ScrollDirection
 }
 
-class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class BaseWithCollectionTableViewCell<T: UICollectionViewCell, D: Decodable>: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    var collectionView: UICollectionView!
+    var collectionView: BaseCollectionView!
+    var listPayload: [D] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     var flowLayout: FlowLayoutAttribute? {
         return nil
@@ -69,11 +70,15 @@ class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell,
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return self.listPayload.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.className, for: indexPath) as! T
+        let payload = self.listPayload[indexPath.row]
+        if let baseCell = cell as? BaseCollectionViewCell {
+            baseCell.configCell(payload)
+        }
         return cell
     }
     
@@ -82,7 +87,7 @@ class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell,
             return UICollectionViewFlowLayout.automaticSize
         }
         if flowLayout.estimatedItemSize == UICollectionViewFlowLayout.automaticSize {
-            return CGSize(width: 0, height: 0)
+            return CGSize(width: 1, height: 34)
         }
         return flowLayout.estimatedItemSize
     }

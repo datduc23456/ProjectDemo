@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ABCTableViewCell: BaseWithCollectionTableViewCell<ABC1CollectionViewCell> {
+class ABCTableViewCell: BaseWithCollectionTableViewCell<ABC1CollectionViewCell, Movie> {
 
     override func awakeFromNib() {
         super.awakeFromNib()
