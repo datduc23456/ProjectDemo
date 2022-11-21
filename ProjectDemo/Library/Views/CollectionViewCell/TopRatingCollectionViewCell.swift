@@ -19,7 +19,7 @@ class TopRatingCollectionViewCell: BaseCollectionViewCell {
         super.awakeFromNib()
     }
     
-    override func configCell<T: Decodable>(_ payload: T?) {
+    override func configCell(_ payload: Any) {
         if let payload = payload as? Movie {
             image.kf.setImage(with: URL(string: "\(baseURLImage)\(payload.posterPath)"))
             lbTitle.text = payload.originalTitle

@@ -7,15 +7,26 @@
 //
 
 protocol TVShowViewInterface: ViewInterface {
+    func getTVShowPopular(_ response: MovieResponse)
+    func getGenresList(_ response: GenreResponse)
+    func getTVShowLastest(_ response: MovieResponse)
+    func getTopRate(_ response: MovieResponse)
 }
 
 protocol TVShowPresenterInterface: PresenterInterface {
+    
 }
 
 protocol TVShowInteractorInterface: InteractorInterface {
+    func getTVShowPopular()
+    func getTVShowLastest()
+    func getTopRate()
 }
 
 protocol TVShowInteractorOutputInterface: InteractorOutputInterface {
+    func getTVShowPopular(_ response: MovieResponse)
+    func getTVShowLastest(_ response: MovieResponse)
+    func getTopRate(_ response: MovieResponse)
 }
 
 protocol TVShowWireframeInterface: WireframeInterface {

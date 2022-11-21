@@ -10,37 +10,93 @@ import UIKit
 
 final class TVShowViewController: BaseViewController {
 
+    @IBOutlet weak var lbGenres: UILabel!
+    @IBOutlet weak var lbTitle: UILabel!
+    @IBOutlet weak var lbYear: UILabel!
+    @IBOutlet weak var lbVoteAvg: UILabel!
+    @IBOutlet weak var imgBackGround: UIImageView!
+    @IBOutlet weak var viewLayer: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableViewheight: NSLayoutConstraint!
     @IBOutlet weak var tableView: TableViewAdjustedHeight!
     // MARK: - Properties
 	var presenter: TVShowPresenterInterface!
     var tableViewDataSource: [TVShowTableViewDataSource] = TVShowTableViewDataSource.allCases
+    var data: [String: Any] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(TVShowTopUpTableViewCell.self, forCellReuseIdentifier: TVShowTopUpTableViewCell.className)
+        tableView.register(TVShowPopularTableViewCell.self, forCellReuseIdentifier: TVShowPopularTableViewCell.className)
+        tableView.register(TrendingTableViewCell.self, forCellReuseIdentifier: TrendingTableViewCell.className)
+        tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.contentSizeDelegate = self
-        
+        scrollView.showsVerticalScrollIndicator = false
+        viewLayer.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        presenter.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight, right: 0)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
     }
     
 }
 
 // MARK: - TVShowViewInterface
 extension TVShowViewController: TVShowViewInterface {
+    func getTVShowLastest(_ response: MovieResponse) {
+        let listMovie = response.results
+//        let first5 = Array(listMovie.prefix(5))
+        self.data.updateValue(listMovie, forKey: "\(TVShowTableViewDataSource.topUp)")
+        tableView.reloadSections(IndexSet([0]), with: .none)
+        self.configMovieDetail(listMovie.first!)
+    }
+    
+    func getGenresList(_ response: GenreResponse) {
+        
+    }
+    
+    func getTopRate(_ response: MovieResponse) {
+        self.data.updateValue(response.results, forKey: "\(TVShowTableViewDataSource.trending)")
+        tableView.reloadSections(IndexSet([2]), with: .none)
+    }
+    
+    func getTVShowPopular(_ response: MovieResponse) {
+        self.data.updateValue(response.results, forKey: "\(TVShowTableViewDataSource.popular)")
+        tableView.reloadSections(IndexSet([1]), with: .none)
+    }
 }
 
 
 extension TVShowViewController: UITableViewDataSource, UITableViewDelegate {
+    fileprivate func configMovieDetail(_ movie: Movie) {
+        self.imgBackGround.kf.setImage(with: URL(string: "\(baseURLImage)\(movie.posterPath)"))
+        self.lbTitle.text = movie.name
+        self.lbVoteAvg.text = "\(movie.voteAverage)"
+        self.lbYear.text = CommonUtil.getYearFromDate(movie.releaseDate)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TVShowTopUpTableViewCell.className, for: indexPath)
+        let item = tableViewDataSource[indexPath.section]
+        let T = item.typeOfCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: T.className, for: indexPath)
+        cell.selectionStyle = .none
+        if let baseCell = cell as? BaseWithCollectionTableViewCellHandler, let data = self.data["\(item)"] as? [Any] {
+            baseCell.listPayload = data
+            baseCell.didTapActionInCell = { payload in
+                switch item {
+                case .topUp:
+                    if let movie = payload as? Movie {
+                        self.configMovieDetail(movie)
+                    }
+                default:
+                    return
+                }
+            }
+        }
         return cell
     }
     

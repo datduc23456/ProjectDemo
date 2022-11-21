@@ -38,7 +38,7 @@ class GengesCollectionViewCell: BaseCollectionViewCell {
         
     }
     
-    override func configCell<T: Decodable>(_ payload: T?) {
+    override func configCell(_ payload: Any) {
         if let payload = payload as? Genre {
             self.genre = payload
             lbTitle.text = payload.name
@@ -46,7 +46,7 @@ class GengesCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    func configCell<T: Decodable>(_ payload: T?, isSelected: Bool) {
+    func configCell(_ payload: Any, isSelected: Bool) {
         self.configCell(payload)
         if isSelected {
             selected()

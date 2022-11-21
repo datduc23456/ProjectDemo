@@ -16,10 +16,16 @@ struct FlowLayoutAttribute {
     var scrollDirection: UICollectionView.ScrollDirection
 }
 
-class BaseWithCollectionTableViewCell<T: UICollectionViewCell, D: Decodable>: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+protocol BaseWithCollectionTableViewCellHandler: AnyObject {
+    var listPayload: [Any] { get set }
+    var didTapActionInCell: ((Any)->Void) { get set }
+}
+
+class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, BaseWithCollectionTableViewCellHandler {
     
+    var didTapActionInCell: ((Any) -> Void) = {_ in}
     var collectionView: BaseCollectionView!
-    var listPayload: [D] = [] {
+    var listPayload: [Any] = [] {
         didSet {
             collectionView.reloadData()
         }
@@ -70,15 +76,19 @@ class BaseWithCollectionTableViewCell<T: UICollectionViewCell, D: Decodable>: UI
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return listPayload.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.className, for: indexPath) as! T
-//        let payload = self.listPayload[indexPath.row]
-//        if let baseCell = cell as? BaseCollectionViewCell {
-//            baseCell.configCell(payload)
-//        }
+        let payload = self.listPayload[indexPath.row]
+        if let baseCell = cell as? BaseCollectionViewCell {
+            baseCell.configCell(payload)
+            baseCell.didTapAction = { [weak self] any in
+                guard let `self` = self else { return }
+                self.didTapActionInCell(any)
+            }
+        }
         return cell
     }
     

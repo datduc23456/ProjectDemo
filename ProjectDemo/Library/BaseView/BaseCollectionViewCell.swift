@@ -9,11 +9,14 @@ import UIKit
 
 class BaseCollectionViewCell: UICollectionViewCell {
 
+    var didTapAction: ((Any) -> Void)?
+    var payload: Any?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configCell<T: Decodable>(_ payload: T?) {
-        
+    func configCell(_ payload: Any) {
+        self.payload = payload
     }
 }

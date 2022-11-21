@@ -12,4 +12,31 @@ final class TVShowInteractor {
 }
 
 extension TVShowInteractor: TVShowInteractorInterface {
+    
+    func getTopRate() {
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.TVshowTopRate(page: 1), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getTopRate(response)
+        }, failureBlock: { _ in
+            
+        })
+    }
+    
+    func getTVShowPopular() {
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.TVshowPopular(page: 1), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getTVShowPopular(response)
+        }, failureBlock: { _ in
+            
+        })
+    }
+    
+    func getTVShowLastest() {
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.TVshowLastest(page: 1), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getTVShowLastest(response)
+        }, failureBlock: { _ in
+            
+        })
+    }
 }

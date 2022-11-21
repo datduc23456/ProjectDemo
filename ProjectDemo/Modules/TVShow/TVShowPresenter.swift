@@ -22,9 +22,26 @@ final class TVShowPresenter {
 }
 
 extension TVShowPresenter: TVShowPresenterInterface {
+    func viewDidLoad() {
+        interactor.getTVShowPopular()
+        interactor.getTVShowLastest()
+        interactor.getTopRate()
+    }
 }
 
 extension TVShowPresenter: TVShowInteractorOutputInterface {
+    
+    func getTopRate(_ response: MovieResponse) {
+        view?.getTopRate(response)
+    }
+    
+    func getTVShowPopular(_ response: MovieResponse) {
+        view?.getTVShowPopular(response)
+    }
+    
+    func getTVShowLastest(_ response: MovieResponse) {
+        view?.getTVShowLastest(response)
+    }
 
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()

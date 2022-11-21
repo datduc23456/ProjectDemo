@@ -90,23 +90,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let T = item.typeOfCell()
         let cell = tableView.dequeueReusableCell(withIdentifier: T.className, for: indexPath)
         cell.selectionStyle = .none
-        if let baseCell = cell as? BaseWithCollectionTableViewCell<CinemaPopularCollectionViewCell, Movie>, let data = self.data["\(item)"] as? [Movie] {
-            baseCell.listPayload = data
-        }
-        
-        if let baseCell = cell as? BaseWithCollectionTableViewCell<GengesCollectionViewCell, Genre>, let data = self.data["\(item)"] as? [Genre] {
-            baseCell.listPayload = data
-        }
-        
-        if let baseCell = cell as? BaseWithCollectionTableViewCell<TopRatingCollectionViewCell, Movie>, let data = self.data["\(item)"] as? [Movie] {
+        if let baseCell = cell as? BaseWithCollectionTableViewCellHandler, let data = self.data["\(item)"] as? [Any] {
             baseCell.listPayload = data
         }
         
         if let baseCell = cell as? PageCinemaTableViewCell, let data = self.data["\(item)"] as? [Movie] {
-            baseCell.listPayload = data
-        }
-        
-        if let baseCell = cell as? BaseWithCollectionTableViewCell<TrendingCollectionViewCell, Movie>, let data = self.data["\(item)"] as? [Movie] {
             baseCell.listPayload = data
         }
         
