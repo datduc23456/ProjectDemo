@@ -82,6 +82,8 @@
 		18177E7729079CB2006B2849 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185DC6CB29000D790056C910 /* LaunchScreen.storyboard */; };
 		18177E7829079CB2006B2849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185DC6C929000D790056C910 /* Assets.xcassets */; };
 		18177E7A29079CB2006B2849 /* ExampleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62ADE0F7C8308801B5592DA9 /* ExampleViewController.storyboard */; };
+		1848A475292B89E3005D4431 /* TVShowTopUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848A474292B89E3005D4431 /* TVShowTopUpTableViewCell.swift */; };
+		1848A476292B89E3005D4431 /* TVShowTopUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848A474292B89E3005D4431 /* TVShowTopUpTableViewCell.swift */; };
 		185DC6C129000D760056C910 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC6C029000D760056C910 /* AppDelegate.swift */; };
 		185DC6C329000D760056C910 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC6C229000D760056C910 /* SceneDelegate.swift */; };
 		185DC6CA29000D790056C910 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185DC6C929000D790056C910 /* Assets.xcassets */; };
@@ -263,6 +265,7 @@
 		181189BF292B563900E9D883 /* TVShowTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowTableViewDataSource.swift; sourceTree = "<group>"; };
 		18177E8029079CB2006B2849 /* ProjectDemoDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectDemoDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18177E8129079CB2006B2849 /* ProjectDemo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ProjectDemo copy-Info.plist"; path = "/Users/nguyendat/Desktop/ProjectDemo/ProjectDemo copy-Info.plist"; sourceTree = "<absolute>"; };
+		1848A474292B89E3005D4431 /* TVShowTopUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowTopUpTableViewCell.swift; sourceTree = "<group>"; };
 		185DC6BD29000D760056C910 /* ProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185DC6C029000D760056C910 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		185DC6C229000D760056C910 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -476,6 +479,7 @@
 				52CBDD222928DD2D00548E52 /* CinemaPopularTableViewCell.swift */,
 				52CBDD212928DD2D00548E52 /* TrendingTableViewCell.swift */,
 				52CBDD202928DD2D00548E52 /* TopRatingTableViewCell.swift */,
+				1848A474292B89E3005D4431 /* TVShowTopUpTableViewCell.swift */,
 				52CBDD242928DD2D00548E52 /* HeaderView.swift */,
 				52CBDD1C2928DD2D00548E52 /* HeaderView.xib */,
 				52CBDD262928DD2D00548E52 /* NewMovieTableViewCell.swift */,
@@ -1056,6 +1060,7 @@
 				18177E6F29079CB2006B2849 /* Screen.swift in Sources */,
 				18C3AC0B2923286A00183695 /* TestObjc.m in Sources */,
 				181189662925C62B00E9D883 /* ABC1CollectionViewCell.swift in Sources */,
+				1848A476292B89E3005D4431 /* TVShowTopUpTableViewCell.swift in Sources */,
 				52CBDCF42927EE5B00548E52 /* FSPagerCollectionView.swift in Sources */,
 				18F1982C291A64C200E4D911 /* CoreTargetType.swift in Sources */,
 				52BCB4D0292920CA008E1C32 /* BaseCollectionViewCell.swift in Sources */,
@@ -1110,6 +1115,7 @@
 				181189632924DFB900E9D883 /* UIView+Ext.swift in Sources */,
 				52CBDD2E2928DD2D00548E52 /* HomeTableViewDataSource.swift in Sources */,
 				52BCB4CF292920CA008E1C32 /* BaseCollectionViewCell.swift in Sources */,
+				1848A475292B89E3005D4431 /* TVShowTopUpTableViewCell.swift in Sources */,
 				52CBDD382928DE6500548E52 /* PeoplePopularCollectionViewCell.swift in Sources */,
 				185DC6E82900E1670056C910 /* InteractorOutputInterface.swift in Sources */,
 				52CBDCFB2927EE5B00548E52 /* FSPagerViewObjcCompat.m in Sources */,

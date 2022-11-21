@@ -11,7 +11,7 @@ enum TVShowTableViewDataSource: CaseIterable {
     typealias RawValue = Int
     
     static var allCases: [TVShowTableViewDataSource] {
-        return [topUp, pageView, popular, .newMovie, topRating, trending]
+        return [topUp]
     }
     
     case topUp
@@ -24,7 +24,7 @@ enum TVShowTableViewDataSource: CaseIterable {
     func heightForRow() -> CGFloat {
         switch self {
         case .topUp:
-            return 100
+            return 120
         case .pageView:
             let scaleWidth = CommonUtil.SCREEN_WIDTH / 375
             return 361 * scaleWidth
@@ -42,7 +42,7 @@ enum TVShowTableViewDataSource: CaseIterable {
     func typeOfCell() -> UITableViewCell.Type {
         switch self {
         case .topUp:
-            return GengesListTableViewCell.self
+            return TVShowTopUpTableViewCell.self
         case .pageView:
             return PageCinemaTableViewCell.self
         case .popular:
@@ -59,8 +59,8 @@ enum TVShowTableViewDataSource: CaseIterable {
     
     func titleOfHeader() -> String {
         switch self {
-        case .genges:
-            return "Genges"
+        case .topUp:
+            return ""
         case .pageView:
             return ""
         case .popular:
