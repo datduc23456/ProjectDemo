@@ -25,6 +25,7 @@ extension HomeInteractor: HomeInteractorInterface {
     func getGenresList() {
         ServiceCore.shared.request(GenreResponse.self, targetType: CoreTargetType.genreList, successBlock: { [weak self] response in
             guard let `self` = self else { return }
+            DTPBusiness.shared.listGenres = response.genres
             self.output?.getGenresList(response)
         }, failureBlock: { _ in
             

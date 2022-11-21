@@ -21,6 +21,7 @@ public enum NavigateTransions: String {
 enum AppScreens: String, Screen, CaseIterable {
     case example
     case home
+    case tvShow
     
     var path: String {
         return rawValue
@@ -37,6 +38,8 @@ enum AppScreens: String, Screen, CaseIterable {
         switch self {
         case .example:
             return ExampleWireframe.generateModule(payload)
+        case .tvShow:
+            return TVShowWireframe.generateModule(payload)
         case .home:
             return HomeWireframe.generateModule(payload)
         }

@@ -70,15 +70,15 @@ class BaseWithCollectionTableViewCell<T: UICollectionViewCell, D: Decodable>: UI
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.listPayload.count
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.className, for: indexPath) as! T
-        let payload = self.listPayload[indexPath.row]
-        if let baseCell = cell as? BaseCollectionViewCell {
-            baseCell.configCell(payload)
-        }
+//        let payload = self.listPayload[indexPath.row]
+//        if let baseCell = cell as? BaseCollectionViewCell {
+//            baseCell.configCell(payload)
+//        }
         return cell
     }
     

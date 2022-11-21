@@ -10,6 +10,7 @@ import Kingfisher
 
 class CinemaPopularCollectionViewCell: BaseCollectionViewCell {
 
+    @IBOutlet weak var lbGenres: UILabel!
     @IBOutlet weak var lbVoteAvg: UILabel!
     @IBOutlet weak var lbYear: UILabel!
     @IBOutlet weak var lbTitle: UILabel!
@@ -26,6 +27,7 @@ class CinemaPopularCollectionViewCell: BaseCollectionViewCell {
             lbTitle.text = payload.originalTitle
             lbVoteAvg.text = "\(payload.voteAverage)"
             lbYear.text = CommonUtil.getYearFromDate(payload.releaseDate)
+            lbGenres.text = DTPBusiness.shared.mapToGenreName(payload.genreIDS)
         }
     }
 }

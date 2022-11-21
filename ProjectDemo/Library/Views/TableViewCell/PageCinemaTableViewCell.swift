@@ -53,6 +53,7 @@ class PageCinemaTableViewCell: UITableViewCell {
         lbTitle.text = movie.originalTitle
         lbRate.text = "\(movie.voteAverage)"
         lbYear.text = CommonUtil.getYearFromDate(movie.releaseDate)
+        lbGenre.text = DTPBusiness.shared.mapToGenreName(movie.genreIDS)
     }
 }
 

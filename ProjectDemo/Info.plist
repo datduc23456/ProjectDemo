@@ -4,6 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>seagull bold.ttf</string>
+		<string>SeagullRegular.ttf</string>
 		<string>Nexa Regular.otf</string>
 		<string>Nexa Light.otf</string>
 		<string>Nexa Bold.otf</string>

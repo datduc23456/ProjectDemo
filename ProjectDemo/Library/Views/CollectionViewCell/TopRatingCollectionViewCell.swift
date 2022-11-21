@@ -9,6 +9,7 @@ import UIKit
 
 class TopRatingCollectionViewCell: BaseCollectionViewCell {
 
+    @IBOutlet weak var lbRating: UILabel!
     @IBOutlet weak var lbYear: UILabel!
     @IBOutlet weak var lbVoteAvg: UILabel!
     @IBOutlet weak var lbGenres: UILabel!
@@ -24,7 +25,8 @@ class TopRatingCollectionViewCell: BaseCollectionViewCell {
             lbTitle.text = payload.originalTitle
             lbVoteAvg.text = "\(payload.voteAverage)"
             lbGenres.text = payload.overview
-            lbYear.text = "2022"
+            lbYear.text = CommonUtil.getYearFromDate(payload.releaseDate)
+            lbRating.text = "\(DTPBusiness.shared.roundRating(Double(payload.voteCount))) rating"
         }
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0692D27A221AE5A902692160 /* TVShowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDBE1C973A3D0BD586E30E /* TVShowPresenter.swift */; };
 		0E45665419FCFEC8C8E9D4F9 /* Pods_ProjectDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B2414DA08014923CBA236D6 /* Pods_ProjectDemo.framework */; };
 		11F96FBD4B87C9B619D4A842 /* ExampleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62ADE0F7C8308801B5592DA9 /* ExampleViewController.storyboard */; };
 		161A91E0EAE15B542476FE7B /* HomeInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B0192BDF90190BFD0B20D /* HomeInterfaces.swift */; };
@@ -20,6 +21,40 @@
 		181189762925E35000E9D883 /* Nexa Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 181189712925E35000E9D883 /* Nexa Light.otf */; };
 		181189772925E35000E9D883 /* Nexa Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 181189712925E35000E9D883 /* Nexa Light.otf */; };
 		18118984292635C700E9D883 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B999BFE7A77D10C74395B /* HomeViewController.swift */; };
+		18118991292B2DF700E9D883 /* TVShowTopUpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811898F292B2DF600E9D883 /* TVShowTopUpCollectionViewCell.swift */; };
+		18118992292B2DF700E9D883 /* TVShowTopUpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811898F292B2DF600E9D883 /* TVShowTopUpCollectionViewCell.swift */; };
+		18118993292B2DF700E9D883 /* TVShowTopUpCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18118990292B2DF600E9D883 /* TVShowTopUpCollectionViewCell.xib */; };
+		18118994292B2DF700E9D883 /* TVShowTopUpCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18118990292B2DF600E9D883 /* TVShowTopUpCollectionViewCell.xib */; };
+		181189A2292B2F1400E9D883 /* seagullm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18118995292B2F1300E9D883 /* seagullm.ttf */; };
+		181189A3292B2F1400E9D883 /* seagullm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18118995292B2F1300E9D883 /* seagullm.ttf */; };
+		181189A4292B2F1400E9D883 /* SeagullItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18118996292B2F1300E9D883 /* SeagullItalic.ttf */; };
+		181189A5292B2F1400E9D883 /* SeagullItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18118996292B2F1300E9D883 /* SeagullItalic.ttf */; };
+		181189A6292B2F1400E9D883 /* SeagullBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18118997292B2F1400E9D883 /* SeagullBoldItalic.ttf */; };
+		181189A7292B2F1400E9D883 /* SeagullBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18118997292B2F1400E9D883 /* SeagullBoldItalic.ttf */; };
+		181189A8292B2F1400E9D883 /* SeagullLightBT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18118998292B2F1400E9D883 /* SeagullLightBT.ttf */; };
+		181189A9292B2F1400E9D883 /* SeagullLightBT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18118998292B2F1400E9D883 /* SeagullLightBT.ttf */; };
+		181189AA292B2F1400E9D883 /* SeagullRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18118999292B2F1400E9D883 /* SeagullRegular.ttf */; };
+		181189AB292B2F1400E9D883 /* SeagullRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18118999292B2F1400E9D883 /* SeagullRegular.ttf */; };
+		181189AC292B2F1400E9D883 /* seagull heavy bt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1811899A292B2F1400E9D883 /* seagull heavy bt.ttf */; };
+		181189AD292B2F1400E9D883 /* seagull heavy bt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1811899A292B2F1400E9D883 /* seagull heavy bt.ttf */; };
+		181189AE292B2F1400E9D883 /* SEAGULLL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1811899B292B2F1400E9D883 /* SEAGULLL.ttf */; };
+		181189AF292B2F1400E9D883 /* SEAGULLL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1811899B292B2F1400E9D883 /* SEAGULLL.ttf */; };
+		181189B0292B2F1400E9D883 /* SeagullBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1811899C292B2F1400E9D883 /* SeagullBold.ttf */; };
+		181189B1292B2F1400E9D883 /* SeagullBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1811899C292B2F1400E9D883 /* SeagullBold.ttf */; };
+		181189B2292B2F1400E9D883 /* seagull italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1811899D292B2F1400E9D883 /* seagull italic.ttf */; };
+		181189B3292B2F1400E9D883 /* seagull italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1811899D292B2F1400E9D883 /* seagull italic.ttf */; };
+		181189B4292B2F1400E9D883 /* SEAGULLH.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1811899E292B2F1400E9D883 /* SEAGULLH.ttf */; };
+		181189B5292B2F1400E9D883 /* SEAGULLH.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1811899E292B2F1400E9D883 /* SEAGULLH.ttf */; };
+		181189B6292B2F1400E9D883 /* seagullb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1811899F292B2F1400E9D883 /* seagullb.ttf */; };
+		181189B7292B2F1400E9D883 /* seagullb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1811899F292B2F1400E9D883 /* seagullb.ttf */; };
+		181189B8292B2F1400E9D883 /* seagull bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181189A0292B2F1400E9D883 /* seagull bold.ttf */; };
+		181189B9292B2F1400E9D883 /* seagull bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181189A0292B2F1400E9D883 /* seagull bold.ttf */; };
+		181189BA292B2F1400E9D883 /* seagull bold italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181189A1292B2F1400E9D883 /* seagull bold italic.ttf */; };
+		181189BB292B2F1400E9D883 /* seagull bold italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 181189A1292B2F1400E9D883 /* seagull bold italic.ttf */; };
+		181189BD292B4EBE00E9D883 /* TableViewAdjustedHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181189BC292B4EBE00E9D883 /* TableViewAdjustedHeight.swift */; };
+		181189BE292B4EBE00E9D883 /* TableViewAdjustedHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181189BC292B4EBE00E9D883 /* TableViewAdjustedHeight.swift */; };
+		181189C0292B563900E9D883 /* TVShowTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181189BF292B563900E9D883 /* TVShowTableViewDataSource.swift */; };
+		181189C1292B563900E9D883 /* TVShowTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181189BF292B563900E9D883 /* TVShowTableViewDataSource.swift */; };
 		18177E5B29079CB2006B2849 /* InteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC6E52900E1600056C910 /* InteractorInterface.swift */; };
 		18177E5C29079CB2006B2849 /* Progressable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC6EE2900E1860056C910 /* Progressable.swift */; };
 		18177E5D29079CB2006B2849 /* UIViewController+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC6DA2900DF940056C910 /* UIViewController+Reactive.swift */; };
@@ -154,7 +189,7 @@
 		52CBDD2B2928DD2D00548E52 /* TopRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDD202928DD2D00548E52 /* TopRatingTableViewCell.swift */; };
 		52CBDD2C2928DD2D00548E52 /* TrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDD212928DD2D00548E52 /* TrendingTableViewCell.swift */; };
 		52CBDD2D2928DD2D00548E52 /* CinemaPopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDD222928DD2D00548E52 /* CinemaPopularTableViewCell.swift */; };
-		52CBDD2E2928DD2D00548E52 /* HomeTableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDD232928DD2D00548E52 /* HomeTableViewItem.swift */; };
+		52CBDD2E2928DD2D00548E52 /* HomeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDD232928DD2D00548E52 /* HomeTableViewDataSource.swift */; };
 		52CBDD2F2928DD2D00548E52 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDD242928DD2D00548E52 /* HeaderView.swift */; };
 		52CBDD302928DD2D00548E52 /* NewMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CBDD252928DD2D00548E52 /* NewMovieTableViewCell.xib */; };
 		52CBDD312928DD2D00548E52 /* NewMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDD262928DD2D00548E52 /* NewMovieTableViewCell.swift */; };
@@ -163,14 +198,19 @@
 		52CBDD3C2928E09000548E52 /* TVShowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDD3A2928E09000548E52 /* TVShowCollectionViewCell.swift */; };
 		52CBDD3D2928E09000548E52 /* TVShowCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CBDD3B2928E09000548E52 /* TVShowCollectionViewCell.xib */; };
 		5AB9A3D412A7075AEC1352F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B999BFE7A77D10C74395B /* HomeViewController.swift */; };
+		5E85C51A0E9F852C0BCD88D4 /* TVShowInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7871CDE80793E98890531 /* TVShowInterfaces.swift */; };
+		756DD076F318A9A50B1418CB /* TVShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60F92457A9ECB40F3A8B371 /* TVShowViewController.swift */; };
 		A748304901B0B32BE442E5B6 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF01DACC54BE81664FE70BF6 /* HomePresenter.swift */; };
 		B2DDCAF28156F4313F22B841 /* ExamplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2553AC6158B6416DB0AC9375 /* ExamplePresenter.swift */; };
 		BCFDA48571B66D7FE0825FD7 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4964708C44877482A284A4A8 /* HomeInteractor.swift */; };
 		BF110FDE6C09949C01DC7DE3 /* Pods_ProjectDemoDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8E5DB9DD9433416DE63F91 /* Pods_ProjectDemoDev.framework */; };
+		C57B1B148ABAABB5F4026D60 /* TVShowViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E0B4AC7ABFF488B34EDB10 /* TVShowViewController.storyboard */; };
+		CD5D8DEC6A6FC52B7883E6DE /* TVShowInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5919BDA490311D251363ED6 /* TVShowInteractor.swift */; };
 		CEF0B8A71A19B0A98E5309E0 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BBA7509645CA488791B48 /* ExampleViewController.swift */; };
 		E5EDA75719D6B0F2DFB8B03B /* ExampleWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E135D3F555EAFD8CBD2955 /* ExampleWireframe.swift */; };
 		E8AB5A159EEE81F5A8858822 /* HomeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADBE51681EE1E936CBE24E /* HomeWireframe.swift */; };
 		FE3AD96B5561EEFFE421A0A9 /* ExampleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BD6CF6744DEF5278C14CBF /* ExampleInteractor.swift */; };
+		FF9679FC3117EAD8D0021879 /* TVShowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486F63D1152E61CDDDD4083 /* TVShowWireframe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -204,6 +244,23 @@
 		1811896F2925E35000E9D883 /* Nexa Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nexa Bold.otf"; sourceTree = "<group>"; };
 		181189702925E35000E9D883 /* Nexa Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nexa Regular.otf"; sourceTree = "<group>"; };
 		181189712925E35000E9D883 /* Nexa Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nexa Light.otf"; sourceTree = "<group>"; };
+		1811898F292B2DF600E9D883 /* TVShowTopUpCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowTopUpCollectionViewCell.swift; sourceTree = "<group>"; };
+		18118990292B2DF600E9D883 /* TVShowTopUpCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVShowTopUpCollectionViewCell.xib; sourceTree = "<group>"; };
+		18118995292B2F1300E9D883 /* seagullm.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = seagullm.ttf; sourceTree = "<group>"; };
+		18118996292B2F1300E9D883 /* SeagullItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SeagullItalic.ttf; sourceTree = "<group>"; };
+		18118997292B2F1400E9D883 /* SeagullBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SeagullBoldItalic.ttf; sourceTree = "<group>"; };
+		18118998292B2F1400E9D883 /* SeagullLightBT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SeagullLightBT.ttf; sourceTree = "<group>"; };
+		18118999292B2F1400E9D883 /* SeagullRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SeagullRegular.ttf; sourceTree = "<group>"; };
+		1811899A292B2F1400E9D883 /* seagull heavy bt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "seagull heavy bt.ttf"; sourceTree = "<group>"; };
+		1811899B292B2F1400E9D883 /* SEAGULLL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SEAGULLL.ttf; sourceTree = "<group>"; };
+		1811899C292B2F1400E9D883 /* SeagullBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SeagullBold.ttf; sourceTree = "<group>"; };
+		1811899D292B2F1400E9D883 /* seagull italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "seagull italic.ttf"; sourceTree = "<group>"; };
+		1811899E292B2F1400E9D883 /* SEAGULLH.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SEAGULLH.ttf; sourceTree = "<group>"; };
+		1811899F292B2F1400E9D883 /* seagullb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = seagullb.ttf; sourceTree = "<group>"; };
+		181189A0292B2F1400E9D883 /* seagull bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "seagull bold.ttf"; sourceTree = "<group>"; };
+		181189A1292B2F1400E9D883 /* seagull bold italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "seagull bold italic.ttf"; sourceTree = "<group>"; };
+		181189BC292B4EBE00E9D883 /* TableViewAdjustedHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAdjustedHeight.swift; sourceTree = "<group>"; };
+		181189BF292B563900E9D883 /* TVShowTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowTableViewDataSource.swift; sourceTree = "<group>"; };
 		18177E8029079CB2006B2849 /* ProjectDemoDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectDemoDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18177E8129079CB2006B2849 /* ProjectDemo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ProjectDemo copy-Info.plist"; path = "/Users/nguyendat/Desktop/ProjectDemo/ProjectDemo copy-Info.plist"; sourceTree = "<absolute>"; };
 		185DC6BD29000D760056C910 /* ProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +299,7 @@
 		3709257DE909AD10105B3B61 /* Pods-ProjectDemoDev.projectdemo dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemoDev.projectdemo dev.xcconfig"; path = "Target Support Files/Pods-ProjectDemoDev/Pods-ProjectDemoDev.projectdemo dev.xcconfig"; sourceTree = "<group>"; };
 		4964708C44877482A284A4A8 /* HomeInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		4BD217B066DD36734A6E4AFA /* ExampleInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleInterfaces.swift; sourceTree = "<group>"; };
+		4CEDBE1C973A3D0BD586E30E /* TVShowPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TVShowPresenter.swift; sourceTree = "<group>"; };
 		527F93B52925257D0065FE10 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommonUtil.swift; path = ProjectDemo/CommonUtil.swift; sourceTree = SOURCE_ROOT; };
 		527F93B7292530320065FE10 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		527F93BB292532EB0065FE10 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
@@ -287,7 +345,7 @@
 		52CBDD202928DD2D00548E52 /* TopRatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopRatingTableViewCell.swift; sourceTree = "<group>"; };
 		52CBDD212928DD2D00548E52 /* TrendingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingTableViewCell.swift; sourceTree = "<group>"; };
 		52CBDD222928DD2D00548E52 /* CinemaPopularTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaPopularTableViewCell.swift; sourceTree = "<group>"; };
-		52CBDD232928DD2D00548E52 /* HomeTableViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewItem.swift; sourceTree = "<group>"; };
+		52CBDD232928DD2D00548E52 /* HomeTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewDataSource.swift; sourceTree = "<group>"; };
 		52CBDD242928DD2D00548E52 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		52CBDD252928DD2D00548E52 /* NewMovieTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewMovieTableViewCell.xib; sourceTree = "<group>"; };
 		52CBDD262928DD2D00548E52 /* NewMovieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMovieTableViewCell.swift; sourceTree = "<group>"; };
@@ -302,8 +360,13 @@
 		8A1B0192BDF90190BFD0B20D /* HomeInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeInterfaces.swift; sourceTree = "<group>"; };
 		8B2414DA08014923CBA236D6 /* Pods_ProjectDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F8E175139AFBA8B1631BB2 /* Pods-ProjectDemoDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemoDev.debug.xcconfig"; path = "Target Support Files/Pods-ProjectDemoDev/Pods-ProjectDemoDev.debug.xcconfig"; sourceTree = "<group>"; };
+		9BE7871CDE80793E98890531 /* TVShowInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TVShowInterfaces.swift; sourceTree = "<group>"; };
+		A2E0B4AC7ABFF488B34EDB10 /* TVShowViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = TVShowViewController.storyboard; sourceTree = "<group>"; };
+		A486F63D1152E61CDDDD4083 /* TVShowWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TVShowWireframe.swift; sourceTree = "<group>"; };
 		AA2416AC3B5024A2F4139AB8 /* Pods-ProjectDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemo.release.xcconfig"; path = "Target Support Files/Pods-ProjectDemo/Pods-ProjectDemo.release.xcconfig"; sourceTree = "<group>"; };
 		C192E70A62D48AAC3B73F9C2 /* Pods-ProjectDemoDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemoDev.release.xcconfig"; path = "Target Support Files/Pods-ProjectDemoDev/Pods-ProjectDemoDev.release.xcconfig"; sourceTree = "<group>"; };
+		C5919BDA490311D251363ED6 /* TVShowInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TVShowInteractor.swift; sourceTree = "<group>"; };
+		D60F92457A9ECB40F3A8B371 /* TVShowViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TVShowViewController.swift; sourceTree = "<group>"; };
 		D9BD6CF6744DEF5278C14CBF /* ExampleInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleInteractor.swift; sourceTree = "<group>"; };
 		DD22BA11115260958DA8D837 /* Pods-ProjectDemo.projectdemo dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemo.projectdemo dev.xcconfig"; path = "Target Support Files/Pods-ProjectDemo/Pods-ProjectDemo.projectdemo dev.xcconfig"; sourceTree = "<group>"; };
 		DF8E5DB9DD9433416DE63F91 /* Pods_ProjectDemoDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectDemoDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,6 +441,8 @@
 				52CBDD3B2928E09000548E52 /* TVShowCollectionViewCell.xib */,
 				52BCB4C52929000F008E1C32 /* ActorsCollectionViewCell.swift */,
 				52BCB4C62929000F008E1C32 /* ActorsCollectionViewCell.xib */,
+				1811898F292B2DF600E9D883 /* TVShowTopUpCollectionViewCell.swift */,
+				18118990292B2DF600E9D883 /* TVShowTopUpCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -385,6 +450,19 @@
 		1811896E2925E32F00E9D883 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				181189A1292B2F1400E9D883 /* seagull bold italic.ttf */,
+				181189A0292B2F1400E9D883 /* seagull bold.ttf */,
+				1811899A292B2F1400E9D883 /* seagull heavy bt.ttf */,
+				1811899D292B2F1400E9D883 /* seagull italic.ttf */,
+				1811899F292B2F1400E9D883 /* seagullb.ttf */,
+				1811899C292B2F1400E9D883 /* SeagullBold.ttf */,
+				18118997292B2F1400E9D883 /* SeagullBoldItalic.ttf */,
+				1811899E292B2F1400E9D883 /* SEAGULLH.ttf */,
+				18118996292B2F1300E9D883 /* SeagullItalic.ttf */,
+				1811899B292B2F1400E9D883 /* SEAGULLL.ttf */,
+				18118998292B2F1400E9D883 /* SeagullLightBT.ttf */,
+				18118995292B2F1300E9D883 /* seagullm.ttf */,
+				18118999292B2F1400E9D883 /* SeagullRegular.ttf */,
 				1811896F2925E35000E9D883 /* Nexa Bold.otf */,
 				181189712925E35000E9D883 /* Nexa Light.otf */,
 				181189702925E35000E9D883 /* Nexa Regular.otf */,
@@ -566,6 +644,7 @@
 			children = (
 				94E1906B3081D7898C38256F /* Example */,
 				F9B52545AE8DAB8380755438 /* Home */,
+				59AB91E748B4BD050EE2942D /* TVShow */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -577,6 +656,7 @@
 				527F93C729253D0E0065FE10 /* BaseWithCollectionTableViewCell.swift */,
 				52CBDCFF2927F13F00548E52 /* NavigationBarView.swift */,
 				52BCB4CE292920CA008E1C32 /* BaseCollectionViewCell.swift */,
+				181189BC292B4EBE00E9D883 /* TableViewAdjustedHeight.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -616,6 +696,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		59AB91E748B4BD050EE2942D /* TVShow */ = {
+			isa = PBXGroup;
+			children = (
+				9BE7871CDE80793E98890531 /* TVShowInterfaces.swift */,
+				4CEDBE1C973A3D0BD586E30E /* TVShowPresenter.swift */,
+				C5919BDA490311D251363ED6 /* TVShowInteractor.swift */,
+				A486F63D1152E61CDDDD4083 /* TVShowWireframe.swift */,
+				E366BE9F71693585127382E6 /* Views */,
+			);
+			path = TVShow;
+			sourceTree = "<group>";
+		};
 		94E1906B3081D7898C38256F /* Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,7 +738,17 @@
 			children = (
 				30D3933AA80D5FF507CA45D3 /* HomeViewController.storyboard */,
 				5C7B999BFE7A77D10C74395B /* HomeViewController.swift */,
-				52CBDD232928DD2D00548E52 /* HomeTableViewItem.swift */,
+				52CBDD232928DD2D00548E52 /* HomeTableViewDataSource.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E366BE9F71693585127382E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A2E0B4AC7ABFF488B34EDB10 /* TVShowViewController.storyboard */,
+				D60F92457A9ECB40F3A8B371 /* TVShowViewController.swift */,
+				181189BF292B563900E9D883 /* TVShowTableViewDataSource.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -749,14 +851,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181189B5292B2F1400E9D883 /* SEAGULLH.ttf in Resources */,
+				181189B9292B2F1400E9D883 /* seagull bold.ttf in Resources */,
 				52B84E0E292A3A43008DA4C2 /* GengesListTableViewCell.xib in Resources */,
 				52BCB4CA2929000F008E1C32 /* ActorsCollectionViewCell.xib in Resources */,
+				181189A3292B2F1400E9D883 /* seagullm.ttf in Resources */,
+				181189AF292B2F1400E9D883 /* SEAGULLL.ttf in Resources */,
+				181189B1292B2F1400E9D883 /* SeagullBold.ttf in Resources */,
+				181189BB292B2F1400E9D883 /* seagull bold italic.ttf in Resources */,
 				52B84E08292A3446008DA4C2 /* HomeNavigationView.xib in Resources */,
 				18177E7729079CB2006B2849 /* LaunchScreen.storyboard in Resources */,
+				181189A5292B2F1400E9D883 /* SeagullItalic.ttf in Resources */,
 				18177E7829079CB2006B2849 /* Assets.xcassets in Resources */,
 				18177E7A29079CB2006B2849 /* ExampleViewController.storyboard in Resources */,
+				18118994292B2DF700E9D883 /* TVShowTopUpCollectionViewCell.xib in Resources */,
 				181189752925E35000E9D883 /* Nexa Regular.otf in Resources */,
 				181189732925E35000E9D883 /* Nexa Bold.otf in Resources */,
+				181189A9292B2F1400E9D883 /* SeagullLightBT.ttf in Resources */,
+				181189B7292B2F1400E9D883 /* seagullb.ttf in Resources */,
+				181189A7292B2F1400E9D883 /* SeagullBoldItalic.ttf in Resources */,
+				181189AD292B2F1400E9D883 /* seagull heavy bt.ttf in Resources */,
+				181189AB292B2F1400E9D883 /* SeagullRegular.ttf in Resources */,
+				181189B3292B2F1400E9D883 /* seagull italic.ttf in Resources */,
 				52CBDD0A2928D36F00548E52 /* FilmNoteView.xib in Resources */,
 				181189772925E35000E9D883 /* Nexa Light.otf in Resources */,
 			);
@@ -767,26 +883,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				185DC6CD29000D790056C910 /* LaunchScreen.storyboard in Resources */,
+				181189A6292B2F1400E9D883 /* SeagullBoldItalic.ttf in Resources */,
+				181189A8292B2F1400E9D883 /* SeagullLightBT.ttf in Resources */,
 				52CBDD1B2928DD1A00548E52 /* TrendingCollectionViewCell.xib in Resources */,
+				181189A2292B2F1400E9D883 /* seagullm.ttf in Resources */,
+				181189AA292B2F1400E9D883 /* SeagullRegular.ttf in Resources */,
 				52CBDD182928DD1A00548E52 /* TopRatingCollectionViewCell.xib in Resources */,
+				181189BA292B2F1400E9D883 /* seagull bold italic.ttf in Resources */,
 				52CBDD282928DD2D00548E52 /* PageCinemaTableViewCell.xib in Resources */,
+				18118993292B2DF700E9D883 /* TVShowTopUpCollectionViewCell.xib in Resources */,
 				52CBDD302928DD2D00548E52 /* NewMovieTableViewCell.xib in Resources */,
 				52CBDD272928DD2D00548E52 /* HeaderView.xib in Resources */,
 				52B84E0D292A3A43008DA4C2 /* GengesListTableViewCell.xib in Resources */,
 				52CBDD152928DD1A00548E52 /* GengesCollectionViewCell.xib in Resources */,
 				52CBDD172928DD1A00548E52 /* CinemaPopularCollectionViewCell.xib in Resources */,
+				181189B8292B2F1400E9D883 /* seagull bold.ttf in Resources */,
 				185DC6CA29000D790056C910 /* Assets.xcassets in Resources */,
+				181189B4292B2F1400E9D883 /* SEAGULLH.ttf in Resources */,
 				1899F2982924CC6700D2D978 /* TabbarViewController.xib in Resources */,
 				11F96FBD4B87C9B619D4A842 /* ExampleViewController.storyboard in Resources */,
+				181189B2292B2F1400E9D883 /* seagull italic.ttf in Resources */,
 				181189762925E35000E9D883 /* Nexa Light.otf in Resources */,
+				181189AC292B2F1400E9D883 /* seagull heavy bt.ttf in Resources */,
 				52CBDD392928DE6500548E52 /* PeoplePopularCollectionViewCell.xib in Resources */,
 				52CBDD092928D36F00548E52 /* FilmNoteView.xib in Resources */,
+				181189AE292B2F1400E9D883 /* SEAGULLL.ttf in Resources */,
+				181189B0292B2F1400E9D883 /* SeagullBold.ttf in Resources */,
+				181189B6292B2F1400E9D883 /* seagullb.ttf in Resources */,
+				181189A4292B2F1400E9D883 /* SeagullItalic.ttf in Resources */,
 				52BCB4C92929000F008E1C32 /* ActorsCollectionViewCell.xib in Resources */,
 				181189742925E35000E9D883 /* Nexa Regular.otf in Resources */,
 				3AF863B897C2C5555F5C367F /* HomeViewController.storyboard in Resources */,
 				181189722925E35000E9D883 /* Nexa Bold.otf in Resources */,
 				52CBDD3D2928E09000548E52 /* TVShowCollectionViewCell.xib in Resources */,
 				52B84E07292A3446008DA4C2 /* HomeNavigationView.xib in Resources */,
+				C57B1B148ABAABB5F4026D60 /* TVShowViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,6 +1015,7 @@
 				527F93C3292534050065FE10 /* NSObject+Ext.swift in Sources */,
 				18177E5B29079CB2006B2849 /* InteractorInterface.swift in Sources */,
 				18F19830291A676B00E4D911 /* BaseModel.swift in Sources */,
+				181189BE292B4EBE00E9D883 /* TableViewAdjustedHeight.swift in Sources */,
 				18177E5C29079CB2006B2849 /* Progressable.swift in Sources */,
 				18177E5D29079CB2006B2849 /* UIViewController+Reactive.swift in Sources */,
 				18177E5F29079CB2006B2849 /* AppDelegate.swift in Sources */,
@@ -892,6 +1024,7 @@
 				52CBDCF82927EE5B00548E52 /* FSPageViewLayout.swift in Sources */,
 				52CBDD0729288E6400548E52 /* FilmNoteView.swift in Sources */,
 				18177E6229079CB2006B2849 /* PresenterInterface.swift in Sources */,
+				181189C1292B563900E9D883 /* TVShowTableViewDataSource.swift in Sources */,
 				18177E6329079CB2006B2849 /* KeyboardDisplayableViewController.swift in Sources */,
 				18177E6429079CB2006B2849 /* ViewInterface.swift in Sources */,
 				52CBDCFC2927EE5B00548E52 /* FSPagerViewObjcCompat.m in Sources */,
@@ -915,6 +1048,7 @@
 				52B84E05292A3437008DA4C2 /* HomeNavigationView.swift in Sources */,
 				18177E6D29079CB2006B2849 /* ExampleInterfaces.swift in Sources */,
 				52BCB4D329293080008E1C32 /* Movie.swift in Sources */,
+				18118992292B2DF700E9D883 /* TVShowTopUpCollectionViewCell.swift in Sources */,
 				18177E6E29079CB2006B2849 /* ExamplePresenter.swift in Sources */,
 				52B84E0C292A3A43008DA4C2 /* GengesListTableViewCell.swift in Sources */,
 				527F93C02925337C0065FE10 /* UICollectionView+Ext.swift in Sources */,
@@ -949,6 +1083,7 @@
 				185DC6EF2900E1860056C910 /* Progressable.swift in Sources */,
 				52CBDD2D2928DD2D00548E52 /* CinemaPopularTableViewCell.swift in Sources */,
 				52CBDD3C2928E09000548E52 /* TVShowCollectionViewCell.swift in Sources */,
+				181189BD292B4EBE00E9D883 /* TableViewAdjustedHeight.swift in Sources */,
 				527F93C829253D0E0065FE10 /* BaseWithCollectionTableViewCell.swift in Sources */,
 				185DC6DB2900DF950056C910 /* UIViewController+Reactive.swift in Sources */,
 				185DC6C129000D760056C910 /* AppDelegate.swift in Sources */,
@@ -957,6 +1092,7 @@
 				527F93B8292530320065FE10 /* Constant.swift in Sources */,
 				1899F2972924CC6700D2D978 /* TabbarViewController.swift in Sources */,
 				52BCB4C72929000F008E1C32 /* ActorsCollectionViewCell.swift in Sources */,
+				18118991292B2DF700E9D883 /* TVShowTopUpCollectionViewCell.swift in Sources */,
 				185DC6D529000F040056C910 /* CoordinatorType.swift in Sources */,
 				52CBDD142928DD1A00548E52 /* TopRatingCollectionViewCell.swift in Sources */,
 				52CBDD292928DD2D00548E52 /* PageCinemaTableViewCell.swift in Sources */,
@@ -972,7 +1108,7 @@
 				185DC6E22900E1560056C910 /* ViewInterface.swift in Sources */,
 				52CBDD2F2928DD2D00548E52 /* HeaderView.swift in Sources */,
 				181189632924DFB900E9D883 /* UIView+Ext.swift in Sources */,
-				52CBDD2E2928DD2D00548E52 /* HomeTableViewItem.swift in Sources */,
+				52CBDD2E2928DD2D00548E52 /* HomeTableViewDataSource.swift in Sources */,
 				52BCB4CF292920CA008E1C32 /* BaseCollectionViewCell.swift in Sources */,
 				52CBDD382928DE6500548E52 /* PeoplePopularCollectionViewCell.swift in Sources */,
 				185DC6E82900E1670056C910 /* InteractorOutputInterface.swift in Sources */,
@@ -1016,6 +1152,12 @@
 				BCFDA48571B66D7FE0825FD7 /* HomeInteractor.swift in Sources */,
 				E8AB5A159EEE81F5A8858822 /* HomeWireframe.swift in Sources */,
 				5AB9A3D412A7075AEC1352F1 /* HomeViewController.swift in Sources */,
+				5E85C51A0E9F852C0BCD88D4 /* TVShowInterfaces.swift in Sources */,
+				0692D27A221AE5A902692160 /* TVShowPresenter.swift in Sources */,
+				CD5D8DEC6A6FC52B7883E6DE /* TVShowInteractor.swift in Sources */,
+				FF9679FC3117EAD8D0021879 /* TVShowWireframe.swift in Sources */,
+				181189C0292B563900E9D883 /* TVShowTableViewDataSource.swift in Sources */,
+				756DD076F318A9A50B1418CB /* TVShowViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

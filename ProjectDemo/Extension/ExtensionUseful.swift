@@ -185,3 +185,10 @@ extension String {
         return date
     }
 }
+
+extension Double {
+    func rounded(toPlaces places:Int) -> Int {
+        let divisor = pow(10.0, Double(places))
+        return Int(((self) / divisor).rounded())
+    }
+}

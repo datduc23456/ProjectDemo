@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -113,12 +113,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLx-64-wQZ">
-                        <rect key="frame" x="121" y="66" width="361" height="14"/>
+                        <rect key="frame" x="121" y="66" width="361" height="17"/>
                         <attributedString key="attributedText">
                             <fragment content="All Quiet on t...dbkahdjkashdjksahdjkhsakd">
                                 <attributes>
                                     <color key="NSColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <font key="NSFont" size="14" name="NexaRegular"/>
+                                    <font key="NSFont" metaFont="system" size="14"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
@@ -178,6 +178,7 @@
             <connections>
                 <outlet property="image" destination="6X4-I7-bCY" id="vTK-zt-3yD"/>
                 <outlet property="lbGenres" destination="FLx-64-wQZ" id="Fvs-He-fdF"/>
+                <outlet property="lbRating" destination="PRR-iA-HAo" id="STV-Va-EBS"/>
                 <outlet property="lbTitle" destination="Rel-6M-SLR" id="8db-9M-gfV"/>
                 <outlet property="lbVoteAvg" destination="hPG-LB-StQ" id="NL4-gz-FJv"/>
                 <outlet property="lbYear" destination="nTu-38-EOg" id="rhZ-PW-lPD"/>
