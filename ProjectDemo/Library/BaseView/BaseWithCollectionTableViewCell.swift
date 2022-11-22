@@ -76,6 +76,7 @@ class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell,
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return listPayload.count
         return 7
     }
     
