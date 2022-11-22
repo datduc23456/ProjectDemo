@@ -20,10 +20,10 @@ final class FavoriteViewController: BaseViewController {
         tableView.registerCell(for: FavoriteTableViewCell.className)
         tableView.delegate = self
         tableView.dataSource = self
-//        let bottomSheet = BaseViewBottomSheetViewController()
-//        DispatchQueue.main.async {
-//            self.present(bottomSheet, animated: false)
-//        }
+        let bottomSheet = BaseViewBottomSheetViewController()
+        DispatchQueue.main.async {
+            self.present(bottomSheet, animated: false)
+        }
     }
     
     

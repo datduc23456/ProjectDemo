@@ -31,11 +31,11 @@ open class DynamicBottomSheetViewController: UIViewController {
     /// - `UIColor.tertiarySystemBackground` for iOS 13 or later.
     /// - `UIColor.white` for others.
     open var contentViewBackgroundColor: UIColor = {
-        if #available(iOS 13, *) {
-            return .tertiarySystemBackground
-        }
+//        if #available(iOS 13, *) {
+//            return .tertiarySystemBackground
+//        }
         
-        return .white
+        return UIColor(hex: "#232228")
     }()
     
     private var _height: CGFloat? = nil
@@ -59,7 +59,7 @@ open class DynamicBottomSheetViewController: UIViewController {
     /// Corner radius of the content view(top left, top right)
     ///
     /// Default value is `16.0`
-    open var contentViewCornerRadius: CGFloat = 16
+    open var contentViewCornerRadius: CGFloat = 18
     
     /// Present / Dismiss transition duration
     ///

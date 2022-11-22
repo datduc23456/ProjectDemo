@@ -18,6 +18,7 @@ target 'ProjectDemo' do
   pod 'Kingfisher', '~> 7.0'
   pod 'RealmSwift', '~>10'
   pod 'SnapKit'
+  pod "youtube-ios-player-helper"
   rxswift
 end
 

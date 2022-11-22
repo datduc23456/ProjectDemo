@@ -35,6 +35,12 @@ final class MovieDetailViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        AppDelegate.shared.appRootViewController.present(PlayVideoViewController(), animated: true)
     }
 }
 

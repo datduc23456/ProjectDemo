@@ -137,6 +137,10 @@
 		52CBDD392928DE6500548E52 /* PeoplePopularCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CBDD372928DE6500548E52 /* PeoplePopularCollectionViewCell.xib */; };
 		52CBDD3C2928E09000548E52 /* TVShowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDD3A2928E09000548E52 /* TVShowCollectionViewCell.swift */; };
 		52CBDD3D2928E09000548E52 /* TVShowCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CBDD3B2928E09000548E52 /* TVShowCollectionViewCell.xib */; };
+		52F98F1C292D125D007F5CCF /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F98F1B292D125D007F5CCF /* PlayVideoViewController.swift */; };
+		52F98F20292D166E007F5CCF /* PlayVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F98F1E292D166E007F5CCF /* PlayVideoViewController.xib */; };
+		52F98F22292D2085007F5CCF /* BottomSheetStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F98F21292D2085007F5CCF /* BottomSheetStackView.xib */; };
+		52F98F24292D2175007F5CCF /* BottomSheetStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F98F23292D2175007F5CCF /* BottomSheetStackView.swift */; };
 		5AB9A3D412A7075AEC1352F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B999BFE7A77D10C74395B /* HomeViewController.swift */; };
 		5E85C51A0E9F852C0BCD88D4 /* TVShowInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7871CDE80793E98890531 /* TVShowInterfaces.swift */; };
 		690B08EF695F6629366A9E40 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA23EC240311E7E4117506E0 /* FavoriteViewController.swift */; };
@@ -309,6 +313,10 @@
 		52CBDD372928DE6500548E52 /* PeoplePopularCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeoplePopularCollectionViewCell.xib; sourceTree = "<group>"; };
 		52CBDD3A2928E09000548E52 /* TVShowCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowCollectionViewCell.swift; sourceTree = "<group>"; };
 		52CBDD3B2928E09000548E52 /* TVShowCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVShowCollectionViewCell.xib; sourceTree = "<group>"; };
+		52F98F1B292D125D007F5CCF /* PlayVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoViewController.swift; sourceTree = "<group>"; };
+		52F98F1E292D166E007F5CCF /* PlayVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayVideoViewController.xib; sourceTree = "<group>"; };
+		52F98F21292D2085007F5CCF /* BottomSheetStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetStackView.xib; sourceTree = "<group>"; };
+		52F98F23292D2175007F5CCF /* BottomSheetStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStackView.swift; sourceTree = "<group>"; };
 		5C7B999BFE7A77D10C74395B /* HomeViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		62ADE0F7C8308801B5592DA9 /* ExampleViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = ExampleViewController.storyboard; sourceTree = "<group>"; };
 		69DA44906081D356F496C0E9 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
@@ -481,6 +489,8 @@
 				185BC352292CA0B200613EB2 /* DynamicBottomSheetPresentationController.swift */,
 				185BC354292CA30A00613EB2 /* DynamicBottomSheetViewController.swift */,
 				185BC356292CA43600613EB2 /* BaseViewBottomSheetViewController.swift */,
+				52F98F23292D2175007F5CCF /* BottomSheetStackView.swift */,
+				52F98F21292D2085007F5CCF /* BottomSheetStackView.xib */,
 			);
 			path = DynamicBottomSheet;
 			sourceTree = "<group>";
@@ -567,6 +577,8 @@
 			children = (
 				185DC6FE2901097A0056C910 /* Protocols */,
 				185DC6FC290109360056C910 /* BaseViewController.swift */,
+				52F98F1B292D125D007F5CCF /* PlayVideoViewController.swift */,
+				52F98F1E292D166E007F5CCF /* PlayVideoViewController.xib */,
 			);
 			path = BaseViewControllers;
 			sourceTree = "<group>";
@@ -855,6 +867,7 @@
 				52CBDD282928DD2D00548E52 /* PageCinemaTableViewCell.xib in Resources */,
 				1848A47E292C6308005D4431 /* FavoriteTableViewCell.xib in Resources */,
 				18118993292B2DF700E9D883 /* TVShowTopUpCollectionViewCell.xib in Resources */,
+				52F98F22292D2085007F5CCF /* BottomSheetStackView.xib in Resources */,
 				52CBDD302928DD2D00548E52 /* NewMovieTableViewCell.xib in Resources */,
 				52CBDD272928DD2D00548E52 /* HeaderView.xib in Resources */,
 				52B84E0D292A3A43008DA4C2 /* GengesListTableViewCell.xib in Resources */,
@@ -873,6 +886,7 @@
 				52CBDD092928D36F00548E52 /* FilmNoteView.xib in Resources */,
 				181189AE292B2F1400E9D883 /* SEAGULLL.ttf in Resources */,
 				181189B0292B2F1400E9D883 /* SeagullBold.ttf in Resources */,
+				52F98F20292D166E007F5CCF /* PlayVideoViewController.xib in Resources */,
 				181189B6292B2F1400E9D883 /* seagullb.ttf in Resources */,
 				181189A4292B2F1400E9D883 /* SeagullItalic.ttf in Resources */,
 				52BCB4C92929000F008E1C32 /* ActorsCollectionViewCell.xib in Resources */,
@@ -969,8 +983,10 @@
 				52CBDCF12927EE5B00548E52 /* FSPageViewTransformer.swift in Sources */,
 				527F93C2292534050065FE10 /* NSObject+Ext.swift in Sources */,
 				185BC360292CBD2200613EB2 /* NotesTableViewCell.swift in Sources */,
+				52F98F1C292D125D007F5CCF /* PlayVideoViewController.swift in Sources */,
 				52CBDD002927F13F00548E52 /* NavigationBarView.swift in Sources */,
 				185DC702290109AF0056C910 /* KeyboardDisplayableViewController.swift in Sources */,
+				52F98F24292D2175007F5CCF /* BottomSheetStackView.swift in Sources */,
 				52C19F27292B9A2F00F84415 /* TVShowPopularTableViewCell.swift in Sources */,
 				185DC6E22900E1560056C910 /* ViewInterface.swift in Sources */,
 				52CBDD2F2928DD2D00548E52 /* HeaderView.swift in Sources */,
