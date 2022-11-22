@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilmNoteView: UIView {
+class FilmNoteView: BaseCustomView {
 
     var path: UIBezierPath!
      
@@ -21,13 +21,13 @@ class FilmNoteView: UIView {
         super.init(coder: aDecoder)
     }
     
-    override func draw(_ rect: CGRect) {
-        self.createRectangle()
-        UIColor.init(hex: "#3F4249").setStroke()
-        path.lineWidth = 2
-        path.stroke()
-        
-    }
+//    override func draw(_ rect: CGRect) {
+//        self.createRectangle()
+//        UIColor.init(hex: "#3F4249").setStroke()
+//        path.lineWidth = 2
+//        path.stroke()
+//
+//    }
 
     func createRectangle() {
         // Initialize the path.

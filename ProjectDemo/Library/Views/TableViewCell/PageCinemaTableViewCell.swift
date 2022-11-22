@@ -42,6 +42,8 @@ class PageCinemaTableViewCell: UITableViewCell {
         blurEffectView.frame = contentView.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         contentView.insertSubview(blurEffectView, at: 1)
+//        listPayload.dictionary(withKey: \.dateFavorite, value: [\.])
+        Dictionary(grouping: listPayload, by: { $0.dateFavorite })
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

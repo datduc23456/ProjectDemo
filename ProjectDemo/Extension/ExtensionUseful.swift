@@ -173,6 +173,14 @@ extension Date {
     func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
         return calendar.component(component, from: self)
     }
+    
+    func toString(format: String = "yyyy-MM-dd") -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.timeZone = TimeZone.current
+        let myString = formatter.string(from: self)
+        return myString
+    }
 }
 
 extension String {

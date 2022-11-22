@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct MovieResponse: Codable {
     let page: Int
@@ -21,20 +22,22 @@ struct MovieResponse: Codable {
 
 // MARK: - Movie
 struct Movie: Codable {
-    let adult: Bool
-    let backdropPath: String
-    let genreIDS: [Int]
-    let id: Int
-    let originalLanguage, originalTitle, overview: String
-    let popularity: Double
-    let posterPath, releaseDate, title: String
-    let video: Bool
-    let voteAverage: Double
-    let voteCount: Int
-    let firstAirDate: String
-    let originCountry: [String]
-    let originalName: String
-    let name: String
+    var adult: Bool
+    var backdropPath: String
+    var genreIDS: [Int]
+    var id: Int
+    var originalLanguage, originalTitle, overview: String
+    var popularity: Double
+    var posterPath, releaseDate, title: String
+    var video: Bool
+    var voteAverage: Double
+    var voteCount: Int
+    var firstAirDate: String
+    var originCountry: [String]
+    var originalName: String
+    var name: String
+    var dateFavorite: String = ""
+    
     enum CodingKeys: String, CodingKey {
         case originalName = "original_name"
         case originCountry = "origin_country"
@@ -74,4 +77,50 @@ struct Movie: Codable {
         originalName = try values.decodeIfPresent(String.self, forKey: .originalName).isNil(value: "")
         name = try values.decodeIfPresent(String.self, forKey: .name).isNil(value: "")
     }
+    
+    func toMovieObject() -> MovieObject {
+        let object = MovieObject()
+        object.adult = self.adult
+        object._id = self.id
+        object.backdropPath = self.backdropPath
+        object.genreIDS.append(objectsIn: self.genreIDS)
+        object.originalLanguage = self.originalLanguage
+        object.originalTitle = self.originalTitle
+        object.overview = self.overview
+        object.popularity = self.popularity
+        object.posterPath = self.posterPath
+        object.releaseDate = self.releaseDate
+        object.title = self.title
+        object.video = self.video
+        object.voteAverage = self.voteAverage
+        object.voteCount = self.voteCount
+        object.firstAirDate = self.firstAirDate
+        object.originCountry.append(objectsIn: self.originCountry)
+        object.originalName = self.originalName
+        object.name = self.name
+        object.dateFavorite = self.dateFavorite
+        return object
+    }
+}
+
+class MovieObject: Object {
+    @Persisted var adult: Bool = false
+    @Persisted var backdropPath: String = ""
+    @Persisted var genreIDS: List<Int> = List<Int>()
+    @Persisted (primaryKey: true) var _id: Int = 0
+    @Persisted var originalLanguage: String = ""
+    @Persisted var originalTitle: String = ""
+    @Persisted var overview: String = ""
+    @Persisted var popularity: Double = 0.0
+    @Persisted var posterPath: String = ""
+    @Persisted var releaseDate: String = ""
+    @Persisted var title: String = ""
+    @Persisted var video: Bool = false
+    @Persisted var voteAverage: Double = 0.0
+    @Persisted var voteCount: Int = 0
+    @Persisted var firstAirDate: String = ""
+    @Persisted var originCountry: List<String> = List<String>()
+    @Persisted var originalName: String = ""
+    @Persisted var name: String = ""
+    @Persisted var dateFavorite: String = ""
 }

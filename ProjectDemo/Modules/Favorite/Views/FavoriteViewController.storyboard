@@ -8,30 +8,30 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Favorite View Controller-->
         <scene sceneID="9kx-Y6-89Z">
             <objects>
-                <viewController id="ab2-EX-tH2" customClass="HomeViewController" customModule="ProjectDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ab2-EX-tH2" customClass="FavoriteViewController" customModule="ProjectDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yMH-WK-99E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sfU-ny-enW">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JdD-hO-3JO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="miT-am-cok"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="miT-am-cok" firstAttribute="bottom" secondItem="sfU-ny-enW" secondAttribute="bottom" id="NLq-Yd-Yan"/>
-                            <constraint firstItem="sfU-ny-enW" firstAttribute="leading" secondItem="miT-am-cok" secondAttribute="leading" id="W3c-bq-cCM"/>
-                            <constraint firstItem="miT-am-cok" firstAttribute="trailing" secondItem="sfU-ny-enW" secondAttribute="trailing" id="ooy-3K-Jfe"/>
-                            <constraint firstItem="sfU-ny-enW" firstAttribute="top" secondItem="miT-am-cok" secondAttribute="top" id="umZ-Xg-z1n"/>
+                            <constraint firstItem="JdD-hO-3JO" firstAttribute="top" secondItem="miT-am-cok" secondAttribute="top" id="DPC-RR-1I1"/>
+                            <constraint firstItem="miT-am-cok" firstAttribute="bottom" secondItem="JdD-hO-3JO" secondAttribute="bottom" id="GQw-29-TNb"/>
+                            <constraint firstItem="JdD-hO-3JO" firstAttribute="leading" secondItem="miT-am-cok" secondAttribute="leading" id="SbZ-fR-cpG"/>
+                            <constraint firstItem="miT-am-cok" firstAttribute="trailing" secondItem="JdD-hO-3JO" secondAttribute="trailing" id="uBG-dc-gUI"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="sfU-ny-enW" id="EIZ-6y-LOK"/>
+                        <outlet property="tableView" destination="JdD-hO-3JO" id="uz9-jK-nYa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZ1-oP-p5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
