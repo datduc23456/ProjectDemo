@@ -23,6 +23,9 @@ class ImageStackView: UIStackView {
     
     func configView() {
         self.layoutIfNeeded()
+        for subViews in self.subviews {
+            self.removeArrangedSubview(subViews)
+        }
         let spacingCount: CGFloat = CGFloat(count - 1) * spacing
         let width: CGFloat = (self.frame.width - spacingCount) / CGFloat(count)
         for _ in 0..<count {
