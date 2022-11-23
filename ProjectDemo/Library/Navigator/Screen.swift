@@ -24,6 +24,7 @@ enum AppScreens: String, Screen, CaseIterable {
     case tvShow
     case favorite
     case detail
+    case statistical
     
     var path: String {
         return rawValue
@@ -46,6 +47,8 @@ enum AppScreens: String, Screen, CaseIterable {
             return FavoriteWireframe.generateModule(payload)
         case .detail:
             return MovieDetailWireframe.generateModule(payload)
+        case .statistical:
+            return StatisticcalWireframe.generateModule(payload)
         case .home:
             return HomeWireframe.generateModule(payload)
         }

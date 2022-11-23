@@ -83,6 +83,7 @@
 		3609C9982063B8DE2E15D369 /* FavoriteWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F234B7F1C96CED28642EDF /* FavoriteWireframe.swift */; };
 		369A33FEEF64CCA0D82AC74B /* MovieDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42F145DCD37E428997526D0F /* MovieDetailViewController.storyboard */; };
 		3AF863B897C2C5555F5C367F /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30D3933AA80D5FF507CA45D3 /* HomeViewController.storyboard */; };
+		41AC4688BB1D04BEFFDDC92D /* StatisticcalInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D2F03EB947449A0772764 /* StatisticcalInteractor.swift */; };
 		4505B88542B7CE6E6B466969 /* ExampleInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD217B066DD36734A6E4AFA /* ExampleInterfaces.swift */; };
 		527F93B62925257D0065FE10 /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F93B52925257D0065FE10 /* CommonUtil.swift */; };
 		527F93B8292530320065FE10 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F93B7292530320065FE10 /* Constant.swift */; };
@@ -148,17 +149,22 @@
 		7B283210D7CA8581D21B4437 /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F902A55FF30D62E88FCAB18 /* MovieDetailPresenter.swift */; };
 		A2AECDC62C3DD3F59E6A3650 /* FavoriteInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511AE24F959F0627E1E5D120 /* FavoriteInterfaces.swift */; };
 		A748304901B0B32BE442E5B6 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF01DACC54BE81664FE70BF6 /* HomePresenter.swift */; };
+		AA50EEC73E7FF84E7E383E4B /* StatisticcalViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D37DB22A36128CAFC42400AA /* StatisticcalViewController.storyboard */; };
 		B2DDCAF28156F4313F22B841 /* ExamplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2553AC6158B6416DB0AC9375 /* ExamplePresenter.swift */; };
+		BA3BE0AA4EB6080A8F356F44 /* StatisticcalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8B369BF7DBDF176DEDB2DF /* StatisticcalViewController.swift */; };
 		BCFDA48571B66D7FE0825FD7 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4964708C44877482A284A4A8 /* HomeInteractor.swift */; };
+		C08FB9C5A333889330BA63BC /* StatisticcalWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194989D4930441EC4F8FFFB4 /* StatisticcalWireframe.swift */; };
 		C2588BF5FE1DD34FFD9463FF /* FavoriteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9688009E4DA0CE7346F4A0 /* FavoriteInteractor.swift */; };
 		C57B1B148ABAABB5F4026D60 /* TVShowViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E0B4AC7ABFF488B34EDB10 /* TVShowViewController.storyboard */; };
 		C5ED7B1BEADBBF104BC94B6E /* MovieDetailInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = A268EADA622B42ED7135A14E /* MovieDetailInterfaces.swift */; };
 		CA4CD6680150605AAD5A97AA /* MovieDetailWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5862AB066A69C6A6AAD9F5C /* MovieDetailWireframe.swift */; };
 		CD5D8DEC6A6FC52B7883E6DE /* TVShowInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5919BDA490311D251363ED6 /* TVShowInteractor.swift */; };
+		CDE0AC7EFC3F8922B39473DD /* StatisticcalInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9210EA2768F6C8C058B56925 /* StatisticcalInterfaces.swift */; };
 		CEF0B8A71A19B0A98E5309E0 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BBA7509645CA488791B48 /* ExampleViewController.swift */; };
 		D3D27AF90DC86B6FA9C56448 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA44906081D356F496C0E9 /* MovieDetailViewController.swift */; };
 		E5EDA75719D6B0F2DFB8B03B /* ExampleWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E135D3F555EAFD8CBD2955 /* ExampleWireframe.swift */; };
 		E8AB5A159EEE81F5A8858822 /* HomeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADBE51681EE1E936CBE24E /* HomeWireframe.swift */; };
+		F8FEC04D009AF628642EF8B3 /* StatisticcalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A6F9D2390A55599F44EBFA /* StatisticcalPresenter.swift */; };
 		FE3AD96B5561EEFFE421A0A9 /* ExampleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BD6CF6744DEF5278C14CBF /* ExampleInteractor.swift */; };
 		FF9679FC3117EAD8D0021879 /* TVShowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A486F63D1152E61CDDDD4083 /* TVShowWireframe.swift */; };
 /* End PBXBuildFile section */
@@ -177,6 +183,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00A6F9D2390A55599F44EBFA /* StatisticcalPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatisticcalPresenter.swift; sourceTree = "<group>"; };
 		03E135D3F555EAFD8CBD2955 /* ExampleWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleWireframe.swift; sourceTree = "<group>"; };
 		180BBA7509645CA488791B48 /* ExampleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		181189622924DFB900E9D883 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
@@ -249,6 +256,7 @@
 		18F19827291A63CC00E4D911 /* ServiceCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCore.swift; sourceTree = "<group>"; };
 		18F1982A291A64C200E4D911 /* CoreTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTargetType.swift; sourceTree = "<group>"; };
 		18F1982E291A676B00E4D911 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		194989D4930441EC4F8FFFB4 /* StatisticcalWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatisticcalWireframe.swift; sourceTree = "<group>"; };
 		2553AC6158B6416DB0AC9375 /* ExamplePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExamplePresenter.swift; sourceTree = "<group>"; };
 		30D3933AA80D5FF507CA45D3 /* HomeViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
 		3709257DE909AD10105B3B61 /* Pods-ProjectDemoDev.projectdemo dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemoDev.projectdemo dev.xcconfig"; path = "Target Support Files/Pods-ProjectDemoDev/Pods-ProjectDemoDev.projectdemo dev.xcconfig"; sourceTree = "<group>"; };
@@ -317,14 +325,17 @@
 		52F98F1E292D166E007F5CCF /* PlayVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayVideoViewController.xib; sourceTree = "<group>"; };
 		52F98F21292D2085007F5CCF /* BottomSheetStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetStackView.xib; sourceTree = "<group>"; };
 		52F98F23292D2175007F5CCF /* BottomSheetStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStackView.swift; sourceTree = "<group>"; };
+		570D2F03EB947449A0772764 /* StatisticcalInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatisticcalInteractor.swift; sourceTree = "<group>"; };
 		5C7B999BFE7A77D10C74395B /* HomeViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		62ADE0F7C8308801B5592DA9 /* ExampleViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = ExampleViewController.storyboard; sourceTree = "<group>"; };
 		69DA44906081D356F496C0E9 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		76ADBE51681EE1E936CBE24E /* HomeWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeWireframe.swift; sourceTree = "<group>"; };
 		7DCCE212D222C9691BA72102 /* Pods-ProjectDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemo.debug.xcconfig"; path = "Target Support Files/Pods-ProjectDemo/Pods-ProjectDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		7E5EBB725926E37F7ACDF912 /* FavoriteViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = FavoriteViewController.storyboard; sourceTree = "<group>"; };
+		7E8B369BF7DBDF176DEDB2DF /* StatisticcalViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatisticcalViewController.swift; sourceTree = "<group>"; };
 		8A1B0192BDF90190BFD0B20D /* HomeInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeInterfaces.swift; sourceTree = "<group>"; };
 		8B2414DA08014923CBA236D6 /* Pods_ProjectDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9210EA2768F6C8C058B56925 /* StatisticcalInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatisticcalInterfaces.swift; sourceTree = "<group>"; };
 		94F8E175139AFBA8B1631BB2 /* Pods-ProjectDemoDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemoDev.debug.xcconfig"; path = "Target Support Files/Pods-ProjectDemoDev/Pods-ProjectDemoDev.debug.xcconfig"; sourceTree = "<group>"; };
 		96F234B7F1C96CED28642EDF /* FavoriteWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavoriteWireframe.swift; sourceTree = "<group>"; };
 		9BE7871CDE80793E98890531 /* TVShowInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TVShowInterfaces.swift; sourceTree = "<group>"; };
@@ -338,6 +349,7 @@
 		C192E70A62D48AAC3B73F9C2 /* Pods-ProjectDemoDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemoDev.release.xcconfig"; path = "Target Support Files/Pods-ProjectDemoDev/Pods-ProjectDemoDev.release.xcconfig"; sourceTree = "<group>"; };
 		C5919BDA490311D251363ED6 /* TVShowInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TVShowInteractor.swift; sourceTree = "<group>"; };
 		CC4681ED5422501F2E54F200 /* FavoritePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
+		D37DB22A36128CAFC42400AA /* StatisticcalViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = StatisticcalViewController.storyboard; sourceTree = "<group>"; };
 		D60F92457A9ECB40F3A8B371 /* TVShowViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TVShowViewController.swift; sourceTree = "<group>"; };
 		D9BD6CF6744DEF5278C14CBF /* ExampleInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleInteractor.swift; sourceTree = "<group>"; };
 		DD22BA11115260958DA8D837 /* Pods-ProjectDemo.projectdemo dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemo.projectdemo dev.xcconfig"; path = "Target Support Files/Pods-ProjectDemo/Pods-ProjectDemo.projectdemo dev.xcconfig"; sourceTree = "<group>"; };
@@ -638,6 +650,7 @@
 				59AB91E748B4BD050EE2942D /* TVShow */,
 				F84E7E5CAFEC6477C6487A54 /* Favorite */,
 				7B5DC24F9D1E0E7EBC4AB801 /* MovieDetail */,
+				83377E845AADC8796034B591 /* Statisticcal */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -713,6 +726,29 @@
 				2B04F3AA267E456162DFC4CF /* Views */,
 			);
 			path = MovieDetail;
+			sourceTree = "<group>";
+		};
+		827D4EAAA81EDAC11DAF0016 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D37DB22A36128CAFC42400AA /* StatisticcalViewController.storyboard */,
+				7E8B369BF7DBDF176DEDB2DF /* StatisticcalViewController.swift */,
+			);
+			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		83377E845AADC8796034B591 /* Statisticcal */ = {
+			isa = PBXGroup;
+			children = (
+				9210EA2768F6C8C058B56925 /* StatisticcalInterfaces.swift */,
+				00A6F9D2390A55599F44EBFA /* StatisticcalPresenter.swift */,
+				570D2F03EB947449A0772764 /* StatisticcalInteractor.swift */,
+				194989D4930441EC4F8FFFB4 /* StatisticcalWireframe.swift */,
+				827D4EAAA81EDAC11DAF0016 /* Views */,
+			);
+			name = Statisticcal;
+			path = Statisticcal;
 			sourceTree = "<group>";
 		};
 		94E1906B3081D7898C38256F /* Example */ = {
@@ -899,6 +935,7 @@
 				C57B1B148ABAABB5F4026D60 /* TVShowViewController.storyboard in Resources */,
 				07DE2D0E258E7E48F4882819 /* FavoriteViewController.storyboard in Resources */,
 				369A33FEEF64CCA0D82AC74B /* MovieDetailViewController.storyboard in Resources */,
+				AA50EEC73E7FF84E7E383E4B /* StatisticcalViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1060,6 +1097,11 @@
 				334890816785BF7E210688B2 /* MovieDetailInteractor.swift in Sources */,
 				CA4CD6680150605AAD5A97AA /* MovieDetailWireframe.swift in Sources */,
 				D3D27AF90DC86B6FA9C56448 /* MovieDetailViewController.swift in Sources */,
+				CDE0AC7EFC3F8922B39473DD /* StatisticcalInterfaces.swift in Sources */,
+				F8FEC04D009AF628642EF8B3 /* StatisticcalPresenter.swift in Sources */,
+				41AC4688BB1D04BEFFDDC92D /* StatisticcalInteractor.swift in Sources */,
+				C08FB9C5A333889330BA63BC /* StatisticcalWireframe.swift in Sources */,
+				BA3BE0AA4EB6080A8F356F44 /* StatisticcalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

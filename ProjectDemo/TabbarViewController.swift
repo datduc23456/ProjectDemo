@@ -42,7 +42,7 @@ class TabbarItem: UIView {
 class TabbarViewController: UITabBarController {
     
     let customTabbarHeight: CGFloat = 54
-    var listVc: [UIViewController] = [AppScreens.detail.createViewController(), AppScreens.tvShow.createViewController(), AppScreens.home.createViewController(), AppScreens.favorite.createViewController(), AppScreens.example.createViewController()]
+    var listVc: [UIViewController] = [AppScreens.detail.createViewController(), AppScreens.tvShow.createViewController(), AppScreens.home.createViewController(), AppScreens.favorite.createViewController(), AppScreens.statistical.createViewController()]
     var countVc: Int {
         return listVc.count
     }
@@ -83,7 +83,7 @@ class TabbarViewController: UITabBarController {
             self.items.append(tabbarItem)
         }
         
-        self.items[0].selectedAction()
+        self.items[4].selectedAction()
         
 //        for item in self.viewControllers ?? [] {
 //

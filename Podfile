@@ -19,6 +19,7 @@ target 'ProjectDemo' do
   pod 'RealmSwift', '~>10'
   pod 'SnapKit'
   pod "youtube-ios-player-helper"
+  pod 'Charts'
   rxswift
 end
 
