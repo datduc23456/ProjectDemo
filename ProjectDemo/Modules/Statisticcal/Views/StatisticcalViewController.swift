@@ -14,17 +14,31 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         return "h"
     }
     
-
     // MARK: - Properties
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var slider: MultiSlider!
+    @IBOutlet weak var tableViewheight: NSLayoutConstraint!
+    @IBOutlet weak var tableView: TableViewAdjustedHeight!
     @IBOutlet weak var lineChartView: LineChartView!
+    
+    var chartsLabelFont = UIFont.init(name: "NexaRegular", size: 12)!
 	var presenter: StatisticcalPresenterInterface!
     let players = ["Ozil", "Ramsey", "Laca", "Auba", "Xhaka", "Torreira"]
     let goals = [6, 8, 26, 30, 8, 10]
-    let ySet = [40, 100, 23, 4, 1 ,0]
+    let ySet = [40, 20, 23, 4, 1 ,0]
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.contentSizeDelegate = self
+        scrollView.showsVerticalScrollIndicator = false
 //        self.view.backgroundColor = .white
         customizeChart(dataPoints: players, values: goals.map{ Double($0) })
+//        slider.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged) // continuous changes
+//        slider.addTarget(self, action: #selector(sliderDragEnded(_:)), for: . touchUpInside) // sent when drag ends
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
     }
     
     func customizeChart(dataPoints: [String], values: [Double]) {
@@ -34,19 +48,12 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
           dataEntries.append(dataEntry)
         }
         let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "")
-//        lineChartDataSet.valueFormatter = self
         lineChartDataSet.mode = .cubicBezier
-//        let gradientColors = [UIColor.cyan.cgColor, UIColor.clear.cgColor] as CFArray // Colors of the gradient
-//        let colorLocations:[CGFloat] = [1.0, 0.0] // Positioning of the gradient
-//        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations)
-//        , NSUIColor.init(hex: "#751F3F")
-        //NSUIColor.init(hex: "#7D263F"),
-//        lineChartDataSet.colors = [NSUIColor.init(hex: "#7D263F").withAlphaComponent(0), NSUIColor.init(hex: "#98403D"), NSUIColor.init(hex: "#953D3D").withAlphaComponent(0.9), NSUIColor.init(hex: "#751F3F").withAlphaComponent(0)]
-//        lineChartDataSet.isDrawLineWithGradientEnabled = true
-//        lineChartDataSet.gradientPositions = [0, 50, 100]
         lineChartDataSet.colors = [NSUIColor.init(hex: "#98403D")]
         lineChartDataSet.circleColors = [NSUIColor.init(hex: "#FB716E")]
         lineChartDataSet.circleHoleRadius = 5
+        lineChartDataSet.drawValuesEnabled = false
+        lineChartDataSet.drawIconsEnabled = false
         lineChartDataSet.lineWidth = 3
         lineChartView.xAxis.axisLineColor = .clear
         lineChartView.xAxis.gridColor = UIColor.init(hexa: "#FFFCFC").withAlphaComponent(0.2)
@@ -56,9 +63,9 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         lineChartView.xAxis.labelPosition = .bottom
         lineChartView.xAxis.yOffset = 10
         lineChartView.xAxis.labelTextColor = .white.withAlphaComponent(0.5)
-        lineChartView.xAxis.labelFont = UIFont.init(name: "NexaRegular", size: 12)!
+        lineChartView.xAxis.labelFont = chartsLabelFont
         
-        lineChartView.leftAxis.labelFont = UIFont.init(name: "NexaRegular", size: 12)!
+        lineChartView.leftAxis.labelFont = chartsLabelFont
         lineChartView.leftAxis.labelTextColor = .white.withAlphaComponent(0.5)
         lineChartView.leftAxis.labelXOffset = 10
         lineChartView.leftAxis.axisLineColor = .clear
@@ -73,8 +80,10 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.gridBackgroundColor = .clear
-        lineChartView.extraLeftOffset = 20
+        lineChartView.doubleTapToZoomEnabled = false
         lineChartView.extraBottomOffset = 20
+        lineChartView.legend.enabled = false
+        lineChartView.dragEnabled = true
         lineChartView.data = lineChartData
     }
     
@@ -85,4 +94,11 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
 
 // MARK: - StatisticcalViewInterface
 extension StatisticcalViewController: StatisticcalViewInterface {
+}
+
+extension StatisticcalViewController: TableViewAdjustedHeightDelegate {
+    func didChangeContentSize(_ tableView: TableViewAdjustedHeight, size contentSize: CGSize) {
+        tableViewheight.constant = tableView.contentSize.height
+        self.view.layoutIfNeeded()
+    }
 }

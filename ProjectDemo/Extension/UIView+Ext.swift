@@ -109,13 +109,6 @@ extension UIView {
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
     
-    func addShadow(){
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowRadius = 1.0
-        self.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-    }
-    
     func addBlurArea(area: CGRect, style: UIBlurEffect.Style) {
         let effect = UIBlurEffect(style: style)
         let blurView = UIVisualEffectView(effect: effect)
