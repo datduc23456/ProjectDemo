@@ -21,21 +21,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="120" height="183"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ogd-b6-Huh">
-                        <rect key="frame" x="7" y="-7" width="106" height="106"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_xinh" translatesAutoresizingMaskIntoConstraints="NO" id="ogd-b6-Huh">
+                        <rect key="frame" x="7" y="0.0" width="106" height="106"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="106" id="Vy7-Fc-71A"/>
                             <constraint firstAttribute="width" constant="106" id="yiu-XO-qKn"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrs-vp-tyK">
-                        <rect key="frame" x="7" y="107" width="106" height="14"/>
+                        <rect key="frame" x="7" y="114" width="106" height="14"/>
                         <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Producer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abV-CS-XdN">
-                        <rect key="frame" x="6.9999999999999964" y="128" width="53.666666666666657" height="12"/>
+                        <rect key="frame" x="6.9999999999999964" y="135" width="53.666666666666657" height="12"/>
                         <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="12"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -48,11 +53,14 @@
                 <constraint firstItem="mrs-vp-tyK" firstAttribute="leading" secondItem="ogd-b6-Huh" secondAttribute="leading" id="abY-op-vQl"/>
                 <constraint firstItem="abV-CS-XdN" firstAttribute="leading" secondItem="mrs-vp-tyK" secondAttribute="leading" id="drc-oA-FYQ"/>
                 <constraint firstItem="mrs-vp-tyK" firstAttribute="trailing" secondItem="ogd-b6-Huh" secondAttribute="trailing" id="ftl-aA-dfx"/>
-                <constraint firstItem="ogd-b6-Huh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="-7" id="iYU-ss-GoA"/>
+                <constraint firstItem="ogd-b6-Huh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="iYU-ss-GoA"/>
                 <constraint firstItem="abV-CS-XdN" firstAttribute="top" secondItem="mrs-vp-tyK" secondAttribute="bottom" constant="7" id="nTJ-1n-Ii0"/>
             </constraints>
             <size key="customSize" width="120" height="183"/>
             <point key="canvasLocation" x="6" y="-7"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic_xinh" width="106" height="106"/>
+    </resources>
 </document>

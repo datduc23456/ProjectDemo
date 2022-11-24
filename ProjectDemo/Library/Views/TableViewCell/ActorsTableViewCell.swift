@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ActorsTableViewCell: BaseWithCollectionTableViewCell<ActorsCollectionViewCell> {
+class ActorsTableViewCell: BaseTableCollectionViewCell<ActorsCollectionViewCell> {
 
     override var flowLayout: FlowLayoutAttribute? {
         return FlowLayoutAttribute(estimatedItemSize: CGSize(width: 150, height: 96), minimumInteritemSpacing: 0, minimumLineSpacing: 12, footerReferenceSize: CGSize(width: 12, height: 96), headerReferenceSize: CGSize(width: 12, height: 96), scrollDirection: .horizontal)

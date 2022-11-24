@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TVShowTopUpTableViewCell: BaseWithCollectionTableViewCell<TVShowTopUpCollectionViewCell> {
+class TVShowTopUpTableViewCell: BaseTableCollectionViewCell<TVShowTopUpCollectionViewCell> {
 
     override var flowLayout: FlowLayoutAttribute? {
         return FlowLayoutAttribute(estimatedItemSize: CGSize(width: 100, height: 120), minimumInteritemSpacing: 0, minimumLineSpacing: 0, footerReferenceSize: CGSize(width: 8, height: 120), headerReferenceSize: CGSize(width: 8, height: 120), scrollDirection: .horizontal)

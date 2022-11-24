@@ -21,7 +21,7 @@ protocol BaseWithCollectionTableViewCellHandler: AnyObject {
     var didTapActionInCell: ((Any)->Void) { get set }
 }
 
-class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, BaseWithCollectionTableViewCellHandler {
+class BaseTableCollectionViewCell<T: UICollectionViewCell>: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, BaseWithCollectionTableViewCellHandler {
     
     var didTapActionInCell: ((Any) -> Void) = {_ in}
     var collectionView: BaseCollectionView!
@@ -56,7 +56,7 @@ class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell,
     
     func initWithCollectionView() {
         guard let flowLayout = flowLayout else { return }
-        let collectionView = BaseCollectionBuilder().withCell(T.self)
+        collectionView = BaseCollectionBuilder().withCell(T.self)
             .withEstimatedItemSize(flowLayout.estimatedItemSize)
             .withFooterReferenceSize(flowLayout.footerReferenceSize)
             .withHeaderReferenceSize(flowLayout.headerReferenceSize)
@@ -64,15 +64,10 @@ class BaseWithCollectionTableViewCell<T: UICollectionViewCell>: UITableViewCell,
             .withSpacingInRow(flowLayout.minimumInteritemSpacing)
             .withScrollDirection(flowLayout.scrollDirection)
             .build()
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(collectionView)
-        collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        self.collectionView = collectionView
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
+        collectionView.fillToSuperView()
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserRateTableViewCell: BaseWithCollectionTableViewCell<UserRateCollectionViewCell> {
+class UserRateTableViewCell: BaseTableCollectionViewCell<UserRateCollectionViewCell> {
 
     override var flowLayout: FlowLayoutAttribute? {
         return FlowLayoutAttribute(estimatedItemSize: CGSize(width: 256, height: 157), minimumInteritemSpacing: 0, minimumLineSpacing: 8, footerReferenceSize: CGSize(width: 8, height: 157), headerReferenceSize: CGSize(width: 8, height: 157), scrollDirection: .horizontal)

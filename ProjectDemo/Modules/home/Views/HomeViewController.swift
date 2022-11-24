@@ -27,7 +27,8 @@ final class HomeViewController: BaseViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.sectionFooterHeight = 0
-        let navigation: HomeNavigationView = initCustomNavigation(.home)
+        let navigation: BaseNavigationView = initCustomNavigation(.base)
+        navigation.configContentNav(.home)
         presenter.viewDidLoad()
     }
     

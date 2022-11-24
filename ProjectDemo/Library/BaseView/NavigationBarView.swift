@@ -8,11 +8,11 @@
 import UIKit
 
 enum NavigationBarType: String {
-    case home = "HomeNavigationView"
+    case base = "BaseNavigationView"
     
     var height: CGFloat {
         switch self {
-        case .home:
+        case .base:
             return 44
         }
     }
@@ -20,7 +20,7 @@ enum NavigationBarType: String {
 
 class NavigationBarView: UIView {
     static let BelowNavigationTag = -1
-    var type: NavigationBarType = .home
+    var type: NavigationBarType = .base
     
     override func layoutSubviews() {
         super.layoutSubviews()

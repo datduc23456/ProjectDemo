@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TopRatingTableViewCell: BaseWithCollectionTableViewCell<TopRatingCollectionViewCell> {
+class TopRatingTableViewCell: BaseTableCollectionViewCell<TopRatingCollectionViewCell> {
 
     override var flowLayout: FlowLayoutAttribute? {
         return FlowLayoutAttribute(estimatedItemSize: CGSize(width: 244, height: 146), minimumInteritemSpacing: 0.0, minimumLineSpacing: 8.0, footerReferenceSize: CGSize(width: 8.0, height: 146.0), headerReferenceSize: CGSize(width: 8.0, height: 146.0), scrollDirection: .horizontal)

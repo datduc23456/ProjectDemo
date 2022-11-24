@@ -42,11 +42,12 @@ class TabbarItem: UIView {
 class TabbarViewController: UITabBarController {
     
     let customTabbarHeight: CGFloat = 54
-    var listVc: [UIViewController] = [AppScreens.statistical.createViewController(), AppScreens.tvShow.createViewController(), AppScreens.home.createViewController(), AppScreens.favorite.createViewController(), AppScreens.addnote.createViewController()]
+    var listVc: [UIViewController] = [AppScreens.statistical.createViewController(), AppScreens.tvShow.createViewController(), AppScreens.home.createViewController(), AppScreens.favorite.createViewController(), AppScreens.popularpeople.createViewController()]
     var countVc: Int {
         return listVc.count
     }
     var items: [TabbarItem] = []
+    var customTabbar: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +92,7 @@ class TabbarViewController: UITabBarController {
 //            inset.bottom = customTabbarHeight
 //            item.additionalSafeAreaInsets = inset
 //        }
-        
+        self.customTabbar = stackView
         self.tabBar.isHidden = true
     }
     
