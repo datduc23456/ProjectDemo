@@ -14,6 +14,8 @@
 		11F96FBD4B87C9B619D4A842 /* ExampleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62ADE0F7C8308801B5592DA9 /* ExampleViewController.storyboard */; };
 		14769C4203D8F28B0C3F67E8 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4681ED5422501F2E54F200 /* FavoritePresenter.swift */; };
 		161A91E0EAE15B542476FE7B /* HomeInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1B0192BDF90190BFD0B20D /* HomeInterfaces.swift */; };
+		180C3CBA2930BBE600E56C97 /* BottomSheetDraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C3CB92930BBE600E56C97 /* BottomSheetDraggableView.swift */; };
+		180C3CBC2930BBF300E56C97 /* BottomSheetDraggableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180C3CBB2930BBF300E56C97 /* BottomSheetDraggableView.xib */; };
 		181189632924DFB900E9D883 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181189622924DFB900E9D883 /* UIView+Ext.swift */; };
 		181189652925C62B00E9D883 /* ABC1CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181189642925C62B00E9D883 /* ABC1CollectionViewCell.swift */; };
 		181189722925E35000E9D883 /* Nexa Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1811896F2925E35000E9D883 /* Nexa Bold.otf */; };
@@ -37,6 +39,12 @@
 		181189BD292B4EBE00E9D883 /* TableViewAdjustedHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181189BC292B4EBE00E9D883 /* TableViewAdjustedHeight.swift */; };
 		181189C0292B563900E9D883 /* TVShowTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181189BF292B563900E9D883 /* TVShowTableViewDataSource.swift */; };
 		183B64D3292C69C600E7BB3E /* BaseCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183B64D2292C69C600E7BB3E /* BaseCustomView.swift */; };
+		183F20E82930A762001BCB23 /* BottomSheetLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183F20E72930A762001BCB23 /* BottomSheetLabelView.swift */; };
+		183F20EA2930A77A001BCB23 /* BottomSheetLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183F20E92930A77A001BCB23 /* BottomSheetLabelView.xib */; };
+		183F20EC2930AAEB001BCB23 /* BottomSheetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183F20EB2930AAEB001BCB23 /* BottomSheetButtonView.swift */; };
+		183F20EE2930AB17001BCB23 /* BottomSheetButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183F20ED2930AB17001BCB23 /* BottomSheetButtonView.xib */; };
+		183F20F02930ACB5001BCB23 /* BottomSheetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183F20EF2930ACB5001BCB23 /* BottomSheetContentView.swift */; };
+		183F20F22930ACD2001BCB23 /* BottomSheetContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183F20F12930ACD2001BCB23 /* BottomSheetContentView.xib */; };
 		1848A475292B89E3005D4431 /* TVShowTopUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848A474292B89E3005D4431 /* TVShowTopUpTableViewCell.swift */; };
 		1848A47A292C5C71005D4431 /* RealmUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848A479292C5C71005D4431 /* RealmUtils.swift */; };
 		1848A47D292C6308005D4431 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848A47B292C6308005D4431 /* FavoriteTableViewCell.swift */; };
@@ -248,6 +256,8 @@
 		0A2F53DCBDDADF4A4037C879 /* SeasonInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SeasonInteractor.swift; sourceTree = "<group>"; };
 		1461A2A26BA5610907AC860F /* PopularPeopleInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PopularPeopleInterfaces.swift; sourceTree = "<group>"; };
 		180BBA7509645CA488791B48 /* ExampleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
+		180C3CB92930BBE600E56C97 /* BottomSheetDraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetDraggableView.swift; sourceTree = "<group>"; };
+		180C3CBB2930BBF300E56C97 /* BottomSheetDraggableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetDraggableView.xib; sourceTree = "<group>"; };
 		181189622924DFB900E9D883 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		181189642925C62B00E9D883 /* ABC1CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABC1CollectionViewCell.swift; sourceTree = "<group>"; };
 		1811896F2925E35000E9D883 /* Nexa Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nexa Bold.otf"; sourceTree = "<group>"; };
@@ -272,6 +282,12 @@
 		181189BF292B563900E9D883 /* TVShowTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowTableViewDataSource.swift; sourceTree = "<group>"; };
 		18177E8129079CB2006B2849 /* ProjectDemo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ProjectDemo copy-Info.plist"; path = "/Users/nguyendat/Desktop/ProjectDemo/ProjectDemo copy-Info.plist"; sourceTree = "<absolute>"; };
 		183B64D2292C69C600E7BB3E /* BaseCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomView.swift; sourceTree = "<group>"; };
+		183F20E72930A762001BCB23 /* BottomSheetLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetLabelView.swift; sourceTree = "<group>"; };
+		183F20E92930A77A001BCB23 /* BottomSheetLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetLabelView.xib; sourceTree = "<group>"; };
+		183F20EB2930AAEB001BCB23 /* BottomSheetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetButtonView.swift; sourceTree = "<group>"; };
+		183F20ED2930AB17001BCB23 /* BottomSheetButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetButtonView.xib; sourceTree = "<group>"; };
+		183F20EF2930ACB5001BCB23 /* BottomSheetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetContentView.swift; sourceTree = "<group>"; };
+		183F20F12930ACD2001BCB23 /* BottomSheetContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetContentView.xib; sourceTree = "<group>"; };
 		1848A474292B89E3005D4431 /* TVShowTopUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowTopUpTableViewCell.swift; sourceTree = "<group>"; };
 		1848A479292C5C71005D4431 /* RealmUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUtils.swift; sourceTree = "<group>"; };
 		1848A47B292C6308005D4431 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
@@ -496,7 +512,6 @@
 				57D0B8E746319564650B8DC1 /* SeasonWireframe.swift */,
 				11D3D0AD474EE7FA71B3A853 /* Views */,
 			);
-			name = Season;
 			path = Season;
 			sourceTree = "<group>";
 		};
@@ -515,7 +530,6 @@
 				7FDB477F994F84789A57AF10 /* ActionViewController.storyboard */,
 				4293EEC48B0635D7266D0B80 /* ActionViewController.swift */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -525,7 +539,6 @@
 				53E5754D7D7952EF2A3A87C7 /* SeasonViewController.storyboard */,
 				A03AA6904A95AE06A975BA77 /* SeasonViewController.swift */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -535,7 +548,6 @@
 				73729CEE17A081053A0D1C2D /* PopularPeopleDetailViewController.storyboard */,
 				79DC3C2E8CCD9DA61302AF39 /* PopularPeopleDetailViewController.swift */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -666,6 +678,14 @@
 				185BC356292CA43600613EB2 /* BaseViewBottomSheetViewController.swift */,
 				52F98F23292D2175007F5CCF /* BottomSheetStackView.swift */,
 				52F98F21292D2085007F5CCF /* BottomSheetStackView.xib */,
+				183F20E72930A762001BCB23 /* BottomSheetLabelView.swift */,
+				183F20E92930A77A001BCB23 /* BottomSheetLabelView.xib */,
+				183F20EB2930AAEB001BCB23 /* BottomSheetButtonView.swift */,
+				183F20ED2930AB17001BCB23 /* BottomSheetButtonView.xib */,
+				183F20EF2930ACB5001BCB23 /* BottomSheetContentView.swift */,
+				183F20F12930ACD2001BCB23 /* BottomSheetContentView.xib */,
+				180C3CB92930BBE600E56C97 /* BottomSheetDraggableView.swift */,
+				180C3CBB2930BBF300E56C97 /* BottomSheetDraggableView.xib */,
 			);
 			path = DynamicBottomSheet;
 			sourceTree = "<group>";
@@ -972,7 +992,6 @@
 				510A0D08ADF7F1109286CF1B /* ActionWireframe.swift */,
 				0BB62A05FADB05052D2DE2AC /* Views */,
 			);
-			name = Action;
 			path = Action;
 			sourceTree = "<group>";
 		};
@@ -997,7 +1016,6 @@
 				E9A2CC605C5D0EC82C821631 /* PopularPeopleDetailWireframe.swift */,
 				15CF92247FA4D2887A9784EA /* Views */,
 			);
-			name = PopularPeopleDetail;
 			path = PopularPeopleDetail;
 			sourceTree = "<group>";
 		};
@@ -1016,7 +1034,6 @@
 				FB1A348BEB9BAB9F31D60C9F /* PopularPeopleViewController.storyboard */,
 				370EB89AD0A02933ADFDF7F8 /* PopularPeopleViewController.swift */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -1029,7 +1046,6 @@
 				3D6618D9CBAB9CAC9C75C493 /* PopularPeopleWireframe.swift */,
 				A6AFC14BE801D8560F1B878D /* Views */,
 			);
-			name = PopularPeople;
 			path = PopularPeople;
 			sourceTree = "<group>";
 		};
@@ -1042,7 +1058,6 @@
 				56D2981BEA55091B19E3972F /* EpisodeWireframe.swift */,
 				DAE4C9131BA563F0ED8ED6AF /* Views */,
 			);
-			name = Episode;
 			path = Episode;
 			sourceTree = "<group>";
 		};
@@ -1087,7 +1102,6 @@
 				997B32136AEEB58D60408327 /* EpisodeViewController.storyboard */,
 				37559676F86EFEDEB9A4EB7C /* EpisodeViewController.swift */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -1213,6 +1227,7 @@
 				52CBDD302928DD2D00548E52 /* NewMovieTableViewCell.xib in Resources */,
 				52CBDD272928DD2D00548E52 /* HeaderView.xib in Resources */,
 				52B84E0D292A3A43008DA4C2 /* GengesListTableViewCell.xib in Resources */,
+				183F20EE2930AB17001BCB23 /* BottomSheetButtonView.xib in Resources */,
 				52CBDD152928DD1A00548E52 /* GengesCollectionViewCell.xib in Resources */,
 				185BC3B3292F614F00613EB2 /* StatisticcalTableViewCell.xib in Resources */,
 				52CBDD172928DD1A00548E52 /* CinemaPopularCollectionViewCell.xib in Resources */,
@@ -1221,11 +1236,13 @@
 				185DC6CA29000D790056C910 /* Assets.xcassets in Resources */,
 				181189B4292B2F1400E9D883 /* SEAGULLH.ttf in Resources */,
 				1899F2982924CC6700D2D978 /* TabbarViewController.xib in Resources */,
+				183F20F22930ACD2001BCB23 /* BottomSheetContentView.xib in Resources */,
 				11F96FBD4B87C9B619D4A842 /* ExampleViewController.storyboard in Resources */,
 				181189B2292B2F1400E9D883 /* seagull italic.ttf in Resources */,
 				181189762925E35000E9D883 /* Nexa Light.otf in Resources */,
 				181189AC292B2F1400E9D883 /* seagull heavy bt.ttf in Resources */,
 				52CBDD392928DE6500548E52 /* PeoplePopularCollectionViewCell.xib in Resources */,
+				183F20EA2930A77A001BCB23 /* BottomSheetLabelView.xib in Resources */,
 				52CBDD092928D36F00548E52 /* FilmNoteView.xib in Resources */,
 				181189AE292B2F1400E9D883 /* SEAGULLL.ttf in Resources */,
 				181189B0292B2F1400E9D883 /* SeagullBold.ttf in Resources */,
@@ -1240,6 +1257,7 @@
 				52CBDD3D2928E09000548E52 /* TVShowCollectionViewCell.xib in Resources */,
 				52B84E07292A3446008DA4C2 /* BaseNavigationView.xib in Resources */,
 				C57B1B148ABAABB5F4026D60 /* TVShowViewController.storyboard in Resources */,
+				180C3CBC2930BBF300E56C97 /* BottomSheetDraggableView.xib in Resources */,
 				07DE2D0E258E7E48F4882819 /* FavoriteViewController.storyboard in Resources */,
 				369A33FEEF64CCA0D82AC74B /* MovieDetailViewController.storyboard in Resources */,
 				AA50EEC73E7FF84E7E383E4B /* StatisticcalViewController.storyboard in Resources */,
@@ -1343,6 +1361,7 @@
 				52CBDCF12927EE5B00548E52 /* FSPageViewTransformer.swift in Sources */,
 				527F93C2292534050065FE10 /* NSObject+Ext.swift in Sources */,
 				185BC360292CBD2200613EB2 /* NotesTableViewCell.swift in Sources */,
+				183F20F02930ACB5001BCB23 /* BottomSheetContentView.swift in Sources */,
 				52F98F1C292D125D007F5CCF /* PlayVideoViewController.swift in Sources */,
 				185BC385292F0D2A00613EB2 /* Codable+Sweeter.swift in Sources */,
 				52CBDD002927F13F00548E52 /* NavigationBarView.swift in Sources */,
@@ -1391,6 +1410,7 @@
 				185BC387292F0D2A00613EB2 /* NSObject+Sweeter.swift in Sources */,
 				185DC7072901367F0056C910 /* Screen.swift in Sources */,
 				1848A47A292C5C71005D4431 /* RealmUtils.swift in Sources */,
+				183F20EC2930AAEB001BCB23 /* BottomSheetButtonView.swift in Sources */,
 				183B64D3292C69C600E7BB3E /* BaseCustomView.swift in Sources */,
 				52CBDD192928DD1A00548E52 /* GengesCollectionViewCell.swift in Sources */,
 				18F1982B291A64C200E4D911 /* CoreTargetType.swift in Sources */,
@@ -1398,6 +1418,7 @@
 				FE3AD96B5561EEFFE421A0A9 /* ExampleInteractor.swift in Sources */,
 				181189652925C62B00E9D883 /* ABC1CollectionViewCell.swift in Sources */,
 				E5EDA75719D6B0F2DFB8B03B /* ExampleWireframe.swift in Sources */,
+				183F20E82930A762001BCB23 /* BottomSheetLabelView.swift in Sources */,
 				52CBDCF72927EE5B00548E52 /* FSPageViewLayout.swift in Sources */,
 				52CBDCF32927EE5B00548E52 /* FSPagerCollectionView.swift in Sources */,
 				185BC353292CA0B200613EB2 /* DynamicBottomSheetPresentationController.swift in Sources */,
@@ -1410,6 +1431,7 @@
 				161A91E0EAE15B542476FE7B /* HomeInterfaces.swift in Sources */,
 				52CBDCF92927EE5B00548E52 /* FSPageControl.swift in Sources */,
 				A748304901B0B32BE442E5B6 /* HomePresenter.swift in Sources */,
+				180C3CBA2930BBE600E56C97 /* BottomSheetDraggableView.swift in Sources */,
 				BCFDA48571B66D7FE0825FD7 /* HomeInteractor.swift in Sources */,
 				E8AB5A159EEE81F5A8858822 /* HomeWireframe.swift in Sources */,
 				5AB9A3D412A7075AEC1352F1 /* HomeViewController.swift in Sources */,

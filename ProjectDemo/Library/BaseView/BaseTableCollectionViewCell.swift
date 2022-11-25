@@ -71,20 +71,19 @@ class BaseTableCollectionViewCell<T: UICollectionViewCell>: UITableViewCell, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return listPayload.count
-        return 7
+        return listPayload.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.className, for: indexPath) as! T
-//        let payload = self.listPayload[indexPath.row]
-//        if let baseCell = cell as? BaseCollectionViewCell {
-//            baseCell.configCell(payload)
-//            baseCell.didTapAction = { [weak self] any in
-//                guard let `self` = self else { return }
-//                self.didTapActionInCell(any)
-//            }
-//        }
+        let payload = self.listPayload[indexPath.row]
+        if let baseCell = cell as? BaseCollectionViewCell {
+            baseCell.configCell(payload)
+            baseCell.didTapAction = { [weak self] any in
+                guard let `self` = self else { return }
+                self.didTapActionInCell(any)
+            }
+        }
         return cell
     }
     

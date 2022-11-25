@@ -20,16 +20,18 @@ final class FavoriteViewController: BaseViewController {
         tableView.registerCell(for: FavoriteTableViewCell.className)
         tableView.delegate = self
         tableView.dataSource = self
-        let bottomSheet = BaseViewBottomSheetViewController()
-        DispatchQueue.main.async {
-            self.present(bottomSheet, animated: false)
-        }
+        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
+        let bottomSheet = BaseViewBottomSheetViewController()
+        bottomSheet.bottomDataSource = [.label("Number of movies watched"), .button(title: "Remove", isPrimary: false), .content(title: "Remove watched list", content: "Are you sure you would like to remove this film from the watched lits")]
+        DispatchQueue.main.async {
+            self.present(bottomSheet, animated: false)
+        }
         
     }
     

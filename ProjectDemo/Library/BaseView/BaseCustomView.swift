@@ -11,7 +11,6 @@ class BaseCustomView: UIView {
     
     var nibNameView: String?
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initWithNib()
@@ -28,7 +27,6 @@ class BaseCustomView: UIView {
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.addSubview(view)
         self.backgroundColor = .clear
-        
         commonSetup()
     }
     
