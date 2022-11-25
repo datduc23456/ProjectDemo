@@ -9,12 +9,15 @@
 import UIKit
 
 final class AddNoteWireframe: AddNoteWireframeInterface {
+    var navigator: BaseNavigator!
+    
 
     static func generateModule(_ payload: Any?) -> UIViewController {
         let initialViewController = UIStoryboard(name: "AddNoteViewController", bundle: nil).instantiateInitialViewController() as! AddNoteViewController
         initialViewController.payload = payload
         // let vc = initialViewController.topViewController as! AddNoteViewController
         let wireframe = AddNoteWireframe()
+        wireframe.navigator = BaseNavigator()
         let interactor = AddNoteInteractor()
         let presenter = AddNotePresenter(
             view: initialViewController,

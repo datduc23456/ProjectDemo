@@ -27,6 +27,16 @@ open class BaseViewController: UIViewController {
         self.view.backgroundColor = APP_COLOR
     }
     
+    private var currentRootNavigationController: UINavigationController? {
+        if let current = currentRootViewController as? UINavigationController {
+            return current
+        } else if let current = currentRootViewController as? UITabBarController,
+            let selected = current.selectedViewController as? UINavigationController {
+            return selected
+        }
+        return nil
+    }
+    
     public convenience init(navigator: BaseNavigator) {
         self.init(nibName: nil, bundle: nil)
         self.navigator = navigator
@@ -48,6 +58,53 @@ extension BaseViewController {
             return
         }
         backFromNextHandleable.onBackFromNext(result)
+    }
+}
+
+extension BaseViewController {
+    
+    /// Push
+    public func pushChildViewController(_ vc: UIViewController, _ fromRoot: Bool, _ animate: Bool) {
+        if fromRoot {
+            currentRootNavigationController?.pushViewController(vc, animated: animate)
+        } else {
+            currentNavigationController(from: nil)?.pushViewController(vc, animated: animate)
+        }
+    }
+    
+    /// Pop
+    public func popChildViewController(_ result: Any?, _ animate: Bool) {
+        currentViewController()?.navigationController?.popViewController(animated: animate)
+
+        func completed() {
+            if let current = currentViewController() {
+                setBackResultIfCan(vc: current, result: result)
+            }
+        }
+
+        if let coordinator = currentViewController()?.navigationController?.transitionCoordinator, animate {
+            coordinator.animate(alongsideTransition: nil) { _ in
+                completed()
+            }
+        } else {
+            completed()
+        }
+    }
+    
+    /// Present
+    public func presentChildViewController(_ vc: UIViewController, _ animate: Bool) {
+        currentViewController()?.present(vc, animated: animate)
+    }
+
+    /// Dismiss
+    public func dismisssChildViewController(_ result: Any?, _ animate: Bool, _ completion: (() -> Void)? = nil) {
+        currentViewController()?.dismiss(animated: animate, completion: { [weak self] in
+            guard let weakSelf = self else { return }
+            if let current = weakSelf.currentViewController() {
+                weakSelf.setBackResultIfCan(vc: current, result: result)
+            }
+            completion?()
+        })
     }
 }
 
@@ -79,11 +136,28 @@ extension BaseViewController {
             return nil
         }
     }
+    
+    func currentNavigationController(from: UIViewController?) -> UINavigationController? {
+        if let from = from {
+            if let nav = from as? UINavigationController {
+                return nav
+            }
+            if let navigationController = from.navigationController {
+                return navigationController
+            }
+            if let parent = from.parent {
+                return currentNavigationController(from: parent)
+            }
+            return nil
+        } else {
+            return currentNavigationController(from: currentViewController(from: from)!)
+        }
+    }
 }
 
 extension BaseViewController: BaseNavigatorDelegate {
     func didPushViewController(_ vc: UIViewController, _ fromRoot: Bool, _ animate: Bool) {
-        
+        self.pushChildViewController(vc, fromRoot, animate)
     }
 
     func didPresentViewController(_ vc: UIViewController, _ animate: Bool) {

@@ -14,6 +14,7 @@ class GengesCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var lbTitle: UILabel!
     
+    var isHeightCalculated: Bool = false
     var didTap: VoidCallBack?
     var genre: Genre!
     var isSelect: Bool = false {

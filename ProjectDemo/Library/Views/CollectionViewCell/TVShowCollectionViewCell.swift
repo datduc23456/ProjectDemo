@@ -21,7 +21,7 @@ class TVShowCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        viewNumber.roundCorners(corners: [.bottomRight, .topLeft], radius: 8)
     }
     
     override func configCell(_ payload: Any) {

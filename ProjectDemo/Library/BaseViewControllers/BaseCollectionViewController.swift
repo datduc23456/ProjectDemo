@@ -8,7 +8,7 @@
 import UIKit
 
 class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+    
     var collectionView: BaseCollectionView!
     var numberOfColumn: Int {
         return 3
@@ -24,11 +24,20 @@ class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView = BaseCollectionBuilder().withCell(T.self)
-            .withScrollDirection(.vertical)
-            .withSpacingInRow(spacing)
-            .withSpacingInGrid(spacing)
-            .build()
+        if numberOfColumn == 0 {
+            self.collectionView = BaseCollectionBuilder().withCell(T.self)
+                .withScrollDirection(.vertical)
+                .withEstimatedItemSize(UICollectionViewFlowLayout.automaticSize)
+                .withSpacingInRow(spacing)
+                .withSpacingInGrid(spacing)
+                .build()
+        } else {
+            self.collectionView = BaseCollectionBuilder().withCell(T.self)
+                .withScrollDirection(.vertical)
+                .withSpacingInRow(spacing)
+                .withSpacingInGrid(spacing)
+                .build()
+        }
         self.view.addSubview(collectionView)
         self.collectionView.fillToSuperView()
         self.collectionView.registerCell(for: T.className)
@@ -51,6 +60,9 @@ class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if numberOfColumn == 0 {
+            return CGSize(width: 1, height: 1)
+        }
         let spacing = self.spacing * Double(numberOfColumn + 1)
         let widthForItem = (collectionView.bounds.width - spacing) / Double(numberOfColumn)
         return CGSize.init(width: widthForItem, height: heightForItem)

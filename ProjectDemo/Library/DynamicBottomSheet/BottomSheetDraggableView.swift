@@ -8,16 +8,13 @@
 import UIKit
 
 class BottomSheetDraggableView: BaseCustomView {
-    
-    @IBOutlet weak var a: UIView!
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
-        a.backgroundColor = .red
     }
      
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
 }

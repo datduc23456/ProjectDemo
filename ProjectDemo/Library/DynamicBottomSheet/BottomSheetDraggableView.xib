@@ -1,53 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21225"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottomSheetDraggableView" customModule="ProjectDemo" customModuleProvider="target">
-            <connections>
-                <outlet property="a" destination="PG9-r5-SzK" id="RjQ-sX-Pak"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottomSheetDraggableView" customModule="ProjectDemo" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="393" height="14"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GPK-LI-kE7">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="14"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PG9-r5-SzK">
-                            <rect key="frame" x="173" y="8" width="47" height="6"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="47" id="ISr-wL-mHv"/>
-                                <constraint firstAttribute="height" constant="6" id="jx1-b4-lG0"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="3"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PG9-r5-SzK">
+                    <rect key="frame" x="173" y="8" width="47" height="6"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="PG9-r5-SzK" firstAttribute="centerX" secondItem="GPK-LI-kE7" secondAttribute="centerX" id="6d9-0q-uaL"/>
-                        <constraint firstAttribute="bottom" secondItem="PG9-r5-SzK" secondAttribute="bottom" id="jKA-2O-grx"/>
-                        <constraint firstAttribute="height" constant="14" id="mOn-5f-a7l"/>
+                        <constraint firstAttribute="width" constant="47" id="ISr-wL-mHv"/>
+                        <constraint firstAttribute="height" constant="6" id="jx1-b4-lG0"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="GPK-LI-kE7" secondAttribute="bottom" id="1w1-6N-DYn"/>
-                <constraint firstItem="GPK-LI-kE7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="35r-n4-iEt"/>
-                <constraint firstAttribute="trailing" secondItem="GPK-LI-kE7" secondAttribute="trailing" id="iBd-fo-vdd"/>
-                <constraint firstItem="GPK-LI-kE7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qk3-OK-QkD"/>
+                <constraint firstItem="PG9-r5-SzK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="C1y-ze-9es"/>
+                <constraint firstAttribute="bottom" secondItem="PG9-r5-SzK" secondAttribute="bottom" id="x2C-Bx-Fe7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="124" y="-11"/>

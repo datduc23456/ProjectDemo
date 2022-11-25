@@ -9,12 +9,15 @@
 import UIKit
 
 final class StatisticcalWireframe: StatisticcalWireframeInterface {
+    var navigator: BaseNavigator!
+    
 
     static func generateModule(_ payload: Any?) -> UIViewController {
         let initialViewController = UIStoryboard(name: "StatisticcalViewController", bundle: nil).instantiateInitialViewController() as! StatisticcalViewController
         initialViewController.payload = payload
         // let vc = initialViewController.topViewController as! StatisticcalViewController
         let wireframe = StatisticcalWireframe()
+        wireframe.navigator = BaseNavigator()
         let interactor = StatisticcalInteractor()
         let presenter = StatisticcalPresenter(
             view: initialViewController,

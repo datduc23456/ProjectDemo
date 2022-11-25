@@ -54,7 +54,7 @@ enum AppScreens: String, Screen, CaseIterable {
         case .addnote:
             return AddNoteWireframe.generateModule(payload)
         case .popularpeople:
-            return ActionWireframe.generateModule(payload)
+            return GenersWireframe.generateModule(payload)
         case .home:
             return HomeWireframe.generateModule(payload)
         }

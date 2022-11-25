@@ -9,12 +9,15 @@
 import UIKit
 
 final class SeasonWireframe: SeasonWireframeInterface {
+    var navigator: BaseNavigator!
+    
 
     static func generateModule(_ payload: Any?) -> UIViewController {
         let initialViewController = UIStoryboard(name: "SeasonViewController", bundle: nil).instantiateInitialViewController() as! SeasonViewController
         initialViewController.payload = payload
         // let vc = initialViewController.topViewController as! SeasonViewController
         let wireframe = SeasonWireframe()
+        wireframe.navigator = BaseNavigator()
         let interactor = SeasonInteractor()
         let presenter = SeasonPresenter(
             view: initialViewController,

@@ -57,6 +57,10 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.className, for: indexPath)
         cell.selectionStyle = .none
+        cell.addTapGestureRecognizer { [weak self] in
+//            Screen.
+            self?.navigationController?.pushViewController(AppScreens.addnote.createViewController(), animated: true)
+        }
         return cell
     }
     

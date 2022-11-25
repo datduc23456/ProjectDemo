@@ -20,4 +20,15 @@ class TVShowPopularTableViewCell: BaseTableCollectionViewCell<TVShowCollectionVi
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TVShowCollectionViewCell.className, for: indexPath) as! TVShowCollectionViewCell
+        let payload = self.listPayload[indexPath.row]
+        cell.configCell(payload, isTVShow: true)
+        cell.didTapAction = { [weak self] any in
+            guard let `self` = self else { return }
+            self.didTapActionInCell(any)
+        }
+        return cell
+    }
 }

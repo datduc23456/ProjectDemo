@@ -9,12 +9,15 @@
 import UIKit
 
 final class EpisodeWireframe: EpisodeWireframeInterface {
+    var navigator: BaseNavigator!
+    
 
     static func generateModule(_ payload: Any?) -> UIViewController {
         let initialViewController = UIStoryboard(name: "EpisodeViewController", bundle: nil).instantiateInitialViewController() as! EpisodeViewController
         initialViewController.payload = payload
         // let vc = initialViewController.topViewController as! EpisodeViewController
         let wireframe = EpisodeWireframe()
+        wireframe.navigator = BaseNavigator()
         let interactor = EpisodeInteractor()
         let presenter = EpisodePresenter(
             view: initialViewController,

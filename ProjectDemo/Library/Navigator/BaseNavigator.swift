@@ -28,6 +28,12 @@ open class BaseNavigator {
 }
 
 extension BaseNavigator {
+    
+    public func pushScreen(_ screen: Screen, _ payload: Any? = nil, animate: Bool = true, fromRoot: Bool) {
+        let vc = screen.createViewController(payload)
+        delegate?.didPushViewController(vc, fromRoot, animate)
+    }
+    
     public func popScreen(result: Any? = nil, animate: Bool = true) {
         delegate?.didPopViewController(result, animate)
     }

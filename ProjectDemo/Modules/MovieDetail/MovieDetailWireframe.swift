@@ -9,12 +9,15 @@
 import UIKit
 
 final class MovieDetailWireframe: MovieDetailWireframeInterface {
+    var navigator: BaseNavigator!
+    
 
     static func generateModule(_ payload: Any?) -> UIViewController {
         let initialViewController = UIStoryboard(name: "MovieDetailViewController", bundle: nil).instantiateInitialViewController() as! MovieDetailViewController
         initialViewController.payload = payload
         // let vc = initialViewController.topViewController as! MovieDetailViewController
         let wireframe = MovieDetailWireframe()
+        wireframe.navigator = BaseNavigator()
         let interactor = MovieDetailInteractor()
         let presenter = MovieDetailPresenter(
             view: initialViewController,

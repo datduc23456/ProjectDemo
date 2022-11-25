@@ -9,12 +9,15 @@
 import UIKit
 
 final class PopularPeopleDetailWireframe: PopularPeopleDetailWireframeInterface {
+    var navigator: BaseNavigator!
+    
 
     static func generateModule(_ payload: Any?) -> UIViewController {
         let initialViewController = UIStoryboard(name: "PopularPeopleDetailViewController", bundle: nil).instantiateInitialViewController() as! PopularPeopleDetailViewController
         initialViewController.payload = payload
         // let vc = initialViewController.topViewController as! PopularPeopleDetailViewController
         let wireframe = PopularPeopleDetailWireframe()
+        wireframe.navigator = BaseNavigator()
         let interactor = PopularPeopleDetailInteractor()
         let presenter = PopularPeopleDetailPresenter(
             view: initialViewController,

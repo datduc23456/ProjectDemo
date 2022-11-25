@@ -84,7 +84,7 @@ class TabbarViewController: UITabBarController {
             self.items.append(tabbarItem)
         }
         
-        self.items[4].selectedAction()
+        self.items[2].selectedAction()
         
 //        for item in self.viewControllers ?? [] {
 //

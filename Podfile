@@ -20,6 +20,7 @@ target 'ProjectDemo' do
   pod 'SnapKit'
   pod "youtube-ios-player-helper"
   pod 'Charts'
+  pod 'DZNEmptyDataSet'
   rxswift
 end
 

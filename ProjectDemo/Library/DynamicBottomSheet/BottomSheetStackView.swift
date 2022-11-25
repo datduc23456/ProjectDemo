@@ -70,7 +70,6 @@ class BottomSheetStackView: BaseCustomView {
                 }
             case .draggable:
                 let view = BottomSheetDraggableView()
-                view.a.backgroundColor = .red
                 self.stackView.addArrangedSubview(view)
                 view.snp.makeConstraints {
                     $0.height.equalTo(type.height())

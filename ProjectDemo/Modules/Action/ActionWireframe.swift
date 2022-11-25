@@ -9,12 +9,15 @@
 import UIKit
 
 final class ActionWireframe: ActionWireframeInterface {
+    var navigator: BaseNavigator!
+    
 
     static func generateModule(_ payload: Any?) -> UIViewController {
         let initialViewController = UIStoryboard(name: "ActionViewController", bundle: nil).instantiateInitialViewController() as! ActionViewController
         initialViewController.payload = payload
         // let vc = initialViewController.topViewController as! ActionViewController
         let wireframe = ActionWireframe()
+        wireframe.navigator = BaseNavigator()
         let interactor = ActionInteractor()
         let presenter = ActionPresenter(
             view: initialViewController,

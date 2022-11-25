@@ -16,14 +16,7 @@ private var imagePickerDelegateKey = 0
 private var disposeBagKey = 1
 
 public protocol WireframeInterface: AnyObject, ErrorHandleable {
-
-    /// Navigator
-//    var navigator: BaseNavigator {get}
-
-    /// モジュール生成
-    ///
-    /// - Parameter payload: ペイロード
-    /// - Returns: UIViewController
+    var navigator: BaseNavigator! { get }
     static func generateModule(_ payload: Any?) -> UIViewController
 }
 

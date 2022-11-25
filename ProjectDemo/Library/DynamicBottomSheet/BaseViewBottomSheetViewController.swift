@@ -20,7 +20,6 @@ class BaseViewBottomSheetViewController: DynamicBottomSheetViewController {
 extension BaseViewBottomSheetViewController {
 
     override func configureView() {
-        
         super.configureView()
         layoutStackView()
     }
@@ -38,7 +37,6 @@ extension BaseViewBottomSheetViewController {
             height += type.height()
         }
         stackContent.stackView.layoutIfNeeded()
-//        height += 14
         self.stackContent.snp.makeConstraints {
             $0.top.equalToSuperview().offset(0)
             $0.leading.equalToSuperview().offset(0)
@@ -47,8 +45,6 @@ extension BaseViewBottomSheetViewController {
             $0.height.equalTo(height)
         }
         self.stackContent.config(bottomDataSource)
-        
-//        self.height =
     }
 }
 
