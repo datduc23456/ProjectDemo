@@ -21,7 +21,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="120" height="183"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_xinh" translatesAutoresizingMaskIntoConstraints="NO" id="ogd-b6-Huh">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_xinh" translatesAutoresizingMaskIntoConstraints="NO" id="ogd-b6-Huh">
                         <rect key="frame" x="7" y="0.0" width="106" height="106"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="106" id="Vy7-Fc-71A"/>
@@ -57,6 +57,11 @@
                 <constraint firstItem="abV-CS-XdN" firstAttribute="top" secondItem="mrs-vp-tyK" secondAttribute="bottom" constant="7" id="nTJ-1n-Ii0"/>
             </constraints>
             <size key="customSize" width="120" height="183"/>
+            <connections>
+                <outlet property="img" destination="ogd-b6-Huh" id="bUI-q0-mWV"/>
+                <outlet property="lbName" destination="mrs-vp-tyK" id="QJ8-HM-SDt"/>
+                <outlet property="lbProducer" destination="abV-CS-XdN" id="IeI-4G-j8R"/>
+            </connections>
             <point key="canvasLocation" x="6" y="-7"/>
         </collectionViewCell>
     </objects>

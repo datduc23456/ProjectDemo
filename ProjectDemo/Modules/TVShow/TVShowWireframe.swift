@@ -18,6 +18,7 @@ final class TVShowWireframe: TVShowWireframeInterface {
         // let vc = initialViewController.topViewController as! TVShowViewController
         let wireframe = TVShowWireframe()
         wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = TVShowInteractor()
         let presenter = TVShowPresenter(
             view: initialViewController,
@@ -30,5 +31,9 @@ final class TVShowWireframe: TVShowWireframeInterface {
 
 	func handleError(_ error: Error, _ completion: (() -> Void)?) {
         
+    }
+    
+    func showMovieDetailScreen(_ id: Int) {
+        navigator.pushScreen(AppScreens.detail, (id, true), fromRoot: true)
     }
 }

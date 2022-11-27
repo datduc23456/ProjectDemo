@@ -9,6 +9,19 @@ import UIKit
 
 class FilmNoteView: BaseCustomView {
 
+    @IBOutlet weak var lbRating: UILabel!
+    @IBOutlet weak var lbDate: UILabel!
+    @IBOutlet weak var lbGenre: UILabel!
+    @IBOutlet weak var lbTitle: UILabel!
+    @IBOutlet weak var lbYear: UILabel!
+    @IBOutlet weak var lbVoteAvg: UILabel!
+    @IBOutlet weak var viewRating: UIView!
+    @IBOutlet weak var viewRemove: UIView!
+    @IBOutlet weak var viewDate: UIView!
+    @IBOutlet weak var viewGenres: UIView!
+    @IBOutlet weak var viewTitle: UIView!
+    @IBOutlet weak var viewVoteAvg: UIView!
+    @IBOutlet weak var img: UIImageView!
     var path: UIBezierPath!
      
     override init(frame: CGRect) {

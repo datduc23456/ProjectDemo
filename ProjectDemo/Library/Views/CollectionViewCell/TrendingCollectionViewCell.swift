@@ -9,15 +9,29 @@ import UIKit
 
 class TrendingCollectionViewCell: BaseCollectionViewCell {
 
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var imageView: AYImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.contentView.addTapGestureRecognizer(action: { [weak self] in
+            guard let `self` = self, let payload = self.payload else { return }
+            self.didTapAction?(payload)
+        })
+        imageView.borderColor = .clear
+        imageView.imageContentMode = .scaleToFill
+        imageView.currentViewController = AppDelegate.shared.appRootViewController
     }
+    
 
     override func configCell(_ payload: Any) {
         if let payload = payload as? Movie {
-            image.kf.setImage(with: URL(string: "\(baseURLImage)\(payload.posterPath)"))
+            self.payload = payload
+            imageView.isAllowToOpenImage = false
+            imageView.setImageFromUrl(url: "\(baseURLImage)\(payload.posterPath)")
+        }
+        
+        if let payload = payload as? URL {
+            self.payload = payload
+            imageView.setImageFromUrl(url: payload.absoluteString)
         }
     }
     

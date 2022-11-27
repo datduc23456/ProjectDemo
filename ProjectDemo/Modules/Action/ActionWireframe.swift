@@ -18,6 +18,7 @@ final class ActionWireframe: ActionWireframeInterface {
         // let vc = initialViewController.topViewController as! ActionViewController
         let wireframe = ActionWireframe()
         wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = ActionInteractor()
         let presenter = ActionPresenter(
             view: initialViewController,

@@ -21,6 +21,7 @@ target 'ProjectDemo' do
   pod "youtube-ios-player-helper"
   pod 'Charts'
   pod 'DZNEmptyDataSet'
+  pod 'KafkaRefresh'
   rxswift
 end
 

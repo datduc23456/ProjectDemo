@@ -13,6 +13,7 @@ protocol HeaderViewDelegate: AnyObject {
 
 class HeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var lbTitle: UILabel!
+    @IBOutlet weak var btnSeeMore: UIButton!
     static let reuseIdentifier = "HeaderView"
     weak var delegate: HeaderViewDelegate?
     var sectionNumber: Int!

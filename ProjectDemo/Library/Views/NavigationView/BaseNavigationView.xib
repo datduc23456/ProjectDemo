@@ -65,7 +65,7 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_search" translatesAutoresizingMaskIntoConstraints="NO" id="6bM-w8-pG6">
                             <rect key="frame" x="14" y="7" width="18" height="18"/>
                         </imageView>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search movies, tv show, actor,.." borderStyle="roundedRect" placeholder="Search movies, tv show, actor,.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Us-Tn-wLj">
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search movies, tv show, actor,.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Us-Tn-wLj">
                             <rect key="frame" x="40" y="-1" width="254" height="34"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,6 +127,7 @@
                 <outlet property="imgSetting" destination="O4H-8k-hdj" id="qzd-8W-Ki9"/>
                 <outlet property="imgStarMoviee" destination="ify-Dt-Ppm" id="BIz-6o-63n"/>
                 <outlet property="lbTitle" destination="0Tt-zE-VFP" id="IN6-Ho-SPa"/>
+                <outlet property="textField" destination="9Us-Tn-wLj" id="rzM-1D-7h7"/>
                 <outlet property="viewSearch" destination="Moi-c7-R0D" id="2GQ-m5-3kd"/>
             </connections>
             <point key="canvasLocation" x="-29.23076923076923" y="-261.6113744075829"/>

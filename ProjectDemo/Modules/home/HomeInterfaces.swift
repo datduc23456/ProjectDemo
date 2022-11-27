@@ -13,6 +13,8 @@ protocol HomeViewInterface: ViewInterface {
 }
 
 protocol HomePresenterInterface: PresenterInterface {
+    func didTapToMovie(_ movie: Movie)
+    func didTapSearch()
 }
 
 protocol HomeInteractorInterface: InteractorInterface {
@@ -28,4 +30,6 @@ protocol HomeInteractorOutputInterface: InteractorOutputInterface {
 }
 
 protocol HomeWireframeInterface: WireframeInterface {
+    func showMovieDetailScreen(_ id: Int)
+    func showSearchScreen()
 }

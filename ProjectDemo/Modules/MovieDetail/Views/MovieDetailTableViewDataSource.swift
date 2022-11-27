@@ -7,14 +7,20 @@
 
 import UIKit
 
-enum MovieDetailTableViewDataSource: CaseIterable {
+enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
     typealias RawValue = Int
     
-    static var allCases: [MovieDetailTableViewDataSource] {
-        return [.actors, .videos, .images, .notes, .rate, .trending]
+    static var movieCases: [MovieDetailTableViewDataSource] {
+        return [.actors, .overview, .videos, .images, .notes, .rate, .trending]
+    }
+    
+    static var tvShowCases: [MovieDetailTableViewDataSource] {
+        return [.actors, .overview, .season, .videos, .images, .notes, .rate]
     }
     
     case actors
+    case overview
+    case season
     case videos
     case images
     case notes
@@ -25,6 +31,10 @@ enum MovieDetailTableViewDataSource: CaseIterable {
         switch self {
         case .actors:
             return 96
+        case .overview:
+            return 100
+        case .season:
+            return 171
         case .videos:
             return 195
         case .images:
@@ -42,10 +52,14 @@ enum MovieDetailTableViewDataSource: CaseIterable {
         switch self {
         case .actors:
             return ActorsTableViewCell.self
+        case .overview:
+            return TextExpandTableViewCell.self
+        case .season:
+            return TVShowPopularTableViewCell.self
         case .videos:
             return MovieVideosTableViewCell.self
         case .images:
-            return TrendingTableViewCell.self
+            return ImagesTableViewCell.self
         case .notes:
             return NotesTableViewCell.self
         case .rate:
@@ -58,6 +72,8 @@ enum MovieDetailTableViewDataSource: CaseIterable {
     
     func titleOfHeader() -> String {
         switch self {
+        case .season:
+            return "Seasons"
         case .videos:
             return "Videos"
         case .images:

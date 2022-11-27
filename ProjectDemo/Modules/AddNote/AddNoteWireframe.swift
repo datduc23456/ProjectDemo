@@ -18,6 +18,7 @@ final class AddNoteWireframe: AddNoteWireframeInterface {
         // let vc = initialViewController.topViewController as! AddNoteViewController
         let wireframe = AddNoteWireframe()
         wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = AddNoteInteractor()
         let presenter = AddNotePresenter(
             view: initialViewController,

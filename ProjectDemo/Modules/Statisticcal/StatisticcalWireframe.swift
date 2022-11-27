@@ -18,6 +18,7 @@ final class StatisticcalWireframe: StatisticcalWireframeInterface {
         // let vc = initialViewController.topViewController as! StatisticcalViewController
         let wireframe = StatisticcalWireframe()
         wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = StatisticcalInteractor()
         let presenter = StatisticcalPresenter(
             view: initialViewController,

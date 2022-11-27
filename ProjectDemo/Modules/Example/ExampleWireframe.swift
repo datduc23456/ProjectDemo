@@ -17,6 +17,7 @@ final class ExampleWireframe: ExampleWireframeInterface {
         initialViewController.payload = payload
         let wireframe = ExampleWireframe()
         wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = ExampleInteractor()
         let presenter = ExamplePresenter(
             view: initialViewController,

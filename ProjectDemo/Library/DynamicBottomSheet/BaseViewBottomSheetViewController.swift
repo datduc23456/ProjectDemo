@@ -13,7 +13,7 @@ class BaseViewBottomSheetViewController: DynamicBottomSheetViewController {
     // MARK: - Private Properties
     private var stackContent: BottomSheetStackView!
     var views: [UIView] = []
-    var bottomDataSource: [BottomSheetType] = []
+    var bottomDataSource: [BottomSheetType] = [.draggable]
 }
 
 // MARK: - Layout
@@ -26,6 +26,7 @@ extension BaseViewBottomSheetViewController {
 
     private func layoutStackView() {
         self.stackContent = BottomSheetStackView()
+        bottomDataSource = [.draggable] + bottomDataSource
         contentView.addSubview(self.stackContent)
         
         var height: CGFloat = 10
@@ -36,6 +37,8 @@ extension BaseViewBottomSheetViewController {
         for type in bottomDataSource {
             height += type.height()
         }
+        // spacing is 8
+        height += Double((bottomDataSource.count - 1) * 8)
         stackContent.stackView.layoutIfNeeded()
         self.stackContent.snp.makeConstraints {
             $0.top.equalToSuperview().offset(0)

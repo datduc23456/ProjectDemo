@@ -32,6 +32,14 @@ extension HomePresenter: HomePresenterInterface {
     func viewWillAppear(_ animated: Bool) {
 
     }
+    
+    func didTapToMovie(_ movie: Movie) {
+        wireframe.showMovieDetailScreen(movie.id)
+    }
+    
+    func didTapSearch() {
+        wireframe.showSearchScreen()
+    }
 }
 
 extension HomePresenter: HomeInteractorOutputInterface {

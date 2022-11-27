@@ -20,3 +20,8 @@ public protocol WireframeInterface: AnyObject, ErrorHandleable {
     static func generateModule(_ payload: Any?) -> UIViewController
 }
 
+public extension WireframeInterface {
+    func showPlayVideo(_ key: String, _ fromRoot: Bool) {
+        navigator.showPlayVideo(key, fromRoot)
+    }
+}

@@ -10,19 +10,34 @@ import UIKit
 
 final class MovieDetailViewController: BaseViewController {
 
+    @IBOutlet weak var viewFavorite: UIView!
+    @IBOutlet weak var lbGenres: UILabel!
+    @IBOutlet weak var lbName: UILabel!
+    @IBOutlet weak var lbYear: UILabel!
+    @IBOutlet weak var lbVoteAvg: UILabel!
+    @IBOutlet weak var imgBackDrop: UIImageView!
+    @IBOutlet weak var imgPoster: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: TableViewAdjustedHeight!
     @IBOutlet weak var tableViewheight: NSLayoutConstraint!
     var tableViewDataSource: [MovieDetailTableViewDataSource] = MovieDetailTableViewDataSource.allCases
     var data: [String: Any] = [:]
+    var trailer: Video?
+    var isExpandTextView: Bool = false
+    var selectedIndex: Int = 0
+    var movieDetail: MovieDetail?
     // MARK: - Properties
 	var presenter: MovieDetailPresenterInterface!
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.viewDidLoad()
         tableView.register(MovieVideosTableViewCell.self, forCellReuseIdentifier: MovieVideosTableViewCell.className)
         tableView.register(TrendingTableViewCell.self, forCellReuseIdentifier: TrendingTableViewCell.className)
+        tableView.register(ImagesTableViewCell.self, forCellReuseIdentifier: ImagesTableViewCell.className)
         tableView.register(ActorsTableViewCell.self, forCellReuseIdentifier: ActorsTableViewCell.className)
         tableView.register(UserRateTableViewCell.self, forCellReuseIdentifier: UserRateTableViewCell.className)
+        tableView.register(TVShowPopularTableViewCell.self, forCellReuseIdentifier: TVShowPopularTableViewCell.className)
+        tableView.registerCell(for: TextExpandTableViewCell.className)
         tableView.registerCell(for: MovieVideosTableViewCell.className)
         tableView.registerCell(for: NotesTableViewCell.className)
         tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
@@ -30,6 +45,10 @@ final class MovieDetailViewController: BaseViewController {
         tableView.delegate = self
         tableView.contentSizeDelegate = self
         scrollView.showsVerticalScrollIndicator = false
+        viewFavorite.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self, let movieDetail = self.movieDetail else { return }
+            self.realmUtils.insertOrUpdate(movieDetail.toMovieObject())
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,12 +59,97 @@ final class MovieDetailViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        AppDelegate.shared.appRootViewController.present(PlayVideoViewController(), animated: true)
+        presenter.viewWillAppear(animated)
+    }
+    
+    @IBAction func trailerAction(_ sender: Any) {
+        if let trailer = self.trailer {
+            presenter.didTapPlayVideo(trailer)
+        }
+    }
+    
+    @IBAction func dismissAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
 // MARK: - MovieDetailViewInterface
 extension MovieDetailViewController: MovieDetailViewInterface {
+    
+    var id: (Int, Bool) {
+        get {
+            if let id = payload as? (Int, Bool) {
+                return id
+            }
+            return (299536, false)
+        }
+    }
+    
+    func configHeaderView(_ response: MovieDetail) {
+        let voteAvg = response.voteAverage.roundToPlaces(places: 1)
+        let listVideos = response.videos.video
+        if listVideos.isEmpty {
+            self.tableViewDataSource.removeAll(where: {$0 == .videos || $0 == .images})
+        }
+        if response.recommendations.results.isEmpty {
+            self.tableViewDataSource.removeAll(where: {$0 == .trending})
+        }
+        if response.seasons.isEmpty {
+            self.tableViewDataSource.removeAll(where: {$0 == .season})
+        }
+        if response.overview.isEmpty {
+            self.tableViewDataSource.removeAll(where: {$0 == .overview})
+        }
+        self.movieDetail = response
+        self.trailer = listVideos.first
+        imgPoster.kf.setImage(with: URL(string: "\(baseURLImage)\(response.posterPath)"))
+        imgBackDrop.kf.setImage(with: URL(string: "\(baseURLImage)\(response.backdropPath)"))
+        lbYear.text = CommonUtil.getYearFromDate(response.lastAirDate)
+        lbVoteAvg.text = "\(voteAvg)"
+        lbName.text = response.title
+        lbGenres.text = DTPBusiness.shared.mapToGenreName(response.genres.map({$0.id}))
+    }
+    
+    func getTVShowDetail(_ response: MovieDetail) {
+        self.tableViewDataSource = MovieDetailTableViewDataSource.tvShowCases
+        let voteAvg = response.voteAverage.roundToPlaces(places: 1)
+        let listVideos = response.videos.video
+        self.configHeaderView(response)
+        if response.createdBy.isEmpty {
+            self.tableViewDataSource.removeAll(where: {$0 == .actors})
+        }
+        self.data.updateValue(response.createdBy, forKey: "\(MovieDetailTableViewDataSource.actors)")
+        self.data.updateValue(response.videos, forKey: "\(MovieDetailTableViewDataSource.videos)")
+        self.data.updateValue(listVideos.map({CommonUtil.getThumbnailYoutubeUrl($0.key)}), forKey: "\(MovieDetailTableViewDataSource.images)")
+        self.data.updateValue((totalVote: response.popularity, voteAvg: voteAvg), forKey: "\(MovieDetailTableViewDataSource.notes)")
+        self.data.updateValue(response.recommendations.results, forKey: "\(MovieDetailTableViewDataSource.trending)")
+        self.data.updateValue(response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate)")
+        self.data.updateValue([response.overview], forKey: "\(MovieDetailTableViewDataSource.overview)")
+        self.data.updateValue(response.seasons, forKey: "\(MovieDetailTableViewDataSource.season)")
+        self.tableView.reloadData()
+    }
+    
+    func getMovieDetail(_ response: MovieDetail) {
+        self.tableViewDataSource = MovieDetailTableViewDataSource.movieCases
+        let voteAvg = response.voteAverage.roundToPlaces(places: 1)
+        let listVideos = response.videos.video
+        self.configHeaderView(response)
+        if response.credits.cast.isEmpty {
+            self.tableViewDataSource.removeAll(where: {$0 == .actors})
+        }
+        self.data.updateValue(response.credits.cast, forKey: "\(MovieDetailTableViewDataSource.actors)")
+        self.data.updateValue(response.videos, forKey: "\(MovieDetailTableViewDataSource.videos)")
+        self.data.updateValue(listVideos.map({CommonUtil.getThumbnailYoutubeUrl($0.key)}), forKey: "\(MovieDetailTableViewDataSource.images)")
+        self.data.updateValue((totalVote: response.popularity, voteAvg: voteAvg), forKey: "\(MovieDetailTableViewDataSource.notes)")
+        self.data.updateValue(response.recommendations.results, forKey: "\(MovieDetailTableViewDataSource.trending)")
+        self.data.updateValue(response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate)")
+        self.data.updateValue([response.overview], forKey: "\(MovieDetailTableViewDataSource.overview)")
+        self.tableView.reloadData()
+    }
+    
+    func handleError(_ error: Error) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate {
@@ -57,17 +161,41 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
         cell.selectionStyle = .none
         if let baseCell = cell as? BaseWithCollectionTableViewCellHandler, let data = self.data["\(item)"] as? [Any] {
             baseCell.listPayload = data
-            baseCell.didTapActionInCell = { payload in
+            baseCell.didTapActionInCell = { [weak self] any in
+                guard let `self` = self else { return }
                 switch item {
-                    
                 default:
                     return
                 }
             }
         }
         
-        if let cell = cell as? MovieVideosTableViewCell {
-            cell.configCell()
+        if let cell = cell as? MovieVideosTableViewCell, let data = self.data["\(item)"] as? Videos  {
+            cell.configCell(data, selectedIndex: self.selectedIndex)
+            cell.didTapActionInCell = { [weak self] any in
+                guard let `self` = self else { return }
+                if let video = any as? Video {
+                    self.presenter.didTapPlayVideo(video)
+                } else if let selectedIndex = any as? Int {
+                    self.selectedIndex = selectedIndex
+                }
+            }
+        }
+        
+        if let cell = cell as? NotesTableViewCell, let data = self.data["\(item)"] as? (totalVote: Double, voteAvg: Double)  {
+            cell.configCell(totalVote: data.totalVote, voteAvg: data.voteAvg)
+        }
+        
+        if let cell = cell as? TextExpandTableViewCell  {
+            cell.configGradientLayer()
+            cell.didTapActionInCell = { [weak self] any in
+                guard let `self` = self else { return }
+                self.isExpandTextView = !self.isExpandTextView
+                UIView.setAnimationsEnabled(false)
+                tableView.reloadSections(IndexSet([1]), with: .none)
+                UIView.setAnimationsEnabled(true)
+            }
+            
         }
         
         return cell
@@ -103,6 +231,9 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let item = tableViewDataSource[indexPath.section]
+        if item == .overview, isExpandTextView {
+            return UITableView.automaticDimension
+        }
         return item.heightForRow()
     }
 }

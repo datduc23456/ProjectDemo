@@ -13,7 +13,7 @@ class BottomSheetButtonView: BaseCustomView {
     
     var title: String = "" {
         didSet {
-            button.titleLabel?.text = title
+            button.setTitle(title, for: .normal)
         }
     }
     

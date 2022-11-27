@@ -17,6 +17,7 @@ final class GenersWireframe: GenersWireframeInterface {
         // let vc = initialViewController.topViewController as! GenersViewController
         let wireframe = GenersWireframe()
         wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = GenersInteractor()
         let presenter = GenersPresenter(
             view: initialViewController,

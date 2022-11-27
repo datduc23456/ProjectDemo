@@ -18,6 +18,7 @@ final class MovieDetailWireframe: MovieDetailWireframeInterface {
         // let vc = initialViewController.topViewController as! MovieDetailViewController
         let wireframe = MovieDetailWireframe()
         wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = MovieDetailInteractor()
         let presenter = MovieDetailPresenter(
             view: initialViewController,

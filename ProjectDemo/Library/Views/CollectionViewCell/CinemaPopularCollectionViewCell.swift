@@ -18,11 +18,15 @@ class CinemaPopularCollectionViewCell: BaseCollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.contentView.addTapGestureRecognizer(action: { [weak self] in
+            guard let `self` = self, let payload = self.payload else { return }
+            self.didTapAction?(payload)
+        })
     }
     
     override func configCell(_ payload: Any) {
         if let payload = payload as? Movie {
+            self.payload = payload
             image.kf.setImage(with: URL(string: "\(baseURLImage)\(payload.posterPath)"))
             lbTitle.text = payload.originalTitle
             lbVoteAvg.text = "\(payload.voteAverage)"

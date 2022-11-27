@@ -5,6 +5,41 @@ PODS:
   - Charts/Core (4.1.0):
     - SwiftAlgorithms (~> 1.0)
   - DZNEmptyDataSet (1.8.1)
+  - KafkaRefresh (1.5.0):
+    - KafkaRefresh/Category (= 1.5.0)
+    - KafkaRefresh/Configuration (= 1.5.0)
+    - KafkaRefresh/Core (= 1.5.0)
+    - KafkaRefresh/Default (= 1.5.0)
+    - KafkaRefresh/Style (= 1.5.0)
+    - KafkaRefresh/UIKit (= 1.5.0)
+  - KafkaRefresh/Category (1.5.0)
+  - KafkaRefresh/Configuration (1.5.0):
+    - KafkaRefresh/UIKit/FootKit
+    - KafkaRefresh/UIKit/HeadKit
+  - KafkaRefresh/Core (1.5.0):
+    - KafkaRefresh/Category
+  - KafkaRefresh/Default (1.5.0):
+    - KafkaRefresh/Style
+  - KafkaRefresh/Style (1.5.0)
+  - KafkaRefresh/UIKit (1.5.0):
+    - KafkaRefresh/UIKit/FootKit (= 1.5.0)
+    - KafkaRefresh/UIKit/HeadKit (= 1.5.0)
+    - KafkaRefresh/UIKit/LayerKit (= 1.5.0)
+  - KafkaRefresh/UIKit/FootKit (1.5.0):
+    - KafkaRefresh/Category
+    - KafkaRefresh/Core
+    - KafkaRefresh/Default
+    - KafkaRefresh/Style
+    - KafkaRefresh/UIKit/LayerKit
+  - KafkaRefresh/UIKit/HeadKit (1.5.0):
+    - KafkaRefresh/Category
+    - KafkaRefresh/Core
+    - KafkaRefresh/Default
+    - KafkaRefresh/Style
+    - KafkaRefresh/UIKit/LayerKit
+  - KafkaRefresh/UIKit/LayerKit (1.5.0):
+    - KafkaRefresh/Category
+    - KafkaRefresh/Default
   - Kingfisher (7.4.0)
   - Moya (15.0.0):
     - Moya/Core (= 15.0.0)
@@ -32,6 +67,7 @@ PODS:
 DEPENDENCIES:
   - Charts
   - DZNEmptyDataSet
+  - KafkaRefresh
   - Kingfisher (~> 7.0)
   - Moya
   - ProgressHUD
@@ -47,6 +83,7 @@ SPEC REPOS:
     - Alamofire
     - Charts
     - DZNEmptyDataSet
+    - KafkaRefresh
     - Kingfisher
     - Moya
     - ProgressHUD
@@ -64,6 +101,7 @@ SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   Charts: 354f86803d11d9c35de280587fef50d1af063978
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  KafkaRefresh: 01645b1509b8647809f6bb666629c80855bd3fdd
   Kingfisher: 596b207973051aae5e4c54a1c1cb39837ea10d36
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
@@ -77,6 +115,6 @@ SPEC CHECKSUMS:
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
 
-PODFILE CHECKSUM: 4df3665119c369529391552a2dda89adc5afffeb
+PODFILE CHECKSUM: 23d166a666b6acc81321f5aa3a2cec27633e539c
 
 COCOAPODS: 1.11.3

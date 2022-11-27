@@ -27,6 +27,10 @@ extension TVShowPresenter: TVShowPresenterInterface {
         interactor.getTVShowLastest()
         interactor.getTopRate()
     }
+    
+    func didTapToMovie(_ movie: Movie) {
+        wireframe.showMovieDetailScreen(movie.id)
+    }
 }
 
 extension TVShowPresenter: TVShowInteractorOutputInterface {

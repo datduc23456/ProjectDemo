@@ -192,11 +192,20 @@ extension String {
         let date = dateFormatter.date(from: self)
         return date
     }
+    
+    func toDateFormat(toFormat: String = "HH:mm", timeZone: TimeZone = .current) -> String {
+        return (self.toDate() ?? Date()).toString(format: toFormat)
+    }
 }
 
 extension Double {
     func rounded(toPlaces places:Int) -> Int {
         let divisor = pow(10.0, Double(places))
         return Int(((self) / divisor).rounded())
+    }
+    
+    func roundToPlaces(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
     }
 }

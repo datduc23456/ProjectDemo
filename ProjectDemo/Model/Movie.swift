@@ -18,6 +18,13 @@ struct MovieResponse: Codable {
         case totalPages = "total_pages"
         case totalResults = "total_results"
     }
+    
+    init() {
+        self.page = 0
+        self.results = []
+        self.totalPages = 0
+        self.totalResults = 0
+    }
 }
 
 // MARK: - Movie

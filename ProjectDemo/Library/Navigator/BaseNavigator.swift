@@ -29,6 +29,12 @@ open class BaseNavigator {
 
 extension BaseNavigator {
     
+    public func showPlayVideo(_ key: String, _ fromRoot: Bool) {
+        let vc = AppScreens.playvideo.createViewController(key)
+        vc.modalPresentationStyle = .automatic
+        delegate?.didPresentViewController(vc, true)
+    }
+    
     public func pushScreen(_ screen: Screen, _ payload: Any? = nil, animate: Bool = true, fromRoot: Bool) {
         let vc = screen.createViewController(payload)
         delegate?.didPushViewController(vc, fromRoot, animate)

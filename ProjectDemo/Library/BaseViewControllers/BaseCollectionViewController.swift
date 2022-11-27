@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import KafkaRefresh
 
 class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var collectionView: BaseCollectionView!
+    var page: Int = 0
+    var headerRefresh: VoidCallBack?
+    var footerRefresh: VoidCallBack?
+    
     var numberOfColumn: Int {
         return 3
     }
@@ -39,11 +44,29 @@ class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController,
                 .build()
         }
         self.view.addSubview(collectionView)
-        self.collectionView.fillToSuperView()
+        self.collectionView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
         self.collectionView.registerCell(for: T.className)
-        self.collectionView.contentInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        self.collectionView.showsVerticalScrollIndicator = false
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
+        self.collectionView.bindHeadRefreshHandler({ [weak self] in
+            guard let `self` = self else { return }
+            self.page = 0
+            self.headerRefresh?()
+        }, themeColor: .white, refreshStyle: .replicatorCircle)
+        
+        self.collectionView.bindFootRefreshHandler({ [weak self] in
+            guard let `self` = self else { return }
+            self.page += 1
+            self.footerRefresh?()
+        }, themeColor: .white, refreshStyle: .replicatorCircle)
+        
+        self.collectionView.headRefreshControl.layoutIfNeeded()
+        self.collectionView.headRefreshControl.presetContentInsets = UIEdgeInsets(top: spacing, left: spacing, bottom: 0, right: spacing)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +86,7 @@ class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController,
         if numberOfColumn == 0 {
             return CGSize(width: 1, height: 1)
         }
-        let spacing = self.spacing * Double(numberOfColumn + 1)
+        let spacing = self.spacing * Double(numberOfColumn - 1)
         let widthForItem = (collectionView.bounds.width - spacing) / Double(numberOfColumn)
         return CGSize.init(width: widthForItem, height: heightForItem)
     }

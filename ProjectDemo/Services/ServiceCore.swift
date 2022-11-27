@@ -79,6 +79,7 @@ final class ServiceCore {
                 self.debugLog(response: response)
                 if response.statusCode == 200 {
                     let data = response.data
+                    data.tranforms1(to: D.self)
                     if let responseModel = data.tranforms(to: D.self) {
                         successBlock(responseModel)
                     } else {

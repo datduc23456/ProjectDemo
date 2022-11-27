@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 final class FavoriteViewController: BaseViewController {
 
     // MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
 	var presenter: FavoritePresenterInterface!
-    
+    var dataSource: [String: [MovieDetailObject]] = [:]
+    var bottomSheet: BaseViewBottomSheetViewController {
+        let bottomSheet = BaseViewBottomSheetViewController()
+        bottomSheet.bottomDataSource = [.content(title: "Remove Favorite", content: "Are you sure you would like to remove this film from the favorite"), .button(title: "Remove", isPrimary: true), .button(title: "No, Thank", isPrimary: false)]
+        return bottomSheet
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
         tableView.registerCell(for: FavoriteTableViewCell.className)
+        tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -27,12 +34,8 @@ final class FavoriteViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
-        let bottomSheet = BaseViewBottomSheetViewController()
-        bottomSheet.bottomDataSource = [.label("Number of movies watched"), .button(title: "Remove", isPrimary: false), .content(title: "Remove watched list", content: "Are you sure you would like to remove this film from the watched lits")]
-        DispatchQueue.main.async {
-            self.present(bottomSheet, animated: false)
-        }
-        
+        dataSource = Dictionary(grouping: realmUtils.getListObjects(type: MovieDetailObject.self), by: { $0.releaseDate })
+        tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -50,16 +53,49 @@ extension FavoriteViewController: FavoriteViewInterface {
 }
 
 extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return dataSource.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        let key = Array(dataSource.keys)[section]
+        return dataSource[key].isNil(value: []).count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView") as! HeaderView
+        let key = Array(dataSource.keys)[section]
+        headerView.contentView.backgroundColor = APP_COLOR
+        headerView.lbTitle.text = key.toDateFormat(toFormat: "MMM yyyy")
+        headerView.lbTitle.font = UIFont(name: "Nexa-Bold", size: 14)
+        headerView.lbTitle.textColor = .white.withAlphaComponent(0.5)
+        headerView.btnSeeMore.isHidden = true
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.className, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.className, for: indexPath) as! FavoriteTableViewCell
+        let key = Array(dataSource.keys)[indexPath.section]
+        let listMovieDetail = dataSource[key].isNil(value: [])
+        let movieObject = listMovieDetail[indexPath.row]
         cell.selectionStyle = .none
-        cell.addTapGestureRecognizer { [weak self] in
-//            Screen.
-            self?.navigationController?.pushViewController(AppScreens.addnote.createViewController(), animated: true)
+        cell.filmNoteView.viewRating.isHidden = true
+        cell.filmNoteView.viewDate.isHidden = true
+        cell.filmNoteView.lbTitle.text = movieObject.originalTitle
+        cell.filmNoteView.img.kf.setImage(with: URL(string: "\(baseURLImage)\(movieObject.posterPath)"))
+        cell.filmNoteView.lbVoteAvg.text = "\(movieObject.voteAverage.roundToPlaces(places: 1))"
+        cell.filmNoteView.lbYear.text = CommonUtil.getYearFromDate(movieObject.firstAirDate)
+        cell.filmNoteView.lbGenre.text = DTPBusiness.shared.mapToGenreName(Array(movieObject.genreIDS))
+        cell.didTapRemove = { [weak self] in
+            guard let `self` = self else { return }
+            DispatchQueue.main.async {
+                self.present(self.bottomSheet, animated: true)
+            }
         }
         return cell
     }
@@ -68,4 +104,16 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
         return 190
     }
     
+}
+
+extension FavoriteViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "ic_emptyFavorite")!
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let title = "No found theater!"
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Nexa-Bold", size: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
+        return NSMutableAttributedString(string: title, attributes: attributes as [NSAttributedString.Key : Any])
+    }
 }

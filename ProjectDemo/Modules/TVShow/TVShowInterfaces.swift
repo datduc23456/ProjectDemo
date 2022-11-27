@@ -14,7 +14,7 @@ protocol TVShowViewInterface: ViewInterface {
 }
 
 protocol TVShowPresenterInterface: PresenterInterface {
-    
+    func didTapToMovie(_ movie: Movie)
 }
 
 protocol TVShowInteractorInterface: InteractorInterface {
@@ -30,4 +30,5 @@ protocol TVShowInteractorOutputInterface: InteractorOutputInterface {
 }
 
 protocol TVShowWireframeInterface: WireframeInterface {
+    func showMovieDetailScreen(_ id: Int)
 }

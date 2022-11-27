@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import KafkaRefresh
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var realmUtils: RealmUtils!
     
     static var shared: AppDelegate {
         guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -21,17 +23,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     var appRootViewController: TabbarViewController {
-        return window!.rootViewController as! TabbarViewController
+        return (window!.rootViewController as! UINavigationController).viewControllers.first as! TabbarViewController
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let vc = AppScreens.example.createViewController()
-        let navigation: UINavigationController = .init(rootViewController: vc)
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        window?.rootViewController = TabbarViewController()
+        let navigation = UINavigationController.init(rootViewController: TabbarViewController())
+        navigation.setNavigationBarHidden(true, animated: false)
+        window?.rootViewController = navigation
         window?.makeKeyAndVisible()
+        self.realmUtils = RealmUtilsProvider.defaultStorage
         return true
     }
 

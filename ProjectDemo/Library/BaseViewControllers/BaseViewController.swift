@@ -10,7 +10,12 @@ import UIKit
 import Moya
 
 open class BaseViewController: UIViewController {
-
+    
+    var realmUtils: RealmUtils! {
+        get {
+            AppDelegate.shared.realmUtils
+        }
+    }
     var myNavigationBar: NavigationBarView?
     public var currentRootViewController: UIViewController?
     public private(set) var navigator: BaseNavigator!
@@ -66,7 +71,7 @@ extension BaseViewController {
     /// Push
     public func pushChildViewController(_ vc: UIViewController, _ fromRoot: Bool, _ animate: Bool) {
         if fromRoot {
-            currentRootNavigationController?.pushViewController(vc, animated: animate)
+            AppDelegate.shared.appRootViewController.navigationController?.pushViewController(vc, animated: animate)
         } else {
             currentNavigationController(from: nil)?.pushViewController(vc, animated: animate)
         }
@@ -161,7 +166,7 @@ extension BaseViewController: BaseNavigatorDelegate {
     }
 
     func didPresentViewController(_ vc: UIViewController, _ animate: Bool) {
-        
+        self.present(vc, animated: true)
     }
 
     func didReplaceViewController(_ vc: UIViewController) {

@@ -22,12 +22,39 @@ final class MovieDetailPresenter {
 }
 
 extension MovieDetailPresenter: MovieDetailPresenterInterface {
+    func didTapPlayVideo(_ video: Video) {
+        wireframe.showPlayVideo(video.key, false)
+    }
+    
+    
+    func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    func viewDidLoad() {
+        let payload = view!.id
+        let isTVShow = payload.1
+        if !isTVShow {
+            interactor.getMovieDetail(view!.id.0)
+        } else {
+            interactor.getTVShowDetail(view!.id.0)
+        }
+    }
 }
 
 extension MovieDetailPresenter: MovieDetailInteractorOutputInterface {
-
+    func getTVShowDetail(_ response: MovieDetail) {
+        view?.getTVShowDetail(response)
+    }
+    
+    
+    func getMovieDetail(_ response: MovieDetail) {
+        view?.getMovieDetail(response)
+    }
+    
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()
+        view?.handleError(error)
         wireframe.handleError(error, completion)
     }
 }

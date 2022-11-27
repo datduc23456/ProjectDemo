@@ -15,10 +15,9 @@ class RealmUtils {
 
     public convenience init(dbName: String) {
         var config = Realm.Configuration()
-        // Use the default directory, but replace the filename with the username
         config.fileURL = config.fileURL!.deletingLastPathComponent()
             .appendingPathComponent("\(dbName).realm")
-      print("init DB at path\(config.fileURL?.absoluteString)")
+        print("init DB at path\(config.fileURL?.absoluteString)")
         config.schemaVersion = UInt64(realmSchemaVersion)
         config.migrationBlock = { migration, oldSchemaVersion in
             // We haven’t migrated anything yet, so oldSchemaVersion == 0
@@ -88,7 +87,5 @@ class RealmUtils {
 }
 
 class RealmUtilsProvider {
-    static var defaultStorage = RealmUtils(dbName: "VDSEvent")
-//    static var anonymousStorage = RealmUtils(dbName: "VDSAnonymousEvent")
-//    static var olderStorage = RealmUtils(dbName: "VDSOlderEvent")
+    static var defaultStorage = RealmUtils(dbName: "DTPRealm")
 }

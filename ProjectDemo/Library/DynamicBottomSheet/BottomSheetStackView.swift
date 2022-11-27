@@ -23,7 +23,7 @@ enum BottomSheetType {
         case .button:
             return 44
         case .content:
-            return 100
+            return 92
         }
     }
 }
@@ -35,6 +35,7 @@ class BottomSheetStackView: BaseCustomView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
+        self.stackView.spacing = 8
     }
      
     required init?(coder aDecoder: NSCoder) {
@@ -42,8 +43,7 @@ class BottomSheetStackView: BaseCustomView {
     }
     
     func config(_ dataSource: [BottomSheetType]) {
-        let newDataSource = [.draggable] + dataSource
-        for type in newDataSource {
+        for type in dataSource {
             switch type {
             case .label(let title):
                 let view = BottomSheetLabelView()

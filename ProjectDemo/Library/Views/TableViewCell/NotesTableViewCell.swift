@@ -9,6 +9,8 @@ import UIKit
 
 class NotesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lbTotalVote: UILabel!
+    @IBOutlet weak var lbVoteAvg: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,4 +22,8 @@ class NotesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configCell(totalVote: Double, voteAvg: Double) {
+        lbTotalVote.text = "\(totalVote) rating"
+        lbVoteAvg.text = "\(voteAvg)"
+    }
 }

@@ -19,6 +19,7 @@ final class FavoriteWireframe: FavoriteWireframeInterface {
         // let vc = initialViewController.topViewController as! FavoriteViewController
         let wireframe = FavoriteWireframe()
         wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = FavoriteInteractor()
         let presenter = FavoritePresenter(
             view: initialViewController,

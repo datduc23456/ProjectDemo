@@ -18,6 +18,7 @@ final class HomeWireframe: HomeWireframeInterface {
         // let vc = initialViewController.topViewController as! HomeViewController
         let wireframe = HomeWireframe()
         wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = HomeInteractor()
         let presenter = HomePresenter(
             view: initialViewController,
@@ -30,5 +31,13 @@ final class HomeWireframe: HomeWireframeInterface {
 
 	func handleError(_ error: Error, _ completion: (() -> Void)?) {
         
+    }
+    
+    func showMovieDetailScreen(_ id: Int) {
+        navigator.pushScreen(AppScreens.detail, (id, false), fromRoot: true)
+    }
+    
+    func showSearchScreen() {
+        navigator.pushScreen(AppScreens.search, fromRoot: true)
     }
 }

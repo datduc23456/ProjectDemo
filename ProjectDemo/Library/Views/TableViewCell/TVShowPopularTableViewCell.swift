@@ -10,6 +10,9 @@ import UIKit
 class TVShowPopularTableViewCell: BaseTableCollectionViewCell<TVShowCollectionViewCell> {
 
     override var flowLayout: FlowLayoutAttribute? {
+        if self.listPayload is [Season] {
+            return FlowLayoutAttribute(estimatedItemSize: CGSize(width: 186, height: 171), minimumInteritemSpacing: 0, minimumLineSpacing: 12, footerReferenceSize: CGSize(width: 16, height: 171), headerReferenceSize: CGSize(width: 16, height: 171), scrollDirection: .horizontal)
+        }
         return FlowLayoutAttribute(estimatedItemSize: CGSize(width: 186, height: 195), minimumInteritemSpacing: 0, minimumLineSpacing: 12, footerReferenceSize: CGSize(width: 16, height: 195), headerReferenceSize: CGSize(width: 16, height: 195), scrollDirection: .horizontal)
     }
     
@@ -24,7 +27,8 @@ class TVShowPopularTableViewCell: BaseTableCollectionViewCell<TVShowCollectionVi
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TVShowCollectionViewCell.className, for: indexPath) as! TVShowCollectionViewCell
         let payload = self.listPayload[indexPath.row]
-        cell.configCell(payload, isTVShow: true)
+        let isTVShowDetail = payload is Season
+        cell.configCell(payload, isTVShowDetail: isTVShowDetail)
         cell.didTapAction = { [weak self] any in
             guard let `self` = self else { return }
             self.didTapActionInCell(any)

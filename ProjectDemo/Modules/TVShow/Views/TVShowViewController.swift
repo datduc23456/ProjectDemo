@@ -92,6 +92,10 @@ extension TVShowViewController: UITableViewDataSource, UITableViewDelegate {
                     if let movie = payload as? Movie {
                         self.configMovieDetail(movie)
                     }
+                case .popular, .trending:
+                    if let movie = payload as? Movie {
+                        self.presenter.didTapToMovie(movie)
+                    }
                 default:
                     return
                 }

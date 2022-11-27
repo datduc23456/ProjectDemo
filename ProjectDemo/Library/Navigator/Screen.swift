@@ -27,6 +27,8 @@ enum AppScreens: String, Screen, CaseIterable {
     case statistical
     case addnote
     case popularpeople
+    case playvideo
+    case search
     
     var path: String {
         return rawValue
@@ -34,6 +36,8 @@ enum AppScreens: String, Screen, CaseIterable {
     
     var transition: NavigateTransions {
         switch self {
+        case .playvideo:
+            return .present
         default:
             return .push
         }
@@ -54,9 +58,13 @@ enum AppScreens: String, Screen, CaseIterable {
         case .addnote:
             return AddNoteWireframe.generateModule(payload)
         case .popularpeople:
-            return GenersWireframe.generateModule(payload)
+            return ActionWireframe.generateModule(payload)
         case .home:
             return HomeWireframe.generateModule(payload)
+        case .search:
+            return SearchWireframe.generateModule(payload)
+        case .playvideo:
+            return PlayVideoWireframe.generateModule(payload)
         }
     }
 }

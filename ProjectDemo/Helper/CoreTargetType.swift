@@ -19,7 +19,7 @@ enum CoreTargetType: TargetType {
     case TVshowPopular(page: Int)
     case TVshowTopRate(page: Int)
     case TVshowLastest(page: Int)
-    case TVshowDetail
+    case TVshowDetail(Int)
     case searchTVshow(query: String, page: Int)
     case personPopular(page: Int)
     case personDetail(personId: Int)
@@ -49,8 +49,8 @@ enum CoreTargetType: TargetType {
             return "tv/top_rated"
         case .TVshowLastest:
             return "tv/airing_today"
-        case .TVshowDetail:
-            return "tv/100"
+        case .TVshowDetail(let id):
+            return "tv/\(id)"
         case .searchTVshow:
             return "search/tv"
         case .personPopular:

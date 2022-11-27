@@ -15,7 +15,7 @@ enum BaseNavigationType {
 
 class BaseNavigationView: NavigationBarView {
 
-    
+    @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var viewSearch: UIView!
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var icBack: UIImageView!

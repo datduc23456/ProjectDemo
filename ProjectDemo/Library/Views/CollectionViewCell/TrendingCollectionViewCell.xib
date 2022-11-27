@@ -17,31 +17,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="137" height="168"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Black_adam" translatesAutoresizingMaskIntoConstraints="NO" id="O6n-Va-lf0">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-kv-82Y" customClass="AYImageView" customModule="ProjectDemo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="137" height="168"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="8"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
-                    </imageView>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="O6n-Va-lf0" secondAttribute="bottom" id="4zu-bj-TbP"/>
-                <constraint firstItem="O6n-Va-lf0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="M1U-sE-4rT"/>
-                <constraint firstAttribute="trailing" secondItem="O6n-Va-lf0" secondAttribute="trailing" id="O0k-9z-Yyn"/>
-                <constraint firstItem="O6n-Va-lf0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jfB-qx-aGW"/>
+                <constraint firstItem="XtT-kv-82Y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Bhj-Yj-0K8"/>
+                <constraint firstItem="XtT-kv-82Y" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="NmT-SW-1c6"/>
+                <constraint firstAttribute="bottom" secondItem="XtT-kv-82Y" secondAttribute="bottom" id="XO0-E9-qwb"/>
+                <constraint firstAttribute="trailing" secondItem="XtT-kv-82Y" secondAttribute="trailing" id="u2n-cA-Nrq"/>
             </constraints>
             <size key="customSize" width="137" height="168"/>
             <connections>
-                <outlet property="image" destination="O6n-Va-lf0" id="sK2-uN-p6X"/>
+                <outlet property="imageView" destination="XtT-kv-82Y" id="IHd-Da-8wF"/>
             </connections>
             <point key="canvasLocation" x="93.89312977099236" y="28.87323943661972"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="Black_adam" width="40.666667938232422" height="40.666667938232422"/>
-    </resources>
 </document>

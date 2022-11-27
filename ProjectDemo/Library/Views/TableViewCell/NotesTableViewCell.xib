@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -25,16 +25,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Anj-a1-rCJ">
-                        <rect key="frame" x="16.000000000000004" y="10" width="32.333333333333343" height="12"/>
-                        <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="12"/>
+                        <rect key="frame" x="16" y="4" width="64.666666666666671" height="24"/>
+                        <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="24"/>
                         <color key="textColor" red="1" green="0.74509803919999995" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_star_yellow" translatesAutoresizingMaskIntoConstraints="NO" id="vfd-6i-FFv">
-                        <rect key="frame" x="54.333333333333343" y="6" width="20" height="20"/>
+                        <rect key="frame" x="86.666666666666671" y="3" width="20" height="20"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEM-qg-aLP">
-                        <rect key="frame" x="86.333333333333329" y="10" width="32.333333333333329" height="12"/>
+                        <rect key="frame" x="118.66666666666667" y="7" width="32.333333333333329" height="12"/>
                         <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="12"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -94,12 +94,16 @@
                     <constraint firstItem="Anj-a1-rCJ" firstAttribute="centerY" secondItem="kfl-zd-M1W" secondAttribute="centerY" id="V6z-eZ-adh"/>
                     <constraint firstAttribute="trailing" secondItem="kfl-zd-M1W" secondAttribute="trailing" constant="9" id="Wbo-of-7lo"/>
                     <constraint firstItem="kfl-zd-M1W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="eNc-9F-Dpr"/>
-                    <constraint firstItem="vfd-6i-FFv" firstAttribute="centerY" secondItem="Anj-a1-rCJ" secondAttribute="centerY" id="jUP-8X-I2T"/>
+                    <constraint firstItem="vfd-6i-FFv" firstAttribute="centerY" secondItem="Anj-a1-rCJ" secondAttribute="centerY" constant="-3" id="jUP-8X-I2T"/>
                     <constraint firstItem="pEM-qg-aLP" firstAttribute="centerY" secondItem="vfd-6i-FFv" secondAttribute="centerY" id="ls0-Zc-hDA"/>
                     <constraint firstAttribute="trailing" secondItem="mjd-PR-Sdo" secondAttribute="trailing" constant="16" id="s9S-61-Vmc"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="lbTotalVote" destination="pEM-qg-aLP" id="hBD-X7-ITr"/>
+                <outlet property="lbVoteAvg" destination="Anj-a1-rCJ" id="7fK-ar-FUI"/>
+            </connections>
             <point key="canvasLocation" x="129.7709923664122" y="17.95774647887324"/>
         </tableViewCell>
     </objects>

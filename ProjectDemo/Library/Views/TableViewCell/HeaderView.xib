@@ -49,6 +49,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btnSeeMore" destination="Wy8-7i-nLN" id="45c-2n-xqT"/>
                 <outlet property="lbTitle" destination="i5T-KS-95G" id="BBl-z9-q97"/>
             </connections>
             <point key="canvasLocation" x="-69.230769230769226" y="-282.22748815165875"/>

@@ -7,8 +7,10 @@
 
 import UIKit
 
-class PageCinemaTableViewCell: UITableViewCell {
-
+class PageCinemaTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
+    
+    
+    
     @IBOutlet weak var lbYear: UILabel!
     @IBOutlet weak var lbRate: UILabel!
     @IBOutlet weak var lbGenre: UILabel!
@@ -16,7 +18,9 @@ class PageCinemaTableViewCell: UITableViewCell {
     @IBOutlet weak var backGroundImg: UIImageView!
     @IBOutlet weak var pageControl: FSPageControl!
     @IBOutlet weak var pagerView: FSPagerView!
-    var listPayload: [Movie] = [] {
+    
+    var didTapActionInCell: ((Any) -> Void) = {_ in}
+    var listPayload: [Any] = [] {
         didSet {
             pageControl.numberOfPages = listPayload.count
             pagerView.reloadData()
@@ -42,8 +46,6 @@ class PageCinemaTableViewCell: UITableViewCell {
         blurEffectView.frame = contentView.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         contentView.insertSubview(blurEffectView, at: 1)
-//        listPayload.dictionary(withKey: \.dateFavorite, value: [\.])
-        Dictionary(grouping: listPayload, by: { $0.dateFavorite })
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -66,16 +68,20 @@ extension PageCinemaTableViewCell: FSPagerViewDataSource, FSPagerViewDelegate {
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
-        let movie = listPayload[index]
+        let movie = listPayload[index] as! Movie
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         cell.imageView?.kf.setImage(with: URL(string: "\(baseURLImage)\(movie.posterPath)"))
+        cell.imageView?.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self else { return }
+            self.didTapActionInCell(movie)
+        }
         cell.textLabel?.superview?.isHidden = true
         return cell
     }
     
     func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
         pageControl.currentPage = targetIndex
-        let movie = listPayload[targetIndex]
+        let movie = listPayload[targetIndex] as! Movie
         configCell(movie)
     }
 }

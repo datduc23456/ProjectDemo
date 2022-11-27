@@ -28,6 +28,10 @@ final class HomeViewController: BaseViewController {
         tableView.delegate = self
         tableView.sectionFooterHeight = 0
         let navigation: BaseNavigationView = initCustomNavigation(.base)
+        navigation.imgSearch.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self else { return }
+            self.presenter.didTapSearch()
+        }
         navigation.configContentNav(.home)
         presenter.viewDidLoad()
     }
@@ -53,7 +57,7 @@ extension HomeViewController: HomeViewInterface {
     func getGenresList(_ response: GenreResponse) {
         let genres = [Genre()] + response.genres
         self.data.updateValue(genres, forKey: "\(HomeTableViewDataSource.genges)")
-        tableView.reloadSections(IndexSet([0]), with: .none)
+        tableView.reloadData()
     }
     
     func getTopRate(_ response: MovieResponse) {
@@ -93,10 +97,15 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none
         if let baseCell = cell as? BaseWithCollectionTableViewCellHandler, let data = self.data["\(item)"] as? [Any] {
             baseCell.listPayload = data
-        }
-        
-        if let baseCell = cell as? PageCinemaTableViewCell, let data = self.data["\(item)"] as? [Movie] {
-            baseCell.listPayload = data
+            baseCell.didTapActionInCell = { [weak self] any in
+                guard let `self` = self else { return }
+                switch item {
+                case .popular, .topRating, .trending, .pageView:
+                    self.presenter.didTapToMovie(any as! Movie)
+                default:
+                    break
+                }
+            }
         }
         
         if item == .newMovie, let movieCell = cell as? NewMovieTableViewCell {

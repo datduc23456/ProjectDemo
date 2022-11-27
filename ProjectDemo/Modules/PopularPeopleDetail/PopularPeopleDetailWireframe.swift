@@ -18,6 +18,7 @@ final class PopularPeopleDetailWireframe: PopularPeopleDetailWireframeInterface 
         // let vc = initialViewController.topViewController as! PopularPeopleDetailViewController
         let wireframe = PopularPeopleDetailWireframe()
         wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = PopularPeopleDetailInteractor()
         let presenter = PopularPeopleDetailPresenter(
             view: initialViewController,

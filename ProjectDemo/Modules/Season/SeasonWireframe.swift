@@ -18,6 +18,7 @@ final class SeasonWireframe: SeasonWireframeInterface {
         // let vc = initialViewController.topViewController as! SeasonViewController
         let wireframe = SeasonWireframe()
         wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = SeasonInteractor()
         let presenter = SeasonPresenter(
             view: initialViewController,

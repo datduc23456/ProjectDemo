@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -21,56 +21,95 @@
                 <rect key="frame" x="0.0" y="0.0" width="541" height="220"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xHF-rv-tLT">
-                        <rect key="frame" x="81.333333333333314" y="8" width="200" height="125"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yp8-ri-7Ic">
+                        <rect key="frame" x="16" y="0.0" width="509" height="220"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xHF-rv-tLT">
+                                <rect key="frame" x="8" y="8" width="200" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="neV-CF-fRb"/>
+                                    <constraint firstAttribute="width" constant="200" id="oCG-9z-hIW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dasdadadadadasfsdfsdfsdfdsfdsfsfs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXM-kz-NLH">
+                                <rect key="frame" x="216" y="16" width="273" height="14"/>
+                                <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Producer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lB-lo-ORi">
+                                <rect key="frame" x="216" y="40" width="273" height="12"/>
+                                <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7Mu-pK-gAQ" customClass="ImageStackView" customModule="ProjectDemo" customModuleProvider="target">
+                                <rect key="frame" x="8" y="164" width="493" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="28D-Vo-xPQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="count">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_play_small" translatesAutoresizingMaskIntoConstraints="NO" id="ZbD-yN-FpB">
+                                <rect key="frame" x="97" y="59.666666666666657" width="22" height="22"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.090196078431372548" green="0.10196078431372549" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="125" id="neV-CF-fRb"/>
-                            <constraint firstAttribute="width" constant="200" id="oCG-9z-hIW"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dasdadadadadasfsdfsdfsdfdsfdsfsfs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXM-kz-NLH">
-                        <rect key="frame" x="289.33333333333331" y="8" width="251.66666666666669" height="59"/>
-                        <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Producer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8lB-lo-ORi">
-                        <rect key="frame" x="183" y="69" width="49.333333333333343" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="12"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7Mu-pK-gAQ" customClass="ImageStackView" customModule="ProjectDemo" customModuleProvider="target">
-                        <rect key="frame" x="8" y="158" width="525" height="62"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="62" id="T5H-DP-OO6"/>
+                            <constraint firstAttribute="trailing" secondItem="nXM-kz-NLH" secondAttribute="trailing" constant="20" id="20j-3r-Hva"/>
+                            <constraint firstItem="8lB-lo-ORi" firstAttribute="leading" secondItem="nXM-kz-NLH" secondAttribute="leading" id="26j-JZ-zUg"/>
+                            <constraint firstItem="xHF-rv-tLT" firstAttribute="leading" secondItem="yp8-ri-7Ic" secondAttribute="leading" constant="8" id="6cn-Aj-KN3"/>
+                            <constraint firstItem="xHF-rv-tLT" firstAttribute="top" secondItem="yp8-ri-7Ic" secondAttribute="top" constant="8" id="ENY-Hr-aOX"/>
+                            <constraint firstItem="nXM-kz-NLH" firstAttribute="top" secondItem="xHF-rv-tLT" secondAttribute="top" constant="8" id="Eht-eF-ecD"/>
+                            <constraint firstAttribute="trailing" secondItem="7Mu-pK-gAQ" secondAttribute="trailing" constant="8" id="QSN-vi-6E1"/>
+                            <constraint firstItem="7Mu-pK-gAQ" firstAttribute="leading" secondItem="yp8-ri-7Ic" secondAttribute="leading" constant="8" id="Qcu-DU-JYB"/>
+                            <constraint firstItem="ZbD-yN-FpB" firstAttribute="centerY" secondItem="xHF-rv-tLT" secondAttribute="centerY" id="SQ1-PQ-1B3"/>
+                            <constraint firstAttribute="bottom" secondItem="7Mu-pK-gAQ" secondAttribute="bottom" constant="8" id="T7x-oA-m17"/>
+                            <constraint firstItem="8lB-lo-ORi" firstAttribute="top" secondItem="nXM-kz-NLH" secondAttribute="bottom" constant="10" id="VBU-Mt-1bE"/>
+                            <constraint firstItem="ZbD-yN-FpB" firstAttribute="centerX" secondItem="xHF-rv-tLT" secondAttribute="centerX" id="g1v-kT-dVr"/>
+                            <constraint firstItem="8lB-lo-ORi" firstAttribute="trailing" secondItem="nXM-kz-NLH" secondAttribute="trailing" id="nHj-t5-WXW"/>
+                            <constraint firstItem="nXM-kz-NLH" firstAttribute="leading" secondItem="xHF-rv-tLT" secondAttribute="trailing" constant="8" id="ptK-5f-QRz"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="count">
-                                <integer key="value" value="6"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.24705882352941178" green="0.25882352941176467" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
-                    </stackView>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="7Mu-pK-gAQ" secondAttribute="bottom" id="2bB-HT-zhQ"/>
-                    <constraint firstItem="xHF-rv-tLT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="3II-kf-Cxu"/>
-                    <constraint firstItem="xHF-rv-tLT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="4U7-cw-IuX"/>
-                    <constraint firstItem="7Mu-pK-gAQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="6Jj-8O-r8a"/>
-                    <constraint firstItem="8lB-lo-ORi" firstAttribute="top" secondItem="nXM-kz-NLH" secondAttribute="bottom" constant="2" id="6Mc-ya-xGt"/>
-                    <constraint firstItem="nXM-kz-NLH" firstAttribute="top" secondItem="xHF-rv-tLT" secondAttribute="top" id="EHr-JP-EgH"/>
-                    <constraint firstAttribute="trailing" secondItem="7Mu-pK-gAQ" secondAttribute="trailing" constant="8" id="LO9-OX-BzV"/>
-                    <constraint firstItem="8lB-lo-ORi" firstAttribute="leading" secondItem="nXM-kz-NLH" secondAttribute="leading" id="fHb-zI-CJV"/>
-                    <constraint firstAttribute="trailing" secondItem="nXM-kz-NLH" secondAttribute="trailing" id="tcc-me-ciW"/>
-                    <constraint firstItem="nXM-kz-NLH" firstAttribute="leading" secondItem="xHF-rv-tLT" secondAttribute="trailing" constant="8" id="u8H-GF-g6z"/>
+                    <constraint firstAttribute="bottom" secondItem="yp8-ri-7Ic" secondAttribute="bottom" id="L0u-Ac-nwp"/>
+                    <constraint firstAttribute="trailing" secondItem="yp8-ri-7Ic" secondAttribute="trailing" constant="16" id="S4w-BG-hjs"/>
+                    <constraint firstItem="yp8-ri-7Ic" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fcS-yq-iK7"/>
+                    <constraint firstItem="yp8-ri-7Ic" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="xId-ML-R2w"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="imgThumbnail" destination="xHF-rv-tLT" id="Dp4-4J-R3p"/>
+                <outlet property="lbName" destination="nXM-kz-NLH" id="Akp-tA-1o9"/>
+                <outlet property="lbPublished" destination="8lB-lo-ORi" id="BUm-JL-8uh"/>
                 <outlet property="stackView" destination="7Mu-pK-gAQ" id="2pw-Zd-gYz"/>
             </connections>
             <point key="canvasLocation" x="296.94656488549617" y="73.239436619718319"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_play_small" width="22" height="22"/>
+    </resources>
 </document>

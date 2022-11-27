@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PopularPeopleDetailViewController: UIViewController {
+final class PopularPeopleDetailViewController: BaseViewController {
 
     // MARK: - Properties
 	var presenter: PopularPeopleDetailPresenterInterface!

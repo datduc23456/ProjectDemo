@@ -36,10 +36,10 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YTt-e9-Jzp">
-                        <rect key="frame" x="8" y="8" width="29" height="32"/>
+                        <rect key="frame" x="8" y="8" width="32" height="32"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xH5-92-JDt">
-                                <rect key="frame" x="11" y="5.6666666666666661" width="7" height="20.666666666666671"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xH5-92-JDt">
+                                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                 <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -47,13 +47,14 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="xH5-92-JDt" secondAttribute="trailing" constant="11" id="3rO-Od-II7"/>
-                            <constraint firstAttribute="bottom" secondItem="xH5-92-JDt" secondAttribute="bottom" constant="5.6666666666666643" id="IHw-FR-u2M"/>
-                            <constraint firstItem="xH5-92-JDt" firstAttribute="centerX" secondItem="YTt-e9-Jzp" secondAttribute="centerX" id="W06-u5-tbR"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="1ML-LJ-rLP"/>
                             <constraint firstAttribute="height" constant="32" id="WQS-sm-YUU"/>
-                            <constraint firstItem="xH5-92-JDt" firstAttribute="centerY" secondItem="YTt-e9-Jzp" secondAttribute="centerY" id="ZvO-FU-9eR"/>
-                            <constraint firstItem="xH5-92-JDt" firstAttribute="top" secondItem="YTt-e9-Jzp" secondAttribute="top" constant="5.6666666666666643" id="cGt-tD-puv"/>
-                            <constraint firstItem="xH5-92-JDt" firstAttribute="leading" secondItem="YTt-e9-Jzp" secondAttribute="leading" constant="11" id="zOP-en-7XC"/>
+                            <constraint firstAttribute="trailing" secondItem="xH5-92-JDt" secondAttribute="trailing" id="WyM-ap-NVK"/>
+                            <constraint firstItem="xH5-92-JDt" firstAttribute="centerY" secondItem="YTt-e9-Jzp" secondAttribute="centerY" id="dlh-dS-w8q"/>
+                            <constraint firstAttribute="bottom" secondItem="xH5-92-JDt" secondAttribute="bottom" id="gyj-ow-y2P"/>
+                            <constraint firstItem="xH5-92-JDt" firstAttribute="top" secondItem="YTt-e9-Jzp" secondAttribute="top" id="h8M-2W-8P4"/>
+                            <constraint firstItem="xH5-92-JDt" firstAttribute="centerX" secondItem="YTt-e9-Jzp" secondAttribute="centerX" id="udm-U1-le4"/>
+                            <constraint firstItem="xH5-92-JDt" firstAttribute="leading" secondItem="YTt-e9-Jzp" secondAttribute="leading" id="wJR-V4-C6w"/>
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2mk-aV-Cjr" customClass="ImageStackView" customModule="ProjectDemo" customModuleProvider="target">

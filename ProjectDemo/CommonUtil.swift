@@ -16,6 +16,10 @@ class CommonUtil {
         let date = dateString.toDate()
         return "\((date?.get(.year)).isNil(value: 2022))"
     }
+    
+    static func getThumbnailYoutubeUrl(_ key: String) -> URL {
+        return URL(string: "https://img.youtube.com/vi/\(key)/hqdefault.jpg")!
+    }
 }
 
 public func delay(_ delay:Double, closure:@escaping ()->()) {

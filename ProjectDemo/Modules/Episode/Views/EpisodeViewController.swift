@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EpisodeViewController: UIViewController {
+final class EpisodeViewController: BaseViewController {
 
     // MARK: - Properties
 	var presenter: EpisodePresenterInterface!

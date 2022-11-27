@@ -17,8 +17,8 @@ extension TVShowInteractor: TVShowInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.TVshowTopRate(page: 1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getTopRate(response)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
     
@@ -26,8 +26,8 @@ extension TVShowInteractor: TVShowInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.TVshowPopular(page: 1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getTVShowPopular(response)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
     
@@ -35,8 +35,8 @@ extension TVShowInteractor: TVShowInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.TVshowLastest(page: 1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getTVShowLastest(response)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
 }

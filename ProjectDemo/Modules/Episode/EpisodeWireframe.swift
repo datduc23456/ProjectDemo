@@ -18,6 +18,7 @@ final class EpisodeWireframe: EpisodeWireframeInterface {
         // let vc = initialViewController.topViewController as! EpisodeViewController
         let wireframe = EpisodeWireframe()
         wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = EpisodeInteractor()
         let presenter = EpisodePresenter(
             view: initialViewController,
