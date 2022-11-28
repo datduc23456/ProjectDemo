@@ -12,7 +12,7 @@ struct MovieDetail: Codable {
     let adult: Bool
     let backdropPath: String
     let createdBy: [Cast]
-    let episodeRunTime: [Int]
+    let episodeRunTime: [Int]?
     let firstAirDate: String
     let genres: [Genre]
     let homepage: String
@@ -89,7 +89,7 @@ struct MovieDetail: Codable {
         firstAirDate = try values.decodeIfPresent(String.self, forKey: .firstAirDate).isNil(value: "")
         adult = try values.decodeIfPresent(Bool.self, forKey: .adult).isNil(value: false)
         backdropPath = try values.decodeIfPresent(String.self, forKey: .backdropPath).isNil(value: "")
-        episodeRunTime = try values.decodeIfPresent([Int].self, forKey: .episodeRunTime).isNil(value: [])
+        episodeRunTime = try values.decodeIfPresent([Int]?.self, forKey: .episodeRunTime) ?? nil
         id = try values.decodeIfPresent(Int.self, forKey: .id).isNil(value: 0)
         originalLanguage = try values.decodeIfPresent(String.self, forKey: .originalLanguage).isNil(value: "")
         createdBy = try values.decodeIfPresent([Cast].self, forKey: .createdBy).isNil(value: [])
@@ -133,9 +133,17 @@ struct MovieDetail: Codable {
         object.genreIDS.append(objectsIn: self.genres.map({$0.id}))
         object.posterPath = self.posterPath
         object.voteAverage = self.voteAverage
-        object.lastAirDate = self.lastAirDate
+        object.firstAirDate = self.firstAirDate
         object.releaseDate = self.releaseDate
+        object.isTVShow = self.isTVShow()
         return object
+    }
+    
+    func isTVShow() -> Bool {
+        if let _ = self.episodeRunTime {
+            return true
+        }
+        return false
     }
 }
 

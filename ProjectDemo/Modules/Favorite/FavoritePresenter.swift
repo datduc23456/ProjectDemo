@@ -23,11 +23,18 @@ final class FavoritePresenter {
 
 extension FavoritePresenter: FavoritePresenterInterface {
     func viewDidLoad() {
-        
+        interactor.getMovieFavorite(.movie)
+    }
+    
+    func getMovieFavorite(_ type: FavoriteFilterType) {
+        interactor.getMovieFavorite(type)
     }
 }
 
 extension FavoritePresenter: FavoriteInteractorOutputInterface {
+    func getMovieFavorite(_ data: [String : [MovieDetailObject]]) {
+        view?.getMovieFavorite(data)
+    }
 
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()

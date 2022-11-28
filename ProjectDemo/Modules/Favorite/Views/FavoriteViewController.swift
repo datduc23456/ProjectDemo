@@ -8,34 +8,74 @@
 
 import UIKit
 import DZNEmptyDataSet
+import KafkaRefresh
+
+enum FavoriteFilterType {
+    case movie
+    case tvshow
+}
 
 final class FavoriteViewController: BaseViewController {
 
     // MARK: - Properties
+    @IBOutlet weak var btnFilter: UIButton!
+    @IBOutlet weak var btnMovie: UIButton!
+    @IBOutlet weak var btnTVShow: UIButton!
     @IBOutlet weak var tableView: UITableView!
 	var presenter: FavoritePresenterInterface!
     var dataSource: [String: [MovieDetailObject]] = [:]
-    var bottomSheet: BaseViewBottomSheetViewController {
-        let bottomSheet = BaseViewBottomSheetViewController()
-        bottomSheet.bottomDataSource = [.content(title: "Remove Favorite", content: "Are you sure you would like to remove this film from the favorite"), .button(title: "Remove", isPrimary: true), .button(title: "No, Thank", isPrimary: false)]
-        return bottomSheet
-    }
+    var bottomSheet: BaseViewBottomSheetViewController!
+    var filterType: FavoriteFilterType = .movie
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configView()
         presenter.viewDidLoad()
+        bottomSheet = BaseViewBottomSheetViewController()
+        bottomSheet.bottomDataSource = [.content(title: "Remove Favorite", content: "Are you sure you would like to remove this film from the favorite"), .button(title: "Remove", isPrimary: true), .button(title: "No, Thank", isPrimary: false)]
         tableView.registerCell(for: FavoriteTableViewCell.className)
         tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
-        
+        let navigation: BaseNavigationView = initCustomNavigation(.base)
+        navigation.imgSearch.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self else { return }
+//            self.presenter.didTapSearch()
+        }
+        navigation.lbTitle.text = "Favorite"
+        navigation.configContentNav(.tabbar)
     }
     
+    func configView() {
+        tableView.bindHeadRefreshHandler({ [weak self] in
+            guard let `self` = self else { return }
+            self.presenter.getMovieFavorite(self.filterType)
+        }, themeColor: .white, refreshStyle: .replicatorCircle)
+        
+        btnMovie.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self, self.filterType != .movie else { return }
+            self.filterType = .movie
+            self.presenter.getMovieFavorite(.movie)
+            self.btnMovie.backgroundColor = UIColor(hex: "#FB716E")
+            self.btnTVShow.backgroundColor = UIColor(hex: "#232228")
+            self.btnTVShow.borderWidth = 1
+            self.btnMovie.borderWidth = 0
+        }
+        
+        btnTVShow.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self, self.filterType != .tvshow else { return }
+            self.filterType = .tvshow
+            self.presenter.getMovieFavorite(.tvshow)
+            self.btnTVShow.backgroundColor = UIColor(hex: "#FB716E")
+            self.btnMovie.backgroundColor = UIColor(hex: "#232228")
+            self.btnMovie.borderWidth = 1
+            self.btnTVShow.borderWidth = 0
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
-        dataSource = Dictionary(grouping: realmUtils.getListObjects(type: MovieDetailObject.self), by: { $0.releaseDate })
-        tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -50,6 +90,13 @@ final class FavoriteViewController: BaseViewController {
 
 // MARK: - FavoriteViewInterface
 extension FavoriteViewController: FavoriteViewInterface {
+    func getMovieFavorite(_ data: [String : [MovieDetailObject]]) {
+        dataSource = data
+        tableView.reloadData()
+        delay(1, closure: {
+            self.tableView.headRefreshControl.endRefreshing()
+        })
+    }
 }
 
 extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
@@ -94,7 +141,10 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
         cell.didTapRemove = { [weak self] in
             guard let `self` = self else { return }
             DispatchQueue.main.async {
-                self.present(self.bottomSheet, animated: true)
+                self.bottomSheet.payload = movieObject
+                self.present(self.bottomSheet, animated: true, completion: {
+                    self.bottomSheet.stackContent.delegate = self
+                })
             }
         }
         return cell
@@ -115,5 +165,18 @@ extension FavoriteViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
         let title = "No found theater!"
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Nexa-Bold", size: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
         return NSMutableAttributedString(string: title, attributes: attributes as [NSAttributedString.Key : Any])
+    }
+}
+
+extension FavoriteViewController: BoottomSheetStackViewDelegate {
+    func didSelect(_ bottomSheetStackView: BottomSheetStackView, selectedIndex index: Int) {
+        if index == 2, let movieObject = self.bottomSheet.payload as? MovieDetailObject {
+            self.realmUtils.deleteObject(object: movieObject)
+            self.dataSource = Dictionary(grouping: realmUtils.getListObjects(type: MovieDetailObject.self), by: { $0.releaseDate })
+            self.tableView.reloadData()
+        }
+        if index == 2 || index == 3 {
+            self.bottomSheet.dismiss(animated: true)
+        }
     }
 }

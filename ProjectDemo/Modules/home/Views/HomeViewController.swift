@@ -27,6 +27,7 @@ final class HomeViewController: BaseViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.sectionFooterHeight = 0
+        tableView.bounces = false
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }

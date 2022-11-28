@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nexa Bold.otf">
+            <string>Nexa-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Note View Controller-->
+        <scene sceneID="9kx-Y6-89Z">
+            <objects>
+                <viewController id="ab2-EX-tH2" customClass="NoteViewController" customModule="ProjectDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yMH-WK-99E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6Y-Gg-yIi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIr-j5-Syc">
+                                        <rect key="frame" x="16" y="0.0" width="164" height="44"/>
+                                        <color key="backgroundColor" red="0.98431372549999996" green="0.4431372549" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="KEK-Iv-trf"/>
+                                            <constraint firstAttribute="width" constant="164" id="tsM-AU-CKg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                        <state key="normal" title="Add note" image="ic_plus">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="AIr-j5-Syc" firstAttribute="top" secondItem="P6Y-Gg-yIi" secondAttribute="top" id="4uZ-ov-S1a"/>
+                                    <constraint firstItem="AIr-j5-Syc" firstAttribute="leading" secondItem="P6Y-Gg-yIi" secondAttribute="leading" constant="16" id="Iuk-bb-b2i"/>
+                                    <constraint firstAttribute="height" constant="60" id="ai2-Se-JjL"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Yqp-fZ-wtb">
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="miT-am-cok"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Yqp-fZ-wtb" firstAttribute="leading" secondItem="miT-am-cok" secondAttribute="leading" id="7tb-VG-5TE"/>
+                            <constraint firstAttribute="bottom" secondItem="Yqp-fZ-wtb" secondAttribute="bottom" id="GsY-Xm-Gex"/>
+                            <constraint firstItem="Yqp-fZ-wtb" firstAttribute="trailing" secondItem="miT-am-cok" secondAttribute="trailing" id="Ixu-wa-c4m"/>
+                            <constraint firstItem="Yqp-fZ-wtb" firstAttribute="top" secondItem="P6Y-Gg-yIi" secondAttribute="bottom" id="SRA-gD-sG2"/>
+                            <constraint firstItem="P6Y-Gg-yIi" firstAttribute="leading" secondItem="miT-am-cok" secondAttribute="leading" id="jyd-xw-oJW"/>
+                            <constraint firstItem="miT-am-cok" firstAttribute="trailing" secondItem="P6Y-Gg-yIi" secondAttribute="trailing" id="l1H-Vv-oVQ"/>
+                            <constraint firstItem="P6Y-Gg-yIi" firstAttribute="top" secondItem="miT-am-cok" secondAttribute="top" id="voe-VB-1DI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Yqp-fZ-wtb" id="Ds4-mA-tJ8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iZ1-oP-p5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="194" y="143"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_plus" width="13" height="13"/>
+    </resources>
+</document>

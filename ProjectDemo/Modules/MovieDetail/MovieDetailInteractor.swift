@@ -6,8 +6,10 @@
 //  Copyright © 2022 dat.nguyen. All rights reserved.
 //
 
-final class MovieDetailInteractor {
+import Foundation
 
+final class MovieDetailInteractor {
+    let realmUtils = AppDelegate.shared.realmUtils!
     weak var output: MovieDetailInteractorOutputInterface?
 }
 
@@ -29,5 +31,26 @@ extension MovieDetailInteractor: MovieDetailInteractorInterface {
         }, failureBlock: { error in
             self.output?.handleError(error, {})
         })
+    }
+    
+    func fetchRealmMovieDetailObjectWithId(_ id: Int, completion: ((MovieDetailObject)->Void)) {
+        let predicate = NSPredicate(format: "_id == %@", NSNumber(value: id))
+        let query = realmUtils.dataQueryByPredicate(type: MovieDetailObject.self, predicate: predicate)
+        if !query.isEmpty {
+            self.output?.fetchRealmMovieDetailObjectWithId(query[0])
+            completion(query[0])
+        }
+    }
+    
+    func deleteMovieDetailObject(_ movie: MovieDetail) {
+        self.fetchRealmMovieDetailObjectWithId(movie.id, completion: { object in
+            self.realmUtils.deleteObject(object: object)
+            self.output?.deleteMovieDetailObject(movie)
+        })
+    }
+    
+    func insertMovieDetailObject(_ movie: MovieDetail) {
+        self.realmUtils.insertOrUpdate(movie.toMovieObject())
+        self.output?.insertMovieDetailObject(movie)
     }
 }

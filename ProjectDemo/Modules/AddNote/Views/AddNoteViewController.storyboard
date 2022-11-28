@@ -266,11 +266,6 @@
             <point key="canvasLocation" x="194" y="143"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="aYy-2Q-iko">
-            <size key="intrinsicContentSize" width="-1" height="63"/>
-        </designable>
-    </designables>
     <resources>
         <image name="ic_plus_white" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">

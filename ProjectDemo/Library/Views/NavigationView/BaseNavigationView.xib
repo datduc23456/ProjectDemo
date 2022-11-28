@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -47,10 +47,10 @@
                     </constraints>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_search" translatesAutoresizingMaskIntoConstraints="NO" id="Ubo-bh-mym">
-                    <rect key="frame" x="316" y="91" width="18" height="18"/>
+                    <rect key="frame" x="316" y="84" width="18" height="18"/>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_setting" translatesAutoresizingMaskIntoConstraints="NO" id="O4H-8k-hdj">
-                    <rect key="frame" x="352" y="87" width="20" height="22"/>
+                    <rect key="frame" x="352" y="82" width="20" height="22"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJh-a4-osi">
                     <rect key="frame" x="0.0" y="74" width="390" height="50"/>
@@ -104,19 +104,19 @@
                 <constraint firstItem="Moi-c7-R0D" firstAttribute="top" secondItem="EUl-rR-5Qp" secondAttribute="top" id="AzE-ak-1GZ"/>
                 <constraint firstItem="Moi-c7-R0D" firstAttribute="bottom" secondItem="EUl-rR-5Qp" secondAttribute="bottom" id="BTh-t9-bZk"/>
                 <constraint firstItem="co4-Cu-Vjq" firstAttribute="bottom" secondItem="ify-Dt-Ppm" secondAttribute="bottom" id="DHu-cc-qLH"/>
+                <constraint firstItem="O4H-8k-hdj" firstAttribute="centerY" secondItem="co4-Cu-Vjq" secondAttribute="centerY" id="EkJ-1w-uD8"/>
                 <constraint firstItem="O4H-8k-hdj" firstAttribute="leading" secondItem="Ubo-bh-mym" secondAttribute="trailing" constant="18" id="JFg-Nh-lnK"/>
                 <constraint firstAttribute="bottom" secondItem="NJh-a4-osi" secondAttribute="bottom" id="Kyv-eh-CRF"/>
                 <constraint firstItem="EUl-rR-5Qp" firstAttribute="bottom" secondItem="co4-Cu-Vjq" secondAttribute="bottom" id="LMK-Zf-tFV"/>
                 <constraint firstItem="NJh-a4-osi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="M3L-9I-4mL"/>
                 <constraint firstAttribute="trailing" secondItem="O4H-8k-hdj" secondAttribute="trailing" constant="18" id="PmA-2Y-DY3"/>
                 <constraint firstItem="0Tt-zE-VFP" firstAttribute="centerY" secondItem="co4-Cu-Vjq" secondAttribute="centerY" id="T5p-Up-2P5"/>
-                <constraint firstAttribute="bottom" secondItem="Ubo-bh-mym" secondAttribute="bottom" constant="15" id="TCR-gM-1p6"/>
                 <constraint firstItem="0Tt-zE-VFP" firstAttribute="leading" secondItem="co4-Cu-Vjq" secondAttribute="trailing" constant="20" id="g3T-GW-QVd"/>
                 <constraint firstItem="EUl-rR-5Qp" firstAttribute="top" secondItem="co4-Cu-Vjq" secondAttribute="top" id="lZx-dd-KAk"/>
                 <constraint firstAttribute="trailing" secondItem="Moi-c7-R0D" secondAttribute="trailing" constant="16" id="n6u-VX-wO7"/>
                 <constraint firstAttribute="bottom" secondItem="ify-Dt-Ppm" secondAttribute="bottom" constant="15" id="oaO-CF-zpN"/>
-                <constraint firstAttribute="bottom" secondItem="O4H-8k-hdj" secondAttribute="bottom" constant="15" id="owA-kE-XVV"/>
                 <constraint firstItem="ify-Dt-Ppm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="sbO-U5-jWA"/>
+                <constraint firstItem="Ubo-bh-mym" firstAttribute="centerY" secondItem="co4-Cu-Vjq" secondAttribute="centerY" id="x3C-ms-eZD"/>
                 <constraint firstAttribute="trailing" secondItem="NJh-a4-osi" secondAttribute="trailing" id="zvZ-t9-LaP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

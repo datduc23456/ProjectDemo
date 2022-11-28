@@ -22,10 +22,17 @@ final class MovieDetailPresenter {
 }
 
 extension MovieDetailPresenter: MovieDetailPresenterInterface {
+    func didTapFavorite(_ movie: MovieDetail, isFavorite: Bool) {
+        if isFavorite {
+            interactor.deleteMovieDetailObject(movie)
+        } else {
+            interactor.insertMovieDetailObject(movie)
+        }
+    }
+    
     func didTapPlayVideo(_ video: Video) {
         wireframe.showPlayVideo(video.key, false)
     }
-    
     
     func viewWillAppear(_ animated: Bool) {
         
@@ -43,13 +50,25 @@ extension MovieDetailPresenter: MovieDetailPresenterInterface {
 }
 
 extension MovieDetailPresenter: MovieDetailInteractorOutputInterface {
+    func deleteMovieDetailObject(_ movie: MovieDetail) {
+        view?.didDeleteMovieObject()
+    }
+    
+    func insertMovieDetailObject(_ movie: MovieDetail) {
+        view?.didInsertMovieObject()
+    }
+    
+    func fetchRealmMovieDetailObjectWithId(_ object: MovieDetailObject) {
+        view?.fetchRealmMovieDetailObjectWithId(object)
+    }
+    
     func getTVShowDetail(_ response: MovieDetail) {
         view?.getTVShowDetail(response)
     }
     
-    
     func getMovieDetail(_ response: MovieDetail) {
         view?.getMovieDetail(response)
+        interactor.fetchRealmMovieDetailObjectWithId(response.id, completion: {_ in})
     }
     
     func handleError(_ error: Error, _ completion: (() -> Void)?) {

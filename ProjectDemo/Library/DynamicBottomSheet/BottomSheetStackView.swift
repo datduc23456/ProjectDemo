@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol BoottomSheetStackViewDelegate: AnyObject {
+    func didSelect(_ bottomSheetStackView: BottomSheetStackView, selectedIndex index: Int)
+}
+
 enum BottomSheetType {
     case draggable
     case label(String)
@@ -31,6 +35,7 @@ enum BottomSheetType {
 class BottomSheetStackView: BaseCustomView {
 
     @IBOutlet weak var stackView: UIStackView!
+    weak var delegate: BoottomSheetStackViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,7 +48,8 @@ class BottomSheetStackView: BaseCustomView {
     }
     
     func config(_ dataSource: [BottomSheetType]) {
-        for type in dataSource {
+        for index in 0..<dataSource.count {
+            let type = dataSource[index]
             switch type {
             case .label(let title):
                 let view = BottomSheetLabelView()
@@ -51,6 +57,10 @@ class BottomSheetStackView: BaseCustomView {
                 self.stackView.addArrangedSubview(view)
                 view.snp.makeConstraints {
                     $0.height.equalTo(type.height())
+                }
+                view.addTapGestureRecognizer { [weak self] in
+                    guard let `self` = self else { return }
+                    self.delegate?.didSelect(self, selectedIndex: index)
                 }
             case .button(let title, let isPrimary):
                 let view = BottomSheetButtonView()
@@ -60,6 +70,10 @@ class BottomSheetStackView: BaseCustomView {
                 view.snp.makeConstraints {
                     $0.height.equalTo(type.height())
                 }
+                view.button.addTapGestureRecognizer { [weak self] in
+                    guard let `self` = self else { return }
+                    self.delegate?.didSelect(self, selectedIndex: index)
+                }
             case .content(let title, let content):
                 let view = BottomSheetContentView()
                 view.title = title
@@ -68,11 +82,19 @@ class BottomSheetStackView: BaseCustomView {
                 view.snp.makeConstraints {
                     $0.height.equalTo(type.height())
                 }
+                view.addTapGestureRecognizer { [weak self] in
+                    guard let `self` = self else { return }
+                    self.delegate?.didSelect(self, selectedIndex: index)
+                }
             case .draggable:
                 let view = BottomSheetDraggableView()
                 self.stackView.addArrangedSubview(view)
                 view.snp.makeConstraints {
                     $0.height.equalTo(type.height())
+                }
+                view.addTapGestureRecognizer { [weak self] in
+                    guard let `self` = self else { return }
+                    self.delegate?.didSelect(self, selectedIndex: index)
                 }
             }
         }

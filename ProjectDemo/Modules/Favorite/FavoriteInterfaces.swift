@@ -7,15 +7,19 @@
 //
 
 protocol FavoriteViewInterface: ViewInterface {
+    func getMovieFavorite(_ data: [String: [MovieDetailObject]])
 }
 
 protocol FavoritePresenterInterface: PresenterInterface {
+    func getMovieFavorite(_ type: FavoriteFilterType)
 }
 
 protocol FavoriteInteractorInterface: InteractorInterface {
+    func getMovieFavorite(_ type: FavoriteFilterType)
 }
 
 protocol FavoriteInteractorOutputInterface: InteractorOutputInterface {
+    func getMovieFavorite(_ data: [String: [MovieDetailObject]])
 }
 
 protocol FavoriteWireframeInterface: WireframeInterface {

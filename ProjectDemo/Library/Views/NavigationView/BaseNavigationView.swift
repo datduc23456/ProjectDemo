@@ -11,6 +11,7 @@ enum BaseNavigationType {
     case home
     case navigation
     case search
+    case tabbar
 }
 
 class BaseNavigationView: NavigationBarView {
@@ -35,6 +36,10 @@ class BaseNavigationView: NavigationBarView {
             imgSetting.isHidden = false
             imgSearch.isHidden = false
             imgStarMoviee.isHidden = false
+        case .tabbar:
+            imgSetting.isHidden = false
+            imgSearch.isHidden = false
+            lbTitle.isHidden = false
         case .navigation:
             lbTitle.isHidden = false
             icBack.isHidden = false

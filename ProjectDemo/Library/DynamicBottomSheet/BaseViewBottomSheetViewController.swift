@@ -10,8 +10,8 @@ import SnapKit
 
 class BaseViewBottomSheetViewController: DynamicBottomSheetViewController {
 
-    // MARK: - Private Properties
-    private var stackContent: BottomSheetStackView!
+    // MARK: - Properties
+    var stackContent: BottomSheetStackView!
     var views: [UIView] = []
     var bottomDataSource: [BottomSheetType] = [.draggable]
 }

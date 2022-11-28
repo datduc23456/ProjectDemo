@@ -10,6 +10,7 @@ import UIKit
 
 final class MovieDetailViewController: BaseViewController {
 
+    @IBOutlet weak var icHeart: UIImageView!
     @IBOutlet weak var viewFavorite: UIView!
     @IBOutlet weak var lbGenres: UILabel!
     @IBOutlet weak var lbName: UILabel!
@@ -24,7 +25,17 @@ final class MovieDetailViewController: BaseViewController {
     var data: [String: Any] = [:]
     var trailer: Video?
     var isExpandTextView: Bool = false
+    var isFavorite: Bool = false {
+        didSet {
+            if isFavorite {
+                self.icHeart.image = UIImage(named: "ic_heart_color")
+            } else {
+                self.icHeart.image = UIImage(named: "ic_heart")
+            }
+        }
+    }
     var selectedIndex: Int = 0
+    var movieDetailObject: MovieDetailObject?
     var movieDetail: MovieDetail?
     // MARK: - Properties
 	var presenter: MovieDetailPresenterInterface!
@@ -47,7 +58,7 @@ final class MovieDetailViewController: BaseViewController {
         scrollView.showsVerticalScrollIndicator = false
         viewFavorite.addTapGestureRecognizer { [weak self] in
             guard let `self` = self, let movieDetail = self.movieDetail else { return }
-            self.realmUtils.insertOrUpdate(movieDetail.toMovieObject())
+            self.presenter.didTapFavorite(movieDetail, isFavorite: self.isFavorite)
         }
     }
     
@@ -145,6 +156,19 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         self.data.updateValue(response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate)")
         self.data.updateValue([response.overview], forKey: "\(MovieDetailTableViewDataSource.overview)")
         self.tableView.reloadData()
+    }
+    
+    func fetchRealmMovieDetailObjectWithId(_ object: MovieDetailObject) {
+        self.isFavorite = true
+        self.movieDetailObject = object
+    }
+    
+    func didDeleteMovieObject() {
+        self.isFavorite = false
+    }
+    
+    func didInsertMovieObject() {
+        self.isFavorite = true
     }
     
     func handleError(_ error: Error) {
