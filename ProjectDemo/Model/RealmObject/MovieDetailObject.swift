@@ -171,3 +171,7 @@ class SeasonObject: Object {
     @Persisted var posterPath: String = ""
     @Persisted var seasonNumber : Int = 0
 }
+
+class SearchKeyObject: Object {
+    @Persisted var key: String = ""
+}

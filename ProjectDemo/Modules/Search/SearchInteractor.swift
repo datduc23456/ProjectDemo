@@ -7,11 +7,39 @@
 //
 
 final class SearchInteractor {
-
+    var realmUtils: RealmUtils! {
+        get {
+            AppDelegate.shared.realmUtils!
+        }
+    }
     weak var output: SearchInteractorOutputInterface?
 }
 
 extension SearchInteractor: SearchInteractorInterface {
+    
+    
+    func fetchSearchKey() {
+        self.output?.fetchSearchKey(realmUtils.getListObjects(type: SearchKeyObject.self))
+    }
+    
+    func getMovieDetail(_ id: Int) {
+        ServiceCore.shared.request(MovieDetail.self, targetType: CoreTargetType.detail(id), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getMovieDetail(response)
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
+        })
+    }
+    
+    func getTVShowDetail(_ id: Int) {
+        ServiceCore.shared.request(MovieDetail.self, targetType: CoreTargetType.TVshowDetail(id), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getTVShowDetail(response)
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
+        })
+    }
+    
     func searchTVShowPopular(_ query: String) {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.searchTVshow(query: query, page: 1), successBlock: { [weak self] response in
             guard let `self` = self else { return }

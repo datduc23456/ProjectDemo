@@ -22,6 +22,14 @@ final class SearchPresenter {
 }
 
 extension SearchPresenter: SearchPresenterInterface {
+    func viewDidLoad() {
+        interactor.fetchSearchKey()
+    }
+    
+    func fetchSearchKey() {
+        interactor.fetchSearchKey()
+    }
+    
     func searchMoviePopular(_ query: String) {
         interactor.searchMoviePopular(query)
     }
@@ -35,11 +43,21 @@ extension SearchPresenter: SearchPresenterInterface {
     }
     
     func didTapToMovie(_ movie: Movie) {
-        wireframe.showMovieDetailScreen(movie.id)
+        switch view!.searchType {
+        case .detail:
+            wireframe.showMovieDetailScreen(movie.id)
+        default:
+            interactor.getMovieDetail(movie.id)
+        }
     }
     
     func didTapToTVshow(_ movie: Movie) {
-        wireframe.showTVShowDetailScreen(movie.id)
+        switch view!.searchType {
+        case .detail:
+            wireframe.showTVShowDetailScreen(movie.id)
+        default:
+            interactor.getTVShowDetail(movie.id)
+        }
     }
     
     func didTapToCast(_ cast: Cast) {
@@ -48,6 +66,33 @@ extension SearchPresenter: SearchPresenterInterface {
 }
 
 extension SearchPresenter: SearchInteractorOutputInterface {
+    func fetchSearchKey(_ keys: [SearchKeyObject]) {
+        view?.fetchSearchKey(keys)
+    }
+    
+    func getMovieDetail(_ response: MovieDetail) {
+        view?.getMovieDetail(response)
+        switch view!.searchType {
+        case .addnote:
+            wireframe.showAddNoteScreen(response)
+        case .watchedlist:
+            wireframe.showWatchedListScreen(response)
+        default:
+            return
+        }
+    }
+    
+    func getTVShowDetail(_ response: MovieDetail) {
+        view?.getTVShowDetail(response)
+        switch view!.searchType {
+        case .addnote:
+            wireframe.showAddNoteScreen(response)
+        case .watchedlist:
+            wireframe.showWatchedListScreen(response)
+        default:
+            return
+        }
+    }
     
     func searchMoviePopular(_ response: [Movie]) {
         view?.searchMoviePopular(response)

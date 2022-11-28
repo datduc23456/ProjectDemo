@@ -7,6 +7,7 @@
 //
 
 protocol AddNoteViewInterface: ViewInterface {
+    var movieDetail: MovieDetail? { get }
 }
 
 protocol AddNotePresenterInterface: PresenterInterface {

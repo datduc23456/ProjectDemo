@@ -25,6 +25,14 @@ extension AddNotePresenter: AddNotePresenterInterface {
 }
 
 extension AddNotePresenter: AddNoteInteractorOutputInterface {
+    func getMovieDetail(_ response: MovieDetail) {
+        
+    }
+    
+    func getTVShowDetail(_ response: MovieDetail) {
+        
+    }
+    
 
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()

@@ -9,6 +9,8 @@
 import UIKit
 
 final class SearchWireframe: SearchWireframeInterface {
+
+    
     
     var navigator: BaseNavigator!
     static func generateModule(_ payload: Any?) -> UIViewController {
@@ -39,5 +41,13 @@ final class SearchWireframe: SearchWireframeInterface {
     
     func showTVShowDetailScreen(_ id: Int) {
         navigator.pushScreen(AppScreens.detail, (id, true), fromRoot: true)
+    }
+    
+    func showAddNoteScreen(_ response: MovieDetail) {
+        navigator.pushScreen(AppScreens.addnote, response, fromRoot: true)
+    }
+    
+    func showWatchedListScreen(_ response: MovieDetail) {
+        
     }
 }

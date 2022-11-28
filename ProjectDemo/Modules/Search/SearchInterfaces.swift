@@ -7,33 +7,46 @@
 //
 
 protocol SearchViewInterface: ViewInterface {
+    var searchType: SearchType { get }
     func searchMoviePopular(_ response: [Movie])
     func searchTVShowPopular(_ response: [Movie])
     func searchPerson(_ response: [Cast])
+    func getMovieDetail(_ response: MovieDetail)
+    func getTVShowDetail(_ response: MovieDetail)
+    func fetchSearchKey(_ keys: [SearchKeyObject])
 }
 
 protocol SearchPresenterInterface: PresenterInterface {
     func searchMoviePopular(_ query: String)
     func searchTVShowPopular(_ query: String)
     func searchPerson(_ query: String)
+    func fetchSearchKey()
     func didTapToMovie(_ movie: Movie)
     func didTapToTVshow(_ movie: Movie)
     func didTapToCast(_ cast: Cast)
 }
 
 protocol SearchInteractorInterface: InteractorInterface {
+    func getMovieDetail(_ id: Int)
+    func getTVShowDetail(_ id: Int)
     func searchMoviePopular(_ query: String)
     func searchTVShowPopular(_ query: String)
     func searchPerson(_ query: String)
+    func fetchSearchKey()
 }
 
 protocol SearchInteractorOutputInterface: InteractorOutputInterface {
+    func getMovieDetail(_ response: MovieDetail)
+    func getTVShowDetail(_ response: MovieDetail)
     func searchMoviePopular(_ response: [Movie])
     func searchTVShowPopular(_ response: [Movie])
     func searchPerson(_ response: [Cast])
+    func fetchSearchKey(_ keys: [SearchKeyObject])
 }
 
 protocol SearchWireframeInterface: WireframeInterface {
+    func showAddNoteScreen(_ response: MovieDetail)
+    func showWatchedListScreen(_ response: MovieDetail)
     func showMovieDetailScreen(_ id: Int)
     func showTVShowDetailScreen(_ id: Int)
 }

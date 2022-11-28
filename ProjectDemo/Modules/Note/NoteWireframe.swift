@@ -31,4 +31,8 @@ final class NoteWireframe: NoteWireframeInterface {
 	func handleError(_ error: Error, _ completion: (() -> Void)?) {
         
     }
+    
+    func showAddNoteScreen() {
+        navigator.pushScreen(AppScreens.search, SearchType.addnote, fromRoot: true)
+    }
 }

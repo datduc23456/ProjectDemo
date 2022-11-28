@@ -12,4 +12,12 @@ final class AddNoteInteractor {
 }
 
 extension AddNoteInteractor: AddNoteInteractorInterface {
+    func getMovieDetail(_ id: Int) {
+        
+    }
+    
+    func getTVShowDetail(_ id: Int) {
+        
+    }
+    
 }

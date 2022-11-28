@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct GenreResponse: Codable {
     let genres: [Genre]

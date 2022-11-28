@@ -22,6 +22,9 @@ final class NotePresenter {
 }
 
 extension NotePresenter: NotePresenterInterface {
+    func didTapAddNote() {
+        wireframe.showAddNoteScreen()
+    }
 }
 
 extension NotePresenter: NoteInteractorOutputInterface {

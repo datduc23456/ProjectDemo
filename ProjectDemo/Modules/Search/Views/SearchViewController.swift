@@ -9,6 +9,12 @@
 import UIKit
 import DZNEmptyDataSet
 
+enum SearchType {
+    case detail
+    case addnote
+    case watchedlist
+}
+
 final class SearchViewController: BaseViewController {
 
     // MARK: - Properties
@@ -16,20 +22,25 @@ final class SearchViewController: BaseViewController {
     var presenter: SearchPresenterInterface!
     var delayValue : Double = 3.0
     var timer:Timer?
-    var tableViewDataSource: [SearchViewDataSource] = SearchViewDataSource.allCases
+    var tableViewDataSource: [SearchViewDataSource] = SearchViewDataSource.emptyCases
     var data: [String: Any] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.viewDidLoad()
         tableView.register(CinemaPopularTableViewCell.self, forCellReuseIdentifier: CinemaPopularTableViewCell.className)
         tableView.register(TVShowPopularTableViewCell.self, forCellReuseIdentifier: TVShowPopularTableViewCell.className)
         tableView.register(PeoplePopularTableViewCell.self, forCellReuseIdentifier: PeoplePopularTableViewCell.className)
+        tableView.register(GenresSearchTableViewCell.self, forCellReuseIdentifier: GenresSearchTableViewCell.className)
         tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
+        tableView.registerCell(for: SearchHistoryTableViewCell.className)
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.sectionFooterHeight = 0
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false
         let navigation: BaseNavigationView = initCustomNavigation(.base)
@@ -38,8 +49,11 @@ final class SearchViewController: BaseViewController {
             guard let `self` = self else { return }
             self.navigationController?.popViewController(animated: true)
         }
-//        navigation.textField.delegate = self
         navigation.textField.addTarget(self, action: #selector(changedTextFieldValue), for: .editingChanged)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.tableView.reloadData()
     }
     
     @objc func changedTextFieldValue(){
@@ -48,17 +62,39 @@ final class SearchViewController: BaseViewController {
     }
     
     @objc func searchAction() {
-        if let myNavigationBar = myNavigationBar as? BaseNavigationView, let query = myNavigationBar.textField.text, !query.isEmpty {
-            let queryTrim = query.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-            presenter.searchPerson(queryTrim)
-            presenter.searchMoviePopular(queryTrim)
-            presenter.searchTVShowPopular(queryTrim)
+        if let myNavigationBar = myNavigationBar as? BaseNavigationView, let query = myNavigationBar.textField.text {
+            if !query.isEmpty {
+                tableViewDataSource = SearchViewDataSource.allCases
+                let queryTrim = query.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                let searchKeyObject = SearchKeyObject()
+                searchKeyObject.key = queryTrim
+                realmUtils.insert(searchKeyObject)
+                presenter.searchPerson(queryTrim)
+                presenter.searchMoviePopular(queryTrim)
+                presenter.searchTVShowPopular(queryTrim)
+            } else {
+                tableViewDataSource = SearchViewDataSource.emptyCases
+                presenter.fetchSearchKey()
+            }
         }
     }
 }
 
 // MARK: - SearchViewInterface
 extension SearchViewController: SearchViewInterface {
+    
+    var searchType: SearchType {
+        if let searchType = payload as? SearchType {
+            return searchType
+        }
+        return .detail
+    }
+    
+    func fetchSearchKey(_ keys: [SearchKeyObject]) {
+        self.data.updateValue(keys, forKey: "\(SearchViewDataSource.recent)")
+        tableView.reloadData()
+    }
+    
     func searchMoviePopular(_ response: [Movie]) {
         if response.isEmpty {
             tableViewDataSource.removeAll(where: {$0 == .movie})
@@ -89,6 +125,13 @@ extension SearchViewController: SearchViewInterface {
         tableView.reloadData()
     }
     
+    func getMovieDetail(_ response: MovieDetail) {
+        
+    }
+    
+    func getTVShowDetail(_ response: MovieDetail) {
+        
+    }
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
@@ -99,7 +142,8 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none
         if let baseCell = cell as? BaseWithCollectionTableViewCellHandler, let data = self.data["\(item)"] as? [Any] {
             baseCell.listPayload = data
-            baseCell.didTapActionInCell = { payload in
+            baseCell.didTapActionInCell = { [weak self] payload in
+                guard let `self` = self else { return }
                 switch item {
                 case .person:
                     if let cast = payload as? Cast {
@@ -109,7 +153,21 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
                     if let movie = payload as? Movie {
                         self.presenter.didTapToMovie(movie)
                     }
+                case .genre, .recent:
+                    break
+                case .recent:
+                    break
                 }
+            }
+        }
+        
+        if let cell = cell as? SearchHistoryTableViewCell, let data = self.data["\(item)"] as? [SearchKeyObject] {
+            cell.configCell(data[indexPath.row])
+            cell.didTapRemove = { [weak self] searchKeyObject in
+                guard let `self` = self else { return }
+                self.realmUtils.deleteObject(object: searchKeyObject)
+                self.presenter.fetchSearchKey()
+                tableView.reloadData()
             }
         }
         return cell
@@ -120,6 +178,10 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let item = tableViewDataSource[section]
+        if item == .recent, let data = self.data["\(item)"] as? [Any] {
+            return data.count
+        }
         return 1
     }
     

@@ -10,6 +10,7 @@ protocol NoteViewInterface: ViewInterface {
 }
 
 protocol NotePresenterInterface: PresenterInterface {
+    func didTapAddNote()
 }
 
 protocol NoteInteractorInterface: InteractorInterface {
@@ -19,4 +20,5 @@ protocol NoteInteractorOutputInterface: InteractorOutputInterface {
 }
 
 protocol NoteWireframeInterface: WireframeInterface {
+    func showAddNoteScreen()
 }

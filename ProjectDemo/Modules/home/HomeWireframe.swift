@@ -38,6 +38,6 @@ final class HomeWireframe: HomeWireframeInterface {
     }
     
     func showSearchScreen() {
-        navigator.pushScreen(AppScreens.search, fromRoot: true)
+        navigator.pushScreen(AppScreens.search, SearchType.detail, fromRoot: true)
     }
 }

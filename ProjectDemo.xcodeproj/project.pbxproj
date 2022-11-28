@@ -159,6 +159,9 @@
 		52BCB4D5292930A9008E1C32 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCB4D4292930A9008E1C32 /* Genre.swift */; };
 		52C0145B29313CBF0070E5BD /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C0145A29313CBF0070E5BD /* CollectionViewFlowLayout.swift */; };
 		52C19F27292B9A2F00F84415 /* TVShowPopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C19F26292B9A2F00F84415 /* TVShowPopularTableViewCell.swift */; };
+		52C67BC22934E12C0044ED40 /* GenresSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C67BC12934E12C0044ED40 /* GenresSearchTableViewCell.swift */; };
+		52C67BC529350A240044ED40 /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C67BC329350A240044ED40 /* SearchHistoryTableViewCell.swift */; };
+		52C67BC629350A240044ED40 /* SearchHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C67BC429350A240044ED40 /* SearchHistoryTableViewCell.xib */; };
 		52CBDCEF2927EE5B00548E52 /* FSPagerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDCE62927EE5A00548E52 /* FSPagerViewCell.swift */; };
 		52CBDCF12927EE5B00548E52 /* FSPageViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDCE72927EE5A00548E52 /* FSPageViewTransformer.swift */; };
 		52CBDCF32927EE5B00548E52 /* FSPagerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDCE92927EE5A00548E52 /* FSPagerCollectionView.swift */; };
@@ -449,6 +452,9 @@
 		52BCB4D4292930A9008E1C32 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		52C0145A29313CBF0070E5BD /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		52C19F26292B9A2F00F84415 /* TVShowPopularTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowPopularTableViewCell.swift; sourceTree = "<group>"; };
+		52C67BC12934E12C0044ED40 /* GenresSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresSearchTableViewCell.swift; sourceTree = "<group>"; };
+		52C67BC329350A240044ED40 /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		52C67BC429350A240044ED40 /* SearchHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		52CBDCE62927EE5A00548E52 /* FSPagerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPagerViewCell.swift; sourceTree = "<group>"; };
 		52CBDCE72927EE5A00548E52 /* FSPageViewTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewTransformer.swift; sourceTree = "<group>"; };
 		52CBDCE82927EE5A00548E52 /* FSPagerViewObjcCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPagerViewObjcCompat.h; sourceTree = "<group>"; };
@@ -716,17 +722,6 @@
 		18118985292636AA00E9D883 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				52CBDD222928DD2D00548E52 /* CinemaPopularTableViewCell.swift */,
-				52C19F26292B9A2F00F84415 /* TVShowPopularTableViewCell.swift */,
-				185BC35C292CBB9800613EB2 /* ActorsTableViewCell.swift */,
-				52F03F87293252E1005CAF76 /* ImagesTableViewCell.swift */,
-				52CBDD212928DD2D00548E52 /* TrendingTableViewCell.swift */,
-				52CBDD202928DD2D00548E52 /* TopRatingTableViewCell.swift */,
-				1848A474292B89E3005D4431 /* TVShowTopUpTableViewCell.swift */,
-				185BC35A292CBA9200613EB2 /* UserRateTableViewCell.swift */,
-				52B91FF72933A3EA005CD445 /* PeoplePopularTableViewCell.swift */,
-				52CBDD242928DD2D00548E52 /* HeaderView.swift */,
-				52CBDD1C2928DD2D00548E52 /* HeaderView.xib */,
 				52CBDD262928DD2D00548E52 /* NewMovieTableViewCell.swift */,
 				52CBDD252928DD2D00548E52 /* NewMovieTableViewCell.xib */,
 				52CBDD1E2928DD2D00548E52 /* PageCinemaTableViewCell.swift */,
@@ -745,6 +740,8 @@
 				52F03F8A29327C66005CAF76 /* TextExpandTableViewCell.xib */,
 				184BB0812934ADEA00FF2249 /* UserNoteTableViewCell.swift */,
 				184BB0822934ADEA00FF2249 /* UserNoteTableViewCell.xib */,
+				52C67BC329350A240044ED40 /* SearchHistoryTableViewCell.swift */,
+				52C67BC429350A240044ED40 /* SearchHistoryTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -1034,6 +1031,32 @@
 			path = RealmObject;
 			sourceTree = "<group>";
 		};
+		52C67BBF2934DFE30044ED40 /* TableCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				52CBDD222928DD2D00548E52 /* CinemaPopularTableViewCell.swift */,
+				52C19F26292B9A2F00F84415 /* TVShowPopularTableViewCell.swift */,
+				185BC35C292CBB9800613EB2 /* ActorsTableViewCell.swift */,
+				52F03F87293252E1005CAF76 /* ImagesTableViewCell.swift */,
+				52CBDD212928DD2D00548E52 /* TrendingTableViewCell.swift */,
+				52CBDD202928DD2D00548E52 /* TopRatingTableViewCell.swift */,
+				1848A474292B89E3005D4431 /* TVShowTopUpTableViewCell.swift */,
+				185BC35A292CBA9200613EB2 /* UserRateTableViewCell.swift */,
+				52B91FF72933A3EA005CD445 /* PeoplePopularTableViewCell.swift */,
+				52C67BC12934E12C0044ED40 /* GenresSearchTableViewCell.swift */,
+			);
+			path = TableCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		52C67BC02934E00F0044ED40 /* HeaderTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				52CBDD242928DD2D00548E52 /* HeaderView.swift */,
+				52CBDD1C2928DD2D00548E52 /* HeaderView.xib */,
+			);
+			path = HeaderTableViewCell;
+			sourceTree = "<group>";
+		};
 		52CBDCE52927EE4C00548E52 /* FSPagerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1053,6 +1076,8 @@
 		52CBDD0B2928DCF300548E52 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52C67BC02934E00F0044ED40 /* HeaderTableViewCell */,
+				52C67BBF2934DFE30044ED40 /* TableCollectionViewCell */,
 				52B84E02292A3417008DA4C2 /* NavigationView */,
 				181189672925E0A200E9D883 /* CollectionViewCell */,
 				18118985292636AA00E9D883 /* TableViewCell */,
@@ -1263,8 +1288,8 @@
 		D2D8F6A36E5178856621ACC7 /* AddNote */ = {
 			isa = PBXGroup;
 			children = (
-				52DEB891292FB87400BCD36F /* AddNoteInteractor.swift */,
 				52DEB890292FB87400BCD36F /* AddNoteInterfaces.swift */,
+				52DEB891292FB87400BCD36F /* AddNoteInteractor.swift */,
 				52DEB892292FB87400BCD36F /* AddNotePresenter.swift */,
 				52DEB88F292FB87400BCD36F /* AddNoteWireframe.swift */,
 				A5C7D88FCA2C2A84DC8912A1 /* Views */,
@@ -1434,6 +1459,7 @@
 				181189B8292B2F1400E9D883 /* seagull bold.ttf in Resources */,
 				185DC6CA29000D790056C910 /* Assets.xcassets in Resources */,
 				181189B4292B2F1400E9D883 /* SEAGULLH.ttf in Resources */,
+				52C67BC629350A240044ED40 /* SearchHistoryTableViewCell.xib in Resources */,
 				1899F2982924CC6700D2D978 /* TabbarViewController.xib in Resources */,
 				183F20F22930ACD2001BCB23 /* BottomSheetContentView.xib in Resources */,
 				11F96FBD4B87C9B619D4A842 /* ExampleViewController.storyboard in Resources */,
@@ -1530,6 +1556,7 @@
 				185DC6E62900E1600056C910 /* InteractorInterface.swift in Sources */,
 				185BC355292CA30A00613EB2 /* DynamicBottomSheetViewController.swift in Sources */,
 				185BC371292F0BE800613EB2 /* MultiSlider+Drag.swift in Sources */,
+				52C67BC22934E12C0044ED40 /* GenresSearchTableViewCell.swift in Sources */,
 				52CBDCEF2927EE5B00548E52 /* FSPagerViewCell.swift in Sources */,
 				185BC359292CADAC00613EB2 /* ImageStackView.swift in Sources */,
 				18F1982F291A676B00E4D911 /* BaseModel.swift in Sources */,
@@ -1682,6 +1709,7 @@
 				BA3BE0AA4EB6080A8F356F44 /* StatisticcalViewController.swift in Sources */,
 				2A1CF8D70F08D829D81A2FED /* SeasonInterfaces.swift in Sources */,
 				F28C5F5C136B3D3467FB5EE8 /* SeasonPresenter.swift in Sources */,
+				52C67BC529350A240044ED40 /* SearchHistoryTableViewCell.swift in Sources */,
 				1C63734259362711D08ACA16 /* SeasonInteractor.swift in Sources */,
 				2243FBE2EB9DBBD212FBABA0 /* SeasonWireframe.swift in Sources */,
 				52EA75EA29333F920076BC87 /* AYImageDownloader.swift in Sources */,

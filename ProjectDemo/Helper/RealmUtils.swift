@@ -32,6 +32,12 @@ class RealmUtils {
         self.realm = realm
     }
     
+    func insert(_ object: Object){
+        try! realm.write {
+            realm.add(object)
+        }
+    }
+    
     func insertOrUpdate(_ object: Object){
         try! realm.write {
             realm.add(object, update: .all)

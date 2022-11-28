@@ -10,6 +10,7 @@ import UIKit
 
 final class NoteViewController: BaseViewController {
 
+    @IBOutlet weak var btnAddNote: UIButton!
     @IBOutlet weak var tableView: UITableView!
     // MARK: - Properties
 	var presenter: NotePresenterInterface!
@@ -41,6 +42,10 @@ final class NoteViewController: BaseViewController {
             
         }, themeColor: .white, refreshStyle: .replicatorCircle)
         
+        btnAddNote.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self else { return }
+            self.presenter.didTapAddNote()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

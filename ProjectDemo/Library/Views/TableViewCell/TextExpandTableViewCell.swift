@@ -11,7 +11,7 @@ class TextExpandTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellH
     
     var listPayload: [Any] = [] {
         didSet {
-            self.configView()
+            self.configCell()
         }
     }
     var didTapActionInCell: ((Any) -> Void) = {_ in}
@@ -48,7 +48,7 @@ class TextExpandTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellH
         }
     }
     
-    func configView() {
+    func configCell() {
         if let overview = self.listPayload.first as? String {
             self.textView.text = overview
         }

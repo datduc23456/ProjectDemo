@@ -15,9 +15,15 @@ enum SearchViewDataSource: CaseIterable {
         return [.movie, .tvshow, .person]
     }
     
+    static var emptyCases:  [SearchViewDataSource] {
+        return [.genre, .recent]
+    }
+    
     case movie
     case tvshow
     case person
+    case genre
+    case recent
     
     func heightForRow() -> CGFloat {
         switch self {
@@ -27,6 +33,10 @@ enum SearchViewDataSource: CaseIterable {
             return 195
         case .person:
             return 150
+        case .recent:
+            return 30
+        case .genre:
+            return UITableView.automaticDimension
         }
     }
     
@@ -38,6 +48,10 @@ enum SearchViewDataSource: CaseIterable {
             return TVShowPopularTableViewCell.self
         case .person:
             return PeoplePopularTableViewCell.self
+        case .genre:
+            return GenresSearchTableViewCell.self
+        case .recent:
+            return SearchHistoryTableViewCell.self
         }
     }
     
@@ -50,6 +64,10 @@ enum SearchViewDataSource: CaseIterable {
             return "TV Shows"
         case .person:
             return "Actor"
+        case .genre:
+            return "Suggest"
+        case .recent:
+            return "Recent"
         }
     }
 }

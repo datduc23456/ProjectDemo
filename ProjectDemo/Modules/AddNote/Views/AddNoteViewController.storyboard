@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -100,6 +100,12 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="outerTrackColor">
                                                         <color key="value" red="0.2470588235" green="0.25882352939999997" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                        <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -254,7 +260,9 @@
                     <connections>
                         <outlet property="filmNoteView" destination="QHT-Hp-prQ" id="BFE-0N-ylJ"/>
                         <outlet property="imageStackView" destination="Mlj-M2-KOS" id="wvZ-NU-eki"/>
+                        <outlet property="lbSliderValue" destination="lfO-ie-r7y" id="FwR-hY-HnP"/>
                         <outlet property="scrollView" destination="8eP-pB-R3m" id="uhG-qW-pqz"/>
+                        <outlet property="slider" destination="aYy-2Q-iko" id="BWf-uG-oiD"/>
                         <outlet property="textViewContent" destination="1af-Cy-Xfm" id="COO-jZ-2r9"/>
                         <outlet property="tfContent" destination="Bkp-yR-wgQ" id="8Fm-hN-czP"/>
                         <outlet property="tfTitle" destination="rHW-av-1L8" id="w1U-c0-va7"/>
@@ -266,6 +274,11 @@
             <point key="canvasLocation" x="194" y="143"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="aYy-2Q-iko">
+            <size key="intrinsicContentSize" width="-1" height="63"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ic_plus_white" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">

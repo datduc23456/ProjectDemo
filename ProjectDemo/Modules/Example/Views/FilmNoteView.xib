@@ -17,9 +17,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilmNoteView">
             <connections>
+                <outlet property="icProperties" destination="R8g-RK-ot9" id="4x5-Cc-Thv"/>
                 <outlet property="img" destination="PmR-w4-quL" id="rdJ-dw-cuf"/>
                 <outlet property="lbDate" destination="ilj-pT-GVy" id="Mwo-rm-kpt"/>
                 <outlet property="lbGenre" destination="71Y-GX-y6A" id="K8P-NA-meO"/>
+                <outlet property="lbProperties" destination="v6x-BV-AnY" id="Kkd-eX-hmW"/>
                 <outlet property="lbRating" destination="lqI-sv-owV" id="gBE-Tq-LyP"/>
                 <outlet property="lbTitle" destination="Kea-6B-ivG" id="5S8-K2-Q7x"/>
                 <outlet property="lbVoteAvg" destination="D5b-IE-sOp" id="QSr-yg-Cui"/>
