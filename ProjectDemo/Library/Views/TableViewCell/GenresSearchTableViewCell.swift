@@ -1,19 +1,9 @@
-//
-//  GengesListTableViewCell.swift
-//  ProjectDemo
-//
-//  Created by MacBook Pro on 20/11/2022.
-//
-
 import UIKit
 
-class GengesListTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
-    var listPayload: [Any] = []
-    
-    var didTapActionInCell: ((Any) -> Void) = {_ in}
-    
+class GenresSearchTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var collectionView: BaseCollectionView!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     var payload: [Genre] = [] {
         didSet {
             collectionView.reloadData()
@@ -41,11 +31,11 @@ class GengesListTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellH
         super.awakeFromNib()
         self.backgroundColor = .clear
         collectionView.registerCell(for: GengesCollectionViewCell.className)
-        let collectionViewFlowLayout = UICollectionViewFlowLayout()
+        let collectionViewFlowLayout = CollectionViewFlowLayout()
         collectionViewFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionViewFlowLayout.minimumLineSpacing = 8
         collectionViewFlowLayout.headerReferenceSize = CGSize(width: 16, height: 1)
-        collectionViewFlowLayout.scrollDirection = .horizontal
+        collectionViewFlowLayout.scrollDirection = .vertical
         collectionView.collectionViewLayout = collectionViewFlowLayout
         initCollectionViewCell()
     }
@@ -55,28 +45,28 @@ class GengesListTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellH
     }
 }
 
-extension GengesListTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension GenresSearchTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return payload.count
+        return DTPBusiness.shared.listGenres.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GengesCollectionViewCell.className, for: indexPath)  as? GengesCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let payload = self.payload[indexPath.row]
-        let isSelected: Bool = payload.id == DTPBusiness.shared.genreSelectedId
-        cell.configCell(payload, isSelected: isSelected)
-        cell.didTap = { [weak self] in
-            guard self != nil else { return }
-            self?.didTapActionInCell(payload)
-            for cell in collectionView.visibleCells {
-                if let c = cell as? GengesCollectionViewCell, c.genre.id != DTPBusiness.shared.genreSelectedId {
-                    c.unsected()
-                    c.isSelect = false
-                }
-            }
-        }
+        let genre = DTPBusiness.shared.listGenres[indexPath.row]
+        cell.configCell(genre)
+        cell.viewBackgroundImage.backgroundColor = .black
+        cell.image.tintColor = .white
+        cell.lbTitle.textColor = .white
+        cell.contentView.backgroundColor = CHOOSE_GENRE_COLOR
         return cell
+    }
+    
+    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        self.collectionView.layoutIfNeeded()
+        self.layoutIfNeeded()
+        let contentSize = self.collectionView.collectionViewLayout.collectionViewContentSize
+        return CGSize.init(width: contentSize.width, height: contentSize.height)
     }
 }

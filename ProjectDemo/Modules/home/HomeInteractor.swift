@@ -14,7 +14,7 @@ final class HomeInteractor {
 extension HomeInteractor: HomeInteractorInterface {
     
     func getMoviePopular() {
-        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.popular, successBlock: { [weak self] response in
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.popular(1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getMoviePopular(response)
         }, failureBlock: { _ in
@@ -33,9 +33,18 @@ extension HomeInteractor: HomeInteractorInterface {
     }
     
     func getTopRate() {
-        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.movieTopRated, successBlock: { [weak self] response in
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.movieTopRated(1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getTopRate(response)
+        }, failureBlock: { _ in
+            
+        })
+    }
+    
+    func getMoviePopular(_ genreId: Int) {
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.moviegenreid(genreId: genreId), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getMoviePopular(response)
         }, failureBlock: { _ in
             
         })

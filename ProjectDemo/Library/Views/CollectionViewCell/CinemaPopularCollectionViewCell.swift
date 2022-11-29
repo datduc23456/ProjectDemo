@@ -28,7 +28,7 @@ class CinemaPopularCollectionViewCell: BaseCollectionViewCell {
         if let payload = payload as? Movie {
             self.payload = payload
             image.kf.setImage(with: URL(string: "\(baseURLImage)\(payload.posterPath)"))
-            lbTitle.text = payload.originalTitle
+            lbTitle.text = payload.originalTitle.isEmpty ? payload.originalName : payload.originalTitle
             lbVoteAvg.text = "\(payload.voteAverage)"
             lbYear.text = CommonUtil.getYearFromDate(payload.releaseDate)
             lbGenres.text = DTPBusiness.shared.mapToGenreName(payload.genreIDS)

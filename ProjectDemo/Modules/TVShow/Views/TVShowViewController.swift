@@ -33,6 +33,7 @@ final class TVShowViewController: BaseViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.contentSizeDelegate = self
+        scrollView.bounces = false
         scrollView.showsVerticalScrollIndicator = false
         viewLayer.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         presenter.viewDidLoad()
@@ -147,6 +148,7 @@ extension TVShowViewController: TableViewAdjustedHeightDelegate {
 
 extension TVShowViewController: HeaderViewDelegate {
     func headerView(_ customHeader: HeaderView, didTapButtonInSection section: Int) {
-        print("did tap button", section)
+        let item = tableViewDataSource[section]
+        self.presenter.didTapHeaderView(item)
     }
 }

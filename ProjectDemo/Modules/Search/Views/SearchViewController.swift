@@ -34,6 +34,7 @@ final class SearchViewController: BaseViewController {
         tableView.register(GenresSearchTableViewCell.self, forCellReuseIdentifier: GenresSearchTableViewCell.className)
         tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
         tableView.registerCell(for: SearchHistoryTableViewCell.className)
+        tableView.registerCell(for: GenresSearchTableViewCell.className)
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.dataSource = self
@@ -92,6 +93,7 @@ extension SearchViewController: SearchViewInterface {
     
     func fetchSearchKey(_ keys: [SearchKeyObject]) {
         self.data.updateValue(keys, forKey: "\(SearchViewDataSource.recent)")
+        self.data.updateValue(DTPBusiness.shared.listGenres, forKey: "\(SearchViewDataSource.genre)")
         tableView.reloadData()
     }
     
@@ -203,7 +205,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let item = tableViewDataSource[section]
         let titleHeader = item.titleOfHeader()
-        return titleHeader.isEmpty ? 0 : 60
+        return titleHeader.isEmpty ? 0 : 40
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -15,6 +15,7 @@ protocol TVShowViewInterface: ViewInterface {
 
 protocol TVShowPresenterInterface: PresenterInterface {
     func didTapToMovie(_ movie: Movie)
+    func didTapHeaderView(_ section: TVShowTableViewDataSource)
 }
 
 protocol TVShowInteractorInterface: InteractorInterface {
@@ -31,4 +32,5 @@ protocol TVShowInteractorOutputInterface: InteractorOutputInterface {
 
 protocol TVShowWireframeInterface: WireframeInterface {
     func showMovieDetailScreen(_ id: Int)
+    func showActionScreen(_ type: ActionViewType)
 }

@@ -31,6 +31,19 @@ extension TVShowPresenter: TVShowPresenterInterface {
     func didTapToMovie(_ movie: Movie) {
         wireframe.showMovieDetailScreen(movie.id)
     }
+    
+    func didTapHeaderView(_ section: TVShowTableViewDataSource) {
+        switch section {
+        case .popular:
+            wireframe.showActionScreen(.tvshowpopular)
+        case .topRating:
+            wireframe.showActionScreen(.tvshowtoprated)
+//        case .trending:
+//            wireframe.showActionScreen(.moviepopular)
+        default:
+            return
+        }
+    }
 }
 
 extension TVShowPresenter: TVShowInteractorOutputInterface {

@@ -9,6 +9,8 @@
 import UIKit
 
 final class TVShowWireframe: TVShowWireframeInterface {
+    
+    
     var navigator: BaseNavigator!
     
 
@@ -35,5 +37,9 @@ final class TVShowWireframe: TVShowWireframeInterface {
     
     func showMovieDetailScreen(_ id: Int) {
         navigator.pushScreen(AppScreens.detail, (id, true), fromRoot: true)
+    }
+    
+    func showActionScreen(_ type: ActionViewType) {
+        navigator.pushScreen(AppScreens.action, type, fromRoot: true)
     }
 }

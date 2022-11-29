@@ -40,4 +40,8 @@ final class HomeWireframe: HomeWireframeInterface {
     func showSearchScreen() {
         navigator.pushScreen(AppScreens.search, SearchType.detail, fromRoot: true)
     }
+    
+    func showActionScreen(_ type: ActionViewType) {
+        navigator.pushScreen(AppScreens.action, type, fromRoot: true)
+    }
 }

@@ -51,8 +51,9 @@ extension HomeViewController: HomeViewInterface {
         let first8 = Array(listMovie.prefix(8))
         self.data.updateValue(response.results, forKey: "\(HomeTableViewDataSource.popular)")
         self.data.updateValue(first8, forKey: "\(HomeTableViewDataSource.pageView)")
-        tableView.reloadSections(IndexSet([2]), with: .none)
-        tableView.reloadSections(IndexSet([1]), with: .none)
+        tableView.reloadData()
+//        tableView.reloadSections(IndexSet([2]), with: .none)
+//        tableView.reloadSections(IndexSet([1]), with: .none)
     }
     
     func getGenresList(_ response: GenreResponse) {
@@ -68,7 +69,7 @@ extension HomeViewController: HomeViewInterface {
         cut = listMovie[5 ..< listMovie.endIndex]
         self.data.updateValue(first5, forKey: "\(HomeTableViewDataSource.topRating)")
         self.data.updateValue(Array(cut), forKey: "\(HomeTableViewDataSource.trending)")
-        tableView.reloadSections(IndexSet([4]), with: .none)
+        tableView.reloadData()
     }
 }
 
@@ -89,6 +90,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             if let data = self.data["\(item)"] as? [Genre] {
                 let first4 = Array(data.prefix(4))
                 cell.payload = first4
+                cell.didTapActionInCell = { [weak self] any in
+                    guard let `self` = self else { return }
+                    if let genre = any as? Genre {
+                        self.presenter.didTapToGenre(genre)
+                    }
+                }
             }
             return cell
         }
@@ -143,6 +150,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension HomeViewController: HeaderViewDelegate {
     func headerView(_ customHeader: HeaderView, didTapButtonInSection section: Int) {
-        print("did tap button", section)
+        let item = tableViewDataSource[section]
+        self.presenter.didTapHeaderView(item)
     }
 }

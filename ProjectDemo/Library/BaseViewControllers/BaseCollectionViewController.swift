@@ -11,7 +11,7 @@ import KafkaRefresh
 class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var collectionView: BaseCollectionView!
-    var page: Int = 0
+    var page: Int = 1
     var headerRefresh: VoidCallBack?
     var footerRefresh: VoidCallBack?
     
@@ -55,7 +55,7 @@ class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController,
         
         self.collectionView.bindHeadRefreshHandler({ [weak self] in
             guard let `self` = self else { return }
-            self.page = 0
+            self.page = 1
             self.headerRefresh?()
         }, themeColor: .white, refreshStyle: .replicatorCircle)
         

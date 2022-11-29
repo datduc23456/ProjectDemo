@@ -30,7 +30,7 @@ class GengesCollectionViewCell: BaseCollectionViewCell {
         self.contentView.addTapGestureRecognizer(action: {
             if !self.isSelect {
                 self.didTap?()
-                self.isSelect = !self.isSelect
+                self.isSelect = true
             }
         })
     }
@@ -49,6 +49,7 @@ class GengesCollectionViewCell: BaseCollectionViewCell {
     
     func configCell(_ payload: Any, isSelected: Bool) {
         self.configCell(payload)
+        self.isSelect = isSelected
         if isSelected {
             selected()
         } else {

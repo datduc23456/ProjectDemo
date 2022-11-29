@@ -9,6 +9,8 @@
 import UIKit
 
 final class ActionWireframe: ActionWireframeInterface {
+    
+    
     var navigator: BaseNavigator!
     
 
@@ -31,5 +33,9 @@ final class ActionWireframe: ActionWireframeInterface {
 
 	func handleError(_ error: Error, _ completion: (() -> Void)?) {
         
+    }
+    
+    func showMovieDetailScreen(_ id: Int, isTVShow: Bool) {
+        navigator.pushScreen(AppScreens.detail, (id, isTVShow), fromRoot: true)
     }
 }

@@ -9,9 +9,9 @@ import Foundation
 import Moya
 
 enum CoreTargetType: TargetType {
-    case movieTopRated
+    case movieTopRated(Int)
     case nowPlaying
-    case popular
+    case popular(Int)
     case detail(Int)
     case moviegenreid(genreId: Int)
     case TVshowgenreid(genreId: Int)
@@ -83,8 +83,10 @@ enum CoreTargetType: TargetType {
     var params: [String : Any] {
         var defaultParams: [String: Any] = ["api_key": "63cbd7bb8ca53a31817a418b2cfb7e6a", "language": "en-US"]
         switch self {
-        case .popular:
-            defaultParams.updateValue("1", forKey: "page")
+        case .popular(let page):
+            defaultParams.updateValue(page, forKey: "page")
+        case .movieTopRated(let page):
+            defaultParams.updateValue(page, forKey: "page")
         case .detail:
             defaultParams.updateValue("videos,credits,recommendations,reviews", forKey: "append_to_response")
         case .moviegenreid(let genreId):

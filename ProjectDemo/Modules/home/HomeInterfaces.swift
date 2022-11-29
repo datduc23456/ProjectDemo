@@ -15,12 +15,15 @@ protocol HomeViewInterface: ViewInterface {
 protocol HomePresenterInterface: PresenterInterface {
     func didTapToMovie(_ movie: Movie)
     func didTapSearch()
+    func didTapToGenre(_ genre: Genre)
+    func didTapHeaderView(_ section: HomeTableViewDataSource)
 }
 
 protocol HomeInteractorInterface: InteractorInterface {
     func getMoviePopular()
     func getGenresList()
     func getTopRate()
+    func getMoviePopular(_ genreId: Int)
 }
 
 protocol HomeInteractorOutputInterface: InteractorOutputInterface {
@@ -32,4 +35,5 @@ protocol HomeInteractorOutputInterface: InteractorOutputInterface {
 protocol HomeWireframeInterface: WireframeInterface {
     func showMovieDetailScreen(_ id: Int)
     func showSearchScreen()
+    func showActionScreen(_ type: ActionViewType)
 }

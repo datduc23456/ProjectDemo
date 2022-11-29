@@ -29,6 +29,11 @@ class BaseCollectionBuilder {
         return self
     }
     
+    func withItemSize(_ size: CGSize) -> BaseCollectionBuilder {
+        flowLayout.itemSize = size
+        return self
+    }
+    
     func withEstimatedItemSize(_ size: CGSize) -> BaseCollectionBuilder {
         if size == UICollectionViewFlowLayout.automaticSize {
             flowLayout = CollectionViewFlowLayout()

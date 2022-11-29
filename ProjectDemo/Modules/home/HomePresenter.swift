@@ -24,13 +24,13 @@ final class HomePresenter {
 extension HomePresenter: HomePresenterInterface {
     
     func viewDidLoad() {
-        self.interactor.getMoviePopular()
         self.interactor.getGenresList()
         self.interactor.getTopRate()
+        self.interactor.getMoviePopular()
     }
     
     func viewWillAppear(_ animated: Bool) {
-
+        
     }
     
     func didTapToMovie(_ movie: Movie) {
@@ -39,6 +39,27 @@ extension HomePresenter: HomePresenterInterface {
     
     func didTapSearch() {
         wireframe.showSearchScreen()
+    }
+    
+    func didTapToGenre(_ genre: Genre) {
+        if genre.id != 0 {
+            self.interactor.getMoviePopular(genre.id)
+        } else {
+            self.interactor.getMoviePopular()
+        }
+    }
+    
+    func didTapHeaderView(_ section: HomeTableViewDataSource) {
+        switch section {
+        case .popular:
+            wireframe.showActionScreen(.moviepopular)
+        case .topRating:
+            wireframe.showActionScreen(.topRated)
+        case .trending:
+            wireframe.showActionScreen(.moviepopular)
+        default:
+            return
+        }
     }
 }
 

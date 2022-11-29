@@ -23,6 +23,9 @@ class PageCinemaTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellH
     var listPayload: [Any] = [] {
         didSet {
             pageControl.numberOfPages = listPayload.count
+            if !listPayload.isEmpty, let firstMovie = listPayload.first as? Movie  {
+                configCell(firstMovie)
+            }
             pagerView.reloadData()
         }
     }
