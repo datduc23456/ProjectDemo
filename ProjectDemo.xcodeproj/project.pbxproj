@@ -377,7 +377,7 @@
 		185BC393292F0D7000613EB2 /* AvailableHapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableHapticFeedback.swift; sourceTree = "<group>"; };
 		185BC3B0292F614F00613EB2 /* StatisticcalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticcalTableViewCell.swift; sourceTree = "<group>"; };
 		185BC3B1292F614F00613EB2 /* StatisticcalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticcalTableViewCell.xib; sourceTree = "<group>"; };
-		185DC6BD29000D760056C910 /* ProjectDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		185DC6BD29000D760056C910 /* Starmovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starmovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185DC6C029000D760056C910 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		185DC6C229000D760056C910 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		185DC6C929000D790056C910 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -840,7 +840,7 @@
 		185DC6BE29000D760056C910 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				185DC6BD29000D760056C910 /* ProjectDemo.app */,
+				185DC6BD29000D760056C910 /* Starmovie.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1394,7 +1394,7 @@
 			);
 			name = ProjectDemo;
 			productName = ProjectDemo;
-			productReference = 185DC6BD29000D760056C910 /* ProjectDemo.app */;
+			productReference = 185DC6BD29000D760056C910 /* Starmovie.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1861,7 +1861,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.datnq.demo.ProjectDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Starmovie;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ProjectDemo/ProjectDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2008,7 +2008,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.datnq.demo.ProjectDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Starmovie;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ProjectDemo/ProjectDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2041,7 +2041,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.datnq.demo.ProjectDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Starmovie;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ProjectDemo/ProjectDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
