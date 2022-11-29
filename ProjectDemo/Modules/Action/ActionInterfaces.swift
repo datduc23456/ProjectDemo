@@ -18,6 +18,7 @@ protocol ActionPresenterInterface: PresenterInterface {
     func didTapToMovie(_ movie: Movie)
     func didRefresh()
     func didLoadMore(_ page: Int)
+    func didTapFavorite(_ movie: Movie, isFavorite: Bool)
 }
 
 protocol ActionInteractorInterface: InteractorInterface {
@@ -26,6 +27,9 @@ protocol ActionInteractorInterface: InteractorInterface {
     func getMoviePopular(genreId: Int)
     func getTVShowPopular(_ page: Int)
     func getTVShowTopRate(_ page: Int)
+    func fetchRealmMovieDetailObjectWithId(_ id: Int, completion: ((MovieDetailObject)->Void))
+    func deleteMovieDetailObject(_ movie: Movie)
+    func insertMovieDetailObject(_ movie: Movie)
 }
 
 protocol ActionInteractorOutputInterface: InteractorOutputInterface {
@@ -33,6 +37,8 @@ protocol ActionInteractorOutputInterface: InteractorOutputInterface {
     func getTopRate(_ response: MovieResponse)
     func getTVShowPopular(_ response: MovieResponse)
     func getTVShowTopRate(_ response: MovieResponse)
+    func deleteMovieDetailObject(_ movie: Movie)
+    func insertMovieDetailObject(_ movie: Movie)
 }
 
 protocol ActionWireframeInterface: WireframeInterface {

@@ -85,28 +85,49 @@ struct Movie: Codable {
         name = try values.decodeIfPresent(String.self, forKey: .name).isNil(value: "")
     }
     
-    func toMovieObject() -> MovieObject {
-        let object = MovieObject()
-        object.adult = self.adult
+//    func toMovieObject() -> MovieObject {
+//        let object = MovieObject()
+//        object.adult = self.adult
+//        object._id = self.id
+//        object.backdropPath = self.backdropPath
+//        object.genreIDS.append(objectsIn: self.genreIDS)
+//        object.originalLanguage = self.originalLanguage
+//        object.originalTitle = self.originalTitle
+//        object.overview = self.overview
+//        object.popularity = self.popularity
+//        object.posterPath = self.posterPath
+//        object.releaseDate = self.releaseDate
+//        object.title = self.title
+//        object.video = self.video
+//        object.voteAverage = self.voteAverage
+//        object.voteCount = self.voteCount
+//        object.firstAirDate = self.firstAirDate
+//        object.originCountry.append(objectsIn: self.originCountry)
+//        object.originalName = self.originalName
+//        object.name = self.name
+//        object.dateFavorite = self.dateFavorite
+//        return object
+//    }
+    
+    func toMovieObject() -> MovieDetailObject {
+        let object = MovieDetailObject()
         object._id = self.id
-        object.backdropPath = self.backdropPath
-        object.genreIDS.append(objectsIn: self.genreIDS)
-        object.originalLanguage = self.originalLanguage
         object.originalTitle = self.originalTitle
-        object.overview = self.overview
-        object.popularity = self.popularity
-        object.posterPath = self.posterPath
-        object.releaseDate = self.releaseDate
-        object.title = self.title
-        object.video = self.video
-        object.voteAverage = self.voteAverage
-        object.voteCount = self.voteCount
-        object.firstAirDate = self.firstAirDate
-        object.originCountry.append(objectsIn: self.originCountry)
         object.originalName = self.originalName
-        object.name = self.name
-        object.dateFavorite = self.dateFavorite
+        object.genreIDS.append(objectsIn: self.genreIDS)
+        object.posterPath = self.posterPath
+        object.voteAverage = self.voteAverage
+        object.firstAirDate = self.firstAirDate
+        object.releaseDate = self.releaseDate
+        object.isTVShow = self.isTVShow()
         return object
+    }
+    
+    func isTVShow() -> Bool {
+        if !self.firstAirDate.isEmpty {
+            return true
+        }
+        return false
     }
 }
 

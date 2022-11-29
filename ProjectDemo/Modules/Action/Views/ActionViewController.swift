@@ -73,10 +73,19 @@ final class ActionViewController: BaseCollectionViewController<CinemaPopularColl
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CinemaPopularCollectionViewCell
         let movie = movie[indexPath.row]
         cell.viewFavorite.isHidden = false
+        let predicate = NSPredicate(format: "_id == %@", NSNumber(value: movie.id))
+        let query = self.realmUtils.dataQueryByPredicate(type: MovieDetailObject.self, predicate: predicate)
+        if !query.isEmpty {
+            cell.icFavorite.image = UIImage(named: "ic_heart_color")
+        }
         cell.configCell(movie)
         cell.didTapAction = { [weak self] any in
-            guard let `self` = self, let movie = any as? Movie else { return }
-            self.presenter.didTapToMovie(movie)
+            guard let `self` = self else { return }
+            if let movie = any as? Movie {
+                self.presenter.didTapToMovie(movie)
+            } else if let payload = any as? (Movie, Bool) {
+                self.presenter.didTapFavorite(payload.0, isFavorite: payload.1)
+            }
         }
         return cell
     }

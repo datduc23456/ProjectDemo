@@ -173,6 +173,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="icFavorite" destination="4uK-hd-pls" id="Y4P-wc-VNK"/>
                 <outlet property="image" destination="S9B-Rk-ctW" id="xiw-Uw-gar"/>
                 <outlet property="lbGenres" destination="LeK-kW-3So" id="s4a-99-6eP"/>
                 <outlet property="lbTitle" destination="7lD-Yd-Wh0" id="4Nq-gx-U0L"/>

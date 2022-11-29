@@ -77,9 +77,25 @@ extension ActionPresenter: ActionPresenterInterface {
             return
         }
     }
+    
+    func didTapFavorite(_ movie: Movie, isFavorite: Bool) {
+        if isFavorite {
+            interactor.insertMovieDetailObject(movie)
+        } else {
+            interactor.deleteMovieDetailObject(movie)
+        }
+    }
 }
 
 extension ActionPresenter: ActionInteractorOutputInterface {
+    func deleteMovieDetailObject(_ movie: Movie) {
+        
+    }
+    
+    func insertMovieDetailObject(_ movie: Movie) {
+        
+    }
+    
     func getTVShowPopular(_ response: MovieResponse) {
         view?.getTVShowPopular(response)
         view?.hideLoading()
@@ -99,7 +115,6 @@ extension ActionPresenter: ActionInteractorOutputInterface {
         view?.getTopRate(response)
         view?.hideLoading()
     }
-    
 
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()

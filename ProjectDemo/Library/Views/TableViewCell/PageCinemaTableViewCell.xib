@@ -19,7 +19,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="184" id="KGk-i7-Jjw" customClass="PageCinemaTableViewCell" customModule="ProjectDemo" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="184" id="KGk-i7-Jjw" customClass="PageCinemaTableViewCell" customModule="Starmovie" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="184"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -115,14 +115,14 @@
                             <constraint firstAttribute="height" constant="22" id="gxW-Mh-wNk"/>
                         </constraints>
                     </stackView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viw-Gb-k3k" customClass="FSPagerView" customModule="ProjectDemo" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viw-Gb-k3k" customClass="FSPagerView" customModule="Starmovie" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="104" width="320" height="221"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="221" id="Toj-1F-dTX"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8TF-Jo-haC" customClass="FSPageControl" customModule="ProjectDemo" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8TF-Jo-haC" customClass="FSPageControl" customModule="Starmovie" customModuleProvider="target">
                         <rect key="frame" x="60" y="331" width="200" height="12"/>
                         <viewLayoutGuide key="safeArea" id="UxM-Zf-guR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
