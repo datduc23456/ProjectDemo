@@ -22,9 +22,20 @@ final class PopularPeoplePresenter {
 }
 
 extension PopularPeoplePresenter: PopularPeoplePresenterInterface {
+    func viewDidLoad() {
+        interactor.getPeopleDetail(view!.id)
+    }
+    
+    func didTapPlayVideo(_ video: Video) {
+        wireframe.showPlayVideo(video.key, false)
+    }
 }
 
 extension PopularPeoplePresenter: PopularPeopleInteractorOutputInterface {
+    func getPeopleDetail(_ people: PeopleDetail) {
+        view?.getPeopleDetail(people)
+    }
+    
 
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()

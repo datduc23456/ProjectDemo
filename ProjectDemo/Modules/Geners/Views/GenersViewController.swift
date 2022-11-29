@@ -26,6 +26,9 @@ final class GenersViewController: BaseCollectionViewController<GengesCollectionV
         self.collectionView.semanticContentAttribute = .forceLeftToRight
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.configContentNav(.navigation)
+        navigation.btnBack.addTapGestureRecognizer {
+            self.navigationController?.popViewController(animated: true)
+        }
         navigation.lbTitle.text = "Move Geners"
     }
     
@@ -43,15 +46,16 @@ final class GenersViewController: BaseCollectionViewController<GengesCollectionV
         cell.image.tintColor = .white
         cell.lbTitle.textColor = .white
         cell.contentView.backgroundColor = CHOOSE_GENRE_COLOR
-//        cell.didTap = { [weak self] in
-//            guard self != nil else { return }
+        cell.didTap = { [weak self] in
+            guard let `self` = self else { return }
 //            for cell in collectionView.visibleCells {
 //                if let c = cell as? GengesCollectionViewCell {
 //                    c.unsected()
 //                    c.isSelect = false
 //                }
 //            }
-//        }
+            self.presenter.didTapGenres(genre)
+        }
         return cell
     }
 }

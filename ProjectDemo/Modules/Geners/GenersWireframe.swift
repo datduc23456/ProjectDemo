@@ -31,4 +31,8 @@ final class GenersWireframe: GenersWireframeInterface {
 	func handleError(_ error: Error, _ completion: (() -> Void)?) {
         
     }
+    
+    func showActionScreen(_ type: ActionViewType) {
+        navigator.pushScreen(AppScreens.action, type, fromRoot: true)
+    }
 }

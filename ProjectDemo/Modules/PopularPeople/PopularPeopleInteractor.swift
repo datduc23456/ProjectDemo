@@ -12,4 +12,13 @@ final class PopularPeopleInteractor {
 }
 
 extension PopularPeopleInteractor: PopularPeopleInteractorInterface {
+    
+    func getPeopleDetail(_ id: Int) {
+        ServiceCore.shared.request(PeopleDetail.self, targetType: CoreTargetType.personDetail(personId: id), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getPeopleDetail(response)
+        }, failureBlock: { _ in
+            
+        })
+    }
 }

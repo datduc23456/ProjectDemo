@@ -188,6 +188,10 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
             baseCell.didTapActionInCell = { [weak self] any in
                 guard let `self` = self else { return }
                 switch item {
+                case .actors:
+                    if let actor = any as? Cast {
+                        self.presenter.didTapPeople(actor.id)
+                    }
                 default:
                     return
                 }

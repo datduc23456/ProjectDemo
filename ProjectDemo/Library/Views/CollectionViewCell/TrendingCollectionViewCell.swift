@@ -33,6 +33,11 @@ class TrendingCollectionViewCell: BaseCollectionViewCell {
             self.payload = payload
             imageView.setImageFromUrl(url: payload.absoluteString)
         }
+        
+        if let payload = payload as? String {
+            self.payload = payload
+            imageView.setImageFromUrl(url: "\(baseURLImage)\(payload)")
+        }
     }
     
 }

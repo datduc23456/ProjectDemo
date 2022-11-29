@@ -32,4 +32,8 @@ final class MovieDetailWireframe: MovieDetailWireframeInterface {
 	func handleError(_ error: Error, _ completion: (() -> Void)?) {
         
     }
+    
+    func showPeopleDetail(_ id: Int) {
+        navigator.pushScreen(AppScreens.popularpeople, id, fromRoot: true)
+    }
 }

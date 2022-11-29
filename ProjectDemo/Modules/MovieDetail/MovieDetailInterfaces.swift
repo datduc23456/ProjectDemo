@@ -18,6 +18,7 @@ protocol MovieDetailViewInterface: ViewInterface {
 protocol MovieDetailPresenterInterface: PresenterInterface {
     func didTapPlayVideo(_ video: Video)
     func didTapFavorite(_ movie: MovieDetail, isFavorite: Bool)
+    func didTapPeople(_ id: Int)
 }
 
 protocol MovieDetailInteractorInterface: InteractorInterface {
@@ -37,4 +38,5 @@ protocol MovieDetailInteractorOutputInterface: InteractorOutputInterface {
 }
 
 protocol MovieDetailWireframeInterface: WireframeInterface {
+    func showPeopleDetail(_ id: Int)
 }

@@ -25,7 +25,11 @@ extension GenersPresenter: GenersPresenterInterface {
 }
 
 extension GenersPresenter: GenersInteractorOutputInterface {
-
+    
+    func didTapGenres(_ genre: Genre) {
+        wireframe.showActionScreen(.genre(genre))
+    }
+    
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()
         wireframe.handleError(error, completion)

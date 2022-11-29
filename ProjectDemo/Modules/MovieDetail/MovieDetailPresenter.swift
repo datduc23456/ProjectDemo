@@ -22,6 +22,10 @@ final class MovieDetailPresenter {
 }
 
 extension MovieDetailPresenter: MovieDetailPresenterInterface {
+    func didTapPeople(_ id: Int) {
+        wireframe.showPeopleDetail(id)
+    }
+    
     func didTapFavorite(_ movie: MovieDetail, isFavorite: Bool) {
         if isFavorite {
             interactor.deleteMovieDetailObject(movie)

@@ -42,7 +42,7 @@ extension HomeInteractor: HomeInteractorInterface {
     }
     
     func getMoviePopular(_ genreId: Int) {
-        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.moviegenreid(genreId: genreId), successBlock: { [weak self] response in
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.moviegenreid(genreId: genreId, page: 1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getMoviePopular(response)
         }, failureBlock: { _ in

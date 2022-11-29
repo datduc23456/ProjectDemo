@@ -44,4 +44,8 @@ final class HomeWireframe: HomeWireframeInterface {
     func showActionScreen(_ type: ActionViewType) {
         navigator.pushScreen(AppScreens.action, type, fromRoot: true)
     }
+    
+    func showGenersScreen() {
+        navigator.pushScreen(AppScreens.genres, fromRoot: true)
+    }
 }

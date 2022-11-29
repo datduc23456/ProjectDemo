@@ -14,12 +14,16 @@ class ActorsCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var img: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.contentView.addTapGestureRecognizer(action: { [weak self] in
+            guard let `self` = self, let payload = self.payload else { return }
+            self.didTapAction?(payload)
+        })
     }
     
     override func configCell(_ payload: Any) {
         if let cast = payload as? Cast {
-            img.kf.setImage(with: URL(string: "\(baseURLImage)\(cast.profilePath)"))
+            self.payload = payload
+            img.kf.setImage(with: URL(string: "\(baseURLImage)\(cast.profilePath)"), placeholder: UIImage.init(named: "avatar_default"))
             lbName.text = cast.name
             lbDepartment.text = cast.knownForDepartment
         }

@@ -31,6 +31,7 @@ enum AppScreens: String, Screen, CaseIterable {
     case search
     case note
     case action
+    case genres
     
     var path: String {
         return rawValue
@@ -60,7 +61,7 @@ enum AppScreens: String, Screen, CaseIterable {
         case .addnote:
             return AddNoteWireframe.generateModule(payload)
         case .popularpeople:
-            return ActionWireframe.generateModule(payload)
+            return PopularPeopleWireframe.generateModule(payload)
         case .home:
             return HomeWireframe.generateModule(payload)
         case .search:
@@ -71,6 +72,8 @@ enum AppScreens: String, Screen, CaseIterable {
             return PlayVideoWireframe.generateModule(payload)
         case .action:
             return ActionWireframe.generateModule(payload)
+        case .genres:
+            return GenersWireframe.generateModule(payload)
         }
     }
 }

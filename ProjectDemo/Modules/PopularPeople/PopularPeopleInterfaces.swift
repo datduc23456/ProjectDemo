@@ -7,15 +7,20 @@
 //
 
 protocol PopularPeopleViewInterface: ViewInterface {
+    var id: Int { get }
+    func getPeopleDetail(_ people: PeopleDetail)
 }
 
 protocol PopularPeoplePresenterInterface: PresenterInterface {
+    func didTapPlayVideo(_ video: Video)
 }
 
 protocol PopularPeopleInteractorInterface: InteractorInterface {
+    func getPeopleDetail(_ id: Int)
 }
 
 protocol PopularPeopleInteractorOutputInterface: InteractorOutputInterface {
+    func getPeopleDetail(_ people: PeopleDetail)
 }
 
 protocol PopularPeopleWireframeInterface: WireframeInterface {

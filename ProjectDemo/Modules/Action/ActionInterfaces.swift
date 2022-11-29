@@ -24,7 +24,7 @@ protocol ActionPresenterInterface: PresenterInterface {
 protocol ActionInteractorInterface: InteractorInterface {
     func getMoviePopular(_ page: Int)
     func getTopRate(_ page: Int)
-    func getMoviePopular(genreId: Int)
+    func getMoviePopular(genreId: Int, _ page: Int)
     func getTVShowPopular(_ page: Int)
     func getTVShowTopRate(_ page: Int)
     func fetchRealmMovieDetailObjectWithId(_ id: Int, completion: ((MovieDetailObject)->Void))

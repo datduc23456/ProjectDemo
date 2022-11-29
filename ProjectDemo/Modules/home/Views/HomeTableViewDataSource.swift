@@ -60,7 +60,7 @@ enum HomeTableViewDataSource: CaseIterable {
     func titleOfHeader() -> String {
         switch self {
         case .genges:
-            return "Genges"
+            return "Genres"
         case .pageView:
             return ""
         case .popular:

@@ -57,6 +57,8 @@ extension HomePresenter: HomePresenterInterface {
             wireframe.showActionScreen(.topRated)
         case .trending:
             wireframe.showActionScreen(.moviepopular)
+        case .genges:
+            wireframe.showGenersScreen()
         default:
             return
         }

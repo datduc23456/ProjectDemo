@@ -10,6 +10,7 @@ protocol GenersViewInterface: ViewInterface {
 }
 
 protocol GenersPresenterInterface: PresenterInterface {
+    func didTapGenres(_ genre: Genre)
 }
 
 protocol GenersInteractorInterface: InteractorInterface {
@@ -19,4 +20,5 @@ protocol GenersInteractorOutputInterface: InteractorOutputInterface {
 }
 
 protocol GenersWireframeInterface: WireframeInterface {
+    func showActionScreen(_ type: ActionViewType)
 }

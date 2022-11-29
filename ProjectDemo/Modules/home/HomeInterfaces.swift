@@ -36,4 +36,5 @@ protocol HomeWireframeInterface: WireframeInterface {
     func showMovieDetailScreen(_ id: Int)
     func showSearchScreen()
     func showActionScreen(_ type: ActionViewType)
+    func showGenersScreen()
 }

@@ -37,8 +37,8 @@ extension ActionInteractor: ActionInteractorInterface {
         })
     }
     
-    func getMoviePopular(genreId: Int) {
-        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.moviegenreid(genreId: genreId), successBlock: { [weak self] response in
+    func getMoviePopular(genreId: Int, _ page: Int) {
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.moviegenreid(genreId: genreId, page: page), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getMoviePopular(response)
         }, failureBlock: { _ in

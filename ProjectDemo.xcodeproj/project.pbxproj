@@ -42,6 +42,8 @@
 		181189C0292B563900E9D883 /* TVShowTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181189BF292B563900E9D883 /* TVShowTableViewDataSource.swift */; };
 		1831BB7D29359E3C00BCE150 /* GenresSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831BB7B29359E3C00BCE150 /* GenresSearchTableViewCell.swift */; };
 		1831BB7E29359E3C00BCE150 /* GenresSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1831BB7C29359E3C00BCE150 /* GenresSearchTableViewCell.xib */; };
+		1831BB802935F07B00BCE150 /* PeopleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831BB7F2935F07B00BCE150 /* PeopleDetail.swift */; };
+		1831BB822935F37900BCE150 /* PeopleTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831BB812935F37900BCE150 /* PeopleTableViewDataSource.swift */; };
 		183B64D3292C69C600E7BB3E /* BaseCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183B64D2292C69C600E7BB3E /* BaseCustomView.swift */; };
 		183F20E82930A762001BCB23 /* BottomSheetLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183F20E72930A762001BCB23 /* BottomSheetLabelView.swift */; };
 		183F20EA2930A77A001BCB23 /* BottomSheetLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183F20E92930A77A001BCB23 /* BottomSheetLabelView.xib */; };
@@ -329,6 +331,8 @@
 		181189BF292B563900E9D883 /* TVShowTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowTableViewDataSource.swift; sourceTree = "<group>"; };
 		1831BB7B29359E3C00BCE150 /* GenresSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresSearchTableViewCell.swift; sourceTree = "<group>"; };
 		1831BB7C29359E3C00BCE150 /* GenresSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenresSearchTableViewCell.xib; sourceTree = "<group>"; };
+		1831BB7F2935F07B00BCE150 /* PeopleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleDetail.swift; sourceTree = "<group>"; };
+		1831BB812935F37900BCE150 /* PeopleTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewDataSource.swift; sourceTree = "<group>"; };
 		183B64D2292C69C600E7BB3E /* BaseCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomView.swift; sourceTree = "<group>"; };
 		183F20E72930A762001BCB23 /* BottomSheetLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetLabelView.swift; sourceTree = "<group>"; };
 		183F20E92930A77A001BCB23 /* BottomSheetLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetLabelView.xib; sourceTree = "<group>"; };
@@ -953,6 +957,7 @@
 				52BCB4D4292930A9008E1C32 /* Genre.swift */,
 				52F03F8329320306005CAF76 /* MovieDetail.swift */,
 				52B91FF329339F48005CD445 /* PersonResponse.swift */,
+				1831BB7F2935F07B00BCE150 /* PeopleDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1226,6 +1231,7 @@
 			children = (
 				FB1A348BEB9BAB9F31D60C9F /* PopularPeopleViewController.storyboard */,
 				370EB89AD0A02933ADFDF7F8 /* PopularPeopleViewController.swift */,
+				1831BB812935F37900BCE150 /* PeopleTableViewDataSource.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1734,6 +1740,7 @@
 				C9AC379B40FE3B4F9488E0B2 /* EpisodeWireframe.swift in Sources */,
 				CA7347B956394D91A5EA68A6 /* EpisodeViewController.swift in Sources */,
 				DD397072C4B4A89A0F0EE46D /* ActionInterfaces.swift in Sources */,
+				1831BB802935F07B00BCE150 /* PeopleDetail.swift in Sources */,
 				B2B2C769568DF79B606D5AE3 /* ActionPresenter.swift in Sources */,
 				20CD7B58675B38002D808B71 /* ActionInteractor.swift in Sources */,
 				F7D7806DADD0DA242260BAAE /* ActionWireframe.swift in Sources */,
@@ -1759,6 +1766,7 @@
 				1CEBAF1CA42DD3D33017AF8F /* NotePresenter.swift in Sources */,
 				64711AB6B1CAC1CD31FE6A1B /* NoteInteractor.swift in Sources */,
 				B1E13BA2E58BF028FB4DD846 /* NoteWireframe.swift in Sources */,
+				1831BB822935F37900BCE150 /* PeopleTableViewDataSource.swift in Sources */,
 				1AEF374BF55FE6FD96EC3C9C /* NoteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
