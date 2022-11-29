@@ -9,6 +9,10 @@ import UIKit
 
 class TopRatingCollectionViewCell: BaseCollectionViewCell {
 
+    @IBOutlet weak var imgAvatar3: UIImageView!
+    @IBOutlet weak var imgAvatar2: UIImageView!
+    @IBOutlet weak var imgAvatar1: UIImageView!
+    @IBOutlet weak var lbNumber: UILabel!
     @IBOutlet weak var lbRating: UILabel!
     @IBOutlet weak var lbYear: UILabel!
     @IBOutlet weak var lbVoteAvg: UILabel!
@@ -26,6 +30,7 @@ class TopRatingCollectionViewCell: BaseCollectionViewCell {
     override func configCell(_ payload: Any) {
         if let payload = payload as? Movie {
             self.payload = payload
+            lbNumber.text = "\(self.tag + 1)"
             image.kf.setImage(with: URL(string: "\(baseURLImage)\(payload.posterPath)"))
             lbTitle.text = payload.originalTitle
             lbVoteAvg.text = "\(payload.voteAverage)"

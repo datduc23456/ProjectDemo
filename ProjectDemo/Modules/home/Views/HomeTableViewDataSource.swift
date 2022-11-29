@@ -27,7 +27,7 @@ enum HomeTableViewDataSource: CaseIterable {
             return 32
         case .pageView:
             let scaleWidth = CommonUtil.SCREEN_WIDTH / 375
-            return 361 * scaleWidth
+            return 380 * scaleWidth
         case .popular:
             return 212
         case .newMovie:

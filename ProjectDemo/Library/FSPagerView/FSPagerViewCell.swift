@@ -39,6 +39,9 @@ open class FSPagerViewCell: UICollectionViewCell {
             return _imageView
         }
         let imageView = UIImageView(frame: .zero)
+        imageView.layer.cornerRadius = 4
+        imageView.borderWidth = 1
+        imageView.borderColor = UIColor(hex: "#FB716E")
         self.contentView.addSubview(imageView)
         _imageView = imageView
         return imageView
@@ -118,8 +121,10 @@ open class FSPagerViewCell: UICollectionViewCell {
     override open func layoutSubviews() {
         super.layoutSubviews()
         if let imageView = _imageView {
-            imageView.contentMode = .scaleToFill
+            imageView.contentMode = .scaleAspectFit
             imageView.frame = self.contentView.bounds
+            imageView.layer.masksToBounds = true
+            imageView.layer.cornerRadius = 16
         }
         if let textLabel = _textLabel {
             textLabel.superview!.frame = {

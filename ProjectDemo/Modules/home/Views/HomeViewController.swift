@@ -139,6 +139,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let item = tableViewDataSource[section]
         let titleHeader = item.titleOfHeader()
+        if item == .genges {
+            return 40
+        }
         return titleHeader.isEmpty ? 0 : 60
     }
     

@@ -36,8 +36,17 @@ class TrendingCollectionViewCell: BaseCollectionViewCell {
         
         if let payload = payload as? String {
             self.payload = payload
+            imageView.backgroundColorImage = .white.withAlphaComponent(0.3)
+            imageView.imageContentMode = .scaleAspectFit
             imageView.setImageFromUrl(url: "\(baseURLImage)\(payload)")
         }
     }
     
+}
+extension UIImageView {
+  func setImageColor(color: UIColor) {
+    let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
+    self.image = templateImage
+    self.tintColor = color
+  }
 }

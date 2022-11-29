@@ -74,18 +74,20 @@ extension PopularPeopleViewController: PopularPeopleViewInterface {
 //        if listVideos.isEmpty {
 //            self.tableViewDataSource.removeAll(where: {$0 == .videos || $0 == .images})
 //        }
-//        if response.recommendations.results.isEmpty {
-//            self.tableViewDataSource.removeAll(where: {$0 == .trending})
-//        }
-//        if response.seasons.isEmpty {
-//            self.tableViewDataSource.removeAll(where: {$0 == .season})
-//        }
-//        if response.overview.isEmpty {
-//            self.tableViewDataSource.removeAll(where: {$0 == .overview})
-//        }
+        if response.biography.isEmpty {
+            self.tableViewDataSource.removeAll(where: {$0 == .overview})
+        }
+        if response.tvCredits.cast.isEmpty {
+            self.tableViewDataSource.removeAll(where: {$0 == .tvshow})
+        }
+        if response.movieCredits.cast.isEmpty {
+            self.tableViewDataSource.removeAll(where: {$0 == .videos})
+        }
         self.peopleDetail = response
         avatar.kf.setImage(with: URL(string: "\(baseURLImage)\(response.profilePath)"))
-//        imgBackDrop.kf.setImage(with: URL(string: "\(baseURLImage)\(response.)"))
+        if let imagePath = response.images.profile.first?.filePath {
+            imgBack.kf.setImage(with: URL(string: "\(baseURLImage)\(imagePath)"))
+        }
         lbDob.text = "Date of birth: \(response.birthday.toDateFormat(toFormat: "MMM dd, yyyy"))"
         lbPob.text = "Place of birth: \(response.placeOfBirth)"
         lbName.text = response.name
@@ -100,8 +102,8 @@ extension PopularPeopleViewController: PopularPeopleViewInterface {
 //        self.data.updateValue(response.videos, forKey: "\(MovieDetailTableViewDataSource.videos)")
         self.data.updateValue(people.images.profile.map({$0.filePath}), forKey: "\(PeopleTableViewDataSource.images)")
 //        self.data.updateValue((totalVote: response.popularity, voteAvg: voteAvg), forKey: "\(MovieDetailTableViewDataSource.notes)")
-//        self.data.updateValue(response.recommendations.results, forKey: "\(MovieDetailTableViewDataSource.trending)")
-//        self.data.updateValue(response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate)")
+        self.data.updateValue(people.tvCredits.cast, forKey: "\(PeopleTableViewDataSource.tvshow)")
+        self.data.updateValue(people.movieCredits.cast, forKey: "\(PeopleTableViewDataSource.videos)")
         self.data.updateValue([people.biography], forKey: "\(PeopleTableViewDataSource.overview)")
 //        self.data.updateValue(response.seasons, forKey: "\(MovieDetailTableViewDataSource.season)")
         self.tableView.reloadData()
@@ -126,12 +128,14 @@ extension PopularPeopleViewController: UITableViewDataSource, UITableViewDelegat
             }
         }
         
-        if let cell = cell as? MovieVideosTableViewCell, let data = self.data["\(item)"] as? Videos  {
+//        if let cell = cell.
+        
+        if let cell = cell as? MovieVideosTableViewCell, let data = self.data["\(item)"] as? [Movie]  {
             cell.configCell(data, selectedIndex: self.selectedIndex)
             cell.didTapActionInCell = { [weak self] any in
                 guard let `self` = self else { return }
-                if let video = any as? Video {
-                    self.presenter.didTapPlayVideo(video)
+                if let video = any as? Movie {
+//                    self.presenter.didTapPlayVideo(video)
                 } else if let selectedIndex = any as? Int {
                     self.selectedIndex = selectedIndex
                 }

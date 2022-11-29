@@ -9,6 +9,7 @@ import UIKit
 
 class MovieVideosTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
     
+    @IBOutlet weak var icPlay: UIImageView!
     @IBOutlet weak var lbPublished: UILabel!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var imgThumbnail: UIImageView!
@@ -19,6 +20,8 @@ class MovieVideosTableViewCell: UITableViewCell, BaseWithCollectionTableViewCell
     var didTapActionInCell: ((Any) -> Void) = {_ in}
     var videos: Videos?
     var video: Video?
+    var movies: [Movie]?
+    var movie: Movie?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,6 +47,10 @@ class MovieVideosTableViewCell: UITableViewCell, BaseWithCollectionTableViewCell
             imgThumbnail.kf.setImage(with: CommonUtil.getThumbnailYoutubeUrl(video.key))
             lbName.text = video.name
             lbPublished.text = video.publishedAt.toDateFormat(toFormat: "MMM dd, yyyy")
+        } else if let movie = movies?[safe: index] {
+            imgThumbnail.kf.setImage(with: URL(string: "\(baseURLImage)\(movie.posterPath)"))
+            lbName.text = !movie.originalTitle.isEmpty ? movie.originalTitle : movie.originalName
+            lbPublished.text = !movie.releaseDate.isEmpty ? movie.releaseDate.toDateFormat(toFormat: "MMM dd, yyyy") : movie.firstAirDate.toDateFormat(toFormat: "MMM dd, yyyy")
         }
     }
     
@@ -60,4 +67,17 @@ class MovieVideosTableViewCell: UITableViewCell, BaseWithCollectionTableViewCell
         }
     }
     
+    func configCell(_ movies: [Movie], selectedIndex: Int = 0) {
+        self.movies = movies
+        self.selectedIndex = selectedIndex
+        self.icPlay.isHidden = true
+        if let firstMovie = movies.first {
+            self.movie = firstMovie
+            imgThumbnail.kf.setImage(with: URL(string: "\(baseURLImage)\(firstMovie.posterPath)"))
+            lbName.text = !firstMovie.originalTitle.isEmpty ? firstMovie.originalTitle : firstMovie.originalName
+            lbPublished.text = !firstMovie.releaseDate.isEmpty ? firstMovie.releaseDate.toDateFormat(toFormat: "MMM dd, yyyy") : firstMovie.firstAirDate.toDateFormat(toFormat: "MMM dd, yyyy")
+            let stackViewMovies = movies
+            stackView.configView(stackViewMovies.map({URL(string: "\(baseURLImage)\($0.posterPath)")!}), selectedIndex: selectedIndex)
+        }
+    }
 }

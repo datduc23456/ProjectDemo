@@ -11,19 +11,22 @@ enum PeopleTableViewDataSource: CaseIterable {
     typealias RawValue = Int
     
     static var allCases: [PeopleTableViewDataSource] {
-        return [.overview, .videos, .images, .trending]
+        return [.overview, .videos, .tvshow, .images, .trending]
     }
     
     case overview
     case videos
     case images
     case trending
+    case tvshow
     
     func heightForRow() -> CGFloat {
         switch self {
         case .overview:
             return 100
         case .videos:
+            return 195
+        case .tvshow:
             return 195
         case .images:
             return 95
@@ -38,6 +41,8 @@ enum PeopleTableViewDataSource: CaseIterable {
             return TextExpandTableViewCell.self
         case .videos:
             return MovieVideosTableViewCell.self
+        case .tvshow:
+            return MovieVideosTableViewCell.self
         case .images:
             return ImagesTableViewCell.self
         case .trending:
@@ -49,7 +54,9 @@ enum PeopleTableViewDataSource: CaseIterable {
     func titleOfHeader() -> String {
         switch self {
         case .videos:
-            return "Videos"
+            return "Movies"
+        case .tvshow:
+            return "TV Shows"
         case .images:
             return "Image"
         case .trending:

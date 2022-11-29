@@ -78,6 +78,7 @@ class BaseTableCollectionViewCell<T: UICollectionViewCell>: UITableViewCell, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.className, for: indexPath) as! T
         let payload = self.listPayload[indexPath.row]
         if let baseCell = cell as? BaseCollectionViewCell {
+            baseCell.tag = indexPath.row
             baseCell.configCell(payload)
             baseCell.didTapAction = { [weak self] any in
                 guard let `self` = self else { return }

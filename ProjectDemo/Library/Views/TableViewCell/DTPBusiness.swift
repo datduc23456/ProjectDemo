@@ -31,10 +31,10 @@ class DTPBusiness {
     
     func roundRating(_ rating: Double) -> String {
         if rating < 1000 {
-            return "\(rating)k"
+            return "\(Int(rating))"
         } else {
             let rounded = rating.rounded(toPlaces: 3)
-            return "\(rounded)k"
+            return "\(Int(rounded))k"
         }
     }
 }

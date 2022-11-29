@@ -32,8 +32,8 @@ class PageCinemaTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellH
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        pagerView.itemSize = UICollectionViewFlowLayout.automaticSize
-        pagerView.interitemSpacing = 12
+        pagerView.itemSize = CGSize(width: 167, height: 250)
+        pagerView.interitemSpacing = 50
         pagerView.transformer = FSPagerViewTransformer(type: .linear)
         pagerView.dataSource = self
         pagerView.delegate = self

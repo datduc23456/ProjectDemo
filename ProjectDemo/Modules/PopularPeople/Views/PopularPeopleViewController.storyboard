@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -34,8 +33,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ej6-4b-8Tt">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="360"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Black_adam" translatesAutoresizingMaskIntoConstraints="NO" id="crd-Fl-ZhG">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Black_adam" translatesAutoresizingMaskIntoConstraints="NO" id="crd-Fl-ZhG">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="206"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="206" id="9Eq-J7-Scx"/>
                                                         </constraints>
@@ -69,7 +69,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6" translatesAutoresizingMaskIntoConstraints="NO" id="GSU-Kk-3WH">
-                                                                <rect key="frame" x="125.5" y="-62" width="124" height="124"/>
+                                                                <rect key="frame" x="125.5" y="-30" width="124" height="124"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="124" id="No7-98-dP3"/>
                                                                     <constraint firstAttribute="height" constant="124" id="Y5S-2g-NeH"/>
@@ -87,13 +87,13 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Im Yoon ah" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28G-uc-6Je">
-                                                                <rect key="frame" x="140.5" y="70" width="94.5" height="18"/>
+                                                                <rect key="frame" x="140.5" y="102" width="94.5" height="18"/>
                                                                 <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZc-w3-X17">
-                                                                <rect key="frame" x="16" y="96" width="343" height="19"/>
+                                                                <rect key="frame" x="16" y="128" width="343" height="19"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="19" id="NgC-nW-zfp"/>
                                                                 </constraints>
@@ -187,11 +187,11 @@
                                                             <constraint firstItem="hZc-w3-X17" firstAttribute="top" secondItem="28G-uc-6Je" secondAttribute="bottom" constant="8" id="aoQ-1y-h87"/>
                                                             <constraint firstItem="28G-uc-6Je" firstAttribute="centerX" secondItem="1Tu-aT-jRy" secondAttribute="centerX" id="euM-I6-Edc"/>
                                                             <constraint firstItem="2pV-TB-91h" firstAttribute="leading" secondItem="byu-Br-jDc" secondAttribute="leading" id="jmO-Wb-UCc"/>
-                                                            <constraint firstItem="GSU-Kk-3WH" firstAttribute="top" secondItem="1Tu-aT-jRy" secondAttribute="top" constant="-62" id="pRw-nF-OHb"/>
+                                                            <constraint firstItem="GSU-Kk-3WH" firstAttribute="top" secondItem="1Tu-aT-jRy" secondAttribute="top" constant="-30" id="pRw-nF-OHb"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="1Tu-aT-jRy" secondAttribute="bottom" id="9UF-Ws-4D8"/>
                                                     <constraint firstAttribute="trailing" secondItem="crd-Fl-ZhG" secondAttribute="trailing" id="D1L-9K-KkG"/>
@@ -303,8 +303,5 @@
         <image name="ic_calendar" width="15" height="17"/>
         <image name="ic_film" width="15" height="17"/>
         <image name="ic_location" width="13" height="16"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

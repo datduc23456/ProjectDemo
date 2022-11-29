@@ -53,7 +53,7 @@ public class AYImageView: UIView {
     
     /** if `true` ImageDownloader will download image whether image is present in cache or not. Default is  `false` */
     public var isforceRemoteFetchingEnabled: Bool = false
-    
+    public var backgroundColorImage: UIColor = .clear
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,7 +83,7 @@ public class AYImageView: UIView {
         let imageView = UIImageView(frame: self.bounds)
         imageView.contentMode = imageContentMode
         imageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        imageView.backgroundColor = UIColor.clear
+        imageView.backgroundColor = backgroundColorImage
         return imageView
     }
     
@@ -97,7 +97,7 @@ public class AYImageView: UIView {
     private func configureView() {
         addTapGesture()
         makeImageViewRound()
-        backgroundColor = .clear
+//        backgroundColor = .clear
     }
 
     /// make image circular if "IsCircular set true"
@@ -142,7 +142,7 @@ public class AYImageView: UIView {
         image can be capture in  ImageViewDownlaodImagehandler*/
     public func setImageFromUrl(url: String, completion: ImageViewDownloadImageHandler? = nil) {
         
-        self.backgroundColor = .white
+        self.backgroundColor = .white.withAlphaComponent(0.5)
         self.imageView.image = placeHolderImage
         
         if isShowActivityIndicator {
