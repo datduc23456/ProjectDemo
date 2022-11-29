@@ -17,7 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CinemaPopularCollectionViewCell" customModule="ProjectDemo" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CinemaPopularCollectionViewCell" customModule="Starmovie" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="128" height="235"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -35,6 +35,33 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3d-zK-11x">
+                        <rect key="frame" x="88" y="8" width="32" height="32"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4j6-aH-SOO">
+                                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_heart" translatesAutoresizingMaskIntoConstraints="NO" id="4uK-hd-pls">
+                                <rect key="frame" x="5" y="6.3333333333333339" width="22" height="19.666666666666664"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4uK-hd-pls" firstAttribute="centerX" secondItem="n3d-zK-11x" secondAttribute="centerX" id="1Wi-Uz-CiL"/>
+                            <constraint firstItem="4j6-aH-SOO" firstAttribute="top" secondItem="n3d-zK-11x" secondAttribute="top" id="2q4-Pf-pTR"/>
+                            <constraint firstItem="4j6-aH-SOO" firstAttribute="centerX" secondItem="n3d-zK-11x" secondAttribute="centerX" id="3FG-Z1-Gwe"/>
+                            <constraint firstItem="4j6-aH-SOO" firstAttribute="centerY" secondItem="n3d-zK-11x" secondAttribute="centerY" id="9WW-mU-Cay"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="Khd-oW-npL"/>
+                            <constraint firstAttribute="height" constant="32" id="OOU-TI-Q3B"/>
+                            <constraint firstAttribute="bottom" secondItem="4j6-aH-SOO" secondAttribute="bottom" id="YOM-Z1-QSi"/>
+                            <constraint firstItem="4uK-hd-pls" firstAttribute="centerY" secondItem="n3d-zK-11x" secondAttribute="centerY" id="aUB-Uo-Vzi"/>
+                            <constraint firstAttribute="trailing" secondItem="4j6-aH-SOO" secondAttribute="trailing" id="hBh-F2-au6"/>
+                            <constraint firstItem="4j6-aH-SOO" firstAttribute="leading" secondItem="n3d-zK-11x" secondAttribute="leading" id="xBt-XT-uNe"/>
+                        </constraints>
+                    </view>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X64-T7-pee">
                         <rect key="frame" x="16" y="138" width="96" height="22"/>
                         <subviews>
@@ -125,10 +152,12 @@
                 <constraint firstItem="X64-T7-pee" firstAttribute="top" secondItem="S9B-Rk-ctW" secondAttribute="bottom" constant="8" id="49B-Gr-auT"/>
                 <constraint firstItem="X64-T7-pee" firstAttribute="centerX" secondItem="S9B-Rk-ctW" secondAttribute="centerX" id="9sJ-xE-DZ9"/>
                 <constraint firstItem="LeK-kW-3So" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="A7c-Tn-QfT"/>
+                <constraint firstItem="n3d-zK-11x" firstAttribute="top" secondItem="S9B-Rk-ctW" secondAttribute="top" id="CrO-Lv-IzG"/>
                 <constraint firstItem="LeK-kW-3So" firstAttribute="top" secondItem="7lD-Yd-Wh0" secondAttribute="bottom" constant="2" id="Fmd-z2-qoi"/>
                 <constraint firstAttribute="bottom" secondItem="LeK-kW-3So" secondAttribute="bottom" constant="12" id="NrE-Ti-3oS"/>
                 <constraint firstAttribute="trailing" secondItem="7lD-Yd-Wh0" secondAttribute="trailing" constant="13" id="QHg-5W-kGL"/>
                 <constraint firstAttribute="trailing" secondItem="LeK-kW-3So" secondAttribute="trailing" constant="8" id="TOh-Zt-wTY"/>
+                <constraint firstItem="n3d-zK-11x" firstAttribute="trailing" secondItem="S9B-Rk-ctW" secondAttribute="trailing" id="TsE-Gm-cof"/>
                 <constraint firstItem="X64-T7-pee" firstAttribute="trailing" secondItem="S9B-Rk-ctW" secondAttribute="trailing" constant="-8" id="U9V-GX-khh"/>
                 <constraint firstItem="S9B-Rk-ctW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="XEU-He-Vwj"/>
                 <constraint firstAttribute="trailing" secondItem="S9B-Rk-ctW" secondAttribute="trailing" constant="8" id="flp-IW-JBF"/>
@@ -149,12 +178,14 @@
                 <outlet property="lbTitle" destination="7lD-Yd-Wh0" id="4Nq-gx-U0L"/>
                 <outlet property="lbVoteAvg" destination="NEI-bL-qHy" id="DBS-cm-KqX"/>
                 <outlet property="lbYear" destination="A1M-eV-vYN" id="yDG-w5-MO8"/>
+                <outlet property="viewFavorite" destination="n3d-zK-11x" id="Wkk-YH-h7v"/>
             </connections>
             <point key="canvasLocation" x="189.31297709923663" y="52.464788732394368"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="Black_adam" width="40.666667938232422" height="40.666667938232422"/>
+        <image name="ic_heart" width="22" height="19.666666030883789"/>
         <image name="ic_star" width="16" height="16"/>
     </resources>
 </document>

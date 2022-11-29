@@ -10,6 +10,7 @@ import Kingfisher
 
 class CinemaPopularCollectionViewCell: BaseCollectionViewCell {
 
+    @IBOutlet weak var viewFavorite: UIView!
     @IBOutlet weak var lbGenres: UILabel!
     @IBOutlet weak var lbVoteAvg: UILabel!
     @IBOutlet weak var lbYear: UILabel!
@@ -18,6 +19,7 @@ class CinemaPopularCollectionViewCell: BaseCollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        viewFavorite.roundCorners(corners: [.bottomLeft, .topRight], radius: 8)
         self.contentView.addTapGestureRecognizer(action: { [weak self] in
             guard let `self` = self, let payload = self.payload else { return }
             self.didTapAction?(payload)

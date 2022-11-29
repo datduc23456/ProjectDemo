@@ -72,6 +72,7 @@ final class ActionViewController: BaseCollectionViewController<CinemaPopularColl
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CinemaPopularCollectionViewCell
         let movie = movie[indexPath.row]
+        cell.viewFavorite.isHidden = false
         cell.configCell(movie)
         cell.didTapAction = { [weak self] any in
             guard let `self` = self, let movie = any as? Movie else { return }
