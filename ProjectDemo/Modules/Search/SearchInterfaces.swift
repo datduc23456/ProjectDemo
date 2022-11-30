@@ -24,6 +24,7 @@ protocol SearchPresenterInterface: PresenterInterface {
     func didTapToMovie(_ movie: Movie)
     func didTapToTVshow(_ movie: Movie)
     func didTapToCast(_ cast: Cast)
+    func didSearch(_ key: String)
 }
 
 protocol SearchInteractorInterface: InteractorInterface {
@@ -33,6 +34,7 @@ protocol SearchInteractorInterface: InteractorInterface {
     func searchTVShowPopular(_ query: String)
     func searchPerson(_ query: String)
     func fetchSearchKey()
+    func insertQuery(_ query: String)
 }
 
 protocol SearchInteractorOutputInterface: InteractorOutputInterface {

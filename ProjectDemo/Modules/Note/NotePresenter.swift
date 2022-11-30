@@ -22,12 +22,28 @@ final class NotePresenter {
 }
 
 extension NotePresenter: NotePresenterInterface {
+    func viewDidLoad() {
+        
+    }
+    
+    func viewWillAppear(_ animated: Bool) {
+        interactor.getMyReviews()
+    }
+    
     func didTapAddNote() {
         wireframe.showAddNoteScreen()
+    }
+    
+    func didRefresh() {
+        interactor.getMyReviews()
     }
 }
 
 extension NotePresenter: NoteInteractorOutputInterface {
+    func getMyReviews(_ data: [ReviewsResultObject]) {
+        view?.getMyReviews(data)
+    }
+    
 
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()

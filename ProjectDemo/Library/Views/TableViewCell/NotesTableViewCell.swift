@@ -7,7 +7,11 @@
 
 import UIKit
 
-class NotesTableViewCell: UITableViewCell {
+class NotesTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
+    var listPayload: [Any] = []
+    
+    var didTapActionInCell: ((Any) -> Void) = {_ in}
+    
 
     @IBOutlet weak var lbTotalVote: UILabel!
     @IBOutlet weak var lbVoteAvg: UILabel!
@@ -20,6 +24,10 @@ class NotesTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func addNoteAction(_ sender: Any) {
+        self.didTapActionInCell(0)
     }
     
     func configCell(totalVote: Double, voteAvg: Double) {

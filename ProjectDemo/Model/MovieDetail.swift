@@ -372,6 +372,18 @@ struct ReviewsResult: Codable {
         url = try values.decodeIfPresent(String.self, forKey: .url).isNil(value: "")
         id = try values.decodeIfPresent(String.self, forKey: .id).isNil(value: "")
     }
+    
+//    func toReviewsResultObject() -> ReviewsResultObject {
+//        let object = ReviewsResultObject()
+//        object.author = self.author
+//        object.authorDetails = self.authorDetails.toAuthorDetailsObject()
+//        object.content = self.content
+//        object.createdAt = self.createdAt
+//        object._id = self.id
+//        object.updatedAt = self.updatedAt
+//        object.url = self.url
+//        return object
+//    }
 }
 
 
@@ -400,6 +412,15 @@ struct AuthorDetails: Codable {
         self.username = ""
         self.avatarPath = ""
         self.rating = 0.0
+    }
+    
+    func toAuthorDetailsObject() -> AuthorDetailsObject {
+        let object = AuthorDetailsObject()
+        object.avatarPath = self.avatarPath
+        object.name = self.name
+        object.username = self.username
+        object.rating = self.rating
+        return object
     }
 }
 

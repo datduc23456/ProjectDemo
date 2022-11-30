@@ -15,9 +15,13 @@ final class NoteViewController: BaseViewController {
     // MARK: - Properties
 	var presenter: NotePresenterInterface!
     var bottomSheet: BaseViewBottomSheetViewController!
+    var reviews: [ReviewsResultObject] = []
+    var bottomTitle: String = ""
+    var bottomContent: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.viewDidLoad()
         configView()
         tableView.registerCell(for: UserNoteTableViewCell.className)
         tableView.dataSource = self
@@ -33,13 +37,12 @@ final class NoteViewController: BaseViewController {
     }
     
     func configView() {
-        
         bottomSheet = BaseViewBottomSheetViewController()
-        bottomSheet.bottomDataSource = [.content(title: "Remove Favorite", content: "Are you sure you would like to remove this film from the favorite"), .button(title: "Edit", isPrimary: true), .button(title: "Remove", isPrimary: false)]
+        bottomSheet.bottomDataSource = [.content(title: bottomTitle, content: bottomContent), .button(title: "Edit", isPrimary: true), .button(title: "Remove", isPrimary: false)]
         
         tableView.bindHeadRefreshHandler({ [weak self] in
             guard let `self` = self else { return }
-            
+            self.presenter.didRefresh()
         }, themeColor: .white, refreshStyle: .replicatorCircle)
         
         btnAddNote.addTapGestureRecognizer { [weak self] in
@@ -50,27 +53,41 @@ final class NoteViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        presenter.viewWillAppear(animated)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
     }
 }
 
 // MARK: - NoteViewInterface
 extension NoteViewController: NoteViewInterface {
+    func getMyReviews(_ data: [ReviewsResultObject]) {
+        self.reviews = data
+        delay(1, closure: {
+            self.tableView.headRefreshControl.endRefreshing()
+        })
+    }
+    
 }
 
 extension NoteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return reviews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserNoteTableViewCell.className, for: indexPath) as! UserNoteTableViewCell
+        let review = self.reviews[indexPath.row]
         cell.selectionStyle = .none
+        cell.configCell(review)
         cell.didTapEdit = { [weak self] in
             guard let `self` = self else { return }
             DispatchQueue.main.async {
 //                self.bottomSheet.payload = movieObject
+                self.bottomTitle = !review.originalTitle.isEmpty ? review.originalTitle : review.originalName
+                self.bottomContent = DTPBusiness.shared.mapToGenreName(Array(review.genreIDS))
+                self.bottomSheet.bottomDataSource = [.content(title: self.bottomTitle, content: self.bottomContent), .button(title: "Edit", isPrimary: true), .button(title: "Remove", isPrimary: false)]
                 self.present(self.bottomSheet, animated: true, completion: {
+                    
                     self.bottomSheet.stackContent.delegate = self
                 })
             }

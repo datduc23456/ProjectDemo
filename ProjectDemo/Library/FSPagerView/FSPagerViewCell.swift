@@ -121,7 +121,7 @@ open class FSPagerViewCell: UICollectionViewCell {
     override open func layoutSubviews() {
         super.layoutSubviews()
         if let imageView = _imageView {
-            imageView.contentMode = .scaleAspectFit
+            imageView.contentMode = .scaleToFill
             imageView.frame = self.contentView.bounds
             imageView.layer.masksToBounds = true
             imageView.layer.cornerRadius = 16

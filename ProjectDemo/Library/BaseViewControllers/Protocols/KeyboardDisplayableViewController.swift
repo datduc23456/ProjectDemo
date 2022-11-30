@@ -9,6 +9,8 @@
 import UIKit
 import RxSwift
 
+private var disposeBagKey = 0
+private var payloadKey = 1
 private var originalContentInsetKey = 0
 private var keyboardSubscribersKey = 1
 private var isKeyboardVisibleKey = 2
@@ -64,7 +66,7 @@ extension KeyboardDisplayableViewController {
                                   left: originInset.left,
                                   bottom: keyboardFrame.height,
                                   right: originInset.right)
-//        guard originInset.bottom < keyboardFrame.height, scrollView.adjustedContentInset.bottom < keyboardFrame.height else { return }
+        guard originInset.bottom < keyboardFrame.height, scrollView.adjustedContentInset.bottom < keyboardFrame.height else { return }
         scrollView.contentInset = insets
         scrollView.scrollIndicatorInsets = insets
     }
@@ -105,10 +107,33 @@ extension KeyboardDisplayableViewController {
                 }
             )
         ]
-//        keyboardSubscribers?.forEach {$0.disposed(by: self)}
+        keyboardSubscribers?.forEach {$0.disposed(by: self)}
     }
 
     public func unsubscribeKeyboardEvents() {
         keyboardSubscribers?.forEach { sub in sub.dispose() }
+    }
+}
+
+extension Disposable {
+
+    /// Disposed
+    public func disposed(by: UIViewController) {
+        self.disposed(by: by.disposeBag)
+    }
+}
+
+extension UIViewController: UIGestureRecognizerDelegate {
+    fileprivate var disposeBag: DisposeBag {
+        get {
+            guard let object = objc_getAssociatedObject(self, &disposeBagKey) as? DisposeBag else {
+                self.disposeBag = DisposeBag()
+                return self.disposeBag
+            }
+            return object
+        }
+        set {
+            objc_setAssociatedObject(self, &disposeBagKey, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
     }
 }

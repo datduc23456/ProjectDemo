@@ -53,4 +53,12 @@ extension MovieDetailInteractor: MovieDetailInteractorInterface {
         self.realmUtils.insertOrUpdate(movie.toMovieObject())
         self.output?.insertMovieDetailObject(movie)
     }
+    
+    func fetchMyReview(_ id: Int) {
+        let predicate = NSPredicate(format: "_id == %@", NSNumber(value: id))
+        let query = realmUtils.dataQueryByPredicate(type: ReviewsResultObject.self, predicate: predicate)
+        if !query.isEmpty {
+            self.output?.fetchMyReview(query[0])
+        }
+    }
 }

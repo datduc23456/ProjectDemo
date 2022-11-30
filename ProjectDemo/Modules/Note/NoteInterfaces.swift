@@ -7,16 +7,20 @@
 //
 
 protocol NoteViewInterface: ViewInterface {
+    func getMyReviews(_ data: [ReviewsResultObject])
 }
 
 protocol NotePresenterInterface: PresenterInterface {
+    func didRefresh()
     func didTapAddNote()
 }
 
 protocol NoteInteractorInterface: InteractorInterface {
+    func getMyReviews()
 }
 
 protocol NoteInteractorOutputInterface: InteractorOutputInterface {
+    func getMyReviews(_ data: [ReviewsResultObject])
 }
 
 protocol NoteWireframeInterface: WireframeInterface {

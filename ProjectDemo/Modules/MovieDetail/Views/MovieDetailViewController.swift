@@ -36,7 +36,6 @@ final class MovieDetailViewController: BaseViewController {
         }
     }
     var selectedIndex: Int = 0
-    var movieDetailObject: MovieDetailObject?
     var movieDetail: MovieDetail?
     // MARK: - Properties
 	var presenter: MovieDetailPresenterInterface!
@@ -80,6 +79,12 @@ final class MovieDetailViewController: BaseViewController {
         if let trailer = self.trailer {
             presenter.didTapPlayVideo(trailer)
         }
+    }
+    
+    @IBAction func addNoteAction(_ sender: Any) {
+//        if let movieDetail = movieDetail {
+//            presenter.didTapAddnote(movieDetail)
+//        }
     }
     
     @IBAction func dismissAction(_ sender: Any) {
@@ -163,7 +168,10 @@ extension MovieDetailViewController: MovieDetailViewInterface {
     
     func fetchRealmMovieDetailObjectWithId(_ object: MovieDetailObject) {
         self.isFavorite = true
-        self.movieDetailObject = object
+    }
+    
+    func fetchMyReview(_ review: ReviewsResultObject) {
+        
     }
     
     func didDeleteMovieObject() {
@@ -195,6 +203,10 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
                     if let actor = any as? Cast {
                         self.presenter.didTapPeople(actor.id)
                     }
+                case .trending:
+                    if let movie = any as? Movie {
+                        self.presenter.didTapMovie(movie)
+                    }
                 default:
                     return
                 }
@@ -215,6 +227,10 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
         
         if let cell = cell as? NotesTableViewCell, let data = self.data["\(item)"] as? (totalVote: Double, voteAvg: Double)  {
             cell.configCell(totalVote: data.totalVote, voteAvg: data.voteAvg)
+            cell.didTapActionInCell = { [weak self] _ in
+                guard let `self` = self else { return }
+                self.presenter.didTapAddnote()
+            }
         }
         
         if let cell = cell as? TextExpandTableViewCell  {

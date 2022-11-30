@@ -11,7 +11,10 @@ final class MovieDetailPresenter {
     private weak var view: MovieDetailViewInterface?
     private var interactor: MovieDetailInteractorInterface
     private var wireframe: MovieDetailWireframeInterface
-
+    private var movieDetailObject: MovieDetailObject?
+    private var movieDetail: MovieDetail?
+    private var myReviewObject: ReviewsResultObject?
+    
     init(view: MovieDetailViewInterface,
          interactor: MovieDetailInteractorInterface,
          wireframe: MovieDetailWireframeInterface) {
@@ -22,6 +25,14 @@ final class MovieDetailPresenter {
 }
 
 extension MovieDetailPresenter: MovieDetailPresenterInterface {
+    func didTapAddnote() {
+        if let myReviewObject = myReviewObject {
+            wireframe.showAddNoteScreen(myReviewObject)
+        } else if let movieDetail = movieDetail {
+            wireframe.showAddNoteScreen(movieDetail)
+        }
+    }
+    
     func didTapPeople(_ id: Int) {
         wireframe.showPeopleDetail(id)
     }
@@ -38,6 +49,10 @@ extension MovieDetailPresenter: MovieDetailPresenterInterface {
         wireframe.showPlayVideo(video.key, false)
     }
     
+    func didTapMovie(_ movie: Movie) {
+        interactor.getMovieDetail(movie.id)
+    }
+    
     func viewWillAppear(_ animated: Bool) {
         
     }
@@ -50,10 +65,16 @@ extension MovieDetailPresenter: MovieDetailPresenterInterface {
         } else {
             interactor.getTVShowDetail(view!.id.0)
         }
+        interactor.fetchMyReview(view!.id.0)
     }
 }
 
 extension MovieDetailPresenter: MovieDetailInteractorOutputInterface {
+    func fetchMyReview(_ review: ReviewsResultObject) {
+        self.myReviewObject = review
+        view?.fetchMyReview(review)
+    }
+    
     func deleteMovieDetailObject(_ movie: MovieDetail) {
         view?.didDeleteMovieObject()
     }
@@ -63,14 +84,18 @@ extension MovieDetailPresenter: MovieDetailInteractorOutputInterface {
     }
     
     func fetchRealmMovieDetailObjectWithId(_ object: MovieDetailObject) {
+        self.movieDetailObject = object
         view?.fetchRealmMovieDetailObjectWithId(object)
     }
     
     func getTVShowDetail(_ response: MovieDetail) {
+        self.movieDetail = response
         view?.getTVShowDetail(response)
+        interactor.fetchRealmMovieDetailObjectWithId(response.id, completion: {_ in})
     }
     
     func getMovieDetail(_ response: MovieDetail) {
+        self.movieDetail = response
         view?.getMovieDetail(response)
         interactor.fetchRealmMovieDetailObjectWithId(response.id, completion: {_ in})
     }

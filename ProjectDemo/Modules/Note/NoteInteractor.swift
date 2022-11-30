@@ -7,9 +7,19 @@
 //
 
 final class NoteInteractor {
-
+    var realmUtils: RealmUtils! {
+        get {
+            AppDelegate.shared.realmUtils!
+        }
+    }
     weak var output: NoteInteractorOutputInterface?
 }
 
 extension NoteInteractor: NoteInteractorInterface {
+    
+    func getMyReviews() {
+        let reviews = Array(realmUtils.dataQuery(type: ReviewsResultObject.self))
+        self.output?.getMyReviews(reviews)
+    }
+    
 }

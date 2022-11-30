@@ -20,11 +20,11 @@ final class SearchViewController: BaseViewController {
     // MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
     var presenter: SearchPresenterInterface!
-    var delayValue : Double = 3.0
+    var delayValue : Double = 2.0
     var timer:Timer?
     var tableViewDataSource: [SearchViewDataSource] = SearchViewDataSource.emptyCases
     var data: [String: Any] = [:]
-    
+    var keyStore: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
@@ -39,6 +39,7 @@ final class SearchViewController: BaseViewController {
         tableView.emptyDataSetDelegate = self
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.sectionHeaderHeight = 0
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
@@ -63,16 +64,15 @@ final class SearchViewController: BaseViewController {
     }
     
     @objc func searchAction() {
-        if let myNavigationBar = myNavigationBar as? BaseNavigationView, let query = myNavigationBar.textField.text {
+        if let myNavigationBar = myNavigationBar as? BaseNavigationView, let query = myNavigationBar.textField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
             if !query.isEmpty {
+                if !keyStore.contains(where: {$0 == query}) {
+                    presenter.didSearch(query)
+                }
                 tableViewDataSource = SearchViewDataSource.allCases
-                let queryTrim = query.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                let searchKeyObject = SearchKeyObject()
-                searchKeyObject.key = queryTrim
-                realmUtils.insert(searchKeyObject)
-                presenter.searchPerson(queryTrim)
-                presenter.searchMoviePopular(queryTrim)
-                presenter.searchTVShowPopular(queryTrim)
+                presenter.searchPerson(query)
+                presenter.searchMoviePopular(query)
+                presenter.searchTVShowPopular(query)
             } else {
                 tableViewDataSource = SearchViewDataSource.emptyCases
                 presenter.fetchSearchKey()
@@ -92,6 +92,7 @@ extension SearchViewController: SearchViewInterface {
     }
     
     func fetchSearchKey(_ keys: [SearchKeyObject]) {
+        self.keyStore = keys.map({$0.key})
         self.data.updateValue(keys, forKey: "\(SearchViewDataSource.recent)")
         self.data.updateValue(DTPBusiness.shared.listGenres, forKey: "\(SearchViewDataSource.genre)")
         tableView.reloadData()

@@ -16,7 +16,11 @@ final class SearchInteractor {
 }
 
 extension SearchInteractor: SearchInteractorInterface {
-    
+    func insertQuery(_ query: String) {
+        let searchKeyObject = SearchKeyObject()
+        searchKeyObject.key = query
+        realmUtils.insert(searchKeyObject)
+    }
     
     func fetchSearchKey() {
         self.output?.fetchSearchKey(realmUtils.getListObjects(type: SearchKeyObject.self))

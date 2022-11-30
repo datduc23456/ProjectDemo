@@ -27,6 +27,11 @@ enum CoreTargetType: TargetType {
     case searchPerson(query: String, page: Int)
     case upload([String: Any])
     case download(url: String, fileName: String?)
+    case getSimularMovie(movieId: Int)
+    case getSimularTv(tvId: Int)
+    case getMovieReviews(movieId: Int)
+    case getMovieImages(movieId: Int)
+    case getTvShowImages(movieId: Int)
     
     var baseURL: URL { return URL(string: "https://api.themoviedb.org/3/")! }
     
@@ -64,6 +69,17 @@ enum CoreTargetType: TargetType {
             return "search/person"
         case .genreList:
             return "genre/movie/list"
+        case .getSimularMovie(let movieId):
+            return "/movie/\(movieId)/similar"
+        case .getSimularTv(let tvId):
+            return "/tv/\(tvId)/similar"
+        case .getMovieReviews(let movieId):
+            return "/movie/\(movieId)/reviews"
+        case .getMovieImages(let movieId):
+            return "/movie/\(movieId)/images"
+        case .getTvShowImages(let movieId):
+            return "/tv/\(movieId)/images"
+            
         default:
             return ""
         }
@@ -104,7 +120,7 @@ enum CoreTargetType: TargetType {
         case .TVshowLastest(let page):
             defaultParams.updateValue(page, forKey: "page")
         case .TVshowDetail:
-            defaultParams.updateValue("videos", forKey: "append_to_response")
+            defaultParams.updateValue("videos,credits,recommendations,reviews", forKey: "append_to_response")
         case .searchTVshow(let query, let page):
             defaultParams.updateValue(query, forKey: "query")
             defaultParams.updateValue(page, forKey: "page")

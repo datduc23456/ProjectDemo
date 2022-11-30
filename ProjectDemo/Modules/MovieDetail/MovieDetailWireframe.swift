@@ -36,4 +36,8 @@ final class MovieDetailWireframe: MovieDetailWireframeInterface {
     func showPeopleDetail(_ id: Int) {
         navigator.pushScreen(AppScreens.popularpeople, id, fromRoot: true)
     }
+    
+    func showAddNoteScreen(_ payload: Any) {
+        navigator.pushScreen(AppScreens.addnote, payload, fromRoot: true)
+    }
 }

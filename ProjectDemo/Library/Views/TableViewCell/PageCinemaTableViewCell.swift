@@ -32,7 +32,7 @@ class PageCinemaTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellH
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        pagerView.itemSize = CGSize(width: 167, height: 250)
+        pagerView.itemSize = CGSize(width: 306, height: 221)
         pagerView.interitemSpacing = 50
         pagerView.transformer = FSPagerViewTransformer(type: .linear)
         pagerView.dataSource = self
@@ -74,7 +74,7 @@ extension PageCinemaTableViewCell: FSPagerViewDataSource, FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let movie = listPayload[index] as! Movie
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        cell.imageView?.kf.setImage(with: URL(string: "\(baseURLImage)\(movie.posterPath)"))
+        cell.imageView?.kf.setImage(with: URL(string: "\(baseURLImage)\(movie.backdropPath)"))
         cell.imageView?.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
             self.didTapActionInCell(movie)

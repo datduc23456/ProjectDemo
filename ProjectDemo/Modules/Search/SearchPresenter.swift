@@ -66,6 +66,10 @@ extension SearchPresenter: SearchPresenterInterface {
 }
 
 extension SearchPresenter: SearchInteractorOutputInterface {
+    func didSearch(_ key: String) {
+        interactor.insertQuery(key)
+    }
+    
     func fetchSearchKey(_ keys: [SearchKeyObject]) {
         view?.fetchSearchKey(keys)
     }

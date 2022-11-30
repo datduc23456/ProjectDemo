@@ -1,17 +1,17 @@
 //
-//  SeasonViewController.swift
+//  ImagesViewController.swift
 //  ProjectDemo
 //
-//  Created by đạt on 25/11/2022.
+//  Created by đạt on 30/11/2022.
 //  Copyright © 2022 dat.nguyen. All rights reserved.
 //
 
 import UIKit
 
-final class SeasonViewController: BaseCollectionViewController<TrendingCollectionViewCell> {
+final class ImagesViewController: BaseCollectionViewController<TVShowCollectionViewCell> {
 
     // MARK: - Properties
-	var presenter: SeasonPresenterInterface!
+	var presenter: ImagesPresenterInterface!
     
     override var numberOfColumn: Int {
         return 2
@@ -22,14 +22,14 @@ final class SeasonViewController: BaseCollectionViewController<TrendingCollectio
     }
     
     override var heightForItem: Double {
-       return 95
+       return 153
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.configContentNav(.navigation)
-        navigation.lbTitle.text = "Image"
+        navigation.lbTitle.text = "Season"
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -37,11 +37,11 @@ final class SeasonViewController: BaseCollectionViewController<TrendingCollectio
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! TrendingCollectionViewCell
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! TVShowCollectionViewCell
         return cell
     }
 }
 
-// MARK: - SeasonViewInterface
-extension SeasonViewController: SeasonViewInterface {
+// MARK: - ImagesViewInterface
+extension ImagesViewController: ImagesViewInterface {
 }

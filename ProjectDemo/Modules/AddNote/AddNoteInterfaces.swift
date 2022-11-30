@@ -8,15 +8,19 @@
 
 protocol AddNoteViewInterface: ViewInterface {
     var movieDetail: MovieDetail? { get }
+    func didInsertReviewsResultObject()
 }
 
 protocol AddNotePresenterInterface: PresenterInterface {
+    func didTapDone(_ review: ReviewsResultObject)
 }
 
 protocol AddNoteInteractorInterface: InteractorInterface {
+    func insertReviewsResultObject(_ review: ReviewsResultObject)
 }
 
 protocol AddNoteInteractorOutputInterface: InteractorOutputInterface {
+    func insertReviewsResultObject(_ review: ReviewsResultObject)
 }
 
 protocol AddNoteWireframeInterface: WireframeInterface {

@@ -7,11 +7,16 @@
 //
 
 final class AddNoteInteractor {
-
+    let realmUtils = AppDelegate.shared.realmUtils!
     weak var output: AddNoteInteractorOutputInterface?
 }
 
 extension AddNoteInteractor: AddNoteInteractorInterface {
+    func insertReviewsResultObject(_ review: ReviewsResultObject) {
+        self.realmUtils.insertOrUpdate(review)
+        self.output?.insertReviewsResultObject(review)
+    }
+    
     func getMovieDetail(_ id: Int) {
         
     }
@@ -19,5 +24,6 @@ extension AddNoteInteractor: AddNoteInteractorInterface {
     func getTVShowDetail(_ id: Int) {
         
     }
+    
     
 }

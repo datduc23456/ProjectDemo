@@ -22,9 +22,15 @@ final class AddNotePresenter {
 }
 
 extension AddNotePresenter: AddNotePresenterInterface {
+    func didTapDone(_ review: ReviewsResultObject) {
+        interactor.insertReviewsResultObject(review)
+    }
 }
 
 extension AddNotePresenter: AddNoteInteractorOutputInterface {
+    func insertReviewsResultObject(_ review: ReviewsResultObject) {
+        view?.didInsertReviewsResultObject()
+    }
     func getMovieDetail(_ response: MovieDetail) {
         
     }
