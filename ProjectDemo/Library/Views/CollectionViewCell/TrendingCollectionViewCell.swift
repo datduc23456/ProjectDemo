@@ -16,6 +16,7 @@ class TrendingCollectionViewCell: BaseCollectionViewCell {
             guard let `self` = self, let payload = self.payload else { return }
             self.didTapAction?(payload)
         })
+        imageView.placeHolderImage = UIImage(named: "placeholder")
         imageView.borderColor = .clear
         imageView.imageContentMode = .scaleToFill
         imageView.currentViewController = AppDelegate.shared.appRootViewController
@@ -49,4 +50,8 @@ extension UIImageView {
     self.image = templateImage
     self.tintColor = color
   }
+    
+    func setImageUrlWithPlaceHolder(url: URL?, _ placeHolder: UIImage = UIImage(named: "placeholder")!) {
+        self.kf.setImage(with: url, placeholder: placeHolder)
+    }
 }

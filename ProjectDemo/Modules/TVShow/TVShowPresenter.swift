@@ -22,6 +22,18 @@ final class TVShowPresenter {
 }
 
 extension TVShowPresenter: TVShowPresenterInterface {
+    func didChangeMovieHeader(_ movie: Movie) {
+        interactor.fetchRealmMovieDetailObjectWithId(movie.id, completion: {_ in})
+    }
+    
+    func didTapFavorite(_ movie: Movie, isFavorite: Bool) {
+        if isFavorite {
+            interactor.deleteMovieDetailObject(movie)
+        } else {
+            interactor.insertMovieDetailObject(movie)
+        }
+    }
+    
     func viewDidLoad() {
         interactor.getTVShowPopular()
         interactor.getTVShowLastest()
@@ -47,6 +59,17 @@ extension TVShowPresenter: TVShowPresenterInterface {
 }
 
 extension TVShowPresenter: TVShowInteractorOutputInterface {
+    func fetchRealmMovieDetailObjectWithId(_ object: [MovieDetailObject]) {
+        view?.fetchRealmMovieDetailObjectWithId(object)
+    }
+    
+    func deleteMovieDetailObject(_ movie: Movie) {
+        view?.didDeleteMovieObject()
+    }
+    
+    func insertMovieDetailObject(_ movie: Movie) {
+        view?.didInsertMovieObject()
+    }
     
     func getTopRate(_ response: MovieResponse) {
         view?.getTopRate(response)

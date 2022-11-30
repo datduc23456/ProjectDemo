@@ -135,7 +135,7 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none
         cell.filmNoteView.viewRating.isHidden = true
         cell.filmNoteView.viewDate.isHidden = true
-        cell.filmNoteView.lbTitle.text = movieObject.originalTitle
+        cell.filmNoteView.lbTitle.text = !movieObject.originalTitle.isEmpty ? movieObject.originalTitle : movieObject.originalName
         cell.filmNoteView.img.kf.setImage(with: URL(string: "\(baseURLImage)\(movieObject.posterPath)"))
         cell.filmNoteView.lbVoteAvg.text = "\(movieObject.voteAverage.roundToPlaces(places: 1))"
         cell.filmNoteView.lbYear.text = CommonUtil.getYearFromDate(movieObject.firstAirDate)

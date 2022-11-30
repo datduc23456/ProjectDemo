@@ -10,6 +10,7 @@ import UIKit
 
 final class MovieDetailViewController: BaseViewController {
 
+    @IBOutlet weak var viewGradient: UIView!
     @IBOutlet weak var icHeart: UIImageView!
     @IBOutlet weak var viewFavorite: UIView!
     @IBOutlet weak var lbGenres: UILabel!
@@ -54,12 +55,14 @@ final class MovieDetailViewController: BaseViewController {
         tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.sectionHeaderHeight = 0
         tableView.contentSizeDelegate = self
         scrollView.showsVerticalScrollIndicator = false
         viewFavorite.addTapGestureRecognizer { [weak self] in
             guard let `self` = self, let movieDetail = self.movieDetail else { return }
             self.presenter.didTapFavorite(movieDetail, isFavorite: self.isFavorite)
         }
+        viewGradient.applyGradient(colours: [.black.withAlphaComponent(0.1), .black.withAlphaComponent(0.5)])
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -44,11 +44,11 @@ class MovieVideosTableViewCell: UITableViewCell, BaseWithCollectionTableViewCell
     func tapToStackView(_ index: Int) {
         if let video = videos?.video[safe: index] {
             self.video = video
-            imgThumbnail.kf.setImage(with: CommonUtil.getThumbnailYoutubeUrl(video.key))
+            imgThumbnail.setImageUrlWithPlaceHolder(url: CommonUtil.getThumbnailYoutubeUrl(video.key))
             lbName.text = video.name
             lbPublished.text = video.publishedAt.toDateFormat(toFormat: "MMM dd, yyyy")
         } else if let movie = movies?[safe: index] {
-            imgThumbnail.kf.setImage(with: URL(string: "\(baseURLImage)\(movie.posterPath)"))
+            imgThumbnail.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(movie.posterPath)"))
             lbName.text = !movie.originalTitle.isEmpty ? movie.originalTitle : movie.originalName
             lbPublished.text = !movie.releaseDate.isEmpty ? movie.releaseDate.toDateFormat(toFormat: "MMM dd, yyyy") : movie.firstAirDate.toDateFormat(toFormat: "MMM dd, yyyy")
         }
@@ -59,7 +59,7 @@ class MovieVideosTableViewCell: UITableViewCell, BaseWithCollectionTableViewCell
         self.selectedIndex = selectedIndex
         if let firstVideo = videos.video.first {
             self.video = firstVideo
-            imgThumbnail.kf.setImage(with: CommonUtil.getThumbnailYoutubeUrl(firstVideo.key))
+            imgThumbnail.setImageUrlWithPlaceHolder(url: CommonUtil.getThumbnailYoutubeUrl(firstVideo.key))
             lbName.text = firstVideo.name
             lbPublished.text = firstVideo.publishedAt.toDateFormat(toFormat: "MMM dd, yyyy")
             let stackViewVideos = videos.video
@@ -73,7 +73,7 @@ class MovieVideosTableViewCell: UITableViewCell, BaseWithCollectionTableViewCell
         self.icPlay.isHidden = true
         if let firstMovie = movies.first {
             self.movie = firstMovie
-            imgThumbnail.kf.setImage(with: URL(string: "\(baseURLImage)\(firstMovie.posterPath)"))
+            imgThumbnail.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(firstMovie.posterPath)"))
             lbName.text = !firstMovie.originalTitle.isEmpty ? firstMovie.originalTitle : firstMovie.originalName
             lbPublished.text = !firstMovie.releaseDate.isEmpty ? firstMovie.releaseDate.toDateFormat(toFormat: "MMM dd, yyyy") : firstMovie.firstAirDate.toDateFormat(toFormat: "MMM dd, yyyy")
             let stackViewMovies = movies

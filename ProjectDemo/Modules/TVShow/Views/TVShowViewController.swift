@@ -10,6 +10,8 @@ import UIKit
 
 final class TVShowViewController: BaseViewController {
 
+    @IBOutlet weak var viewFavorite: UIView!
+    @IBOutlet weak var icFavorite: UIImageView!
     @IBOutlet weak var lbGenres: UILabel!
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var lbYear: UILabel!
@@ -23,6 +25,16 @@ final class TVShowViewController: BaseViewController {
 	var presenter: TVShowPresenterInterface!
     var tableViewDataSource: [TVShowTableViewDataSource] = TVShowTableViewDataSource.allCases
     var data: [String: Any] = [:]
+    var movie: Movie?
+    var isFavorite: Bool = false {
+        didSet {
+            if isFavorite {
+                self.icFavorite.image = UIImage(named: "ic_heart_color")
+            } else {
+                self.icFavorite.image = UIImage(named: "ic_heart")
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +49,11 @@ final class TVShowViewController: BaseViewController {
         scrollView.showsVerticalScrollIndicator = false
         viewLayer.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         presenter.viewDidLoad()
+        viewLayer.applyGradient(colours: [.black.withAlphaComponent(0.1), .black.withAlphaComponent(1)])
+        viewFavorite.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self, let movie = self.movie else { return }
+            self.presenter.didTapFavorite(movie, isFavorite: self.isFavorite)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,10 +61,31 @@ final class TVShowViewController: BaseViewController {
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
     }
     
+    @IBAction func playAction(_ sender: Any) {
+        if let movie = movie {
+            self.presenter.didTapToMovie(movie)
+        }
+    }
 }
 
 // MARK: - TVShowViewInterface
 extension TVShowViewController: TVShowViewInterface {
+    func didDeleteMovieObject() {
+        self.isFavorite = false
+    }
+    
+    func didInsertMovieObject() {
+        self.isFavorite = true
+    }
+    
+    func fetchRealmMovieDetailObjectWithId(_ object: [MovieDetailObject]) {
+        if !object.isEmpty {
+            self.isFavorite = true
+        } else {
+            self.isFavorite = false
+        }
+    }
+    
     func getTVShowLastest(_ response: MovieResponse) {
         let listMovie = response.results
 //        let first5 = Array(listMovie.prefix(5))
@@ -74,10 +112,12 @@ extension TVShowViewController: TVShowViewInterface {
 
 extension TVShowViewController: UITableViewDataSource, UITableViewDelegate {
     fileprivate func configMovieDetail(_ movie: Movie) {
+        self.movie = movie
         self.imgBackGround.kf.setImage(with: URL(string: "\(baseURLImage)\(movie.posterPath)"))
         self.lbTitle.text = movie.name
         self.lbVoteAvg.text = "\(movie.voteAverage)"
         self.lbYear.text = CommonUtil.getYearFromDate(movie.releaseDate)
+        presenter.didChangeMovieHeader(movie)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

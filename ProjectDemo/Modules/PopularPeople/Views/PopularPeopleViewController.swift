@@ -11,6 +11,7 @@ import UIKit
 final class PopularPeopleViewController: BaseViewController {
     //BaseCollectionViewController<PeoplePopularCollectionViewCell> {
 
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var tableViewheight: NSLayoutConstraint!
     @IBOutlet weak var lbTotalFilm: UILabel!
     @IBOutlet weak var lbPob: UILabel!
@@ -62,6 +63,7 @@ final class PopularPeopleViewController: BaseViewController {
 
 // MARK: - PopularPeopleViewInterface
 extension PopularPeopleViewController: PopularPeopleViewInterface {
+    
     var id: Int {
         if let id = payload as? Int {
             return id
@@ -70,10 +72,6 @@ extension PopularPeopleViewController: PopularPeopleViewInterface {
     }
 
     func configHeaderView(_ response: PeopleDetail) {
-//        let listVideos = response.videos.video
-//        if listVideos.isEmpty {
-//            self.tableViewDataSource.removeAll(where: {$0 == .videos || $0 == .images})
-//        }
         if response.biography.isEmpty {
             self.tableViewDataSource.removeAll(where: {$0 == .overview})
         }
@@ -92,21 +90,43 @@ extension PopularPeopleViewController: PopularPeopleViewInterface {
         lbPob.text = "Place of birth: \(response.placeOfBirth)"
         lbName.text = response.name
         lbTotalFilm.text = "Total Films: \(response.tvCredits.cast.count + response.tvCredits.crew.count + response.movieCredits.cast.count + response.movieCredits.crew.count)"
-//        lbGenres.text = DTPBusiness.shared.mapToGenreName(response.genres.map({$0.id}))
+        stackView.addArrangedSubview(labelForDepartment(response.knownForDepartment))
+        
+//        stackView.addArrangedSubview(label)
+//        stackView.addArrangedSubview(UIView())
+//        stackView.addArrangedSubview(UIView())
+//        stackView.addArrangedSubview()
     }
     
+    func labelForDepartment(_ string: String) -> InsetLabel {
+        let label = InsetLabel()
+        label.contentInsets = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
+        label.text = string
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.cornerRadius = 3
+        label.backgroundColor = UIColor(hex: "#FB716E")
+        label.font = UIFont(name: "NexaRegular", size: 12)
+        label.lineBreakMode = .byTruncatingTail
+        label.textColor = .black
+        label.sizeToFit()
+        label.layoutIfNeeded()
+        return label
+    }
     
     func getPeopleDetail(_ people: PeopleDetail) {
         self.configHeaderView(people)
-//        self.data.updateValue(response.createdBy, forKey: "\(MovieDetailTableViewDataSource.actors)")
-//        self.data.updateValue(response.videos, forKey: "\(MovieDetailTableViewDataSource.videos)")
         self.data.updateValue(people.images.profile.map({$0.filePath}), forKey: "\(PeopleTableViewDataSource.images)")
-//        self.data.updateValue((totalVote: response.popularity, voteAvg: voteAvg), forKey: "\(MovieDetailTableViewDataSource.notes)")
         self.data.updateValue(people.tvCredits.cast, forKey: "\(PeopleTableViewDataSource.tvshow)")
         self.data.updateValue(people.movieCredits.cast, forKey: "\(PeopleTableViewDataSource.videos)")
         self.data.updateValue([people.biography], forKey: "\(PeopleTableViewDataSource.overview)")
-//        self.data.updateValue(response.seasons, forKey: "\(MovieDetailTableViewDataSource.season)")
         self.tableView.reloadData()
+    }
+    
+    func getTopRate(_ response: MovieResponse) {
+        let listMovie = response.results
+        self.data.updateValue(listMovie, forKey: "\(PeopleTableViewDataSource.trending)")
+        tableView.reloadData()
     }
 }
 

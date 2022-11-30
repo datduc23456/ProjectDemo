@@ -6,8 +6,14 @@
 //  Copyright © 2022 dat.nguyen. All rights reserved.
 //
 
-final class TVShowInteractor {
+import Foundation
 
+final class TVShowInteractor {
+    var realmUtils: RealmUtils! {
+        get {
+            AppDelegate.shared.realmUtils!
+        }
+    }
     weak var output: TVShowInteractorOutputInterface?
 }
 
@@ -38,5 +44,26 @@ extension TVShowInteractor: TVShowInteractorInterface {
         }, failureBlock: { error in
             self.output?.handleError(error, {})
         })
+    }
+    
+    func fetchRealmMovieDetailObjectWithId(_ id: Int, completion: ((MovieDetailObject)->Void)) {
+        let predicate = NSPredicate(format: "_id == %@", NSNumber(value: id))
+        let query = realmUtils.dataQueryByPredicate(type: MovieDetailObject.self, predicate: predicate)
+        if !query.isEmpty {
+            completion(query[0])
+        }
+        self.output?.fetchRealmMovieDetailObjectWithId(Array(query))
+    }
+    
+    func deleteMovieDetailObject(_ movie: Movie) {
+        self.fetchRealmMovieDetailObjectWithId(movie.id, completion: { object in
+            self.realmUtils.deleteObject(object: object)
+            self.output?.deleteMovieDetailObject(movie)
+        })
+    }
+    
+    func insertMovieDetailObject(_ movie: Movie) {
+        self.realmUtils.insertOrUpdate(movie.toMovieObject())
+        self.output?.insertMovieDetailObject(movie)
     }
 }

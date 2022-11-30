@@ -115,6 +115,7 @@
 		185DC7072901367F0056C910 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185DC7062901367E0056C910 /* Screen.swift */; };
 		1899F2972924CC6700D2D978 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899F2952924CC6700D2D978 /* TabbarViewController.swift */; };
 		1899F2982924CC6700D2D978 /* TabbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1899F2962924CC6700D2D978 /* TabbarViewController.xib */; };
+		18A42B8E293702D4001879DD /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A42B8D293702D4001879DD /* InsetLabel.swift */; };
 		18F19828291A63CC00E4D911 /* ServiceCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F19827291A63CC00E4D911 /* ServiceCore.swift */; };
 		18F1982B291A64C200E4D911 /* CoreTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1982A291A64C200E4D911 /* CoreTargetType.swift */; };
 		18F1982F291A676B00E4D911 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1982E291A676B00E4D911 /* BaseModel.swift */; };
@@ -406,6 +407,7 @@
 		185DC7062901367E0056C910 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		1899F2952924CC6700D2D978 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		1899F2962924CC6700D2D978 /* TabbarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabbarViewController.xib; sourceTree = "<group>"; };
+		18A42B8D293702D4001879DD /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		18C3AC072923286A00183695 /* ProjectDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjectDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		18F19827291A63CC00E4D911 /* ServiceCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCore.swift; sourceTree = "<group>"; };
 		18F1982A291A64C200E4D911 /* CoreTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTargetType.swift; sourceTree = "<group>"; };
@@ -1019,6 +1021,7 @@
 				185BC358292CADAC00613EB2 /* ImageStackView.swift */,
 				52C0145A29313CBF0070E5BD /* CollectionViewFlowLayout.swift */,
 				52F03F85293242F6005CAF76 /* ScaledHeightImageView.swift */,
+				18A42B8D293702D4001879DD /* InsetLabel.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -1677,6 +1680,7 @@
 				52CBDCF52927EE5B00548E52 /* FSPagerViewLayoutAttributes.swift in Sources */,
 				527F93D22925555B0065FE10 /* ABCTableViewCell.swift in Sources */,
 				52BCB4CC2929051A008E1C32 /* APIManager.swift in Sources */,
+				18A42B8E293702D4001879DD /* InsetLabel.swift in Sources */,
 				185BC35D292CBB9800613EB2 /* ActorsTableViewCell.swift in Sources */,
 				52DEB894292FB87400BCD36F /* AddNoteInterfaces.swift in Sources */,
 				CEF0B8A71A19B0A98E5309E0 /* ExampleViewController.swift in Sources */,

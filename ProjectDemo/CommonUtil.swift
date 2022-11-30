@@ -18,7 +18,7 @@ class CommonUtil {
     }
     
     static func getThumbnailYoutubeUrl(_ key: String) -> URL {
-        return URL(string: "https://img.youtube.com/vi/\(key)/hqdefault.jpg")!
+        return URL(string: "https://img.youtube.com/vi/\(key)/maxresdefault.jpg")!
     }
 }
 

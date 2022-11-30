@@ -9,6 +9,7 @@
 protocol PopularPeopleViewInterface: ViewInterface {
     var id: Int { get }
     func getPeopleDetail(_ people: PeopleDetail)
+    func getTopRate(_ response: MovieResponse)
 }
 
 protocol PopularPeoplePresenterInterface: PresenterInterface {
@@ -17,10 +18,12 @@ protocol PopularPeoplePresenterInterface: PresenterInterface {
 
 protocol PopularPeopleInteractorInterface: InteractorInterface {
     func getPeopleDetail(_ id: Int)
+    func getTopRate()
 }
 
 protocol PopularPeopleInteractorOutputInterface: InteractorOutputInterface {
     func getPeopleDetail(_ people: PeopleDetail)
+    func getTopRate(_ response: MovieResponse)
 }
 
 protocol PopularPeopleWireframeInterface: WireframeInterface {

@@ -24,6 +24,7 @@ final class PopularPeoplePresenter {
 extension PopularPeoplePresenter: PopularPeoplePresenterInterface {
     func viewDidLoad() {
         interactor.getPeopleDetail(view!.id)
+        interactor.getTopRate()
     }
     
     func didTapPlayVideo(_ video: Video) {
@@ -36,7 +37,10 @@ extension PopularPeoplePresenter: PopularPeopleInteractorOutputInterface {
         view?.getPeopleDetail(people)
     }
     
-
+    func getTopRate(_ response: MovieResponse) {
+        view?.getTopRate(response)
+    }
+    
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()
         wireframe.handleError(error, completion)

@@ -30,7 +30,7 @@ enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
     func heightForRow() -> CGFloat {
         switch self {
         case .actors:
-            return 96
+            return 90
         case .overview:
             return 100
         case .season:

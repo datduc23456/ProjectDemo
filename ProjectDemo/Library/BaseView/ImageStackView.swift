@@ -56,7 +56,7 @@ class ImageStackView: UIStackView {
                 self.didTapImage?(index)
             })
             if let url = imageUrl[safe: index] {
-                imageView.kf.setImage(with: url)
+                imageView.setImageUrlWithPlaceHolder(url: url)
             }
             if index == selectedIndex {
                 self.selected(imageView)
