@@ -79,7 +79,7 @@ extension UserNoteViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserNoteTableViewCell.className, for: indexPath) as! UserNoteTableViewCell
         let review = reviews[indexPath.row]
         cell.congfigCell(review)
-        cell.stackView.applyGradient(colours: [UIColor(hex: "#171A21"), UIColor(hex: "#0D1015")])
+//        cell.stackView.linearGradientBackground(angleInDegs: 180, colors: [UIColor(hex: "#171A21").cgColor, UIColor(hex: "#0D1015").cgColor])
         cell.stackView.layoutIfNeeded()
         return cell
     }

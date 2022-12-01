@@ -17,7 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BaseNavigationView" customModule="ProjectDemo" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BaseNavigationView" customModule="Starmovie" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="390" height="124"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -127,6 +127,7 @@
                 <outlet property="imgSetting" destination="O4H-8k-hdj" id="qzd-8W-Ki9"/>
                 <outlet property="imgStarMoviee" destination="ify-Dt-Ppm" id="BIz-6o-63n"/>
                 <outlet property="lbTitle" destination="0Tt-zE-VFP" id="IN6-Ho-SPa"/>
+                <outlet property="leadingTitleConstraint" destination="g3T-GW-QVd" id="pUG-ev-T01"/>
                 <outlet property="textField" destination="9Us-Tn-wLj" id="rzM-1D-7h7"/>
                 <outlet property="viewSearch" destination="Moi-c7-R0D" id="2GQ-m5-3kd"/>
             </connections>

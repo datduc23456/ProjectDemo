@@ -54,6 +54,10 @@
 		183F20F22930ACD2001BCB23 /* BottomSheetContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183F20F12930ACD2001BCB23 /* BottomSheetContentView.xib */; };
 		18402BAB293839BA009623C0 /* UserNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18402BA9293839BA009623C0 /* UserNoteTableViewCell.swift */; };
 		18402BAC293839BA009623C0 /* UserNoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18402BAA293839BA009623C0 /* UserNoteTableViewCell.xib */; };
+		18402BAF29387FE4009623C0 /* AddNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18402BAD29387FE3009623C0 /* AddNoteTableViewCell.swift */; };
+		18402BB029387FE4009623C0 /* AddNoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18402BAE29387FE4009623C0 /* AddNoteTableViewCell.xib */; };
+		18402BB229388A94009623C0 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18402BB129388A94009623C0 /* Int+Ext.swift */; };
+		18402BB429388AC6009623C0 /* CGFloat+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18402BB329388AC6009623C0 /* CGFloat+Ext.swift */; };
 		1848A475292B89E3005D4431 /* TVShowTopUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848A474292B89E3005D4431 /* TVShowTopUpTableViewCell.swift */; };
 		1848A47A292C5C71005D4431 /* RealmUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848A479292C5C71005D4431 /* RealmUtils.swift */; };
 		1848A47D292C6308005D4431 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848A47B292C6308005D4431 /* FavoriteTableViewCell.swift */; };
@@ -358,6 +362,10 @@
 		183F20F12930ACD2001BCB23 /* BottomSheetContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetContentView.xib; sourceTree = "<group>"; };
 		18402BA9293839BA009623C0 /* UserNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNoteTableViewCell.swift; sourceTree = "<group>"; };
 		18402BAA293839BA009623C0 /* UserNoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserNoteTableViewCell.xib; sourceTree = "<group>"; };
+		18402BAD29387FE3009623C0 /* AddNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteTableViewCell.swift; sourceTree = "<group>"; };
+		18402BAE29387FE4009623C0 /* AddNoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNoteTableViewCell.xib; sourceTree = "<group>"; };
+		18402BB129388A94009623C0 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
+		18402BB329388AC6009623C0 /* CGFloat+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ext.swift"; sourceTree = "<group>"; };
 		1848A474292B89E3005D4431 /* TVShowTopUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowTopUpTableViewCell.swift; sourceTree = "<group>"; };
 		1848A479292C5C71005D4431 /* RealmUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUtils.swift; sourceTree = "<group>"; };
 		1848A47B292C6308005D4431 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
@@ -782,6 +790,8 @@
 				1831BB7C29359E3C00BCE150 /* GenresSearchTableViewCell.xib */,
 				18402BA9293839BA009623C0 /* UserNoteTableViewCell.swift */,
 				18402BAA293839BA009623C0 /* UserNoteTableViewCell.xib */,
+				18402BAD29387FE3009623C0 /* AddNoteTableViewCell.swift */,
+				18402BAE29387FE4009623C0 /* AddNoteTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -798,6 +808,8 @@
 				527F93BE2925337C0065FE10 /* UICollectionView+Ext.swift */,
 				527F93C1292534050065FE10 /* NSObject+Ext.swift */,
 				527F93CA2925449E0065FE10 /* UITableView+Ext.swift */,
+				18402BB129388A94009623C0 /* Int+Ext.swift */,
+				18402BB329388AC6009623C0 /* CGFloat+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1174,7 +1186,6 @@
 				9B56A8E58D04B27861DC05CB /* UserNoteWireframe.swift */,
 				EEFC642CD1ABC63082AC16DD /* Views */,
 			);
-			name = UserNote;
 			path = UserNote;
 			sourceTree = "<group>";
 		};
@@ -1431,7 +1442,6 @@
 				1025A041ED81A898943C7A70 /* UserNoteViewController.storyboard */,
 				E1A3A49CC1A97379E4654CE7 /* UserNoteViewController.swift */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -1574,6 +1584,7 @@
 				C57B1B148ABAABB5F4026D60 /* TVShowViewController.storyboard in Resources */,
 				180C3CBC2930BBF300E56C97 /* BottomSheetDraggableView.xib in Resources */,
 				07DE2D0E258E7E48F4882819 /* FavoriteViewController.storyboard in Resources */,
+				18402BB029387FE4009623C0 /* AddNoteTableViewCell.xib in Resources */,
 				52F03F8C29327C66005CAF76 /* TextExpandTableViewCell.xib in Resources */,
 				52EA75F029333F920076BC87 /* AYImageViewerViewController.xib in Resources */,
 				369A33FEEF64CCA0D82AC74B /* MovieDetailViewController.storyboard in Resources */,
@@ -1681,6 +1692,7 @@
 				52B84E10292A62C3008DA4C2 /* DTPBusiness.swift in Sources */,
 				52EA75E929333F920076BC87 /* AYImageView.swift in Sources */,
 				52EA75EF29333F920076BC87 /* Style.swift in Sources */,
+				18402BB429388AC6009623C0 /* CGFloat+Ext.swift in Sources */,
 				52CBDD162928DD1A00548E52 /* CinemaPopularCollectionViewCell.swift in Sources */,
 				527F93CB2925449E0065FE10 /* UITableView+Ext.swift in Sources */,
 				52CBDCFD2927EE5B00548E52 /* FSPagerView.swift in Sources */,
@@ -1724,6 +1736,7 @@
 				527F93B62925257D0065FE10 /* CommonUtil.swift in Sources */,
 				52B84E04292A3437008DA4C2 /* BaseNavigationView.swift in Sources */,
 				52BCB4D5292930A9008E1C32 /* Genre.swift in Sources */,
+				18402BAF29387FE4009623C0 /* AddNoteTableViewCell.swift in Sources */,
 				185DC6D9290010910056C910 /* Observable+Ext.swift in Sources */,
 				52CBDD0629288E6400548E52 /* FilmNoteView.swift in Sources */,
 				527F93BF2925337C0065FE10 /* UICollectionView+Ext.swift in Sources */,
@@ -1744,6 +1757,7 @@
 				1848A47A292C5C71005D4431 /* RealmUtils.swift in Sources */,
 				183F20EC2930AAEB001BCB23 /* BottomSheetButtonView.swift in Sources */,
 				183B64D3292C69C600E7BB3E /* BaseCustomView.swift in Sources */,
+				18402BB229388A94009623C0 /* Int+Ext.swift in Sources */,
 				52CBDD192928DD1A00548E52 /* GengesCollectionViewCell.swift in Sources */,
 				52F03F8429320306005CAF76 /* MovieDetail.swift in Sources */,
 				18F1982B291A64C200E4D911 /* CoreTargetType.swift in Sources */,
@@ -1948,7 +1962,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3267Z52VP5;
+				DEVELOPMENT_TEAM = RQ8SAKQNUF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProjectDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1962,7 +1976,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.datnq.demo.ProjectDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.datnq.demo.ProjectDemo1;
 				PRODUCT_NAME = Starmovie;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ProjectDemo/ProjectDemo-Bridging-Header.h";

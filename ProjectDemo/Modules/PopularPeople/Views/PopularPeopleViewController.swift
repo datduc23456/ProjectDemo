@@ -65,6 +65,10 @@ final class PopularPeopleViewController: BaseViewController {
 
 // MARK: - PopularPeopleViewInterface
 extension PopularPeopleViewController: PopularPeopleViewInterface {
+    func getRelatedMovie(_ response: MovieResponse) {
+        
+    }
+    
     
     var id: Int {
         if let id = payload as? Int {

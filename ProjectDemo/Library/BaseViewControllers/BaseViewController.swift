@@ -19,6 +19,7 @@ open class BaseViewController: UIViewController {
     var myNavigationBar: NavigationBarView?
     public var currentRootViewController: UIViewController?
     public private(set) var navigator: BaseNavigator!
+    var isFirstLayout: Bool = true
     
     open override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -30,6 +31,10 @@ open class BaseViewController: UIViewController {
 //        handleDidFirstLayoutSubviews()
 //        handleViewWillLayoutSubviews {}
         self.view.backgroundColor = APP_COLOR
+    }
+    
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
     
     private var currentRootNavigationController: UINavigationController? {

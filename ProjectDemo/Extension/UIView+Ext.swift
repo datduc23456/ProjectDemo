@@ -533,6 +533,15 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
         return gradient
     }
+    
+    func linearGradientBackground(angleInDegs: Int, colors: [CGColor]) {
+          let gradientBaseLayer: CAGradientLayer = CAGradientLayer()
+          gradientBaseLayer.frame = self.frame
+          gradientBaseLayer.colors = colors
+          gradientBaseLayer.startPoint = startAndEndPointsFrom(angle: angleInDegs).startPoint
+          gradientBaseLayer.endPoint = startAndEndPointsFrom(angle: angleInDegs).endPoint
+          self.layer.insertSublayer(gradientBaseLayer, at: 0)
+      }
 }
 
 class OverlayView: UIView {

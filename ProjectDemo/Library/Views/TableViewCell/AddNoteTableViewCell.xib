@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nexa Bold.otf">
+            <string>Nexa-Bold</string>
+        </array>
+        <array key="Nexa Regular.otf">
+            <string>NexaRegular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="197" id="KGk-i7-Jjw" customClass="AddNoteTableViewCell" customModule="Starmovie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="197"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="197"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9j5-qg-lFR">
+                        <rect key="frame" x="16" y="0.0" width="288" height="197"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPF-pr-WE9">
+                                <rect key="frame" x="95.666666666666686" y="145" width="97" height="32"/>
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.4431372549" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="KOi-Rb-sI1"/>
+                                    <constraint firstAttribute="width" constant="97" id="eF6-j2-XKy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                <state key="normal" title="Add note" image="ic_plus">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addNoteAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4Ym-39-QiE"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This movie has no note yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBE-MP-6to">
+                                <rect key="frame" x="55" y="119" width="178" height="14"/>
+                                <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_emptyNote" translatesAutoresizingMaskIntoConstraints="NO" id="FwP-nj-K5u">
+                                <rect key="frame" x="110" y="20" width="68" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="NIy-Rd-kJa"/>
+                                    <constraint firstAttribute="height" constant="68" id="yf8-1y-HjH"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DPF-pr-WE9" firstAttribute="centerX" secondItem="9j5-qg-lFR" secondAttribute="centerX" id="6wF-B2-kBo"/>
+                            <constraint firstItem="FwP-nj-K5u" firstAttribute="top" secondItem="9j5-qg-lFR" secondAttribute="top" constant="20" id="BDq-mM-Z0F"/>
+                            <constraint firstItem="NBE-MP-6to" firstAttribute="centerX" secondItem="9j5-qg-lFR" secondAttribute="centerX" id="Waf-46-VT1"/>
+                            <constraint firstItem="DPF-pr-WE9" firstAttribute="top" secondItem="NBE-MP-6to" secondAttribute="bottom" constant="12" id="hT8-Y8-Zkw"/>
+                            <constraint firstItem="FwP-nj-K5u" firstAttribute="centerX" secondItem="9j5-qg-lFR" secondAttribute="centerX" id="lgE-sY-foM"/>
+                            <constraint firstAttribute="bottom" secondItem="DPF-pr-WE9" secondAttribute="bottom" constant="20" id="us7-jv-fVR"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.24705882352941178" green="0.25882352941176467" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="9j5-qg-lFR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2bI-9G-otZ"/>
+                    <constraint firstAttribute="trailing" secondItem="9j5-qg-lFR" secondAttribute="trailing" constant="16" id="9ES-Bl-Hul"/>
+                    <constraint firstAttribute="bottom" secondItem="9j5-qg-lFR" secondAttribute="bottom" id="OKB-o5-exm"/>
+                    <constraint firstItem="9j5-qg-lFR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TAA-Ab-phl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="viewBackGround" destination="9j5-qg-lFR" id="L5O-jv-GMi"/>
+            </connections>
+            <point key="canvasLocation" x="129.7709923664122" y="41.197183098591552"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_emptyNote" width="68" height="68"/>
+        <image name="ic_plus" width="12.666666984558105" height="12.666666984558105"/>
+    </resources>
+</document>

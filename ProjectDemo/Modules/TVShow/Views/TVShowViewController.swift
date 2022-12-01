@@ -49,7 +49,16 @@ final class TVShowViewController: BaseViewController {
         scrollView.showsVerticalScrollIndicator = false
         viewLayer.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         presenter.viewDidLoad()
-        viewLayer.applyGradient(colours: [.black.withAlphaComponent(0.1), .black.withAlphaComponent(1)])
+        let navigation: BaseNavigationView = NavigationBarView.initFromNib(type: .base, frame: CGRect.init(x: 0, y: 0, width: CommonUtil.SCREEN_WIDTH, height: AppDelegate.shared.window!.safeAreaInsets.top + 54)) as! BaseNavigationView
+            //.init(frame: CGRect.init(x: 0, y: 0, width: CommonUtil.SCREEN_WIDTH, height: AppDelegate.shared.window!.safeAreaInsets.top + 44))
+        self.view.addSubview(navigation)
+        navigation.imgSearch.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self else { return }
+//            self.presenter.didTapSearch()
+        }
+        navigation.lbTitle.text = "TV Shows"
+        navigation.configContentNav(.tvshow)
+        
         viewFavorite.addTapGestureRecognizer { [weak self] in
             guard let `self` = self, let movie = self.movie else { return }
             self.presenter.didTapFavorite(movie, isFavorite: self.isFavorite)
@@ -59,6 +68,18 @@ final class TVShowViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isFirstLayout {
+            viewLayer.applyGradient(colours: [.black.withAlphaComponent(0.1), .black.withAlphaComponent(1)])
+            isFirstLayout = !isFirstLayout
+        }
     }
     
     @IBAction func playAction(_ sender: Any) {

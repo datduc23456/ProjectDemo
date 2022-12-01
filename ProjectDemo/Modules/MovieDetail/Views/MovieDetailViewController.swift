@@ -51,6 +51,7 @@ final class MovieDetailViewController: BaseViewController {
         tableView.registerCell(for: TextExpandTableViewCell.className)
         tableView.registerCell(for: MovieVideosTableViewCell.className)
         tableView.registerCell(for: NotesTableViewCell.className)
+        tableView.registerCell(for: AddNoteTableViewCell.className)
         tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
@@ -118,6 +119,12 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         }
         if response.overview.isEmpty {
             self.tableViewDataSource.removeAll(where: {$0 == .overview})
+        }
+        if response.reviews.results.isEmpty {
+            self.tableViewDataSource.removeAll(where: {$0 == .notes})
+            if var rate = self.tableViewDataSource.first(where: {$0 == .rate}) {
+                rate.changeStype()
+            }
         }
         self.movieDetail = response
         self.trailer = listVideos.first
@@ -207,6 +214,8 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
                     if let movie = any as? Movie {
                         self.presenter.didTapMovie(movie)
                     }
+                case .addnote:
+                    self.presenter.didTapAddnote()
                 default:
                     return
                 }

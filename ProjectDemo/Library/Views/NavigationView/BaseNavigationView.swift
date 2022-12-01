@@ -12,10 +12,12 @@ enum BaseNavigationType {
     case navigation
     case search
     case tabbar
+    case tvshow
 }
 
 class BaseNavigationView: NavigationBarView {
 
+    @IBOutlet weak var leadingTitleConstraint: NSLayoutConstraint!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var viewSearch: UIView!
     @IBOutlet weak var lbTitle: UILabel!
@@ -36,7 +38,13 @@ class BaseNavigationView: NavigationBarView {
             imgSetting.isHidden = false
             imgSearch.isHidden = false
             imgStarMoviee.isHidden = false
+        case .tvshow:
+            leadingTitleConstraint.constant = -32
+            imgSetting.isHidden = false
+            imgSearch.isHidden = false
+            lbTitle.isHidden = false
         case .tabbar:
+            leadingTitleConstraint.constant = -32
             imgSetting.isHidden = false
             imgSearch.isHidden = false
             lbTitle.isHidden = false

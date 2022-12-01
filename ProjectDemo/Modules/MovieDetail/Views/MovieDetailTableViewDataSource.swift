@@ -26,6 +26,7 @@ enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
     case notes
     case rate
     case trending
+    case addnote
     
     func heightForRow() -> CGFloat {
         switch self {
@@ -41,6 +42,8 @@ enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
             return 95
         case .notes:
             return 157
+        case .addnote:
+            return 201
         case .rate:
             return 157
         case .trending:
@@ -62,6 +65,8 @@ enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
             return ImagesTableViewCell.self
         case .notes:
             return NotesTableViewCell.self
+        case .addnote:
+            return AddNoteTableViewCell.self
         case .rate:
             return UserRateTableViewCell.self
         case .trending:
@@ -80,10 +85,21 @@ enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
             return "Image"
         case .notes:
             return "Notes"
+        case .addnote:
+            return "Notes"
         case .trending:
             return "You may also like..."
         default:
             return ""
+        }
+    }
+    
+    mutating func changeStype() {
+        switch self {
+        case .rate:
+            self = .addnote
+        default:
+            return
         }
     }
 }

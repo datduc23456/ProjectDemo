@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,34 +19,34 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="184" id="KGk-i7-Jjw" customClass="PageCinemaTableViewCell" customModule="Starmovie" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="184"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="363" id="KGk-i7-Jjw" customClass="PageCinemaTableViewCell" customModule="Starmovie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="363"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="184"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="363"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SF6-au-P55">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="80.333333333333329"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SF6-au-P55">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="363"/>
                     </imageView>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFB-ol-N9l">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="80.333333333333329"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFB-ol-N9l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="363"/>
                         <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action, Fantasy, Sci..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuh-Za-iAA">
-                        <rect key="frame" x="99.666666666666686" y="72" width="121" height="18"/>
+                        <rect key="frame" x="99.666666666666686" y="93" width="121" height="12"/>
                         <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="12"/>
                         <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Black Adam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvl-Sq-vbe">
-                        <rect key="frame" x="114" y="54" width="92.333333333333314" height="16"/>
+                        <rect key="frame" x="114" y="75" width="92.333333333333314" height="16"/>
                         <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d70-Ds-ICH">
-                        <rect key="frame" x="108.66666666666669" y="24" width="103" height="22"/>
+                        <rect key="frame" x="108.66666666666669" y="45" width="103" height="22"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swn-iD-FcM">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="22"/>
@@ -58,7 +58,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star" translatesAutoresizingMaskIntoConstraints="NO" id="gKa-7M-M5N">
-                                        <rect key="frame" x="32.999999999999986" y="4.6666666666666679" width="13" height="13"/>
+                                        <rect key="frame" x="32.999999999999986" y="4.6666666666666643" width="13" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="13" id="BmY-jW-HkQ"/>
                                             <constraint firstAttribute="height" constant="13" id="I8F-Ps-T1k"/>
@@ -116,14 +116,14 @@
                         </constraints>
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viw-Gb-k3k" customClass="FSPagerView" customModule="Starmovie" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="98" width="320" height="250"/>
+                        <rect key="frame" x="0.0" y="97" width="320" height="250"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="250" id="Toj-1F-dTX"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8TF-Jo-haC" customClass="FSPageControl" customModule="Starmovie" customModuleProvider="target">
-                        <rect key="frame" x="60" y="354" width="200" height="12"/>
+                        <rect key="frame" x="60" y="339" width="200" height="12"/>
                         <viewLayoutGuide key="safeArea" id="UxM-Zf-guR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -145,22 +145,15 @@
                     <constraint firstItem="viw-Gb-k3k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Pg1-5Z-Lol"/>
                     <constraint firstItem="zuh-Za-iAA" firstAttribute="centerX" secondItem="d70-Ds-ICH" secondAttribute="centerX" id="RaQ-dd-Wwb"/>
                     <constraint firstItem="d70-Ds-ICH" firstAttribute="bottom" secondItem="Mvl-Sq-vbe" secondAttribute="top" constant="-8" id="SZo-WX-75g"/>
-                    <constraint firstItem="d70-Ds-ICH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="Yks-6s-qc2"/>
-                    <constraint firstItem="viw-Gb-k3k" firstAttribute="top" secondItem="zuh-Za-iAA" secondAttribute="bottom" constant="8" id="Yn7-Hi-iQy"/>
-                    <constraint firstItem="viw-Gb-k3k" firstAttribute="top" secondItem="Mvl-Sq-vbe" secondAttribute="bottom" constant="28.000000000000028" id="bfg-1x-t59"/>
+                    <constraint firstItem="viw-Gb-k3k" firstAttribute="top" secondItem="zuh-Za-iAA" secondAttribute="bottom" constant="-8" id="Yn7-Hi-iQy"/>
+                    <constraint firstItem="zuh-Za-iAA" firstAttribute="top" secondItem="Mvl-Sq-vbe" secondAttribute="bottom" constant="2" id="bfg-1x-t59"/>
                     <constraint firstItem="SF6-au-P55" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="cLp-6X-wIo"/>
-                    <constraint firstItem="viw-Gb-k3k" firstAttribute="bottom" secondItem="8TF-Jo-haC" secondAttribute="top" constant="-6" id="dhX-SM-nSq"/>
+                    <constraint firstItem="viw-Gb-k3k" firstAttribute="bottom" secondItem="8TF-Jo-haC" secondAttribute="top" constant="8" id="dhX-SM-nSq"/>
                     <constraint firstItem="SF6-au-P55" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ehV-GU-oru"/>
                     <constraint firstAttribute="trailing" secondItem="VFB-ol-N9l" secondAttribute="trailing" id="ipU-Wh-tKy"/>
                     <constraint firstAttribute="bottom" secondItem="SF6-au-P55" secondAttribute="bottom" id="jOa-MI-D8x"/>
-                    <constraint firstAttribute="bottom" secondItem="viw-Gb-k3k" secondAttribute="bottom" id="kQ9-v7-qo7"/>
                     <constraint firstAttribute="trailing" secondItem="SF6-au-P55" secondAttribute="trailing" id="zo3-dL-gaB"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="kQ9-v7-qo7"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="backGroundImg" destination="SF6-au-P55" id="Is9-Pk-wMJ"/>
@@ -171,7 +164,7 @@
                 <outlet property="pageControl" destination="8TF-Jo-haC" id="rR2-a6-wQu"/>
                 <outlet property="pagerView" destination="viw-Gb-k3k" id="ltC-Tq-QSm"/>
             </connections>
-            <point key="canvasLocation" x="130.76923076923077" y="38.388625592417057"/>
+            <point key="canvasLocation" x="130.76923076923077" y="-25.947867298578199"/>
         </tableViewCell>
     </objects>
     <resources>
