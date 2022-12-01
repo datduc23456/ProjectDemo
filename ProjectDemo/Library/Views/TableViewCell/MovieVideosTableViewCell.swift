@@ -73,11 +73,11 @@ class MovieVideosTableViewCell: UITableViewCell, BaseWithCollectionTableViewCell
         self.icPlay.isHidden = true
         if let firstMovie = movies.first {
             self.movie = firstMovie
-            imgThumbnail.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(firstMovie.posterPath)"))
+            imgThumbnail.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(firstMovie.backdropPath)"))
             lbName.text = !firstMovie.originalTitle.isEmpty ? firstMovie.originalTitle : firstMovie.originalName
             lbPublished.text = !firstMovie.releaseDate.isEmpty ? firstMovie.releaseDate.toDateFormat(toFormat: "MMM dd, yyyy") : firstMovie.firstAirDate.toDateFormat(toFormat: "MMM dd, yyyy")
             let stackViewMovies = movies
-            stackView.configView(stackViewMovies.map({URL(string: "\(baseURLImage)\($0.posterPath)")!}), selectedIndex: selectedIndex)
+            stackView.configView(stackViewMovies.map({URL(string: "\(baseURLImage)\($0.backdropPath)")!}), selectedIndex: selectedIndex)
         }
     }
 }

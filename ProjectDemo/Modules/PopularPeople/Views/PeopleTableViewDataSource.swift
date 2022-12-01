@@ -11,7 +11,7 @@ enum PeopleTableViewDataSource: CaseIterable {
     typealias RawValue = Int
     
     static var allCases: [PeopleTableViewDataSource] {
-        return [.overview, .videos, .tvshow, .images, .trending]
+        return [.overview, .videos, .images, .trending]
     }
     
     case overview
@@ -54,13 +54,13 @@ enum PeopleTableViewDataSource: CaseIterable {
     func titleOfHeader() -> String {
         switch self {
         case .videos:
-            return "Movies"
+            return "Videos"
         case .tvshow:
             return "TV Shows"
         case .images:
             return "Image"
         case .trending:
-            return "Trending"
+            return "You may also like..."
         default:
             return ""
         }

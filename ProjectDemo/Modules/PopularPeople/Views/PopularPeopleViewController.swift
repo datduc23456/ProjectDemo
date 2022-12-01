@@ -11,6 +11,7 @@ import UIKit
 final class PopularPeopleViewController: BaseViewController {
     //BaseCollectionViewController<PeoplePopularCollectionViewCell> {
 
+    @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var tableViewheight: NSLayoutConstraint!
     @IBOutlet weak var lbTotalFilm: UILabel!
@@ -49,6 +50,7 @@ final class PopularPeopleViewController: BaseViewController {
         self.btnBack.addTapGestureRecognizer {
             self.navigationController?.popViewController(animated: true)
         }
+        blurView.alpha = 0.6
     }
     
 //    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -120,6 +122,7 @@ extension PopularPeopleViewController: PopularPeopleViewInterface {
         self.data.updateValue(people.tvCredits.cast, forKey: "\(PeopleTableViewDataSource.tvshow)")
         self.data.updateValue(people.movieCredits.cast, forKey: "\(PeopleTableViewDataSource.videos)")
         self.data.updateValue([people.biography], forKey: "\(PeopleTableViewDataSource.overview)")
+        self.data.updateValue(people.movieCredits.cast + people.movieCredits.crew, forKey: "\(PeopleTableViewDataSource.trending)")
         self.tableView.reloadData()
     }
     
