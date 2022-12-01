@@ -83,7 +83,7 @@ final class AddNoteViewController: BaseViewController {
         guard let name = tfTitle.text, let content = textViewContent.text else {
             return
         }
-        if let movieDetail = movieDetail{
+        if let movieDetail = movieDetail {
             let rating = Double(lbSliderValue.text.isNil(value: "0.0"))
             let object = ReviewsResultObject()
             object.originalName = movieDetail.originalName

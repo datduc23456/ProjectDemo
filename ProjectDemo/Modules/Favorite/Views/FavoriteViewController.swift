@@ -42,7 +42,7 @@ final class FavoriteViewController: BaseViewController {
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
-//            self.presenter.didTapSearch()
+            self.presenter.didTapSearch()
         }
         navigation.lbTitle.text = "Favorite"
         navigation.configContentNav(.tabbar)

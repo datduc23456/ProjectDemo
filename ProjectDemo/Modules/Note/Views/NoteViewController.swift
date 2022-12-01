@@ -30,7 +30,7 @@ final class NoteViewController: BaseViewController {
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
-//            self.presenter.didTapSearch()
+            self.presenter.didTapSearch()
         }
         navigation.lbTitle.text = "User note"
         navigation.configContentNav(.tabbar)

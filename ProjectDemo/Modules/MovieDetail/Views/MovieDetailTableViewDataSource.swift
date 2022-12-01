@@ -8,14 +8,16 @@
 import UIKit
 
 enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
+    static var allCases: [MovieDetailTableViewDataSource] = []
+    
     typealias RawValue = Int
     
     static var movieCases: [MovieDetailTableViewDataSource] {
-        return [.actors, .overview, .videos, .images, .notes, .rate, .trending]
+        return [.actors, .overview, .videos, .images, .notes, .rate(hasRate: true), .trending]
     }
     
     static var tvShowCases: [MovieDetailTableViewDataSource] {
-        return [.actors, .overview, .season, .videos, .images, .notes, .rate]
+        return [.actors, .overview, .season, .videos, .images, .notes, .rate(hasRate: true)]
     }
     
     case actors
@@ -24,9 +26,8 @@ enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
     case videos
     case images
     case notes
-    case rate
+    case rate(hasRate: Bool)
     case trending
-    case addnote
     
     func heightForRow() -> CGFloat {
         switch self {
@@ -42,9 +43,10 @@ enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
             return 95
         case .notes:
             return 157
-        case .addnote:
-            return 201
-        case .rate:
+        case .rate(let hasRate):
+            if !hasRate {
+                return 201
+            }
             return 157
         case .trending:
             return 158
@@ -65,10 +67,12 @@ enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
             return ImagesTableViewCell.self
         case .notes:
             return NotesTableViewCell.self
-        case .addnote:
-            return AddNoteTableViewCell.self
-        case .rate:
-            return UserRateTableViewCell.self
+        case .rate(let hasRate):
+            if hasRate {
+                return UserRateTableViewCell.self
+            } else {
+                return AddNoteTableViewCell.self
+            }
         case .trending:
             return TrendingTableViewCell.self
         }
@@ -85,8 +89,11 @@ enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
             return "Image"
         case .notes:
             return "Notes"
-        case .addnote:
-            return "Notes"
+        case .rate(let hasRate):
+            if !hasRate {
+                return "Notes"
+            }
+            return ""
         case .trending:
             return "You may also like..."
         default:
@@ -94,12 +101,21 @@ enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
         }
     }
     
-    mutating func changeStype() {
+    mutating func changeRate() {
         switch self {
-        case .rate:
-            self = .addnote
+        case .rate(let hasRate):
+            self = .rate(hasRate: !hasRate)
         default:
             return
+        }
+    }
+    
+    func isRate() -> Bool {
+        switch self {
+        case.rate:
+            return true
+        default:
+            return false
         }
     }
 }

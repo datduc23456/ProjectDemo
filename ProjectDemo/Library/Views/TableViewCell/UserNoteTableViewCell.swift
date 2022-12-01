@@ -16,7 +16,6 @@ class UserNoteTableViewCell: UITableViewCell {
     @IBOutlet weak var lbRating: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        stackView.linearGradientBackground(angleInDegs: 180, colors: [UIColor(hex: "#171A21").cgColor, UIColor(hex: "#0D1015").cgColor])
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

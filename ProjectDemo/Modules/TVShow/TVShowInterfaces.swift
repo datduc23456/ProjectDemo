@@ -21,6 +21,7 @@ protocol TVShowPresenterInterface: PresenterInterface {
     func didChangeMovieHeader(_ movie: Movie)
     func didTapHeaderView(_ section: TVShowTableViewDataSource)
     func didTapFavorite(_ movie: Movie, isFavorite: Bool)
+    func didTapSearch()
 }
 
 protocol TVShowInteractorInterface: InteractorInterface {
@@ -44,4 +45,5 @@ protocol TVShowInteractorOutputInterface: InteractorOutputInterface {
 protocol TVShowWireframeInterface: WireframeInterface {
     func showMovieDetailScreen(_ id: Int)
     func showActionScreen(_ type: ActionViewType)
+    func showSearchScreen()
 }

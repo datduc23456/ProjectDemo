@@ -6,10 +6,17 @@
 //  Copyright © 2022 dat.nguyen. All rights reserved.
 //
 
-final class UserNoteInteractor {
+import Foundation
 
+final class UserNoteInteractor {
+    var realmUtils: RealmUtils = AppDelegate.shared.realmUtils
     weak var output: UserNoteInteractorOutputInterface?
 }
 
 extension UserNoteInteractor: UserNoteInteractorInterface {
+    func fetchMyReview(_ id: Int) {
+        let predicate = NSPredicate(format: "_id == %@", NSNumber(value: id))
+        let query = realmUtils.dataQueryByPredicate(type: ReviewsResultObject.self, predicate: predicate)
+        self.output?.getMyReviews(Array(query))
+    }
 }

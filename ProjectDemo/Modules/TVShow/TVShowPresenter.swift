@@ -40,6 +40,10 @@ extension TVShowPresenter: TVShowPresenterInterface {
         interactor.getTopRate()
     }
     
+    func didTapSearch() {
+        wireframe.showSearchScreen()
+    }
+    
     func didTapToMovie(_ movie: Movie) {
         wireframe.showMovieDetailScreen(movie.id)
     }

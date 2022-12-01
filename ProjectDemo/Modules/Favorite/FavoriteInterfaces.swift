@@ -12,6 +12,7 @@ protocol FavoriteViewInterface: ViewInterface {
 
 protocol FavoritePresenterInterface: PresenterInterface {
     func getMovieFavorite(_ type: FavoriteFilterType)
+    func didTapSearch()
 }
 
 protocol FavoriteInteractorInterface: InteractorInterface {
@@ -23,4 +24,5 @@ protocol FavoriteInteractorOutputInterface: InteractorOutputInterface {
 }
 
 protocol FavoriteWireframeInterface: WireframeInterface {
+    func showSearchScreen()
 }

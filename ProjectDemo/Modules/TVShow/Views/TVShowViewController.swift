@@ -54,7 +54,7 @@ final class TVShowViewController: BaseViewController {
         self.view.addSubview(navigation)
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
-//            self.presenter.didTapSearch()
+            self.presenter.didTapSearch()
         }
         navigation.lbTitle.text = "TV Shows"
         navigation.configContentNav(.tvshow)
@@ -67,7 +67,7 @@ final class TVShowViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 40, right: 0)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 50, right: 0)
         scrollView.contentInsetAdjustmentBehavior = .never
     }
     

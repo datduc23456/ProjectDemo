@@ -42,4 +42,8 @@ final class TVShowWireframe: TVShowWireframeInterface {
     func showActionScreen(_ type: ActionViewType) {
         navigator.pushScreen(AppScreens.action, type, fromRoot: true)
     }
+    
+    func showSearchScreen() {
+        navigator.pushScreen(AppScreens.search, SearchType.detail, fromRoot: true)
+    }
 }

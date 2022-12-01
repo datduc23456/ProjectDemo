@@ -30,6 +30,10 @@ extension NotePresenter: NotePresenterInterface {
         interactor.getMyReviews()
     }
     
+    func didTapSearch() {
+        wireframe.showSearchScreen()
+    }
+    
     func didTapAddNote() {
         wireframe.showAddNoteScreen()
     }

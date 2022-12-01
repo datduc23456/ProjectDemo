@@ -22,11 +22,11 @@ class BottomSheetButtonView: BaseCustomView {
             if isPrimary {
                 button.borderWidth = 0
                 button.backgroundColor = CHOOSE_GENRE_COLOR
-                button.titleLabel?.textColor = .black
+                button.setTitleColor(.black, for: .normal)
             } else {
                 button.borderWidth = 1
                 button.backgroundColor = UIColor(hex: "#35333A")
-                button.titleLabel?.textColor = .white
+                button.setTitleColor(.white, for: .normal)
             }
         }
     }

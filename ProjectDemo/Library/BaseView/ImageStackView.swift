@@ -34,7 +34,7 @@ class ImageStackView: UIStackView {
     func configView(_ imageUrl: [URL] = [], selectedIndex: Int = 0) {
         self.layoutIfNeeded()
         for subViews in self.subviews {
-            self.removeArrangedSubview(subViews)
+            subViews.removeFromSuperview()
         }
         let spacingCount: CGFloat = CGFloat(count - 1) * spacing
         let width: CGFloat = (self.frame.width - spacingCount) / CGFloat(count)
@@ -47,13 +47,15 @@ class ImageStackView: UIStackView {
             }
             imageView.addTapGestureRecognizer(action: { [weak self] in
                 guard let `self` = self else { return }
-                for view in self.arrangedSubviews {
-                    if let imageV = view as? UIImageView {
-                        self.unselected(imageV)
+                if let _ = imageUrl[safe: index] {
+                    for view in self.arrangedSubviews {
+                        if let imageV = view as? UIImageView {
+                            self.unselected(imageV)
+                        }
                     }
+                    self.selected(imageView)
+                    self.didTapImage?(index)
                 }
-                self.selected(imageView)
-                self.didTapImage?(index)
             })
             if let url = imageUrl[safe: index] {
                 imageView.setImageUrlWithPlaceHolder(url: url)

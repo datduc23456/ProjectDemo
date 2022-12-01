@@ -124,8 +124,10 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         }
         if response.reviews.results.isEmpty {
             self.tableViewDataSource.removeAll(where: {$0 == .notes})
-            if var rate = self.tableViewDataSource.first(where: {$0 == .rate}) {
-                rate.changeStype()
+            if let index = self.tableViewDataSource.firstIndex(where: {$0.isRate()}) {
+                var rateRow = self.tableViewDataSource[index]
+                rateRow.changeRate()
+                self.tableViewDataSource[index] = rateRow
             }
         }
         self.movieDetail = response
@@ -151,7 +153,8 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         self.data.updateValue(listVideos.map({CommonUtil.getThumbnailYoutubeUrl($0.key)}), forKey: "\(MovieDetailTableViewDataSource.images)")
         self.data.updateValue((totalVote: response.popularity, voteAvg: voteAvg), forKey: "\(MovieDetailTableViewDataSource.notes)")
         self.data.updateValue(response.recommendations.results, forKey: "\(MovieDetailTableViewDataSource.trending)")
-        self.data.updateValue(response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate)")
+        self.data.updateValue([], forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: false))")
+        self.data.updateValue(response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: true))")
         self.data.updateValue([response.overview], forKey: "\(MovieDetailTableViewDataSource.overview)")
         self.data.updateValue(response.seasons, forKey: "\(MovieDetailTableViewDataSource.season)")
         self.tableView.reloadData()
@@ -170,7 +173,8 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         self.data.updateValue(listVideos.map({CommonUtil.getThumbnailYoutubeUrl($0.key)}), forKey: "\(MovieDetailTableViewDataSource.images)")
         self.data.updateValue((totalVote: response.popularity, voteAvg: voteAvg), forKey: "\(MovieDetailTableViewDataSource.notes)")
         self.data.updateValue(response.recommendations.results, forKey: "\(MovieDetailTableViewDataSource.trending)")
-        self.data.updateValue(response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate)")
+        self.data.updateValue([], forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: false))")
+        self.data.updateValue(response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: true))")
         self.data.updateValue([response.overview], forKey: "\(MovieDetailTableViewDataSource.overview)")
         self.tableView.reloadData()
     }
@@ -216,7 +220,7 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
                     if let movie = any as? Movie {
                         self.presenter.didTapMovie(movie)
                     }
-                case .addnote:
+                case .rate(hasRate: false):
                     self.presenter.didTapAddnote()
                 default:
                     return
@@ -307,7 +311,7 @@ extension MovieDetailViewController: HeaderViewDelegate {
     func headerView(_ customHeader: HeaderView, didTapButtonInSection section: Int) {
         let item = tableViewDataSource[section]
         switch item {
-        case .notes:
+        case .notes, .rate(hasRate: false):
             presenter.didTapUserNote()
         default:
             return

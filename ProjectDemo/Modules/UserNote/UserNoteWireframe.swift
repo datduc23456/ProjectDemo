@@ -27,7 +27,11 @@ final class UserNoteWireframe: UserNoteWireframeInterface {
         initialViewController.presenter = presenter
         return initialViewController
     }
-
+    
+    func showAddNoteScreen(_ payload: Any) {
+        navigator.pushScreen(AppScreens.addnote, payload, fromRoot: true)
+    }
+    
 	func handleError(_ error: Error, _ completion: (() -> Void)?) {
         
     }

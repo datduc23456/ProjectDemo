@@ -11,7 +11,7 @@ final class UserNotePresenter {
     private weak var view: UserNoteViewInterface?
     private var interactor: UserNoteInteractorInterface
     private var wireframe: UserNoteWireframeInterface
-
+    private var reviewsObject: [ReviewsResultObject] = []
     init(view: UserNoteViewInterface,
          interactor: UserNoteInteractorInterface,
          wireframe: UserNoteWireframeInterface) {
@@ -22,9 +22,26 @@ final class UserNotePresenter {
 }
 
 extension UserNotePresenter: UserNotePresenterInterface {
+    func viewDidLoad() {
+        if let movieDetail = view?.movieDetail {
+            interactor.fetchMyReview(movieDetail.id)
+        }
+    }
+    
+    func didTapAddNote() {
+        if reviewsObject.isEmpty, let movieDetail = view?.movieDetail {
+            wireframe.showAddNoteScreen(movieDetail)
+        } else {
+            wireframe.showAddNoteScreen(reviewsObject[0])
+        }
+    }
+    
 }
 
 extension UserNotePresenter: UserNoteInteractorOutputInterface {
+    func getMyReviews(_ data: [ReviewsResultObject]) {
+        self.reviewsObject = data
+    }
 
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()

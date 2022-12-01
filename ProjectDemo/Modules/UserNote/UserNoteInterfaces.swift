@@ -11,13 +11,17 @@ protocol UserNoteViewInterface: ViewInterface {
 }
 
 protocol UserNotePresenterInterface: PresenterInterface {
+    func didTapAddNote()
 }
 
 protocol UserNoteInteractorInterface: InteractorInterface {
+    func fetchMyReview(_ id: Int)
 }
 
 protocol UserNoteInteractorOutputInterface: InteractorOutputInterface {
+    func getMyReviews(_ data: [ReviewsResultObject])
 }
 
 protocol UserNoteWireframeInterface: WireframeInterface {
+    func showAddNoteScreen(_ payload: Any)
 }

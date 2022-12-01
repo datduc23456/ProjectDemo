@@ -35,4 +35,8 @@ final class NoteWireframe: NoteWireframeInterface {
     func showAddNoteScreen() {
         navigator.pushScreen(AppScreens.search, SearchType.addnote, fromRoot: true)
     }
+    
+    func showSearchScreen() {
+        navigator.pushScreen(AppScreens.search, SearchType.detail, fromRoot: true)
+    }
 }
