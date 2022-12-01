@@ -62,18 +62,20 @@ final class MovieDetailViewController: BaseViewController {
             guard let `self` = self, let movieDetail = self.movieDetail else { return }
             self.presenter.didTapFavorite(movieDetail, isFavorite: self.isFavorite)
         }
-        viewGradient.applyGradient(colours: [.black.withAlphaComponent(0.1), .black.withAlphaComponent(0.5)])
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presenter.viewWillAppear(animated)
+        if isFirstLayout {
+            viewGradient.applyGradient(colours: [.black.withAlphaComponent(0.1), .black.withAlphaComponent(0.5)])
+            isFirstLayout = !isFirstLayout
+        }
     }
     
     @IBAction func trailerAction(_ sender: Any) {
