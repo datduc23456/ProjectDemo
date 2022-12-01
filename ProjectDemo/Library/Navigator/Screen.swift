@@ -32,6 +32,7 @@ enum AppScreens: String, Screen, CaseIterable {
     case note
     case action
     case genres
+    case usernote
     
     var path: String {
         return rawValue
@@ -74,6 +75,8 @@ enum AppScreens: String, Screen, CaseIterable {
             return ActionWireframe.generateModule(payload)
         case .genres:
             return GenersWireframe.generateModule(payload)
+        case .usernote:
+            return UserNoteWireframe.generateModule(payload)
         }
     }
 }

@@ -22,6 +22,7 @@ protocol MovieDetailPresenterInterface: PresenterInterface {
     func didTapPeople(_ id: Int)
     func didTapMovie(_ movie: Movie)
     func didTapAddnote()
+    func didTapUserNote()
 }
 
 protocol MovieDetailInteractorInterface: InteractorInterface {
@@ -45,4 +46,5 @@ protocol MovieDetailInteractorOutputInterface: InteractorOutputInterface {
 protocol MovieDetailWireframeInterface: WireframeInterface {
     func showPeopleDetail(_ id: Int)
     func showAddNoteScreen(_ payload: Any)
+    func showUserNoteScreen(_ movieDetail: MovieDetail)
 }

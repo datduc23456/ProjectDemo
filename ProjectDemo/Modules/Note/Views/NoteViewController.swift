@@ -23,7 +23,7 @@ final class NoteViewController: BaseViewController {
         super.viewDidLoad()
         presenter.viewDidLoad()
         configView()
-        tableView.registerCell(for: UserNoteTableViewCell.className)
+        tableView.registerCell(for: MyNoteTableViewCell.className)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.reloadData()
@@ -75,7 +75,7 @@ extension NoteViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UserNoteTableViewCell.className, for: indexPath) as! UserNoteTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MyNoteTableViewCell.className, for: indexPath) as! MyNoteTableViewCell
         let review = self.reviews[indexPath.row]
         cell.selectionStyle = .none
         cell.configCell(review)

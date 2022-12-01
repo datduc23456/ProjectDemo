@@ -25,6 +25,12 @@ final class MovieDetailPresenter {
 }
 
 extension MovieDetailPresenter: MovieDetailPresenterInterface {
+    func didTapUserNote() {
+        if let movieDetail = movieDetail {
+            wireframe.showUserNoteScreen(movieDetail)
+        }
+    }
+    
     func didTapAddnote() {
         if let myReviewObject = myReviewObject {
             wireframe.showAddNoteScreen(myReviewObject)

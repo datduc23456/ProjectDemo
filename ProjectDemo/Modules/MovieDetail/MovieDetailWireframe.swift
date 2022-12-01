@@ -40,4 +40,8 @@ final class MovieDetailWireframe: MovieDetailWireframeInterface {
     func showAddNoteScreen(_ payload: Any) {
         navigator.pushScreen(AppScreens.addnote, payload, fromRoot: true)
     }
+    
+    func showUserNoteScreen(_ movieDetail: MovieDetail) {
+        navigator.pushScreen(AppScreens.usernote, movieDetail, fromRoot: true)
+    }
 }

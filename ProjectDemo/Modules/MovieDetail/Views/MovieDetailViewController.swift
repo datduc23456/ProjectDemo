@@ -294,6 +294,12 @@ extension MovieDetailViewController: TableViewAdjustedHeightDelegate {
 
 extension MovieDetailViewController: HeaderViewDelegate {
     func headerView(_ customHeader: HeaderView, didTapButtonInSection section: Int) {
-        print("did tap button", section)
+        let item = tableViewDataSource[section]
+        switch item {
+        case .notes:
+            presenter.didTapUserNote()
+        default:
+            return
+        }
     }
 }
