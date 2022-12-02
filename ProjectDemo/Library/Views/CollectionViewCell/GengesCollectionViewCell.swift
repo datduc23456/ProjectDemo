@@ -15,7 +15,6 @@ class GengesCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var lbTitle: UILabel!
     
     var isHeightCalculated: Bool = false
-    var didTap: VoidCallBack?
     var genre: Genre!
     var isSelect: Bool = false {
         didSet {
@@ -28,8 +27,8 @@ class GengesCollectionViewCell: BaseCollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.contentView.addTapGestureRecognizer(action: {
-            if !self.isSelect {
-                self.didTap?()
+            if !self.isSelect, let genre = self.genre {
+                self.didTapAction?(genre)
                 self.isSelect = true
             }
         })

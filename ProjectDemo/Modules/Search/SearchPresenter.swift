@@ -22,6 +22,11 @@ final class SearchPresenter {
 }
 
 extension SearchPresenter: SearchPresenterInterface {
+    func searchGenre(_ genre: Genre) {
+        interactor.searchMoviePopularWithGenre(genreId: genre.id, 1)
+        interactor.searchTVShowPopularWithGenre(genreId: genre.id, 1)
+    }
+    
     func viewDidLoad() {
         interactor.fetchSearchKey()
     }
@@ -66,6 +71,14 @@ extension SearchPresenter: SearchPresenterInterface {
 }
 
 extension SearchPresenter: SearchInteractorOutputInterface {
+    func searchMoviePopularWithGenre(_ response: [Movie]) {
+        view?.searchMoviePopular(response)
+    }
+    
+    func searchTVShowPopularWithGenre(_ response: [Movie]) {
+        view?.searchTVShowPopular(response)
+    }
+    
     func didSearch(_ key: String) {
         interactor.insertQuery(key)
     }

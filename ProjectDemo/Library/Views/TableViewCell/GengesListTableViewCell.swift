@@ -67,9 +67,9 @@ extension GengesListTableViewCell: UICollectionViewDataSource, UICollectionViewD
         let payload = self.payload[indexPath.row]
         let isSelected: Bool = payload.id == DTPBusiness.shared.genreSelectedId
         cell.configCell(payload, isSelected: isSelected)
-        cell.didTap = { [weak self] in
+        cell.didTapAction = { [weak self] any in
             guard self != nil else { return }
-            self?.didTapActionInCell(payload)
+            self?.didTapActionInCell(any)
             for cell in collectionView.visibleCells {
                 if let c = cell as? GengesCollectionViewCell, c.genre.id != DTPBusiness.shared.genreSelectedId {
                     c.unsected()

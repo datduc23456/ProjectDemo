@@ -1,9 +1,12 @@
 import UIKit
 
-class GenresSearchTableViewCell: UITableViewCell {
+class GenresSearchTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
 
-    
     @IBOutlet weak var collectionView: UICollectionView!
+    var listPayload: [Any] = []
+    
+    var didTapActionInCell: ((Any) -> Void) = {_ in}
+    
     var payload: [Genre] = [] {
         didSet {
             collectionView.reloadData()
@@ -59,6 +62,10 @@ extension GenresSearchTableViewCell: UICollectionViewDataSource, UICollectionVie
         cell.viewBackgroundImage.backgroundColor = .black
         cell.image.tintColor = .white
         cell.lbTitle.textColor = .white
+        cell.didTapAction = { [weak self] any in
+            guard let `self` = self else { return }
+            self.didTapActionInCell(any)
+        }
         cell.contentView.backgroundColor = CHOOSE_GENRE_COLOR
         return cell
     }

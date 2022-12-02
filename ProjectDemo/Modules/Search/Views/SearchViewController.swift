@@ -156,8 +156,14 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
                     if let movie = payload as? Movie {
                         self.presenter.didTapToMovie(movie)
                     }
-                case .genre, .recent:
-                    break
+                case .genre:
+                    if let genre = payload as? Genre {
+                        if let myNavigationBar = self.myNavigationBar as? BaseNavigationView {
+                            myNavigationBar.textField.text = "Genre: \(genre.name)"
+                        }
+                        self.tableViewDataSource = SearchViewDataSource.allCases
+                        self.presenter.searchGenre(genre)
+                    }
                 case .recent:
                     break
                 }

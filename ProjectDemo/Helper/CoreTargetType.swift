@@ -14,7 +14,7 @@ enum CoreTargetType: TargetType {
     case popular(Int)
     case detail(Int)
     case moviegenreid(genreId: Int, page: Int)
-    case TVshowgenreid(genreId: Int)
+    case TVshowgenreid(genreId: Int, page: Int)
     case genreList
     case searchMovie(query: String, page: Int)
     case TVshowPopular(page: Int)
@@ -108,8 +108,9 @@ enum CoreTargetType: TargetType {
         case .moviegenreid(let genreId, let page):
             defaultParams.updateValue(genreId, forKey: "with_genres")
             defaultParams.updateValue(page, forKey: "page")
-        case .TVshowgenreid(let genreId):
+        case .TVshowgenreid(let genreId, let page):
             defaultParams.updateValue(genreId, forKey: "with_genres")
+            defaultParams.updateValue(page, forKey: "page")
         case .searchMovie(let query, let page):
             defaultParams.updateValue(query, forKey: "query")
             defaultParams.updateValue(page, forKey: "page")

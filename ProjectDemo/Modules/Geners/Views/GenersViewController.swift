@@ -46,7 +46,7 @@ final class GenersViewController: BaseCollectionViewController<GengesCollectionV
         cell.image.tintColor = .white
         cell.lbTitle.textColor = .white
         cell.contentView.backgroundColor = CHOOSE_GENRE_COLOR
-        cell.didTap = { [weak self] in
+        cell.didTapAction = { [weak self] any in
             guard let `self` = self else { return }
 //            for cell in collectionView.visibleCells {
 //                if let c = cell as? GengesCollectionViewCell {

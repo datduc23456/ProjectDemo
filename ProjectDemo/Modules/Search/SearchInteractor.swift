@@ -70,4 +70,22 @@ extension SearchInteractor: SearchInteractorInterface {
             
         })
     }
+    
+    func searchMoviePopularWithGenre(genreId: Int, _ page: Int) {
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.moviegenreid(genreId: genreId, page: page), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.searchMoviePopularWithGenre(response.results)
+        }, failureBlock: { _ in
+            
+        })
+    }
+    
+    func searchTVShowPopularWithGenre(genreId: Int, _ page: Int) {
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.TVshowgenreid(genreId: genreId, page: page), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.searchTVShowPopularWithGenre(response.results)
+        }, failureBlock: { _ in
+            
+        })
+    }
 }

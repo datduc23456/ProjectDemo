@@ -20,6 +20,7 @@ protocol SearchPresenterInterface: PresenterInterface {
     func searchMoviePopular(_ query: String)
     func searchTVShowPopular(_ query: String)
     func searchPerson(_ query: String)
+    func searchGenre(_ genre: Genre)
     func fetchSearchKey()
     func didTapToMovie(_ movie: Movie)
     func didTapToTVshow(_ movie: Movie)
@@ -35,6 +36,8 @@ protocol SearchInteractorInterface: InteractorInterface {
     func searchPerson(_ query: String)
     func fetchSearchKey()
     func insertQuery(_ query: String)
+    func searchMoviePopularWithGenre(genreId: Int, _ page: Int)
+    func searchTVShowPopularWithGenre(genreId: Int, _ page: Int)
 }
 
 protocol SearchInteractorOutputInterface: InteractorOutputInterface {
@@ -44,6 +47,8 @@ protocol SearchInteractorOutputInterface: InteractorOutputInterface {
     func searchTVShowPopular(_ response: [Movie])
     func searchPerson(_ response: [Cast])
     func fetchSearchKey(_ keys: [SearchKeyObject])
+    func searchMoviePopularWithGenre(_ response: [Movie])
+    func searchTVShowPopularWithGenre(_ response: [Movie])
 }
 
 protocol SearchWireframeInterface: WireframeInterface {
