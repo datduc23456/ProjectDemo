@@ -56,7 +56,13 @@ extension MovieDetailPresenter: MovieDetailPresenterInterface {
     }
     
     func didTapMovie(_ movie: Movie) {
-        interactor.getMovieDetail(movie.id)
+        let payload = view!.id
+        let isTVShow = payload.1
+        if !isTVShow {
+            interactor.getMovieDetail(movie.id)
+        } else {
+            interactor.getTVShowDetail(movie.id)
+        }
     }
     
     func viewWillAppear(_ animated: Bool) {

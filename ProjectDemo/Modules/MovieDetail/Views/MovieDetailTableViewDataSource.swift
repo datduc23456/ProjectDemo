@@ -17,7 +17,7 @@ enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
     }
     
     static var tvShowCases: [MovieDetailTableViewDataSource] {
-        return [.actors, .overview, .season, .videos, .images, .notes, .rate(hasRate: true)]
+        return [.actors, .overview, .season, .videos, .images, .notes, .rate(hasRate: true), .trending]
     }
     
     case actors

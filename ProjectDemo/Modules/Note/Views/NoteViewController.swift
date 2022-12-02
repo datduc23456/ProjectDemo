@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 final class NoteViewController: BaseViewController {
 
@@ -26,6 +27,8 @@ final class NoteViewController: BaseViewController {
         tableView.registerCell(for: MyNoteTableViewCell.className)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         tableView.reloadData()
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
@@ -111,5 +114,27 @@ extension NoteViewController: BoottomSheetStackViewDelegate {
         if index == 2 || index == 3 {
             self.bottomSheet.dismiss(animated: true)
         }
+    }
+}
+
+extension NoteViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "ic_emptyNote")!
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let title = "This movie has no note yet"
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Nexa-Bold", size: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
+        return NSMutableAttributedString(string: title, attributes: attributes as [NSAttributedString.Key : Any])
+    }
+    
+    func buttonImage(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> UIImage! {
+        return UIImage(named: "ic_plus")!
+    }
+    
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
+        let title = "Add note"
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Nexa-Bold", size: 14), NSAttributedString.Key.foregroundColor: UIColor.black]
+        return NSMutableAttributedString(string: title, attributes: attributes as [NSAttributedString.Key : Any])
     }
 }

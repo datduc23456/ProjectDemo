@@ -20,7 +20,8 @@ open class BaseViewController: UIViewController {
     public var currentRootViewController: UIViewController?
     public private(set) var navigator: BaseNavigator!
     var isFirstLayout: Bool = true
-    
+    var viewGradientBottom: UIView!
+    var gradient: CAGradientLayer!
     open override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -31,10 +32,29 @@ open class BaseViewController: UIViewController {
 //        handleDidFirstLayoutSubviews()
 //        handleViewWillLayoutSubviews {}
         self.view.backgroundColor = APP_COLOR
+        viewGradientBottom = UIView()
+        view.addSubview(viewGradientBottom)
+        viewGradientBottom.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(149)
+        }
+        gradient = CAGradientLayer()
+//        gradient.frame = viewGradientBottom.bounds
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0, 1]
+//        viewGradientBottom.fadeView(style: .bottom)
+//        viewGradientBottom.layer.mask = gradient
+        viewGradientBottom.backgroundColor = APP_COLOR
     }
     
     open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        if isFirstLayout {
+            viewGradientBottom.fadeView(style: .top, percentage: 0.45)
+        }
+//        gradient.frame = viewGradientBottom.bounds
     }
     
     private var currentRootNavigationController: UINavigationController? {
@@ -185,4 +205,55 @@ extension BaseViewController: BaseNavigatorDelegate {
     func didDismissViewController(_ result: Any?, _ animate: Bool) {
         
     }
+}
+
+extension UIView {
+    
+    enum UIViewFadeStyle {
+        case bottom
+        case top
+        case left
+        case right
+        
+        case vertical
+        case horizontal
+    }
+    
+    func fadeView(style: UIViewFadeStyle = .bottom, percentage: Double = 0.4) {
+        let gradient = CAGradientLayer()
+        gradient.frame = bounds
+        gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        
+        let startLocation = percentage
+        let endLocation = 1 - percentage
+        
+        switch style {
+        case .bottom:
+            gradient.startPoint = CGPoint(x: 0.5, y: endLocation)
+            gradient.endPoint = CGPoint(x: 0.5, y: 1)
+        case .top:
+            gradient.startPoint = CGPoint(x: 0.5, y: startLocation)
+            gradient.endPoint = CGPoint(x: 0.5, y: 0.0)
+        case .vertical:
+            gradient.startPoint = CGPoint(x: 0.5, y: 0.0)
+            gradient.endPoint = CGPoint(x: 0.5, y: 1.0)
+            gradient.colors = [UIColor.clear.cgColor, UIColor.white.cgColor, UIColor.white.cgColor, UIColor.clear.cgColor]
+            gradient.locations = [0.0, startLocation, endLocation, 1.0] as [NSNumber]
+            
+        case .left:
+            gradient.startPoint = CGPoint(x: startLocation, y: 0.5)
+            gradient.endPoint = CGPoint(x: 0.0, y: 0.5)
+        case .right:
+            gradient.startPoint = CGPoint(x: endLocation, y: 0.5)
+            gradient.endPoint = CGPoint(x: 1, y: 0.5)
+        case .horizontal:
+            gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+            gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
+            gradient.colors = [UIColor.clear.cgColor, UIColor.white.cgColor, UIColor.white.cgColor, UIColor.clear.cgColor]
+            gradient.locations = [0.0, startLocation, endLocation, 1.0] as [NSNumber]
+        }
+        
+        layer.mask = gradient
+    }
+
 }

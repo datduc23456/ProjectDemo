@@ -51,6 +51,7 @@ final class PopularPeopleViewController: BaseViewController {
             self.navigationController?.popViewController(animated: true)
         }
         blurView.alpha = 0.6
+        scrollView.contentInsetAdjustmentBehavior = .never
     }
     
 //    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -67,7 +67,7 @@ final class TVShowViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 50, right: 0)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
         scrollView.contentInsetAdjustmentBehavior = .never
     }
     

@@ -17,6 +17,8 @@ final class HomeViewController: BaseViewController {
     var storedOffset: CGFloat = 0
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        presenter.viewDidLoad()
         tableView.register(TopRatingTableViewCell.self, forCellReuseIdentifier: TopRatingTableViewCell.className)
         tableView.register(CinemaPopularTableViewCell.self, forCellReuseIdentifier: CinemaPopularTableViewCell.className)
         tableView.register(TrendingTableViewCell.self, forCellReuseIdentifier: TrendingTableViewCell.className)
@@ -34,7 +36,15 @@ final class HomeViewController: BaseViewController {
             self.presenter.didTapSearch()
         }
         navigation.configContentNav(.home)
-        presenter.viewDidLoad()
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+//        if isFirstLayout {
+//            tableView.fadeView(style: .bottom)
+//            isFirstLayout = !isFirstLayout
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -157,3 +167,4 @@ extension HomeViewController: HeaderViewDelegate {
         self.presenter.didTapHeaderView(item)
     }
 }
+
