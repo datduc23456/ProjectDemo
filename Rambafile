@@ -23,6 +23,7 @@ templates:
 - {name: VIPER}
 - {name: MVVMC}
 - {name: MVP}
+- {name: MVPP}
 
 # Run [ generamba gen test1 mvvmc ]
 # Run [ generamba gen test1 viper ]

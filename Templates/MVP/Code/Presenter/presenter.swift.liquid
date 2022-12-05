@@ -6,16 +6,24 @@
 //  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
 
-final class {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput, {{ module_info.name }}ModuleInput {
+import Foundation
 
-    // MARK: - Properties
+// MARK: View -
+protocol {{ module_info.name }}ViewProtocol: AnyObject {
 
-    weak var view: {{ module_info.name }}ViewInput?
-    var router: {{ module_info.name }}RouterInput?
-    var output: {{ module_info.name }}ModuleOutput?
+}
 
-    // MARK: - {{ module_info.name }}ViewOutput
+// MARK: Presenter -
+protocol {{ module_info.name }}PresenterProtocol: AnyObject {
+	var view: {{ module_info.name }}ViewProtocol? { get set }
+    func viewDidLoad()
+}
 
-    // MARK: - {{ module_info.name }}ModuleInput
+class MVPExamsPresenter: {{ module_info.name }}PresenterProtocol {
 
+    weak var view: {{ module_info.name }}ViewProtocol?
+
+    func viewDidLoad() {
+
+    }
 }

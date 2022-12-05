@@ -7,7 +7,7 @@
 //
 
 protocol WatchedListViewInterface: ViewInterface {
-    var movieDetail: MovieDetail? { get set }
+    var movieDetail: MovieDetail? { get }
 }
 
 protocol WatchedListPresenterInterface: PresenterInterface {
