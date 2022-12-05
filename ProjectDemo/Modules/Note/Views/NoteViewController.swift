@@ -127,7 +127,10 @@ extension NoteViewController: BoottomSheetStackViewDelegate {
 
 extension NoteViewController: HeaderViewDelegate {
     func headerView(_ customHeader: UITableViewHeaderFooterView, didTapButtonInSection section: Int) {
-        self.present(AppScreens.watchedList.createViewController(), animated: true)
+        let watchedListVc = AppScreens.watchedList.createViewController()
+        delay(0.1, closure: {
+            self.present(watchedListVc, animated: true)
+        })
 //        self.presenter.didTapAddNote()
     }
 }

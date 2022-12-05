@@ -59,9 +59,14 @@ class DTPBusiness {
         }
     }
     
-    func fetchMovieDetailObjectWatchedList(completion: (([MovieDetailObject]) -> Void)) {
-        let movies = Array(realmUtils.dataQuery(type: MovieDetailObject.self))
-        completion(movies)
+    func fetchWatchedListObjectWithId(_ id: Int, completion: ((WatchedListObject?) -> Void)) {
+        let predicate = NSPredicate(format: "_id == %@", NSNumber(value: id))
+        let query = realmUtils.dataQueryByPredicate(type: WatchedListObject.self, predicate: predicate)
+        if !query.isEmpty {
+            completion(query[0])
+        } else {
+            completion(nil)
+        }
     }
     
     func fetchMovieDetailObjectWatchedListWithId(_ id: Int, completion: ((MovieDetailObject?) -> Void)) {

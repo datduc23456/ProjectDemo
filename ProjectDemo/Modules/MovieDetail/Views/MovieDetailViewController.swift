@@ -23,6 +23,9 @@ final class MovieDetailViewController: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: TableViewAdjustedHeight!
     @IBOutlet weak var tableViewheight: NSLayoutConstraint!
+    @IBOutlet weak var viewToast: UIView!
+    
+    let watchedListVc = AppScreens.watchedList.createViewController()
     var tableViewDataSource: [MovieDetailTableViewDataSource] = MovieDetailTableViewDataSource.allCases
     var data: [String: Any] = [:]
     var trailer: Video?
@@ -38,6 +41,7 @@ final class MovieDetailViewController: BaseViewController {
     }
     var selectedIndex: Int = 0
     var movieDetail: MovieDetail?
+    var watchedListObject: WatchedListObject?
     // MARK: - Properties
 	var presenter: MovieDetailPresenterInterface!
     override func viewDidLoad() {
@@ -87,8 +91,9 @@ final class MovieDetailViewController: BaseViewController {
     }
     
     @IBAction func addNoteAction(_ sender: Any) {
-        if let movieDetail = movieDetail {
-            presenter.didTapAddWatchedList(movieDetail)
+        if let movieDetail = movieDetail, watchedListObject == nil {
+            watchedListVc.payload = movieDetail
+            self.present(watchedListVc, animated: true)
         }
     }
     
@@ -99,10 +104,6 @@ final class MovieDetailViewController: BaseViewController {
 
 // MARK: - MovieDetailViewInterface
 extension MovieDetailViewController: MovieDetailViewInterface {
-    func fetchMovieDetailObjectWatchedListWithId(_ object: MovieDetailObject?) {
-        
-    }
-    
     
     var id: (Int, Bool) {
         get {
@@ -203,6 +204,14 @@ extension MovieDetailViewController: MovieDetailViewInterface {
     
     func handleError(_ error: Error) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func fetchMovieDetailObjectWatchedListWithId(_ object: WatchedListObject?) {
+        if let _ = object {
+            btnWatchedList.backgroundColor = UIColor(hex: "#09BB00")
+            btnWatchedList.setImage(UIImage(named: "ic_check"), for: .normal)
+        }
+        watchedListObject = object
     }
 }
 
@@ -321,6 +330,26 @@ extension MovieDetailViewController: HeaderViewDelegate {
             presenter.didTapUserNote()
         default:
             return
+        }
+    }
+}
+
+extension MovieDetailViewController: BackFromNextHandleable {
+    func showToastAlert() {
+        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseIn, animations: {
+            self.viewToast.alpha = 1
+        }, completion: {_ in
+            UIView.animate(withDuration: 3, delay: 0, options: .curveEaseIn, animations: {
+                self.viewToast.alpha = 0
+            })
+        })
+    }
+    
+    func onBackFromNext(_ result: Any?) {
+        if let _ = result as? WatchedListObject {
+            self.showToastAlert()
+            btnWatchedList.backgroundColor = UIColor(hex: "#09BB00")
+            btnWatchedList.setImage(UIImage(named: "ic_check"), for: .normal)
         }
     }
 }

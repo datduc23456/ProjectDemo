@@ -42,13 +42,6 @@ extension MovieDetailInteractor: MovieDetailInteractorInterface {
         }
     }
     
-    func fetchMovieDetailObjectWatchedListWithId(_ id: Int, completion: ((MovieDetailObject)->Void)) {
-        DTPBusiness.shared.fetchRealmMovieDetailObjectWithId(id, completion: { [weak self] movie in
-            guard let `self` = self else { return }
-            self.output?.fetchMovieDetailObjectWatchedListWithId(movie)
-        })
-    }
-    
     func deleteMovieDetailObject(_ movie: MovieDetail) {
         self.fetchRealmMovieDetailObjectWithId(movie.id, completion: { object in
             self.realmUtils.deleteObject(object: object)
@@ -74,5 +67,11 @@ extension MovieDetailInteractor: MovieDetailInteractorInterface {
         if !query.isEmpty {
             self.output?.fetchMyReview(query[0])
         }
+    }
+    
+    func fetchWatchedListObjectWithId(_ id: Int) {
+        let predicate = NSPredicate(format: "_id == %@", NSNumber(value: id))
+        let query = realmUtils.dataQueryByPredicate(type: WatchedListObject.self, predicate: predicate)
+        self.output?.fetchMovieDetailObjectWatchedListWithId(query[safe: 0])
     }
 }

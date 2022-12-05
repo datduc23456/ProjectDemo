@@ -136,7 +136,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwa-1Y-Mru">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwa-1Y-Mru">
                                                 <rect key="frame" x="844" y="350" width="26.5" height="16"/>
                                                 <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="16"/>
                                                 <color key="textColor" red="1" green="0.74509803919999995" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -355,6 +355,7 @@
                         <outlet property="contentScrollView" destination="H4Z-ua-bnu" id="6ua-Zz-cnC"/>
                         <outlet property="filmNoteView" destination="XLr-QY-elc" id="Gzi-gF-9h2"/>
                         <outlet property="imageStackView" destination="01E-qw-NsM" id="WhO-dA-RbN"/>
+                        <outlet property="lbQuestion" destination="sJn-Ur-mgS" id="An5-Ya-V2K"/>
                         <outlet property="lbSliderValue" destination="dwa-1Y-Mru" id="34b-TK-RYg"/>
                         <outlet property="lbTextFieldPlaceHolder" destination="XJZ-Hr-bRi" id="KIK-Jw-2kh"/>
                         <outlet property="lbToast" destination="G9X-Wi-vcF" id="y4E-aj-2MJ"/>

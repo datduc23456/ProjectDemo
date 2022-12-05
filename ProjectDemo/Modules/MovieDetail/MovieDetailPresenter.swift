@@ -14,6 +14,7 @@ final class MovieDetailPresenter {
     private var movieDetailObject: MovieDetailObject?
     private var movieDetail: MovieDetail?
     private var myReviewObject: ReviewsResultObject?
+    private var watchedListObject: WatchedListObject?
     
     init(view: MovieDetailViewInterface,
          interactor: MovieDetailInteractorInterface,
@@ -25,14 +26,6 @@ final class MovieDetailPresenter {
 }
 
 extension MovieDetailPresenter: MovieDetailPresenterInterface {
-    func didTapAddWatchedList(_ movie: MovieDetail) {
-        
-    }
-    
-    func didTapAddWatchedList(_ movie: MovieDetail, isWatchedList: Bool) {
-        interactor.insertMovieDetailObjectWatchedList(movie)
-    }
-    
     func didTapUserNote() {
         if let movieDetail = movieDetail {
             wireframe.showUserNoteScreen(movieDetail)
@@ -90,7 +83,8 @@ extension MovieDetailPresenter: MovieDetailPresenterInterface {
 }
 
 extension MovieDetailPresenter: MovieDetailInteractorOutputInterface {
-    func fetchMovieDetailObjectWatchedListWithId(_ object: MovieDetailObject?) {
+    func fetchMovieDetailObjectWatchedListWithId(_ object: WatchedListObject?) {
+        watchedListObject = object
         view?.fetchMovieDetailObjectWatchedListWithId(object)
     }
     
@@ -116,13 +110,14 @@ extension MovieDetailPresenter: MovieDetailInteractorOutputInterface {
         self.movieDetail = response
         view?.getTVShowDetail(response)
         interactor.fetchRealmMovieDetailObjectWithId(response.id, completion: {_ in})
-        interactor.fetchMovieDetailObjectWatchedListWithId(response.id, completion: {_ in})
+        interactor.fetchWatchedListObjectWithId(response.id)
     }
     
     func getMovieDetail(_ response: MovieDetail) {
         self.movieDetail = response
         view?.getMovieDetail(response)
         interactor.fetchRealmMovieDetailObjectWithId(response.id, completion: {_ in})
+        interactor.fetchWatchedListObjectWithId(response.id)
     }
     
     func handleError(_ error: Error, _ completion: (() -> Void)?) {

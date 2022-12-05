@@ -10,6 +10,7 @@ import UIKit
 
 final class WatchedListViewController: DynamicBottomSheetViewController, UITextViewDelegate {
     
+    @IBOutlet weak var lbQuestion: UILabel!
     @IBOutlet weak var lbToast: UILabel!
     @IBOutlet weak var viewToast: UIView!
     @IBOutlet weak var stackViewButton: UIStackView!
@@ -28,6 +29,9 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
 
     override func configureView() {
         super.configureView()
+        self.filmNoteView.viewRating.isHidden = true
+        self.filmNoteView.viewDate.isHidden = true
+        self.filmNoteView.viewRemove.isHidden = true
         self.contentView.addSubview(scrollView)
         self.contentView.addSubview(stackViewButton)
         self.contentView.addSubview(viewToast)
@@ -35,9 +39,17 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
         for constraint in self.scrollView.constraints {
             self.scrollView.removeConstraint(constraint)
         }
-        self.scrollView.fillToSuperView()
+//        self.scrollView.fillToSuperView()
         self.contentScrollView.fillToSuperView()
         self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 96, right: 0)
+        
+        self.scrollView.snp.makeConstraints {
+            $0.leading.equalTo(contentView)
+            $0.trailing.equalTo(contentView)
+            $0.bottom.equalTo(contentView)
+            $0.top.equalTo(contentView)
+        }
+        
         self.contentScrollView.snp.makeConstraints {
             $0.width.equalTo(contentView)
             $0.height.equalTo(250).priority(250)
@@ -49,9 +61,6 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
             $0.height.equalTo(96)
         }
         
-        filmNoteView.viewDate.isHidden = true
-        filmNoteView.viewRemove.isHidden = true
-        filmNoteView.viewRating.isHidden = true
         textViewContent.delegate = self
         textViewContent.isPlaceHolder = true
         tfTitle.delegate = self
@@ -61,6 +70,7 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
         self.view.addTapGestureRecognizer {
             self.view.endEditing(true)
         }
+        self.scrollView.layoutIfNeeded()
     }
     
     @objc func sliderChanged(_ slider: MultiSlider) {
@@ -74,9 +84,34 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
         lbSliderValue.text = "\(value)"
     }
     
+    func configView() {
+        guard let movieDetail = movieDetail else { return }
+        let movieName = !movieDetail.originalTitle.isEmpty ? movieDetail.originalTitle : movieDetail.originalName
+        lbQuestion.text = "Do you want to add this \"\(movieName)\" movie to your watched list?"
+        slider.value = [0.0]
+        lbSliderValue.text = "0.0"
+        tfTitle.text = ""
+        textViewContent.text = ""
+        filmNoteView.lbVoteAvg.text = "\(movieDetail.voteAverage.roundToPlaces(places: 1))"
+        filmNoteView.lbYear.text = CommonUtil.getYearFromDate(!movieDetail.releaseDate.isEmpty ? movieDetail.releaseDate : movieDetail.firstAirDate)
+        filmNoteView.lbTitle.text = movieName
+        filmNoteView.lbGenre.text = DTPBusiness.shared.mapToGenreName(movieDetail.genres.map({$0.id}))
+        filmNoteView.img.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(movieDetail.posterPath)"))
+        DTPBusiness.shared.fetchWatchedListObjectWithId(movieDetail.id, completion: { [weak self] watched in
+            guard let `self` = self, let watched = watched else { return }
+            self.slider.value = [watched.authorDetails!.rating]
+            self.tfTitle.text = watched.author
+            self.textViewContent.text = watched.content
+            self.configLabelRate()
+        })
+//        tfTitle.text = ""
+//        textViewContent.text = ""
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeKeyboardEvents()
+        configView()
     }
     
     @IBAction func cancelAction(_ sender: Any) {
