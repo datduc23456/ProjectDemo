@@ -11,10 +11,11 @@ import Charts
 
 final class StatisticcalViewController: BaseViewController, AxisValueFormatter, ValueFormatter {
     func stringForValue(_ value: Double, entry: Charts.ChartDataEntry, dataSetIndex: Int, viewPortHandler: Charts.ViewPortHandler?) -> String {
-        return "h"
+        return ""
     }
     
     // MARK: - Properties
+    @IBOutlet weak var viewChart: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var slider: MultiSlider!
     @IBOutlet weak var tableViewheight: NSLayoutConstraint!
@@ -26,12 +27,15 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
     let players = ["Ozil", "Ramsey", "Laca", "Auba", "Xhaka", "Torreira"]
     let goals = [6, 8, 26, 30, 8, 10]
     let ySet = [40, 20, 23, 4, 1 ,0]
+    let years = (2017...2100).map { Int($0) }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentSizeDelegate = self
         scrollView.showsVerticalScrollIndicator = false
 //        self.view.backgroundColor = .white
         customizeChart(dataPoints: players, values: goals.map{ Double($0) })
+        viewChart.roundCorners(corners: [.topRight, .bottomLeft, .bottomRight], radius: 8)
+        viewChart.layer.masksToBounds = true
 //        slider.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged) // continuous changes
 //        slider.addTarget(self, action: #selector(sliderDragEnded(_:)), for: . touchUpInside) // sent when drag ends
     }
@@ -44,7 +48,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
     func customizeChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<dataPoints.count {
-          let dataEntry = ChartDataEntry(x: values[i], y: Double(ySet[i]))
+            let dataEntry = ChartDataEntry(x: values[i], y: Double(years[i]))
           dataEntries.append(dataEntry)
         }
         let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "")
@@ -61,6 +65,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         lineChartView.xAxis.gridLineWidth = 1
         lineChartView.xAxis.axisRange = 4
         lineChartView.xAxis.labelPosition = .bottom
+        lineChartView.xAxis.valueFormatter = self
         lineChartView.xAxis.yOffset = 10
         lineChartView.xAxis.labelTextColor = .white.withAlphaComponent(0.5)
         lineChartView.xAxis.labelFont = chartsLabelFont
@@ -79,6 +84,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         lineChartView.rightAxis.labelTextColor = .clear
         
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
+        
         lineChartView.gridBackgroundColor = .clear
         lineChartView.doubleTapToZoomEnabled = false
         lineChartView.extraBottomOffset = 20

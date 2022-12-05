@@ -346,8 +346,9 @@ extension MovieDetailViewController: BackFromNextHandleable {
     }
     
     func onBackFromNext(_ result: Any?) {
-        if let _ = result as? WatchedListObject {
+        if let result = result as? WatchedListObject {
             self.showToastAlert()
+            watchedListObject = result
             btnWatchedList.backgroundColor = UIColor(hex: "#09BB00")
             btnWatchedList.setImage(UIImage(named: "ic_check"), for: .normal)
         }
