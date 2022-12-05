@@ -27,6 +27,7 @@ extension HomePresenter: HomePresenterInterface {
         self.interactor.getGenresList()
         self.interactor.getTopRate()
         self.interactor.getMoviePopular()
+        self.interactor.getTrendingMovie()
     }
     
     func viewWillAppear(_ animated: Bool) {
@@ -56,7 +57,7 @@ extension HomePresenter: HomePresenterInterface {
         case .topRating:
             wireframe.showActionScreen(.topRated)
         case .trending:
-            wireframe.showActionScreen(.moviepopular)
+            wireframe.showActionScreen(.movietrending)
         case .genges:
             wireframe.showGenersScreen()
         default:
@@ -66,6 +67,9 @@ extension HomePresenter: HomePresenterInterface {
 }
 
 extension HomePresenter: HomeInteractorOutputInterface {
+    func getTrending(_ response: MovieResponse) {
+        view?.getTrending(response)
+    }
     
     func getMoviePopular(_ response: MovieResponse) {
         view?.getMoviePopular(response)

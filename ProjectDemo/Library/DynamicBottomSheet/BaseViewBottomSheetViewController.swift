@@ -18,7 +18,7 @@ class BaseViewBottomSheetViewController: DynamicBottomSheetViewController {
 
 // MARK: - Layout
 extension BaseViewBottomSheetViewController {
-
+    
     override func configureView() {
         super.configureView()
         layoutStackView()

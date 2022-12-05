@@ -33,19 +33,9 @@ open class BaseViewController: UIViewController {
 //        handleViewWillLayoutSubviews {}
         self.view.backgroundColor = APP_COLOR
         viewGradientBottom = UIView()
-        view.addSubview(viewGradientBottom)
-        viewGradientBottom.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
-            $0.height.equalTo(149)
-        }
         gradient = CAGradientLayer()
-//        gradient.frame = viewGradientBottom.bounds
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         gradient.locations = [0, 1]
-//        viewGradientBottom.fadeView(style: .bottom)
-//        viewGradientBottom.layer.mask = gradient
         viewGradientBottom.backgroundColor = APP_COLOR
     }
     
@@ -54,7 +44,6 @@ open class BaseViewController: UIViewController {
         if isFirstLayout {
             viewGradientBottom.fadeView(style: .top, percentage: 0.45)
         }
-//        gradient.frame = viewGradientBottom.bounds
     }
     
     private var currentRootNavigationController: UINavigationController? {
@@ -104,7 +93,8 @@ extension BaseViewController {
     
     /// Pop
     public func popChildViewController(_ result: Any?, _ animate: Bool) {
-        currentViewController()?.navigationController?.popViewController(animated: animate)
+        let rootViewController = AppDelegate.shared.appRootViewController
+        rootViewController.navigationController?.popViewController(animated: animate)
 
         func completed() {
             if let current = currentViewController() {
@@ -160,10 +150,9 @@ extension BaseViewController {
             return from
         } else if let presented = presentedViewController {
             return currentViewController(from: presented)
-        } else if let currentRootViewController = currentRootViewController {
-            return currentViewController(from: currentRootViewController)
         } else {
-            return nil
+            let rootViewController = AppDelegate.shared.navigationRootViewController
+            return currentViewController(from: rootViewController)
         }
     }
     
@@ -199,7 +188,7 @@ extension BaseViewController: BaseNavigatorDelegate {
     }
 
     func didPopViewController(_ result: Any?, _ animate: Bool) {
-        
+        self.popChildViewController(result, animate)
     }
 
     func didDismissViewController(_ result: Any?, _ animate: Bool) {
@@ -220,6 +209,7 @@ extension UIView {
     }
     
     func fadeView(style: UIViewFadeStyle = .bottom, percentage: Double = 0.4) {
+//        percentage càng bé line đậm càng to
         let gradient = CAGradientLayer()
         gradient.frame = bounds
         gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]

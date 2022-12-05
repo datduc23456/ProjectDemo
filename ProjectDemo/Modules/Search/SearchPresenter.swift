@@ -91,7 +91,7 @@ extension SearchPresenter: SearchInteractorOutputInterface {
         view?.getMovieDetail(response)
         switch view!.searchType {
         case .addnote:
-            wireframe.showAddNoteScreen(response)
+            wireframe.popScreen(result: response)
         case .watchedlist:
             wireframe.showWatchedListScreen(response)
         default:

@@ -12,7 +12,8 @@ enum ActionViewType {
     case moviepopular
     case topRated
     case tvshowpopular
-    case tvshowtoprated
+    case tvshowtrending
+    case movietrending
     case genre(Genre)
 }
 
@@ -49,7 +50,7 @@ final class ActionViewController: BaseCollectionViewController<CinemaPopularColl
             navigation.lbTitle.text = "Top Rated"
         case .tvshowpopular:
             navigation.lbTitle.text = "TV Show Popular"
-        case .tvshowtoprated:
+        case .tvshowtrending, .movietrending:
             navigation.lbTitle.text = "Trending"
         case .genre(let genre):
             navigation.lbTitle.text = genre.name
@@ -121,6 +122,16 @@ extension ActionViewController: ActionViewInterface {
     }
     
     func getTopRate(_ response: MovieResponse) {
+        self.movie += response.results
+        self.collectionView.reloadData()
+    }
+    
+    func getTvShowTrending(_ response: MovieResponse) {
+        self.movie += response.results
+        self.collectionView.reloadData()
+    }
+    
+    func getMovieTrending(_ response: MovieResponse) {
         self.movie += response.results
         self.collectionView.reloadData()
     }

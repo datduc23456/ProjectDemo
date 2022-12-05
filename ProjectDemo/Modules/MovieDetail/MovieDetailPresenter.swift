@@ -25,6 +25,10 @@ final class MovieDetailPresenter {
 }
 
 extension MovieDetailPresenter: MovieDetailPresenterInterface {
+    func didTapAddWatchedList(_ movie: MovieDetail, isWatchedList: Bool) {
+        interactor.insertMovieDetailObjectWatchedList(movie)
+    }
+    
     func didTapUserNote() {
         if let movieDetail = movieDetail {
             wireframe.showUserNoteScreen(movieDetail)
@@ -82,6 +86,10 @@ extension MovieDetailPresenter: MovieDetailPresenterInterface {
 }
 
 extension MovieDetailPresenter: MovieDetailInteractorOutputInterface {
+    func fetchMovieDetailObjectWatchedListWithId(_ object: MovieDetailObject?) {
+        view?.fetchMovieDetailObjectWatchedListWithId(object)
+    }
+    
     func fetchMyReview(_ review: ReviewsResultObject) {
         self.myReviewObject = review
         view?.fetchMyReview(review)
@@ -104,6 +112,7 @@ extension MovieDetailPresenter: MovieDetailInteractorOutputInterface {
         self.movieDetail = response
         view?.getTVShowDetail(response)
         interactor.fetchRealmMovieDetailObjectWithId(response.id, completion: {_ in})
+        interactor.fetchMovieDetailObjectWatchedListWithId(response.id, completion: {_ in})
     }
     
     func getMovieDetail(_ response: MovieDetail) {

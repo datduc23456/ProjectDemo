@@ -17,6 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilmNoteView">
             <connections>
+                <outlet property="btnProperties" destination="3Zt-jw-cVt" id="KsC-4P-Arg"/>
                 <outlet property="icProperties" destination="R8g-RK-ot9" id="4x5-Cc-Thv"/>
                 <outlet property="img" destination="PmR-w4-quL" id="rdJ-dw-cuf"/>
                 <outlet property="lbDate" destination="ilj-pT-GVy" id="Mwo-rm-kpt"/>
@@ -216,9 +217,17 @@
                                     <color key="textColor" red="0.98431372549999996" green="0.4431372549" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zt-jw-cVt">
+                                    <rect key="frame" x="0.0" y="0.0" width="137.33333333333334" height="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="3Zt-jw-cVt" secondAttribute="bottom" id="5Yr-bY-Dfv"/>
+                                <constraint firstAttribute="trailing" secondItem="3Zt-jw-cVt" secondAttribute="trailing" id="Ajv-Ke-LfH"/>
+                                <constraint firstItem="3Zt-jw-cVt" firstAttribute="leading" secondItem="VdI-Ti-QzY" secondAttribute="leading" id="BWo-yQ-has"/>
+                                <constraint firstItem="3Zt-jw-cVt" firstAttribute="top" secondItem="VdI-Ti-QzY" secondAttribute="top" id="Z4f-ES-cpe"/>
                                 <constraint firstItem="v6x-BV-AnY" firstAttribute="centerY" secondItem="R8g-RK-ot9" secondAttribute="centerY" id="hgM-BV-moc"/>
                                 <constraint firstItem="R8g-RK-ot9" firstAttribute="centerY" secondItem="VdI-Ti-QzY" secondAttribute="centerY" id="qeg-oO-dXn"/>
                                 <constraint firstAttribute="height" constant="20" id="uMp-9W-a4I"/>

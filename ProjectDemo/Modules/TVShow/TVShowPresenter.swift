@@ -38,6 +38,7 @@ extension TVShowPresenter: TVShowPresenterInterface {
         interactor.getTVShowPopular()
         interactor.getTVShowLastest()
         interactor.getTopRate()
+        interactor.getTrendingTv()
     }
     
     func didTapSearch() {
@@ -52,10 +53,8 @@ extension TVShowPresenter: TVShowPresenterInterface {
         switch section {
         case .popular:
             wireframe.showActionScreen(.tvshowpopular)
-        case .topRating:
-            wireframe.showActionScreen(.tvshowtoprated)
-//        case .trending:
-//            wireframe.showActionScreen(.moviepopular)
+        case .trending:
+            wireframe.showActionScreen(.tvshowtrending)
         default:
             return
         }
@@ -63,6 +62,10 @@ extension TVShowPresenter: TVShowPresenterInterface {
 }
 
 extension TVShowPresenter: TVShowInteractorOutputInterface {
+    func getTrendingTv(_ response: MovieResponse) {
+        view?.getTrendingTv(response)
+    }
+    
     func fetchRealmMovieDetailObjectWithId(_ object: [MovieDetailObject]) {
         view?.fetchRealmMovieDetailObjectWithId(object)
     }

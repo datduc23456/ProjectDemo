@@ -35,11 +35,15 @@ extension NotePresenter: NotePresenterInterface {
     }
     
     func didTapAddNote() {
-        wireframe.showAddNoteScreen()
+        wireframe.showAddNoteScreen(nil)
     }
     
     func didRefresh() {
         interactor.getMyReviews()
+    }
+    
+    func showReview(_ review: ReviewsResultObject) {
+        wireframe.showAddNoteScreen(review)
     }
 }
 

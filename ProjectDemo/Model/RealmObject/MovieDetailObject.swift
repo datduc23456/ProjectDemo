@@ -66,6 +66,7 @@ class MovieDetailObject: Object {
     @Persisted var name: String = ""
     @Persisted var dateFavorite: String = ""
     @Persisted var isTVShow: Bool = false
+    @Persisted var isWatchedList: Bool = false
 }
 
 class CastObject: Object {

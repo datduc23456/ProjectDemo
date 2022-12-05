@@ -12,10 +12,14 @@ public protocol PresenterInterface: AnyObject {
     func viewDidAppear(_ animated: Bool)
     func viewWillDisappear(_ animated: Bool)
     func viewDidDisappear(_ animated: Bool)
+    func setBackResultIfCan(_ result: Any?)
 }
 
 extension PresenterInterface {
-
+    public func setBackResultIfCan(_ result: Any?) {
+        
+    }
+    
     public func viewDidLoad() {
         fatalError("Not implemented")
     }

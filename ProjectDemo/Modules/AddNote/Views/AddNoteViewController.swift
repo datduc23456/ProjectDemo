@@ -8,8 +8,9 @@
 
 import UIKit
 
-final class AddNoteViewController: BaseViewController {
+final class AddNoteViewController: BaseViewController, UITextViewDelegate {
 
+    @IBOutlet weak var lbTextFieldPlaceHolder: UILabel!
     @IBOutlet weak var bottomInsets: NSLayoutConstraint!
     @IBOutlet weak var lbSliderValue: UILabel!
     @IBOutlet weak var slider: MultiSlider!
@@ -40,7 +41,7 @@ final class AddNoteViewController: BaseViewController {
         lbSliderValue.text = "\(value)"
     }
     
-    func configView() {
+    func configViewWithPayload() {
         filmNoteView.viewRating.isHidden = true
         filmNoteView.viewDate.isHidden = true
         filmNoteView.viewVoteAvg.isHidden = true
@@ -51,9 +52,11 @@ final class AddNoteViewController: BaseViewController {
             filmNoteView.lbTitle.text = movieDetail.originalTitle
             filmNoteView.lbGenre.text = DTPBusiness.shared.mapToGenreName(movieDetail.genres.map({$0.id}))
             filmNoteView.img.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(movieDetail.posterPath)"))
+            tfTitle.text = ""
+            textViewContent.text = ""
             viewChooseMovie.isHidden = true
+            filmNoteView.isHidden = false
         } else if let review = self.review {
-            slider.isSettingValue = true
             slider.value = [review.authorDetails!.rating]
             filmNoteView.lbTitle.text = review.originalTitle
             filmNoteView.lbGenre.text = DTPBusiness.shared.mapToGenreName(Array(review.genreIDS))
@@ -61,9 +64,19 @@ final class AddNoteViewController: BaseViewController {
             tfTitle.text = review.author
             textViewContent.text = review.content
             viewChooseMovie.isHidden = true
+            filmNoteView.isHidden = false
         } else {
             filmNoteView.isHidden = true
         }
+        filmNoteView.btnProperties.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self else { return }
+            self.presenter.didChangeMovie()
+        }
+        configLabelRate()
+    }
+    
+    func configView() {
+        configViewWithPayload()
         textViewContent.contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.lbTitle.text = "Add Note"
@@ -76,7 +89,10 @@ final class AddNoteViewController: BaseViewController {
         self.view.addTapGestureRecognizer {
             self.view.endEditing(true)
         }
-        configLabelRate()
+        textViewContent.delegate = self
+        textViewContent.isPlaceHolder = true
+        tfTitle.delegate = self
+        tfTitle.becomeFirstResponder()
     }
     
     @IBAction func doneAction(_ sender: Any) {
@@ -135,6 +151,29 @@ final class AddNoteViewController: BaseViewController {
         super.viewWillDisappear(animated)
         unsubscribeKeyboardEvents()
     }
+    
+    @IBAction func searchAction(_ sender: Any) {
+        presenter.didTapSearch()
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.isPlaceHolder.isNil(value: false) {
+            textView.text = nil
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        textView.textColor = UIColor(hex: "#FFFFFF")
+        textView.isPlaceHolder = false
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.textColor = UIColor(hex: "#FFFFFF").withAlphaComponent(0.5)
+            textView.text = "Type here to add review..."
+            textView.isPlaceHolder = true
+        }
+    }
 }
 
 // MARK: - AddNoteViewInterface
@@ -161,5 +200,36 @@ extension AddNoteViewController: AddNoteViewInterface {
 extension AddNoteViewController: KeyboardDisplayableViewController {
     var scrollViewForResizeKeyboard: UIScrollView? {
         return scrollView
+    }
+}
+
+extension AddNoteViewController: BackFromNextHandleable {
+    func onBackFromNext(_ result: Any?) {
+        if let result = result as? MovieDetail {
+            DTPBusiness.shared.fetchMyReviewWithId(result.id, completion: { [weak self] review in
+                guard let `self` = self, let review = review else {
+                    self?.payload = result
+                    return
+                }
+                self.payload = review
+            })
+            self.configViewWithPayload()
+        }
+    }
+}
+
+extension AddNoteViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.3, animations: {
+            if textField.text!.isEmpty {
+                self.lbTextFieldPlaceHolder.isHidden = true
+            }
+        })
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.lbTextFieldPlaceHolder.isHidden = false
+        })
     }
 }

@@ -75,10 +75,15 @@ extension HomeViewController: HomeViewInterface {
     func getTopRate(_ response: MovieResponse) {
         let listMovie = response.results
         let first5 = Array(listMovie.prefix(5))
-        var cut : ArraySlice<Movie> = []
-        cut = listMovie[5 ..< listMovie.endIndex]
+//        var cut : ArraySlice<Movie> = []
+//        cut = listMovie[5 ..< listMovie.endIndex]
         self.data.updateValue(first5, forKey: "\(HomeTableViewDataSource.topRating)")
-        self.data.updateValue(Array(cut), forKey: "\(HomeTableViewDataSource.trending)")
+//        self.data.updateValue(Array(cut), forKey: "\(HomeTableViewDataSource.trending)")
+        tableView.reloadData()
+    }
+    
+    func getTrending(_ response: MovieResponse) {
+        self.data.updateValue(response.results, forKey: "\(HomeTableViewDataSource.trending)")
         tableView.reloadData()
     }
 }
@@ -162,7 +167,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension HomeViewController: HeaderViewDelegate {
-    func headerView(_ customHeader: HeaderView, didTapButtonInSection section: Int) {
+    func headerView(_ customHeader: UITableViewHeaderFooterView, didTapButtonInSection section: Int) {
         let item = tableViewDataSource[section]
         self.presenter.didTapHeaderView(item)
     }

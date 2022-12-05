@@ -229,7 +229,7 @@ extension PopularPeopleViewController: TableViewAdjustedHeightDelegate {
 }
 
 extension PopularPeopleViewController: HeaderViewDelegate {
-    func headerView(_ customHeader: HeaderView, didTapButtonInSection section: Int) {
+    func headerView(_ customHeader: UITableViewHeaderFooterView, didTapButtonInSection section: Int) {
         print("did tap button", section)
     }
 }

@@ -48,11 +48,15 @@ class TabbarViewController: UITabBarController {
     }
     var items: [TabbarItem] = []
     var customTabbar: UIStackView!
+    var viewGradientBottom: UIView!
+    var gradient: CAGradientLayer!
+    var isFirstLayout: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = APP_COLOR
         self.viewControllers = listVc
+        self.setupGradientTabbar()
         var height: CGFloat = 10
         if let safeAreaInsets = AppDelegate.shared.window?.safeAreaInsets.bottom, safeAreaInsets != 0 {
             height = 0
@@ -69,7 +73,7 @@ class TabbarViewController: UITabBarController {
         stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -AppDelegate.shared.window!.safeAreaInsets.bottom - height).isActive = true
         stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16).isActive = true
         stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: 54).isActive = true
+        stackView.heightAnchor.constraint(equalToConstant: customTabbarHeight).isActive = true
         for (index, _) in self.tabBar.items!.enumerated() {
             let tabbarItem = TabbarItem(frame: frame, index: index, selectedAction: {})
             stackView.addArrangedSubview(tabbarItem)
@@ -96,10 +100,37 @@ class TabbarViewController: UITabBarController {
         self.tabBar.isHidden = true
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if isFirstLayout {
+            viewGradientBottom.fadeView(style: .top, percentage: 0.55)
+            isFirstLayout = !isFirstLayout
+        }
+//        gradient.frame = viewGradientBottom.bounds
+    }
+    
     func unselectAll() {
         for item in items {
             item.unselected()
         }
+    }
+    
+    func setupGradientTabbar() {
+        viewGradientBottom = UIView()
+        view.addSubview(viewGradientBottom)
+        viewGradientBottom.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(customTabbarHeight + AppDelegate.shared.window!.safeAreaInsets.bottom + 30)
+        }
+        gradient = CAGradientLayer()
+//        gradient.frame = viewGradientBottom.bounds
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0, 1]
+//        viewGradientBottom.fadeView(style: .bottom)
+//        viewGradientBottom.layer.mask = gradient
+        viewGradientBottom.backgroundColor = APP_COLOR
     }
     
 }

@@ -22,6 +22,14 @@ final class AddNotePresenter {
 }
 
 extension AddNotePresenter: AddNotePresenterInterface {
+    func didChangeMovie() {
+        wireframe.showSearchScreen()
+    }
+    
+    func didTapSearch() {
+        wireframe.showSearchScreen()
+    }
+    
     func didTapDone(_ review: ReviewsResultObject) {
         interactor.insertReviewsResultObject(review)
     }

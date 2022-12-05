@@ -28,7 +28,7 @@ enum SearchViewDataSource: CaseIterable {
     func heightForRow() -> CGFloat {
         switch self {
         case .movie:
-            return 212
+            return 240
         case .tvshow:
             return 195
         case .person:

@@ -12,6 +12,8 @@ protocol ActionViewInterface: ViewInterface {
     func getTopRate(_ response: MovieResponse)
     func getTVShowPopular(_ response: MovieResponse)
     func getTVShowTopRate(_ response: MovieResponse)
+    func getTvShowTrending(_ response: MovieResponse)
+    func getMovieTrending(_ response: MovieResponse)
 }
 
 protocol ActionPresenterInterface: PresenterInterface {
@@ -27,6 +29,8 @@ protocol ActionInteractorInterface: InteractorInterface {
     func getMoviePopular(genreId: Int, _ page: Int)
     func getTVShowPopular(_ page: Int)
     func getTVShowTopRate(_ page: Int)
+    func getTvShowTrending(_ page: Int)
+    func getMovieTrending(_ page: Int)
     func fetchRealmMovieDetailObjectWithId(_ id: Int, completion: ((MovieDetailObject)->Void))
     func deleteMovieDetailObject(_ movie: Movie)
     func insertMovieDetailObject(_ movie: Movie)
@@ -37,6 +41,8 @@ protocol ActionInteractorOutputInterface: InteractorOutputInterface {
     func getTopRate(_ response: MovieResponse)
     func getTVShowPopular(_ response: MovieResponse)
     func getTVShowTopRate(_ response: MovieResponse)
+    func getTvShowTrending(_ response: MovieResponse)
+    func getMovieTrending(_ response: MovieResponse)
     func deleteMovieDetailObject(_ movie: Movie)
     func insertMovieDetailObject(_ movie: Movie)
 }

@@ -64,6 +64,24 @@ extension ActionInteractor: ActionInteractorInterface {
         })
     }
     
+    func getTvShowTrending(_ page: Int) {
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.trendingTvShow(page: page), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getTVShowPopular(response)
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
+        })
+    }
+    
+    func getMovieTrending(_ page: Int) {
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.trendingMovie(page: page), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getTVShowPopular(response)
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
+        })
+    }
+    
     func fetchRealmMovieDetailObjectWithId(_ id: Int, completion: ((MovieDetailObject)->Void)) {
         let predicate = NSPredicate(format: "_id == %@", NSNumber(value: id))
         let query = realmUtils.dataQueryByPredicate(type: MovieDetailObject.self, predicate: predicate)

@@ -10,6 +10,7 @@ protocol HomeViewInterface: ViewInterface {
     func getMoviePopular(_ response: MovieResponse)
     func getGenresList(_ response: GenreResponse)
     func getTopRate(_ response: MovieResponse)
+    func getTrending(_ response: MovieResponse)
 }
 
 protocol HomePresenterInterface: PresenterInterface {
@@ -23,6 +24,7 @@ protocol HomeInteractorInterface: InteractorInterface {
     func getMoviePopular()
     func getGenresList()
     func getTopRate()
+    func getTrendingMovie()
     func getMoviePopular(_ genreId: Int)
 }
 
@@ -30,6 +32,7 @@ protocol HomeInteractorOutputInterface: InteractorOutputInterface {
     func getMoviePopular(_ response: MovieResponse)
     func getGenresList(_ response: GenreResponse)
     func getTopRate(_ response: MovieResponse)
+    func getTrending(_ response: MovieResponse)
 }
 
 protocol HomeWireframeInterface: WireframeInterface {

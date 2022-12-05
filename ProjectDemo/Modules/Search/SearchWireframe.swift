@@ -10,8 +10,6 @@ import UIKit
 
 final class SearchWireframe: SearchWireframeInterface {
 
-    
-    
     var navigator: BaseNavigator!
     static func generateModule(_ payload: Any?) -> UIViewController {
         let initialViewController = UIStoryboard(name: "SearchViewController", bundle: nil).instantiateInitialViewController() as! SearchViewController

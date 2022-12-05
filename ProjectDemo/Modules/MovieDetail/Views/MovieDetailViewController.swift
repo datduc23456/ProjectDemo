@@ -10,6 +10,7 @@ import UIKit
 
 final class MovieDetailViewController: BaseViewController {
 
+    @IBOutlet weak var btnWatchedList: UIButton!
     @IBOutlet weak var viewGradient: UIView!
     @IBOutlet weak var icHeart: UIImageView!
     @IBOutlet weak var viewFavorite: UIView!
@@ -52,7 +53,7 @@ final class MovieDetailViewController: BaseViewController {
         tableView.registerCell(for: MovieVideosTableViewCell.className)
         tableView.registerCell(for: NotesTableViewCell.className)
         tableView.registerCell(for: AddNoteTableViewCell.className)
-        tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
+        tableView.register(UINib(nibName: AddNoteHeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: AddNoteHeaderView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.sectionHeaderHeight = 0
@@ -86,9 +87,9 @@ final class MovieDetailViewController: BaseViewController {
     }
     
     @IBAction func addNoteAction(_ sender: Any) {
-//        if let movieDetail = movieDetail {
-//            presenter.didTapAddnote(movieDetail)
-//        }
+        if let movieDetail = movieDetail {
+            presenter.didTapAddWatchedList(movieDetail)
+        }
     }
     
     @IBAction func dismissAction(_ sender: Any) {
@@ -309,7 +310,7 @@ extension MovieDetailViewController: TableViewAdjustedHeightDelegate {
 }
 
 extension MovieDetailViewController: HeaderViewDelegate {
-    func headerView(_ customHeader: HeaderView, didTapButtonInSection section: Int) {
+    func headerView(_ customHeader: UITableViewHeaderFooterView, didTapButtonInSection section: Int) {
         let item = tableViewDataSource[section]
         switch item {
         case .notes, .rate(hasRate: false):

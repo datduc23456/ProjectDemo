@@ -9,15 +9,15 @@
 import UIKit
 
 final class NoteWireframe: NoteWireframeInterface {
-	var navigator: BaseNavigator!
+    var navigator: BaseNavigator!
     static func generateModule(_ payload: Any?) -> UIViewController {
         let initialViewController = UIStoryboard(name: "NoteViewController", bundle: nil).instantiateInitialViewController() as! NoteViewController
         initialViewController.payload = payload
-	initialViewController.modalPresentationStyle = .fullScreen
+        initialViewController.modalPresentationStyle = .fullScreen
         // let vc = initialViewController.topViewController as! NoteViewController
         let wireframe = NoteWireframe()
-	wireframe.navigator = BaseNavigator()
-	wireframe.navigator.delegate = initialViewController
+        wireframe.navigator = BaseNavigator()
+        wireframe.navigator.delegate = initialViewController
         let interactor = NoteInteractor()
         let presenter = NotePresenter(
             view: initialViewController,
@@ -32,8 +32,8 @@ final class NoteWireframe: NoteWireframeInterface {
         
     }
     
-    func showAddNoteScreen() {
-        navigator.pushScreen(AppScreens.search, SearchType.addnote, fromRoot: true)
+    func showAddNoteScreen(_ payload: Any?) {
+        navigator.pushScreen(AppScreens.addnote, payload, fromRoot: true)
     }
     
     func showSearchScreen() {

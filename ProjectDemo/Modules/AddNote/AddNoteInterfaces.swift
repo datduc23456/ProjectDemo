@@ -13,6 +13,8 @@ protocol AddNoteViewInterface: ViewInterface {
 
 protocol AddNotePresenterInterface: PresenterInterface {
     func didTapDone(_ review: ReviewsResultObject)
+    func didTapSearch()
+    func didChangeMovie()
 }
 
 protocol AddNoteInteractorInterface: InteractorInterface {
@@ -24,4 +26,5 @@ protocol AddNoteInteractorOutputInterface: InteractorOutputInterface {
 }
 
 protocol AddNoteWireframeInterface: WireframeInterface {
+    func showSearchScreen()
 }

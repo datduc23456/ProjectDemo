@@ -22,6 +22,15 @@ extension HomeInteractor: HomeInteractorInterface {
         })
     }
     
+    func getTrendingMovie() {
+        ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.trendingMovie(page: 1), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getTrending(response)
+        }, failureBlock: { _ in
+            
+        })
+    }
+    
     func getGenresList() {
         ServiceCore.shared.request(GenreResponse.self, targetType: CoreTargetType.genreList, successBlock: { [weak self] response in
             guard let `self` = self else { return }

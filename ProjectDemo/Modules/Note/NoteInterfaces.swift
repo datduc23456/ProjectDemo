@@ -14,6 +14,7 @@ protocol NotePresenterInterface: PresenterInterface {
     func didRefresh()
     func didTapAddNote()
     func didTapSearch()
+    func showReview(_ review: ReviewsResultObject)
 }
 
 protocol NoteInteractorInterface: InteractorInterface {
@@ -25,6 +26,6 @@ protocol NoteInteractorOutputInterface: InteractorOutputInterface {
 }
 
 protocol NoteWireframeInterface: WireframeInterface {
-    func showAddNoteScreen()
+    func showAddNoteScreen(_ payload: Any?)
     func showSearchScreen()
 }

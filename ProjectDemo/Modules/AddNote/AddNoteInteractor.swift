@@ -24,6 +24,4 @@ extension AddNoteInteractor: AddNoteInteractorInterface {
     func getTVShowDetail(_ id: Int) {
         
     }
-    
-    
 }

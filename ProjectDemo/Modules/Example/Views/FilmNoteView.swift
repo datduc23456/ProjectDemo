@@ -9,6 +9,7 @@ import UIKit
 
 class FilmNoteView: BaseCustomView {
 
+    @IBOutlet weak var btnProperties: UIButton!
     @IBOutlet weak var lbProperties: UILabel!
     @IBOutlet weak var icProperties: UIImageView!
     @IBOutlet weak var lbRating: UILabel!

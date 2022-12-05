@@ -129,7 +129,12 @@ extension SearchViewController: SearchViewInterface {
     }
     
     func getMovieDetail(_ response: MovieDetail) {
-        
+        switch searchType {
+            case .addnote:
+            presenter.setBackResultIfCan(response)
+            default:
+                return
+        }
     }
     
     func getTVShowDetail(_ response: MovieDetail) {

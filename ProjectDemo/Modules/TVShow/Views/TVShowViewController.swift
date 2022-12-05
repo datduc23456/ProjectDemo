@@ -121,13 +121,18 @@ extension TVShowViewController: TVShowViewInterface {
     }
     
     func getTopRate(_ response: MovieResponse) {
-        self.data.updateValue(response.results, forKey: "\(TVShowTableViewDataSource.trending)")
-        tableView.reloadSections(IndexSet([2]), with: .none)
+//        self.data.updateValue(response.results, forKey: "\(TVShowTableViewDataSource.trending)")
+//        tableView.reloadSections(IndexSet([2]), with: .none)
     }
     
     func getTVShowPopular(_ response: MovieResponse) {
         self.data.updateValue(response.results, forKey: "\(TVShowTableViewDataSource.popular)")
         tableView.reloadSections(IndexSet([1]), with: .none)
+    }
+    
+    func getTrendingTv(_ response: MovieResponse) {
+        self.data.updateValue(response.results, forKey: "\(TVShowTableViewDataSource.trending)")
+        tableView.reloadSections(IndexSet([2]), with: .none)
     }
 }
 
@@ -209,7 +214,7 @@ extension TVShowViewController: TableViewAdjustedHeightDelegate {
 }
 
 extension TVShowViewController: HeaderViewDelegate {
-    func headerView(_ customHeader: HeaderView, didTapButtonInSection section: Int) {
+    func headerView(_ customHeader: UITableViewHeaderFooterView, didTapButtonInSection section: Int) {
         let item = tableViewDataSource[section]
         self.presenter.didTapHeaderView(item)
     }

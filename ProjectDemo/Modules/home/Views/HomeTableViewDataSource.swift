@@ -29,7 +29,7 @@ enum HomeTableViewDataSource: CaseIterable {
             let scaleWidth = CommonUtil.SCREEN_WIDTH / 375
             return 360 * scaleWidth
         case .popular:
-            return 212
+            return 240
         case .newMovie:
             return 216
         case .topRating:

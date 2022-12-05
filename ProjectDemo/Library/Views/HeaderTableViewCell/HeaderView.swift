@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HeaderViewDelegate: AnyObject {
-    func headerView(_ customHeader: HeaderView, didTapButtonInSection section: Int)
+    func headerView(_ customHeader: UITableViewHeaderFooterView, didTapButtonInSection section: Int)
 }
 
 class HeaderView: UITableViewHeaderFooterView {

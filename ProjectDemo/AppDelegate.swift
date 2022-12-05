@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return delegate
     }
     
+    var navigationRootViewController: UINavigationController {
+        return window!.rootViewController as! UINavigationController
+    }
+    
     var appRootViewController: TabbarViewController {
         return (window!.rootViewController as! UINavigationController).viewControllers.first as! TabbarViewController
     }

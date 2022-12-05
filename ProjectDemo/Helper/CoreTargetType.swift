@@ -32,7 +32,8 @@ enum CoreTargetType: TargetType {
     case getMovieReviews(movieId: Int)
     case getMovieImages(movieId: Int)
     case getTvShowImages(movieId: Int)
-    
+    case trendingMovie(page: Int)
+    case trendingTvShow(page: Int)
     var baseURL: URL { return URL(string: "https://api.themoviedb.org/3/")! }
     
     var path: String {
@@ -79,7 +80,10 @@ enum CoreTargetType: TargetType {
             return "/movie/\(movieId)/images"
         case .getTvShowImages(let movieId):
             return "/tv/\(movieId)/images"
-            
+        case .trendingMovie:
+            return "/trending/movie/day"
+        case .trendingTvShow:
+            return "/trending/tv/day"
         default:
             return ""
         }
@@ -131,6 +135,10 @@ enum CoreTargetType: TargetType {
             defaultParams.updateValue("movie_credits,images,tv_credits", forKey: "append_to_response")
         case .searchPerson(let query, let page):
             defaultParams.updateValue(query, forKey: "query")
+            defaultParams.updateValue(page, forKey: "page")
+        case .trendingMovie(let page):
+            defaultParams.updateValue(page, forKey: "page")
+        case .trendingTvShow(let page):
             defaultParams.updateValue(page, forKey: "page")
         default:
             break

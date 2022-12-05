@@ -30,8 +30,10 @@ extension ActionPresenter: ActionPresenterInterface {
             interactor.getTopRate(1)
         case .tvshowpopular:
             interactor.getTVShowPopular(1)
-        case .tvshowtoprated:
-            interactor.getTVShowTopRate(1)
+        case .tvshowtrending:
+            interactor.getTvShowTrending(1)
+        case .movietrending:
+            interactor.getMovieTrending(1)
         case .genre(let genre):
             interactor.getMoviePopular(genreId: genre.id, 1)
         default:
@@ -41,9 +43,9 @@ extension ActionPresenter: ActionPresenterInterface {
     
     func didTapToMovie(_ movie: Movie) {
         switch view!.actionViewType {
-        case .moviepopular, .topRated, .genre:
+        case .moviepopular, .topRated, .genre, .movietrending:
             wireframe.showMovieDetailScreen(movie.id, isTVShow: false)
-        case .tvshowpopular, .tvshowtoprated:
+        case .tvshowpopular, .tvshowtrending:
             wireframe.showMovieDetailScreen(movie.id, isTVShow: true)
         default:
             return
@@ -58,8 +60,10 @@ extension ActionPresenter: ActionPresenterInterface {
             interactor.getTopRate(1)
         case .tvshowpopular:
             interactor.getTVShowPopular(1)
-        case .tvshowtoprated:
-            interactor.getTVShowTopRate(1)
+        case .tvshowtrending:
+            interactor.getTvShowTrending(1)
+        case .movietrending:
+            interactor.getMovieTrending(1)
         case .genre(let genre):
             interactor.getMoviePopular(genreId: genre.id, 1)
         default:
@@ -75,8 +79,10 @@ extension ActionPresenter: ActionPresenterInterface {
             interactor.getTopRate(page)
         case .tvshowpopular:
             interactor.getTVShowPopular(page)
-        case .tvshowtoprated:
-            interactor.getTVShowTopRate(page)
+        case .tvshowtrending:
+            interactor.getTvShowTrending(page)
+        case .movietrending:
+            interactor.getMovieTrending(page)
         case .genre(let genre):
             interactor.getMoviePopular(genreId: genre.id, page)
         default:
@@ -94,6 +100,16 @@ extension ActionPresenter: ActionPresenterInterface {
 }
 
 extension ActionPresenter: ActionInteractorOutputInterface {
+    func getTvShowTrending(_ response: MovieResponse) {
+        view?.getTvShowTrending(response)
+        view?.hideLoading()
+    }
+    
+    func getMovieTrending(_ response: MovieResponse) {
+        view?.getMovieTrending(response)
+        view?.hideLoading()
+    }
+    
     func deleteMovieDetailObject(_ movie: Movie) {
         
     }

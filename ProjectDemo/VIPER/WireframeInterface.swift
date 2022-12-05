@@ -24,4 +24,8 @@ public extension WireframeInterface {
     func showPlayVideo(_ key: String, _ fromRoot: Bool) {
         navigator.showPlayVideo(key, fromRoot)
     }
+    
+    func popScreen(result: Any? = nil, animate: Bool = true) {
+        navigator.popScreen(result: result, animate: animate)
+    }
 }
