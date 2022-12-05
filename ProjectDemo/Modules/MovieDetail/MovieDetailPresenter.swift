@@ -25,6 +25,10 @@ final class MovieDetailPresenter {
 }
 
 extension MovieDetailPresenter: MovieDetailPresenterInterface {
+    func didTapAddWatchedList(_ movie: MovieDetail) {
+        
+    }
+    
     func didTapAddWatchedList(_ movie: MovieDetail, isWatchedList: Bool) {
         interactor.insertMovieDetailObjectWatchedList(movie)
     }

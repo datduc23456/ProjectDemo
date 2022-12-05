@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -261,6 +261,30 @@
                                     <constraint firstAttribute="bottom" secondItem="H4Z-ua-bnu" secondAttribute="bottom" id="ld8-5P-A6e"/>
                                 </constraints>
                             </scrollView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSt-gV-wiH">
+                                <rect key="frame" x="39.5" y="531" width="296" height="32"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title and content must not be empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9X-Wi-vcF">
+                                        <rect key="frame" x="8" y="8" width="280" height="16"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="G9X-Wi-vcF" firstAttribute="leading" secondItem="bSt-gV-wiH" secondAttribute="leading" constant="8" id="I1p-DS-lXy"/>
+                                    <constraint firstAttribute="trailing" secondItem="G9X-Wi-vcF" secondAttribute="trailing" constant="8" id="QuO-Op-v3b"/>
+                                    <constraint firstItem="G9X-Wi-vcF" firstAttribute="top" secondItem="bSt-gV-wiH" secondAttribute="top" constant="8" id="TpG-g3-lJx"/>
+                                    <constraint firstAttribute="bottom" secondItem="G9X-Wi-vcF" secondAttribute="bottom" constant="8" id="eHx-4L-hnf"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VXf-fB-hRB">
                                 <rect key="frame" x="16" y="571" width="343" height="96"/>
                                 <subviews>
@@ -316,6 +340,7 @@
                         <viewLayoutGuide key="safeArea" id="miT-am-cok"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="VXf-fB-hRB" firstAttribute="top" secondItem="bSt-gV-wiH" secondAttribute="bottom" constant="8" id="6uc-vG-4eM"/>
                             <constraint firstItem="5LE-KU-Ge9" firstAttribute="trailing" secondItem="miT-am-cok" secondAttribute="trailing" id="Dfr-EW-zil"/>
                             <constraint firstItem="5LE-KU-Ge9" firstAttribute="leading" secondItem="miT-am-cok" secondAttribute="leading" id="L8W-qK-OIY"/>
                             <constraint firstItem="5LE-KU-Ge9" firstAttribute="top" secondItem="miT-am-cok" secondAttribute="top" id="OQt-aE-kEF"/>
@@ -323,17 +348,22 @@
                             <constraint firstItem="miT-am-cok" firstAttribute="trailing" secondItem="VXf-fB-hRB" secondAttribute="trailing" constant="16" id="XNP-33-qbk"/>
                             <constraint firstItem="VXf-fB-hRB" firstAttribute="leading" secondItem="miT-am-cok" secondAttribute="leading" constant="16" id="hSW-LU-e8x"/>
                             <constraint firstItem="5LE-KU-Ge9" firstAttribute="bottom" secondItem="miT-am-cok" secondAttribute="bottom" id="qgH-aO-idJ"/>
+                            <constraint firstItem="bSt-gV-wiH" firstAttribute="centerX" secondItem="miT-am-cok" secondAttribute="centerX" id="rDg-WO-IZ6"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="contentScrollView" destination="H4Z-ua-bnu" id="6ua-Zz-cnC"/>
                         <outlet property="filmNoteView" destination="XLr-QY-elc" id="Gzi-gF-9h2"/>
                         <outlet property="imageStackView" destination="01E-qw-NsM" id="WhO-dA-RbN"/>
+                        <outlet property="lbSliderValue" destination="dwa-1Y-Mru" id="34b-TK-RYg"/>
                         <outlet property="lbTextFieldPlaceHolder" destination="XJZ-Hr-bRi" id="KIK-Jw-2kh"/>
+                        <outlet property="lbToast" destination="G9X-Wi-vcF" id="y4E-aj-2MJ"/>
                         <outlet property="scrollView" destination="5LE-KU-Ge9" id="DxE-Ln-JZ7"/>
+                        <outlet property="slider" destination="aXc-li-Hr2" id="XoD-t1-GTH"/>
                         <outlet property="stackViewButton" destination="VXf-fB-hRB" id="PWA-zu-3Wf"/>
                         <outlet property="textViewContent" destination="Baa-Ei-u8d" id="zbw-Dj-a0w"/>
                         <outlet property="tfTitle" destination="QJx-Jj-fg1" id="Ees-zj-dep"/>
+                        <outlet property="viewToast" destination="bSt-gV-wiH" id="vi1-CN-iGP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZ1-oP-p5e" userLabel="First Responder" sceneMemberID="firstResponder"/>

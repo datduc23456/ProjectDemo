@@ -90,4 +90,8 @@ class DTPBusiness {
     func insertReviewsResultObject(_ review: ReviewsResultObject) {
         self.realmUtils.insertOrUpdate(review)
     }
+    
+    func insertWatchedListObject(_ review: WatchedListObject) {
+        self.realmUtils.insertOrUpdate(review)
+    }
 }

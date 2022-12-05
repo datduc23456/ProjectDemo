@@ -22,6 +22,9 @@ final class WatchedListPresenter {
 }
 
 extension WatchedListPresenter: WatchedListPresenterInterface {
+    func didTapDone(_ object: WatchedListObject) {
+        interactor.insertWatchedListObject(object)
+    }
 }
 
 extension WatchedListPresenter: WatchedListInteractorOutputInterface {

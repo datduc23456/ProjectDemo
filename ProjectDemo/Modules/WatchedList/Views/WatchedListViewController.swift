@@ -10,6 +10,8 @@ import UIKit
 
 final class WatchedListViewController: DynamicBottomSheetViewController, UITextViewDelegate {
     
+    @IBOutlet weak var lbToast: UILabel!
+    @IBOutlet weak var viewToast: UIView!
     @IBOutlet weak var stackViewButton: UIStackView!
     @IBOutlet weak var lbTextFieldPlaceHolder: UILabel!
     @IBOutlet weak var lbSliderValue: UILabel!
@@ -28,6 +30,8 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
         super.configureView()
         self.contentView.addSubview(scrollView)
         self.contentView.addSubview(stackViewButton)
+        self.contentView.addSubview(viewToast)
+        self.viewToast.addSubview(lbToast)
         for constraint in self.scrollView.constraints {
             self.scrollView.removeConstraint(constraint)
         }
@@ -44,6 +48,7 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
             $0.bottom.equalTo(contentView)
             $0.height.equalTo(96)
         }
+        
         filmNoteView.viewDate.isHidden = true
         filmNoteView.viewRemove.isHidden = true
         filmNoteView.viewRating.isHidden = true
@@ -51,7 +56,22 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
         textViewContent.isPlaceHolder = true
         tfTitle.delegate = self
         tfTitle.becomeFirstResponder()
-
+        slider.snapStepSize = 0.1
+        slider.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged)
+        self.view.addTapGestureRecognizer {
+            self.view.endEditing(true)
+        }
+    }
+    
+    @objc func sliderChanged(_ slider: MultiSlider) {
+        configLabelRate()
+        print("thumb \(slider.draggedThumbIndex) moved")
+        print("now thumbs are at \(slider.value)") // e.g., [1.0, 4.5, 5.0]
+    }
+    
+    func configLabelRate() {
+        let value = Double(slider.value.first!).roundToPlaces(places: 1)
+        lbSliderValue.text = "\(value)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +84,34 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
     }
     
     @IBAction func doneAction(_ sender: Any) {
-        
+        guard let name = tfTitle.text, let content = textViewContent.text, !name.isEmpty, !content.isEmpty else {
+            self.showToastAlert()
+            return
+        }
+        if let movieDetail = movieDetail {
+            let rating = Double(lbSliderValue.text.isNil(value: "0.0"))
+            let object = WatchedListObject()
+            object.originalName = movieDetail.originalName
+            object.originalTitle = movieDetail.originalTitle
+            object._id = movieDetail.id
+            object.posterPath = movieDetail.posterPath
+            object.backdropPath = movieDetail.backdropPath
+            object.genreIDS.append(objectsIn: movieDetail.genres.map({$0.id}))
+            object.content = content
+            object.author = name
+            object.createdAt = Date().toString()
+            object.updatedAt = Date().toString()
+            let authorDetails = AuthorDetailsObject()
+            authorDetails.rating = rating!
+            object.authorDetails = authorDetails
+            presenter.didTapDone(object)
+            self.dismiss(animated: true, completion: { [weak self] in
+                guard let weakSelf = self else { return }
+                if let current = weakSelf.currentViewController() {
+                    weakSelf.setBackResultIfCan(vc: current, result: object)
+                }
+            })
+        }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -85,10 +132,27 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
             textView.isPlaceHolder = true
         }
     }
+    
+    func showToastAlert() {
+        UIView.animate(withDuration: 2, delay: 0, options: .curveEaseIn, animations: {
+            self.viewToast.alpha = 1
+        }, completion: {_ in
+            UIView.animate(withDuration: 2, delay: 0, options: .curveEaseIn, animations: {
+                self.viewToast.alpha = 0
+            })
+        })
+    }
 }
 
 // MARK: - WatchedListViewInterface
 extension WatchedListViewController: WatchedListViewInterface {
+    var movieDetail: MovieDetail? {
+        if let movieDetail = self.payload as? MovieDetail {
+            return movieDetail
+        }
+        return nil
+    }
+    
     func showLoading() {
         
     }
@@ -122,5 +186,40 @@ extension WatchedListViewController: UITextFieldDelegate {
 extension WatchedListViewController: KeyboardDisplayableViewController {
     var scrollViewForResizeKeyboard: UIScrollView? {
         return scrollView
+    }
+}
+
+extension WatchedListViewController {
+    func setBackResultIfCan(vc: UIViewController, result: Any?) {
+        guard let backFromNextHandleable = vc as? BackFromNextHandleable else {
+            return
+        }
+        backFromNextHandleable.onBackFromNext(result)
+    }
+    
+    func currentViewController(from: UIViewController? = nil) -> UIViewController? {
+        if let from = from {
+            if let presented = from.presentedViewController {
+                return currentViewController(from: presented)
+            }
+            if let nav = from as? UINavigationController {
+                if let last = nav.children.last {
+                    return currentViewController(from: last)
+                }
+                return nav
+            }
+            if let tab = from as? UITabBarController {
+                if let selected = tab.selectedViewController {
+                    return currentViewController(from: selected)
+                }
+                return tab
+            }
+            return from
+        } else if let presented = presentedViewController {
+            return currentViewController(from: presented)
+        } else {
+            let rootViewController = AppDelegate.shared.navigationRootViewController
+            return currentViewController(from: rootViewController)
+        }
     }
 }

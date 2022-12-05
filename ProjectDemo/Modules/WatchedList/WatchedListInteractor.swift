@@ -12,4 +12,7 @@ final class WatchedListInteractor {
 }
 
 extension WatchedListInteractor: WatchedListInteractorInterface {
+    func insertWatchedListObject(_ review: WatchedListObject) {
+        DTPBusiness.shared.insertWatchedListObject(review)
+    }
 }

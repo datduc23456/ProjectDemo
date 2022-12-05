@@ -53,7 +53,7 @@ final class MovieDetailViewController: BaseViewController {
         tableView.registerCell(for: MovieVideosTableViewCell.className)
         tableView.registerCell(for: NotesTableViewCell.className)
         tableView.registerCell(for: AddNoteTableViewCell.className)
-        tableView.register(UINib(nibName: AddNoteHeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: AddNoteHeaderView.reuseIdentifier)
+        tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.sectionHeaderHeight = 0
@@ -99,6 +99,10 @@ final class MovieDetailViewController: BaseViewController {
 
 // MARK: - MovieDetailViewInterface
 extension MovieDetailViewController: MovieDetailViewInterface {
+    func fetchMovieDetailObjectWatchedListWithId(_ object: MovieDetailObject?) {
+        
+    }
+    
     
     var id: (Int, Bool) {
         get {

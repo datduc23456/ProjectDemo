@@ -7,12 +7,15 @@
 //
 
 protocol WatchedListViewInterface: ViewInterface {
+    var movieDetail: MovieDetail? { get set }
 }
 
 protocol WatchedListPresenterInterface: PresenterInterface {
+    func didTapDone(_ object: WatchedListObject)
 }
 
 protocol WatchedListInteractorInterface: InteractorInterface {
+    func insertWatchedListObject(_ review: WatchedListObject)
 }
 
 protocol WatchedListInteractorOutputInterface: InteractorOutputInterface {

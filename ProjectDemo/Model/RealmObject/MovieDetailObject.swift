@@ -213,3 +213,33 @@ class AuthorDetailsObject: Object {
     @Persisted var avatarPath: String = ""
     @Persisted var rating: Double = 0.0
 }
+
+class WatchedListObject: Object {
+    @Persisted var author: String = ""
+    @Persisted var authorDetails: AuthorDetailsObject?
+    @Persisted var content: String = ""
+    @Persisted var createdAt: String = ""
+    @Persisted var updatedAt: String = ""
+    @Persisted var url: String = ""
+    @Persisted var adult: Bool = false
+    @Persisted var backdropPath: String = ""
+    @Persisted var genreIDS: List<Int> = List<Int>()
+    @Persisted (primaryKey: true) var _id: Int = 0
+    @Persisted var originalLanguage: String = ""
+    @Persisted var originalTitle: String = ""
+    @Persisted var overview: String = ""
+    @Persisted var popularity: Double = 0.0
+    @Persisted var posterPath: String = ""
+    @Persisted var lastAirDate: String = ""
+    @Persisted var releaseDate: String = ""
+    @Persisted var title: String = ""
+    @Persisted var video: Bool = false
+    @Persisted var voteAverage: Double = 0.0
+    @Persisted var voteCount: Int = 0
+    @Persisted var firstAirDate: String = ""
+    @Persisted var originCountry: List<String> = List<String>()
+    @Persisted var originalName: String = ""
+    @Persisted var name: String = ""
+    @Persisted var dateFavorite: String = ""
+    @Persisted var isTVShow: Bool = false
+}
