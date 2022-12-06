@@ -134,6 +134,7 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
             object.genreIDS.append(objectsIn: movieDetail.genres.map({$0.id}))
             object.content = content
             object.author = name
+            object.runtime = !(movieDetail.runtime == 0) ? movieDetail.runtime : movieDetail.episodeRunTime.isNil(value: []).reduce(0, +)
             object.createdAt = Date().toString()
             object.updatedAt = Date().toString()
             let authorDetails = AuthorDetailsObject()

@@ -12,4 +12,9 @@ final class StatisticcalInteractor {
 }
 
 extension StatisticcalInteractor: StatisticcalInteractorInterface {
+    func fetchWatchedListObjects() {
+        DTPBusiness.shared.fetchWatchedListObjects(completion: { objects in
+            self.output?.fetchWatchedListObjects(objects)
+        })
+    }
 }

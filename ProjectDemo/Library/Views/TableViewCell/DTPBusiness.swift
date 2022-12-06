@@ -69,6 +69,11 @@ class DTPBusiness {
         }
     }
     
+    func fetchWatchedListObjects(completion: (([WatchedListObject]) -> Void)) {
+        let query = Array(realmUtils.dataQuery(type: WatchedListObject.self))
+        completion(query)
+    }
+    
     func fetchMovieDetailObjectWatchedListWithId(_ id: Int, completion: ((MovieDetailObject?) -> Void)) {
         fetchRealmMovieDetailObjectWithId(id, completion: { movie in
             if let movie = movie, movie.isWatchedList {

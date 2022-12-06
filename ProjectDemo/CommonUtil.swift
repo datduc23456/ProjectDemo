@@ -14,7 +14,22 @@ class CommonUtil {
     
     static func getYearFromDate(_ dateString: String) -> String {
         let date = dateString.toDate()
-        return "\((date?.get(.year)).isNil(value: 2022))"
+        return "\((date?.get(.year)).isNil(value: 1996))"
+    }
+    
+    static func getMonthFromDate(_ dateString: String) -> String {
+        let date = dateString.toDate()
+        return "\((date?.get(.month)).isNil(value: 12))"
+    }
+    
+    static func getDayFromDate(_ dateString: String) -> String {
+        let date = dateString.toDate()
+        return "\((date?.get(.month)).isNil(value: 28))"
+    }
+
+    static func convertNumberMonthToText(_ month: Int) -> String {
+        let df = DateFormatter()
+        return df.shortMonthSymbols[safe: month - 1].isNil(value: "Null")
     }
     
     static func getThumbnailYoutubeUrl(_ key: String) -> URL {

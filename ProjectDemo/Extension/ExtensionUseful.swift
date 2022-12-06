@@ -184,7 +184,7 @@ extension Date {
 }
 
 extension String {
-    func toDate(timeZone: TimeZone = TimeZone(abbreviation: "UTC") ?? TimeZone.current, dateFormat: String = "yyyy-mm-dd") -> Date? {
+    func toDate(timeZone: TimeZone = TimeZone.current, dateFormat: String = "yyyy-MM-dd") -> Date? {
         let dateFormatter = DateFormatter()
 //        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = dateFormat

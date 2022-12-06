@@ -44,6 +44,7 @@ struct MovieDetail: Codable {
     let reviews: Reviews
     let credits: Credits
     let releaseDate: String
+    let runtime: Int
     
     enum CodingKeys: String, CodingKey {
         case adult
@@ -80,6 +81,7 @@ struct MovieDetail: Codable {
         case reviews
         case credits
         case releaseDate = "release_date"
+        case runtime
     }
     
     init(from decoder: Decoder) throws {
@@ -123,6 +125,7 @@ struct MovieDetail: Codable {
         reviews = try values.decodeIfPresent(Reviews.self, forKey: .reviews).isNil(value: Reviews())
         credits = try values.decodeIfPresent(Credits.self, forKey: .credits).isNil(value: Credits())
         releaseDate = try values.decodeIfPresent(String.self, forKey: .releaseDate).isNil(value: "")
+        runtime = try values.decodeIfPresent(Int.self, forKey: .runtime).isNil(value: 0)
     }
     
     func toMovieObject() -> MovieDetailObject {

@@ -7,15 +7,19 @@
 //
 
 protocol StatisticcalViewInterface: ViewInterface {
+    func fetchWatchedListObjects(_ objects: [WatchedListObject])
+    func fetchDataYear(_ data: [Int: [WatchedListObject]])
 }
 
 protocol StatisticcalPresenterInterface: PresenterInterface {
 }
 
 protocol StatisticcalInteractorInterface: InteractorInterface {
+    func fetchWatchedListObjects()
 }
 
 protocol StatisticcalInteractorOutputInterface: InteractorOutputInterface {
+    func fetchWatchedListObjects(_ objects: [WatchedListObject])
 }
 
 protocol StatisticcalWireframeInterface: WireframeInterface {

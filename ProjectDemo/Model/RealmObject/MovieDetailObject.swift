@@ -241,5 +241,6 @@ class WatchedListObject: Object {
     @Persisted var originalName: String = ""
     @Persisted var name: String = ""
     @Persisted var dateFavorite: String = ""
+    @Persisted var runtime: Int = 0
     @Persisted var isTVShow: Bool = false
 }

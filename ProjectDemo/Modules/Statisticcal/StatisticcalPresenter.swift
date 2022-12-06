@@ -11,7 +11,10 @@ final class StatisticcalPresenter {
     private weak var view: StatisticcalViewInterface?
     private var interactor: StatisticcalInteractorInterface
     private var wireframe: StatisticcalWireframeInterface
-
+    private var watchedListObjects: [WatchedListObject] = []
+    private var data: [Int: [WatchedListObject]] = [:]
+    private var chartType: ChartValueType = .month
+    
     init(view: StatisticcalViewInterface,
          interactor: StatisticcalInteractorInterface,
          wireframe: StatisticcalWireframeInterface) {
@@ -22,10 +25,36 @@ final class StatisticcalPresenter {
 }
 
 extension StatisticcalPresenter: StatisticcalPresenterInterface {
+    func viewDidLoad() {
+        
+    }
+    
+    func viewWillAppear(_ animated: Bool) {
+        interactor.fetchWatchedListObjects()
+    }
 }
 
 extension StatisticcalPresenter: StatisticcalInteractorOutputInterface {
+    func fetchWatchedListObjects(_ objects: [WatchedListObject]) {
+        watchedListObjects = objects
+        switch chartType {
+        case .year:
+            data = Dictionary(grouping: watchedListObjects, by: { Int(CommonUtil.getYearFromDate($0.createdAt)) ?? 0 })
+            view?.fetchDataYear(data)
+        case .month:
 
+            data = Dictionary(grouping: watchedListObjects, by: {
+                print("month: \($0.createdAt.toDateFormat(toFormat: "MMM"))")
+                return Int(CommonUtil.getMonthFromDate($0.createdAt)) ?? 0 })
+            view?.fetchDataYear(data)
+        default:
+            data = Dictionary(grouping: watchedListObjects, by: { Int(CommonUtil.getYearFromDate($0.createdAt)) ?? 0 })
+            view?.fetchDataYear(data)
+        }
+        
+    }
+    
+    
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()
         wireframe.handleError(error, completion)
