@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Nexa Bold.otf">
             <string>Nexa-Bold</string>
         </array>
+        <array key="Nexa Regular.otf">
+            <string>NexaRegular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="296" id="KGk-i7-Jjw" customClass="MyNoteTableViewCell" customModule="Starmovie" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="296" id="KGk-i7-Jjw" customClass="MyNoteTableViewCell" customModule="Star_Movie" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="311"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -39,9 +42,21 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_more" translatesAutoresizingMaskIntoConstraints="NO" id="J7T-zN-LGg">
                                         <rect key="frame" x="254" y="23" width="22" height="6"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQY-WR-ROQ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQY-WR-ROQ">
                                         <rect key="frame" x="254" y="8" width="34" height="35"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFy-d9-ONi">
+                                        <rect key="frame" x="188" y="8" width="100" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="jvB-jH-MGe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
+                                        <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                        <state key="normal" title="Remove" image="ic_trash">
+                                            <color key="titleColor" red="0.98431372549999996" green="0.4431372549" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,6 +65,7 @@
                                     <constraint firstItem="SQY-WR-ROQ" firstAttribute="top" secondItem="Cf1-Je-pf3" secondAttribute="top" constant="8" id="CGQ-Iv-6wT"/>
                                     <constraint firstAttribute="trailing" secondItem="J7T-zN-LGg" secondAttribute="trailing" constant="12" id="G9w-Gh-rLU"/>
                                     <constraint firstItem="4M6-as-jXi" firstAttribute="leading" secondItem="7Lu-QE-NaG" secondAttribute="trailing" constant="6" id="Gao-qL-9So"/>
+                                    <constraint firstItem="iFy-d9-ONi" firstAttribute="bottom" secondItem="SQY-WR-ROQ" secondAttribute="bottom" id="K2x-qJ-f4C"/>
                                     <constraint firstItem="SQY-WR-ROQ" firstAttribute="leading" secondItem="J7T-zN-LGg" secondAttribute="leading" id="UYY-Up-4N0"/>
                                     <constraint firstAttribute="height" constant="52" id="VPz-UE-GsM"/>
                                     <constraint firstItem="7Lu-QE-NaG" firstAttribute="centerY" secondItem="Cf1-Je-pf3" secondAttribute="centerY" id="X9w-Of-Smb"/>
@@ -57,12 +73,14 @@
                                     <constraint firstItem="J7T-zN-LGg" firstAttribute="centerY" secondItem="Cf1-Je-pf3" secondAttribute="centerY" id="iW3-gc-A3d"/>
                                     <constraint firstAttribute="trailing" secondItem="SQY-WR-ROQ" secondAttribute="trailing" id="qGG-aM-enG"/>
                                     <constraint firstAttribute="bottom" secondItem="SQY-WR-ROQ" secondAttribute="bottom" constant="9" id="xYW-9J-blx"/>
+                                    <constraint firstItem="iFy-d9-ONi" firstAttribute="top" secondItem="SQY-WR-ROQ" secondAttribute="top" id="y3y-j1-ce0"/>
+                                    <constraint firstItem="iFy-d9-ONi" firstAttribute="trailing" secondItem="SQY-WR-ROQ" secondAttribute="trailing" id="zVM-zf-12q"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncQ-E0-Cmy">
                                 <rect key="frame" x="0.0" y="52" width="288" height="170"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAL-w7-0Ot" customClass="FilmNoteView" customModule="Starmovie" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAL-w7-0Ot" customClass="FilmNoteView" customModule="Star_Movie" customModuleProvider="target">
                                         <rect key="frame" x="12" y="0.0" width="264" height="170"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -134,7 +152,9 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="avatar" destination="7Lu-QE-NaG" id="zU2-eI-bxA"/>
                 <outlet property="btnMore" destination="SQY-WR-ROQ" id="AHe-AB-Zsv"/>
+                <outlet property="btnRemove" destination="iFy-d9-ONi" id="5zi-lx-3Fr"/>
                 <outlet property="filmNoteView" destination="LAL-w7-0Ot" id="BKF-Um-MqN"/>
                 <outlet property="ic_edit" destination="J7T-zN-LGg" id="teU-5r-u8i"/>
                 <outlet property="lbContent" destination="Fvy-Ea-Hgw" id="9ZC-Cc-mk6"/>
@@ -146,5 +166,6 @@
     <resources>
         <image name="ava_default" width="24" height="24"/>
         <image name="ic_more" width="22" height="6"/>
+        <image name="ic_trash" width="13.333333015441895" height="16"/>
     </resources>
 </document>

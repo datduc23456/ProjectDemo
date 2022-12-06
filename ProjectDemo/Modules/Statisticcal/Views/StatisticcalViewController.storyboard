@@ -5,12 +5,14 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Nexa Bold.otf">
             <string>Nexa-Bold</string>
+        </array>
+        <array key="Nexa Regular.otf">
+            <string>NexaRegular</string>
         </array>
     </customFonts>
     <scenes>
@@ -32,21 +34,58 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0z-ab-sTO">
-                                                        <rect key="frame" x="16" y="20" width="347" height="36"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <rect key="frame" x="16" y="20" width="343" height="36"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Percentage of movies watched" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70H-Gn-qfK">
+                                                                <rect key="frame" x="12" y="11" width="208" height="14"/>
+                                                                <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_arrow_white" translatesAutoresizingMaskIntoConstraints="NO" id="8mn-cA-5oS">
+                                                                <rect key="frame" x="315" y="10" width="16" height="16"/>
+                                                            </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeR-V9-eCo">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="36"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <connections>
+                                                                    <action selector="filterAction:" destination="ab2-EX-tH2" eventType="touchUpInside" id="viE-mR-zhU"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.13725490196078433" green="0.13333333333333333" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
+                                                            <constraint firstItem="qeR-V9-eCo" firstAttribute="top" secondItem="y0z-ab-sTO" secondAttribute="top" id="31G-iC-iDa"/>
+                                                            <constraint firstItem="8mn-cA-5oS" firstAttribute="centerY" secondItem="y0z-ab-sTO" secondAttribute="centerY" id="Cou-NO-Kqb"/>
+                                                            <constraint firstItem="70H-Gn-qfK" firstAttribute="leading" secondItem="y0z-ab-sTO" secondAttribute="leading" constant="12" id="EIA-hX-pMU"/>
+                                                            <constraint firstAttribute="bottom" secondItem="qeR-V9-eCo" secondAttribute="bottom" id="Hmt-jN-BtT"/>
+                                                            <constraint firstAttribute="trailing" secondItem="8mn-cA-5oS" secondAttribute="trailing" constant="12" id="J3O-9p-17O"/>
+                                                            <constraint firstItem="70H-Gn-qfK" firstAttribute="centerY" secondItem="y0z-ab-sTO" secondAttribute="centerY" id="NYN-XS-259"/>
                                                             <constraint firstAttribute="height" constant="36" id="TtM-OR-QD4"/>
+                                                            <constraint firstItem="qeR-V9-eCo" firstAttribute="leading" secondItem="y0z-ab-sTO" secondAttribute="leading" id="ZMM-Oc-ewK"/>
+                                                            <constraint firstAttribute="trailing" secondItem="qeR-V9-eCo" secondAttribute="trailing" id="sCx-Sa-T6H"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.24705882352941178" green="0.25882352941176467" blue="0.28627450980392155" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4Fh-5h-TtR">
-                                                        <rect key="frame" x="16" y="72" width="347" height="40"/>
+                                                        <rect key="frame" x="16" y="72" width="343" height="40"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHI-W6-koY">
                                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="40"/>
                                                                 <color key="backgroundColor" red="0.13725490196078433" green="0.13333333333333333" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="14"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="Button">
+                                                                <state key="normal" title="Month">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
@@ -60,13 +99,16 @@
                                                                         <real key="value" value="8"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="monthFilterAction:" destination="ab2-EX-tH2" eventType="touchUpInside" id="mfn-Cg-acC"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0P-JD-i2x">
                                                                 <rect key="frame" x="89" y="0.0" width="85" height="40"/>
                                                                 <color key="backgroundColor" red="0.13725490196078433" green="0.13333333333333333" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="14"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="Button">
+                                                                <state key="normal" title="Quarter">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
@@ -80,6 +122,9 @@
                                                                         <real key="value" value="8"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="quarterFilterAction:" destination="ab2-EX-tH2" eventType="touchUpInside" id="doS-40-cPa"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abA-9e-WE8">
                                                                 <rect key="frame" x="178" y="0.0" width="85" height="40"/>
@@ -89,7 +134,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="14"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="Button">
+                                                                <state key="normal" title="Year">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
@@ -103,9 +148,12 @@
                                                                         <real key="value" value="8"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="yearFilterAction:" destination="ab2-EX-tH2" eventType="touchUpInside" id="Ujg-Js-9R2"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXf-HG-RYv">
-                                                                <rect key="frame" x="267" y="0.0" width="80" height="40"/>
+                                                                <rect key="frame" x="267" y="0.0" width="76" height="40"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             </button>
                                                         </subviews>
@@ -210,7 +258,7 @@
                                                     <constraint firstItem="y0z-ab-sTO" firstAttribute="leading" secondItem="6SG-Wi-2Qb" secondAttribute="leading" constant="16" id="9Md-BX-e6C"/>
                                                     <constraint firstItem="adv-8F-GyS" firstAttribute="top" secondItem="Kca-l0-Yah" secondAttribute="bottom" id="IX0-7z-KWn"/>
                                                     <constraint firstAttribute="trailing" secondItem="Kca-l0-Yah" secondAttribute="trailing" constant="16" id="Rc5-O7-fan"/>
-                                                    <constraint firstAttribute="trailing" secondItem="y0z-ab-sTO" secondAttribute="trailing" constant="12" id="Wiw-jk-oah"/>
+                                                    <constraint firstAttribute="trailing" secondItem="y0z-ab-sTO" secondAttribute="trailing" constant="16" id="Wiw-jk-oah"/>
                                                     <constraint firstItem="y0z-ab-sTO" firstAttribute="top" secondItem="6SG-Wi-2Qb" secondAttribute="top" constant="20" id="aKY-oL-bmf"/>
                                                     <constraint firstItem="4Fh-5h-TtR" firstAttribute="bottom" secondItem="Kca-l0-Yah" secondAttribute="top" constant="8" id="hZz-7v-SWC"/>
                                                     <constraint firstItem="4Fh-5h-TtR" firstAttribute="trailing" secondItem="y0z-ab-sTO" secondAttribute="trailing" id="qaG-an-H1D"/>
@@ -261,12 +309,16 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lbFilter" destination="70H-Gn-qfK" id="7UR-iI-JQL"/>
                         <outlet property="lineChartView" destination="fuT-RU-GRo" id="TXS-gN-nY9"/>
                         <outlet property="scrollView" destination="PJM-Be-Mzd" id="CeX-0B-EFK"/>
                         <outlet property="slider" destination="xpJ-7h-F0U" id="wK2-eq-GyS"/>
                         <outlet property="tableView" destination="R3a-Yg-mJ7" id="dtE-vw-rs6"/>
                         <outlet property="tableViewheight" destination="FdN-iH-QRQ" id="3cU-cY-vnL"/>
                         <outlet property="viewChart" destination="Kca-l0-Yah" id="V6b-IC-GfF"/>
+                        <outletCollection property="groupButton" destination="aHI-W6-koY" collectionClass="NSMutableArray" id="EKL-5k-Ghf"/>
+                        <outletCollection property="groupButton" destination="r0P-JD-i2x" collectionClass="NSMutableArray" id="G8u-bE-zgt"/>
+                        <outletCollection property="groupButton" destination="abA-9e-WE8" collectionClass="NSMutableArray" id="40T-11-0UF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZ1-oP-p5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -280,9 +332,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="ic_arrow_white" width="16" height="16"/>
         <image name="ic_slider" width="16" height="16"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

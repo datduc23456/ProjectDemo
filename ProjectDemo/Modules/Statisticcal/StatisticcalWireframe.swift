@@ -29,6 +29,10 @@ final class StatisticcalWireframe: StatisticcalWireframeInterface {
         return initialViewController
     }
 
+    func showSearchScreen() {
+        navigator.pushScreen(AppScreens.search, SearchType.detail, fromRoot: true)
+    }
+    
 	func handleError(_ error: Error, _ completion: (() -> Void)?) {
         
     }

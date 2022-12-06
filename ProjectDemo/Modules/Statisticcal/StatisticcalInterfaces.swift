@@ -8,10 +8,11 @@
 
 protocol StatisticcalViewInterface: ViewInterface {
     func fetchWatchedListObjects(_ objects: [WatchedListObject])
-    func fetchDataYear(_ data: [Int: [WatchedListObject]])
+    func fetchDataYear(_ data: [String: [WatchedListObject]])
 }
 
 protocol StatisticcalPresenterInterface: PresenterInterface {
+    func didTapSearch()
 }
 
 protocol StatisticcalInteractorInterface: InteractorInterface {
@@ -23,4 +24,5 @@ protocol StatisticcalInteractorOutputInterface: InteractorOutputInterface {
 }
 
 protocol StatisticcalWireframeInterface: WireframeInterface {
+    func showSearchScreen()
 }

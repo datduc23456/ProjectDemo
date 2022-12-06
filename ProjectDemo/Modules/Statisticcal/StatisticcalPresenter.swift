@@ -12,7 +12,7 @@ final class StatisticcalPresenter {
     private var interactor: StatisticcalInteractorInterface
     private var wireframe: StatisticcalWireframeInterface
     private var watchedListObjects: [WatchedListObject] = []
-    private var data: [Int: [WatchedListObject]] = [:]
+    private var data: [String: [WatchedListObject]] = [:]
     private var chartType: ChartValueType = .month
     
     init(view: StatisticcalViewInterface,
@@ -29,6 +29,10 @@ extension StatisticcalPresenter: StatisticcalPresenterInterface {
         
     }
     
+    func didTapSearch() {
+        wireframe.showSearchScreen()
+    }
+    
     func viewWillAppear(_ animated: Bool) {
         interactor.fetchWatchedListObjects()
     }
@@ -39,16 +43,16 @@ extension StatisticcalPresenter: StatisticcalInteractorOutputInterface {
         watchedListObjects = objects
         switch chartType {
         case .year:
-            data = Dictionary(grouping: watchedListObjects, by: { Int(CommonUtil.getYearFromDate($0.createdAt)) ?? 0 })
+            data = Dictionary(grouping: watchedListObjects, by: { CommonUtil.getYearFromDate($0.createdAt) })
             view?.fetchDataYear(data)
         case .month:
 
             data = Dictionary(grouping: watchedListObjects, by: {
                 print("month: \($0.createdAt.toDateFormat(toFormat: "MMM"))")
-                return Int(CommonUtil.getMonthFromDate($0.createdAt)) ?? 0 })
+                return $0.createdAt.toDateFormat(toFormat: "MM yyyy") })
             view?.fetchDataYear(data)
         default:
-            data = Dictionary(grouping: watchedListObjects, by: { Int(CommonUtil.getYearFromDate($0.createdAt)) ?? 0 })
+            data = Dictionary(grouping: watchedListObjects, by: { CommonUtil.getYearFromDate($0.createdAt) })
             view?.fetchDataYear(data)
         }
         

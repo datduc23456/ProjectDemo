@@ -14,14 +14,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PeoplePopularCollectionViewCell" customModule="ProjectDemo" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PeoplePopularCollectionViewCell" customModule="Star_Movie" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="120" height="183"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="120" height="183"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_xinh" translatesAutoresizingMaskIntoConstraints="NO" id="ogd-b6-Huh">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ogd-b6-Huh">
                         <rect key="frame" x="7" y="0.0" width="106" height="106"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="106" id="Vy7-Fc-71A"/>
@@ -65,7 +65,4 @@
             <point key="canvasLocation" x="6" y="-7"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="ic_xinh" width="106" height="106"/>
-    </resources>
 </document>

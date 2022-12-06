@@ -14,7 +14,7 @@ protocol BoottomSheetStackViewDelegate: AnyObject {
 
 enum BottomSheetType {
     case draggable
-    case label(String)
+    case label(title: String, isChoose: Bool)
     case button(title: String, isPrimary: Bool)
     case content(title: String, content: String)
     
@@ -51,9 +51,10 @@ class BottomSheetStackView: BaseCustomView {
         for index in 0..<dataSource.count {
             let type = dataSource[index]
             switch type {
-            case .label(let title):
+            case .label(let title, let isChoose):
                 let view = BottomSheetLabelView()
                 view.lbTitle.text = title
+                view.isChoose = isChoose
                 self.stackView.addArrangedSubview(view)
                 view.snp.makeConstraints {
                     $0.height.equalTo(type.height())

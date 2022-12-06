@@ -12,18 +12,18 @@ class CommonUtil {
         return (AppDelegate.shared.window?.bounds.width)!
     }
     
-    static func getYearFromDate(_ dateString: String) -> String {
-        let date = dateString.toDate()
+    static func getYearFromDate(_ dateString: String, dateFormat: String = "yyyy-MM-dd") -> String {
+        let date = dateString.toDate(dateFormat: dateFormat)
         return "\((date?.get(.year)).isNil(value: 1996))"
     }
     
-    static func getMonthFromDate(_ dateString: String) -> String {
-        let date = dateString.toDate()
+    static func getMonthFromDate(_ dateString: String, dateFormat: String = "yyyy-MM-dd") -> String {
+        let date = dateString.toDate(dateFormat: dateFormat)
         return "\((date?.get(.month)).isNil(value: 12))"
     }
     
-    static func getDayFromDate(_ dateString: String) -> String {
-        let date = dateString.toDate()
+    static func getDayFromDate(_ dateString: String, dateFormat: String = "yyyy-MM-dd") -> String {
+        let date = dateString.toDate(dateFormat: dateFormat)
         return "\((date?.get(.month)).isNil(value: 28))"
     }
 
