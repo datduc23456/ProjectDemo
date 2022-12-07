@@ -12,10 +12,6 @@ final class PopularPeopleInteractor {
 }
 
 extension PopularPeopleInteractor: PopularPeopleInteractorInterface {
-    func getTopRate() {
-        
-    }
-    
     
     func getPeopleDetail(_ id: Int) {
         ServiceCore.shared.request(PeopleDetail.self, targetType: CoreTargetType.personDetail(personId: id), successBlock: { [weak self] response in

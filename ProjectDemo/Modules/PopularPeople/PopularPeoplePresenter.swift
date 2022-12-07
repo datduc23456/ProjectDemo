@@ -11,7 +11,8 @@ final class PopularPeoplePresenter {
     private weak var view: PopularPeopleViewInterface?
     private var interactor: PopularPeopleInteractorInterface
     private var wireframe: PopularPeopleWireframeInterface
-
+    private var peopleDetail: PeopleDetail?
+    
     init(view: PopularPeopleViewInterface,
          interactor: PopularPeopleInteractorInterface,
          wireframe: PopularPeopleWireframeInterface) {
@@ -22,9 +23,24 @@ final class PopularPeoplePresenter {
 }
 
 extension PopularPeoplePresenter: PopularPeoplePresenterInterface {
+    func didTapImage() {
+        if let imagePaths = peopleDetail?.images.profile.map({$0.filePath}) {
+            wireframe.showImagesScreen(imagePaths)
+        }
+    }
+    
+    func didTapVideos() {
+        
+    }
+    
+    func didTapSimilar() {
+        if let peopleDetail = peopleDetail {
+            wireframe.showSimilarScreen(peopleDetail)
+        }
+    }
+    
     func viewDidLoad() {
         interactor.getPeopleDetail(view!.id)
-        interactor.getTopRate()
     }
     
     func didTapPlayVideo(_ video: Video) {
@@ -34,6 +50,7 @@ extension PopularPeoplePresenter: PopularPeoplePresenterInterface {
 
 extension PopularPeoplePresenter: PopularPeopleInteractorOutputInterface {
     func getPeopleDetail(_ people: PeopleDetail) {
+        self.peopleDetail = people
         view?.getPeopleDetail(people)
     }
     

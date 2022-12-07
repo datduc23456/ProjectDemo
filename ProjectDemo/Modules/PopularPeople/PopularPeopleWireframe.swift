@@ -32,4 +32,16 @@ final class PopularPeopleWireframe: PopularPeopleWireframeInterface {
 	func handleError(_ error: Error, _ completion: (() -> Void)?) {
         
     }
+    
+    func showImagesScreen(_ payload: Any) {
+        navigator.pushScreen(AppScreens.images, payload, fromRoot: true)
+    }
+    
+    func showVideosScreen(_ payload: Any) {
+        navigator.pushScreen(AppScreens.videos, payload, fromRoot: true)
+    }
+    
+    func showSimilarScreen(_ payload: Any) {
+        navigator.pushScreen(AppScreens.similar, payload, fromRoot: true)
+    }
 }

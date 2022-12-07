@@ -33,6 +33,16 @@ final class SeasonViewController: BaseCollectionViewController<TVShowCollectionV
             self.popChildViewController(nil, true)
         }
         navigation.lbTitle.text = "Season"
+        self.headerRefresh = {
+            delay(0.5, closure: {
+                self.collectionView.headRefreshControl.endRefreshing()
+            })
+        }
+        self.footerRefresh = {
+            delay(0.5, closure: {
+                self.collectionView.footRefreshControl.endRefreshing()
+            })
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

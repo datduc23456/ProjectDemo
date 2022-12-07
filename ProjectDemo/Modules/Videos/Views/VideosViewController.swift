@@ -1,17 +1,17 @@
 //
-//  ImagesViewController.swift
+//  VideosViewController.swift
 //  ProjectDemo
 //
-//  Created by đạt on 30/11/2022.
+//  Created by đạt on 07/12/2022.
 //  Copyright © 2022 dat.nguyen. All rights reserved.
 //
 
 import UIKit
 
-final class ImagesViewController: BaseCollectionViewController<TrendingCollectionViewCell> {
-
+final class VideosViewController: BaseCollectionViewController<TrendingCollectionViewCell> {
+    
     // MARK: - Properties
-	var presenter: ImagesPresenterInterface!
+    var presenter: VideosPresenterInterface!
     
     override var numberOfColumn: Int {
         return 2
@@ -32,7 +32,7 @@ final class ImagesViewController: BaseCollectionViewController<TrendingCollectio
         navigation.btnBack.addTapGestureRecognizer {
             self.popChildViewController(nil, true)
         }
-        navigation.lbTitle.text = "Image"
+        navigation.lbTitle.text = "Videos"
         self.headerRefresh = {
             delay(0.5, closure: {
                 self.collectionView.headRefreshControl.endRefreshing()
@@ -46,22 +46,26 @@ final class ImagesViewController: BaseCollectionViewController<TrendingCollectio
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return datas.count
+        return videos.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! TrendingCollectionViewCell
-        let item = datas[indexPath.row]
+        let item = videos[indexPath.row]
         cell.configCell(item)
+        cell.didTapAction = { [weak self] _ in
+            guard let `self` = self else { return }
+            self.presenter.didTapPlayVideo(item)
+        }
         return cell
     }
 }
 
-// MARK: - ImagesViewInterface
-extension ImagesViewController: ImagesViewInterface {
-    var datas: [Any] {
-        if let urls = payload as? [Any] {
-            return urls
+// MARK: - VideosViewInterface
+extension VideosViewController: VideosViewInterface {
+    var videos: [Video] {
+        if let videos = payload as? [Video] {
+            return videos
         }
         return []
     }

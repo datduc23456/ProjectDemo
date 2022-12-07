@@ -14,11 +14,13 @@ protocol PopularPeopleViewInterface: ViewInterface {
 
 protocol PopularPeoplePresenterInterface: PresenterInterface {
     func didTapPlayVideo(_ video: Video)
+    func didTapImage()
+    func didTapVideos()
+    func didTapSimilar()
 }
 
 protocol PopularPeopleInteractorInterface: InteractorInterface {
     func getPeopleDetail(_ id: Int)
-    func getTopRate()
 }
 
 protocol PopularPeopleInteractorOutputInterface: InteractorOutputInterface {
@@ -27,4 +29,7 @@ protocol PopularPeopleInteractorOutputInterface: InteractorOutputInterface {
 }
 
 protocol PopularPeopleWireframeInterface: WireframeInterface {
+    func showImagesScreen(_ payload: Any)
+    func showVideosScreen(_ payload: Any)
+    func showSimilarScreen(_ payload: Any)
 }

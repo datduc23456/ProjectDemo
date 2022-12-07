@@ -10,14 +10,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TrendingCollectionViewCell" customModule="ProjectDemo" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TrendingCollectionViewCell" customModule="Star_Movie" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="137" height="168"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="137" height="168"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-kv-82Y" customClass="AYImageView" customModule="ProjectDemo" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-kv-82Y" customClass="AYImageView" customModule="Star_Movie" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="137" height="168"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
@@ -26,6 +26,9 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_play_small" translatesAutoresizingMaskIntoConstraints="NO" id="DU0-Dz-zBy">
+                        <rect key="frame" x="57.666666666666657" y="73" width="22" height="22"/>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -33,13 +36,19 @@
                 <constraint firstItem="XtT-kv-82Y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Bhj-Yj-0K8"/>
                 <constraint firstItem="XtT-kv-82Y" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="NmT-SW-1c6"/>
                 <constraint firstAttribute="bottom" secondItem="XtT-kv-82Y" secondAttribute="bottom" id="XO0-E9-qwb"/>
+                <constraint firstItem="DU0-Dz-zBy" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="s4p-9v-3zS"/>
+                <constraint firstItem="DU0-Dz-zBy" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="tbU-xW-1iG"/>
                 <constraint firstAttribute="trailing" secondItem="XtT-kv-82Y" secondAttribute="trailing" id="u2n-cA-Nrq"/>
             </constraints>
             <size key="customSize" width="137" height="168"/>
             <connections>
+                <outlet property="icPlay" destination="DU0-Dz-zBy" id="fCz-6j-Y3p"/>
                 <outlet property="imageView" destination="XtT-kv-82Y" id="IHd-Da-8wF"/>
             </connections>
             <point key="canvasLocation" x="93.89312977099236" y="28.87323943661972"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic_play_small" width="22" height="22"/>
+    </resources>
 </document>

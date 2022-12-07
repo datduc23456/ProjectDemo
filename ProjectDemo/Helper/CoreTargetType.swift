@@ -15,6 +15,7 @@ enum CoreTargetType: TargetType {
     case detail(Int)
     case moviegenreid(genreId: Int, page: Int)
     case TVshowgenreid(genreId: Int, page: Int)
+    case moviepeopleid(peopleId: Int, page: Int)
     case genreList
     case searchMovie(query: String, page: Int)
     case TVshowPopular(page: Int)
@@ -27,8 +28,8 @@ enum CoreTargetType: TargetType {
     case searchPerson(query: String, page: Int)
     case upload([String: Any])
     case download(url: String, fileName: String?)
-    case getSimularMovie(movieId: Int)
-    case getSimularTv(tvId: Int)
+    case getSimularMovie(movieId: Int, page: Int)
+    case getSimularTv(tvId: Int, page: Int)
     case getMovieReviews(movieId: Int)
     case getMovieImages(movieId: Int)
     case getTvShowImages(movieId: Int)
@@ -47,6 +48,8 @@ enum CoreTargetType: TargetType {
         case .detail(let id):
             return "movie/\(id)"
         case .moviegenreid:
+            return "discover/movie"
+        case .moviepeopleid:
             return "discover/movie"
         case .TVshowgenreid:
             return "discover/tv"
@@ -70,16 +73,16 @@ enum CoreTargetType: TargetType {
             return "search/person"
         case .genreList:
             return "genre/movie/list"
-        case .getSimularMovie(let movieId):
+        case .getSimularMovie(let movieId, _):
             return "/movie/\(movieId)/similar"
-        case .getSimularTv(let tvId):
+        case .getSimularTv(let tvId, _):
             return "/tv/\(tvId)/similar"
         case .getMovieReviews(let movieId):
             return "/movie/\(movieId)/reviews"
         case .getMovieImages(let movieId):
             return "/movie/\(movieId)/images"
-        case .getTvShowImages(let movieId):
-            return "/tv/\(movieId)/images"
+        case .getTvShowImages(let tvId):
+            return "/tv/\(tvId)/images"
         case .trendingMovie:
             return "/trending/movie/day"
         case .trendingTvShow:
@@ -112,6 +115,9 @@ enum CoreTargetType: TargetType {
         case .moviegenreid(let genreId, let page):
             defaultParams.updateValue(genreId, forKey: "with_genres")
             defaultParams.updateValue(page, forKey: "page")
+        case .moviepeopleid(let peopleId, let page):
+            defaultParams.updateValue(peopleId, forKey: "with_cast")
+            defaultParams.updateValue(page, forKey: "page")
         case .TVshowgenreid(let genreId, let page):
             defaultParams.updateValue(genreId, forKey: "with_genres")
             defaultParams.updateValue(page, forKey: "page")
@@ -139,6 +145,10 @@ enum CoreTargetType: TargetType {
         case .trendingMovie(let page):
             defaultParams.updateValue(page, forKey: "page")
         case .trendingTvShow(let page):
+            defaultParams.updateValue(page, forKey: "page")
+        case .getSimularMovie(_, let page):
+            defaultParams.updateValue(page, forKey: "page")
+        case .getSimularTv(_, let page):
             defaultParams.updateValue(page, forKey: "page")
         default:
             break

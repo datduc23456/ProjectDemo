@@ -330,6 +330,12 @@ extension MovieDetailViewController: HeaderViewDelegate {
             presenter.didTapUserNote()
         case .season:
             presenter.didTapSeason()
+        case .images:
+            presenter.didTapImage()
+        case .videos:
+            presenter.didTapVideos()
+        case .trending:
+            presenter.didTapSimilar()
         default:
             return
         }

@@ -15,7 +15,7 @@ class FavoriteTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear
-        filmNoteView.viewRemove.addTapGestureRecognizer { [weak self] in
+        filmNoteView.btnProperties.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
             self.didTapRemove?()
         }

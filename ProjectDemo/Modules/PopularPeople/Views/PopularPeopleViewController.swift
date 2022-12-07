@@ -9,7 +9,6 @@
 import UIKit
 
 final class PopularPeopleViewController: BaseViewController {
-    //BaseCollectionViewController<PeoplePopularCollectionViewCell> {
 
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var stackView: UIStackView!
@@ -30,11 +29,7 @@ final class PopularPeopleViewController: BaseViewController {
     var isExpandTextView: Bool = false
     var selectedIndex: Int = 0
     var peopleDetail: PeopleDetail?
-    
-//    override var heightForItem: Double {
-//       return 150
-//    }
-//
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
@@ -53,15 +48,6 @@ final class PopularPeopleViewController: BaseViewController {
         blurView.alpha = 0.6
         scrollView.contentInsetAdjustmentBehavior = .never
     }
-    
-//    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 20
-//    }
-//
-//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! PeoplePopularCollectionViewCell
-//        return cell
-//    }
 }
 
 // MARK: - PopularPeopleViewInterface
@@ -69,7 +55,6 @@ extension PopularPeopleViewController: PopularPeopleViewInterface {
     func getRelatedMovie(_ response: MovieResponse) {
         
     }
-    
     
     var id: Int {
         if let id = payload as? Int {
@@ -98,11 +83,6 @@ extension PopularPeopleViewController: PopularPeopleViewInterface {
         lbName.text = response.name
         lbTotalFilm.text = "Total Films: \(response.tvCredits.cast.count + response.tvCredits.crew.count + response.movieCredits.cast.count + response.movieCredits.crew.count)"
         stackView.addArrangedSubview(labelForDepartment(response.knownForDepartment))
-        
-//        stackView.addArrangedSubview(label)
-//        stackView.addArrangedSubview(UIView())
-//        stackView.addArrangedSubview(UIView())
-//        stackView.addArrangedSubview()
     }
     
     func labelForDepartment(_ string: String) -> InsetLabel {
@@ -155,8 +135,6 @@ extension PopularPeopleViewController: UITableViewDataSource, UITableViewDelegat
                 }
             }
         }
-        
-//        if let cell = cell.
         
         if let cell = cell as? MovieVideosTableViewCell, let data = self.data["\(item)"] as? [Movie]  {
             cell.configCell(data, selectedIndex: self.selectedIndex)
@@ -230,6 +208,14 @@ extension PopularPeopleViewController: TableViewAdjustedHeightDelegate {
 
 extension PopularPeopleViewController: HeaderViewDelegate {
     func headerView(_ customHeader: UITableViewHeaderFooterView, didTapButtonInSection section: Int) {
-        print("did tap button", section)
+        let item = tableViewDataSource[section]
+        switch item {
+        case.images:
+            presenter.didTapImage()
+        case .trending:
+            presenter.didTapSimilar()
+        default:
+            return
+        }
     }
 }

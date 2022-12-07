@@ -85,7 +85,16 @@ extension BaseViewController {
     /// Push
     public func pushChildViewController(_ vc: UIViewController, _ fromRoot: Bool, _ animate: Bool) {
         if fromRoot {
-            AppDelegate.shared.appRootViewController.navigationController?.pushViewController(vc, animated: animate)
+            if let navigationController = AppDelegate.shared.appRootViewController.navigationController {
+                for viewController in navigationController.viewControllers {
+                    if viewController.className == vc.className {
+                        navigationController.pushViewController(vc, animated: animate)
+                        navigationController.viewControllers = [navigationController.viewControllers.first!, vc]
+                        return
+                    }
+                }
+                navigationController.pushViewController(vc, animated: animate)
+            }
         } else {
             currentNavigationController(from: nil)?.pushViewController(vc, animated: animate)
         }

@@ -48,4 +48,16 @@ final class MovieDetailWireframe: MovieDetailWireframeInterface {
     func showSeasonScreen(_ payload: Any) {
         navigator.pushScreen(AppScreens.season, payload, fromRoot: true)
     }
+    
+    func showImagesScreen(_ payload: Any) {
+        navigator.pushScreen(AppScreens.images, payload, fromRoot: true)
+    }
+    
+    func showVideosScreen(_ payload: Any) {
+        navigator.pushScreen(AppScreens.videos, payload, fromRoot: true)
+    }
+    
+    func showSimilarScreen(_ payload: Any) {
+        navigator.pushScreen(AppScreens.similar, payload, fromRoot: true)
+    }
 }

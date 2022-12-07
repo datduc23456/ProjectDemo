@@ -26,6 +26,8 @@ protocol MovieDetailPresenterInterface: PresenterInterface {
     func didTapUserNote()
     func didTapSeason()
     func didTapImage()
+    func didTapVideos()
+    func didTapSimilar()
 }
 
 protocol MovieDetailInteractorInterface: InteractorInterface {
@@ -54,4 +56,7 @@ protocol MovieDetailWireframeInterface: WireframeInterface {
     func showAddNoteScreen(_ payload: Any)
     func showUserNoteScreen(_ movieDetail: MovieDetail)
     func showSeasonScreen(_ payload: Any)
+    func showImagesScreen(_ payload: Any)
+    func showVideosScreen(_ payload: Any)
+    func showSimilarScreen(_ payload: Any)
 }

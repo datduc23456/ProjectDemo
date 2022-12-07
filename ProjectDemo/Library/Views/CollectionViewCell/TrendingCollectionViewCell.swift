@@ -9,6 +9,7 @@ import UIKit
 
 class TrendingCollectionViewCell: BaseCollectionViewCell {
 
+    @IBOutlet weak var icPlay: UIImageView!
     @IBOutlet weak var imageView: AYImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,6 +41,13 @@ class TrendingCollectionViewCell: BaseCollectionViewCell {
             imageView.backgroundColorImage = .white.withAlphaComponent(0.3)
             imageView.imageContentMode = .scaleAspectFit
             imageView.setImageFromUrl(url: "\(baseURLImage)\(payload)")
+        }
+        
+        if let payload = payload as? Video {
+            self.payload = payload
+            icPlay.isHidden = false
+            imageView.isAllowToOpenImage = false
+            imageView.setImageFromUrl(url: CommonUtil.getThumbnailYoutubeUrl(payload.key).absoluteString)
         }
     }
     

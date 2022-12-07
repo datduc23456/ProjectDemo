@@ -26,8 +26,21 @@ final class MovieDetailPresenter {
 }
 
 extension MovieDetailPresenter: MovieDetailPresenterInterface {
+    func didTapSimilar() {
+        wireframe.showSimilarScreen((view!.id.0, view!.id.1))
+    }
+    
+    func didTapVideos() {
+        if let videos = movieDetail?.videos.video {
+            wireframe.showVideosScreen(videos)
+        }
+    }
+    
     func didTapImage() {
-        
+//        listVideos.map({CommonUtil.getThumbnailYoutubeUrl($0.key)})
+        if let urls = movieDetail?.videos.video.map({CommonUtil.getThumbnailYoutubeUrl($0.key)}) {
+            wireframe.showImagesScreen(urls)
+        }
     }
     
     func didTapSeason() {

@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0306EABBDE5172554FC85083 /* SimilarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DFF35AEA4D10F1017CACDA /* SimilarViewController.swift */; };
 		034F66A073971287131836F6 /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978E5632B0491F212E670482 /* PlayVideoViewController.swift */; };
 		0590245166F33F8C3112DEFD /* WatchedListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10097A3F21200A77754D7AC9 /* WatchedListViewController.storyboard */; };
 		0692D27A221AE5A902692160 /* TVShowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDBE1C973A3D0BD586E30E /* TVShowPresenter.swift */; };
 		07DE2D0E258E7E48F4882819 /* FavoriteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EBB725926E37F7ACDF912 /* FavoriteViewController.storyboard */; };
 		0A5B8FA97AE7C9C29764AFC6 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293EEC48B0635D7266D0B80 /* ActionViewController.swift */; };
+		0C3D2FEA7EBB8B43C17238FA /* SimilarWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452C77677682820DE234FE60 /* SimilarWireframe.swift */; };
 		0E45665419FCFEC8C8E9D4F9 /* Pods_ProjectDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B2414DA08014923CBA236D6 /* Pods_ProjectDemo.framework */; };
 		11F78316456D43EB42537BB1 /* PlayVideoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2340AFA57FA05E0517369822 /* PlayVideoViewController.storyboard */; };
 		11F96FBD4B87C9B619D4A842 /* ExampleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62ADE0F7C8308801B5592DA9 /* ExampleViewController.storyboard */; };
@@ -134,6 +136,7 @@
 		1C63734259362711D08ACA16 /* SeasonInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F53DCBDDADF4A4037C879 /* SeasonInteractor.swift */; };
 		1CC69F9568CD590EEC660AE0 /* ImagesInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B6F6F4166FC8B03E130721 /* ImagesInterfaces.swift */; };
 		1CEBAF1CA42DD3D33017AF8F /* NotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9478F4B1F04F32FAA6B2F978 /* NotePresenter.swift */; };
+		1F0CD2CF63E4DF03368F9F8B /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79CDB05210D72D71104385E /* VideosViewController.swift */; };
 		20CD7B58675B38002D808B71 /* ActionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CEDD5351FB4758A294EA86 /* ActionInteractor.swift */; };
 		2243FBE2EB9DBBD212FBABA0 /* SeasonWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0B8E746319564650B8DC1 /* SeasonWireframe.swift */; };
 		2367A43E6D07965BEE866ABC /* GenersViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5DFA363CADDE30F059A961 /* GenersViewController.storyboard */; };
@@ -151,6 +154,7 @@
 		40D6FB2509259B9680D4EF0F /* ImagesWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA149D9CC99AB12CE3E1004 /* ImagesWireframe.swift */; };
 		41AC4688BB1D04BEFFDDC92D /* StatisticcalInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570D2F03EB947449A0772764 /* StatisticcalInteractor.swift */; };
 		4505B88542B7CE6E6B466969 /* ExampleInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD217B066DD36734A6E4AFA /* ExampleInterfaces.swift */; };
+		4C31D81DDDF13AC3FBA9CE4B /* SimilarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F40761A5673B862F92B8B /* SimilarInteractor.swift */; };
 		4F12DF7C1AE7CA9ED771579B /* ImagesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CCF29DDB57F8F64829DE1 /* ImagesInteractor.swift */; };
 		5270096E522DBEE73D6E75BD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B013207E9C859C0BDB947EA /* SearchViewController.swift */; };
 		527F93B62925257D0065FE10 /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F93B52925257D0065FE10 /* CommonUtil.swift */; };
@@ -244,17 +248,23 @@
 		5E85C51A0E9F852C0BCD88D4 /* TVShowInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE7871CDE80793E98890531 /* TVShowInterfaces.swift */; };
 		63B2C54B84DCCCF4E954AE46 /* ActionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FDB477F994F84789A57AF10 /* ActionViewController.storyboard */; };
 		64711AB6B1CAC1CD31FE6A1B /* NoteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530AE70379884AEBDA5B7371 /* NoteInteractor.swift */; };
+		6721DA274782879504D90A6F /* SimilarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362EF90B3848697C36838971 /* SimilarViewController.storyboard */; };
 		690B08EF695F6629366A9E40 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA23EC240311E7E4117506E0 /* FavoriteViewController.swift */; };
 		6D0D42B220EC4F3C6EF71D2A /* SearchWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F09509A7690E9DFBF7FDF3 /* SearchWireframe.swift */; };
 		7428DD4F47C160D2F1A220D5 /* SeasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AA6904A95AE06A975BA77 /* SeasonViewController.swift */; };
+		7540ACCDEACCE9F995FF23F6 /* SimilarInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C9618B4928EC3791B09C98 /* SimilarInterfaces.swift */; };
 		755946601D21210C120B73CF /* GenersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAF44B1E8BF9732694D065E /* GenersPresenter.swift */; };
 		756DD076F318A9A50B1418CB /* TVShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60F92457A9ECB40F3A8B371 /* TVShowViewController.swift */; };
 		7B283210D7CA8581D21B4437 /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F902A55FF30D62E88FCAB18 /* MovieDetailPresenter.swift */; };
 		7B4AD1D8DCE2302555F141A1 /* PlayVideoInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301A8304C00D68F048C39AF /* PlayVideoInterfaces.swift */; };
+		7B5EE0963EC7D7A67A03AF6D /* VideosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504A2A94D1245884ECDC98D2 /* VideosPresenter.swift */; };
 		7BFDA53B962A868BB646CFE9 /* PopularPeopleInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1461A2A26BA5610907AC860F /* PopularPeopleInterfaces.swift */; };
+		7C701F9DEDD511210A6AC6E9 /* VideosInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D8A7A307F8CDC12B880B4 /* VideosInteractor.swift */; };
+		7F342A58E675DC3C2AD0939D /* VideosInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609434351191767550C3B11B /* VideosInterfaces.swift */; };
 		8357AD80C43C5B7ED9A8F521 /* PlayVideoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B5DE654D1E8E1904DFA3FC /* PlayVideoInteractor.swift */; };
 		84BFF6859E455F7AF6C3DE61 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6DD1245701C7203CDC60092 /* SearchViewController.storyboard */; };
 		86437F26434A3DE145983A58 /* UserNoteInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4700761754DB05DDAA473B5 /* UserNoteInterfaces.swift */; };
+		88DA75A0A6D3AABA0F900441 /* SimilarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C128D886E1E8D8FB91ECB89B /* SimilarPresenter.swift */; };
 		8B62952F672B7A48643F8C20 /* UserNoteWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B56A8E58D04B27861DC05CB /* UserNoteWireframe.swift */; };
 		9AAE300515F091D5A491F193 /* WatchedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2042F43163AB7E00F2C5A /* WatchedListViewController.swift */; };
 		9AAE4462D285E740076F12E7 /* PlayVideoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FB3C44F8E5813C59B70532 /* PlayVideoPresenter.swift */; };
@@ -272,6 +282,7 @@
 		B2B2C769568DF79B606D5AE3 /* ActionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A0E80F43EAC1CC015E79CC /* ActionPresenter.swift */; };
 		B2C7BFAD25689BDB3C676013 /* PopularPeopleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1A348BEB9BAB9F31D60C9F /* PopularPeopleViewController.storyboard */; };
 		B2DDCAF28156F4313F22B841 /* ExamplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2553AC6158B6416DB0AC9375 /* ExamplePresenter.swift */; };
+		B4A1C46F34C1BB85E2325395 /* VideosViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE4C156EB9B2C767EE2F6F8E /* VideosViewController.storyboard */; };
 		B59286404D30E42C1143C240 /* PopularPeopleDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8036C287AAC74A18217AF1EB /* PopularPeopleDetailPresenter.swift */; };
 		BA3BE0AA4EB6080A8F356F44 /* StatisticcalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8B369BF7DBDF176DEDB2DF /* StatisticcalViewController.swift */; };
 		BBA8AA085A33C54F0628B30B /* PopularPeoplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D50821070187B640603705 /* PopularPeoplePresenter.swift */; };
@@ -303,6 +314,7 @@
 		E5EDA75719D6B0F2DFB8B03B /* ExampleWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E135D3F555EAFD8CBD2955 /* ExampleWireframe.swift */; };
 		E8869E021575FE210EDCC820 /* PopularPeopleWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6618D9CBAB9CAC9C75C493 /* PopularPeopleWireframe.swift */; };
 		E8AB5A159EEE81F5A8858822 /* HomeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADBE51681EE1E936CBE24E /* HomeWireframe.swift */; };
+		EAB498E47D9538885AC1FFCE /* VideosWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00614F78991255655A3600ED /* VideosWireframe.swift */; };
 		F28C5F5C136B3D3467FB5EE8 /* SeasonPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E2854636F5AEB7C4CA5D2 /* SeasonPresenter.swift */; };
 		F2BA60249C3D35252E76F318 /* UserNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A3A49CC1A97379E4654CE7 /* UserNoteViewController.swift */; };
 		F7D7806DADD0DA242260BAAE /* ActionWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510A0D08ADF7F1109286CF1B /* ActionWireframe.swift */; };
@@ -328,6 +340,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00614F78991255655A3600ED /* VideosWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VideosWireframe.swift; sourceTree = "<group>"; };
 		00A6F9D2390A55599F44EBFA /* StatisticcalPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StatisticcalPresenter.swift; sourceTree = "<group>"; };
 		03E135D3F555EAFD8CBD2955 /* ExampleWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleWireframe.swift; sourceTree = "<group>"; };
 		03EDA3A920F4A64330A377AC /* EpisodePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EpisodePresenter.swift; sourceTree = "<group>"; };
@@ -336,6 +349,7 @@
 		10097A3F21200A77754D7AC9 /* WatchedListViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = WatchedListViewController.storyboard; sourceTree = "<group>"; };
 		1025A041ED81A898943C7A70 /* UserNoteViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = UserNoteViewController.storyboard; sourceTree = "<group>"; };
 		1461A2A26BA5610907AC860F /* PopularPeopleInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PopularPeopleInterfaces.swift; sourceTree = "<group>"; };
+		15DFF35AEA4D10F1017CACDA /* SimilarViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SimilarViewController.swift; sourceTree = "<group>"; };
 		180BBA7509645CA488791B48 /* ExampleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		180C3CB92930BBE600E56C97 /* BottomSheetDraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetDraggableView.swift; sourceTree = "<group>"; };
 		180C3CBB2930BBF300E56C97 /* BottomSheetDraggableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetDraggableView.xib; sourceTree = "<group>"; };
@@ -442,6 +456,7 @@
 		185DC701290109AF0056C910 /* KeyboardDisplayableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDisplayableViewController.swift; sourceTree = "<group>"; };
 		185DC703290136420056C910 /* BaseNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigator.swift; sourceTree = "<group>"; };
 		185DC7062901367E0056C910 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		186D8A7A307F8CDC12B880B4 /* VideosInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VideosInteractor.swift; sourceTree = "<group>"; };
 		1899F2952924CC6700D2D978 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		1899F2962924CC6700D2D978 /* TabbarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabbarViewController.xib; sourceTree = "<group>"; };
 		18A42B8D293702D4001879DD /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
@@ -460,6 +475,7 @@
 		29E684920CF7EEBDDFB33800 /* SearchInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		30D3933AA80D5FF507CA45D3 /* HomeViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
 		326605EB63527D398AE00F6F /* GenersViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GenersViewController.swift; sourceTree = "<group>"; };
+		362EF90B3848697C36838971 /* SimilarViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = SimilarViewController.storyboard; sourceTree = "<group>"; };
 		36328B638C4D54842369CA48 /* SearchInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchInterfaces.swift; sourceTree = "<group>"; };
 		370EB89AD0A02933ADFDF7F8 /* PopularPeopleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PopularPeopleViewController.swift; sourceTree = "<group>"; };
 		37559676F86EFEDEB9A4EB7C /* EpisodeViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
@@ -469,12 +485,15 @@
 		4293EEC48B0635D7266D0B80 /* ActionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		42B6F6F4166FC8B03E130721 /* ImagesInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImagesInterfaces.swift; sourceTree = "<group>"; };
 		42F145DCD37E428997526D0F /* MovieDetailViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = MovieDetailViewController.storyboard; sourceTree = "<group>"; };
+		452C77677682820DE234FE60 /* SimilarWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SimilarWireframe.swift; sourceTree = "<group>"; };
+		48C9618B4928EC3791B09C98 /* SimilarInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SimilarInterfaces.swift; sourceTree = "<group>"; };
 		4952C3D1F36C9FC632B01A51 /* PlayVideoWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlayVideoWireframe.swift; sourceTree = "<group>"; };
 		4964708C44877482A284A4A8 /* HomeInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		4B5DFA363CADDE30F059A961 /* GenersViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = GenersViewController.storyboard; sourceTree = "<group>"; };
 		4BD217B066DD36734A6E4AFA /* ExampleInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExampleInterfaces.swift; sourceTree = "<group>"; };
 		4CEDBE1C973A3D0BD586E30E /* TVShowPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TVShowPresenter.swift; sourceTree = "<group>"; };
 		4F902A55FF30D62E88FCAB18 /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenter.swift; sourceTree = "<group>"; };
+		504A2A94D1245884ECDC98D2 /* VideosPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VideosPresenter.swift; sourceTree = "<group>"; };
 		510A0D08ADF7F1109286CF1B /* ActionWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionWireframe.swift; sourceTree = "<group>"; };
 		511AE24F959F0627E1E5D120 /* FavoriteInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavoriteInterfaces.swift; sourceTree = "<group>"; };
 		527F93B52925257D0065FE10 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommonUtil.swift; path = ProjectDemo/CommonUtil.swift; sourceTree = SOURCE_ROOT; };
@@ -576,6 +595,7 @@
 		5C7B999BFE7A77D10C74395B /* HomeViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5D18CF6E9945640D2156FBB8 /* NoteViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = NoteViewController.storyboard; sourceTree = "<group>"; };
 		5E36B6B1B512BCB90FC179A1 /* NoteWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NoteWireframe.swift; sourceTree = "<group>"; };
+		609434351191767550C3B11B /* VideosInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VideosInterfaces.swift; sourceTree = "<group>"; };
 		61CEDD5351FB4758A294EA86 /* ActionInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionInteractor.swift; sourceTree = "<group>"; };
 		62ADE0F7C8308801B5592DA9 /* ExampleViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = ExampleViewController.storyboard; sourceTree = "<group>"; };
 		69D50821070187B640603705 /* PopularPeoplePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PopularPeoplePresenter.swift; sourceTree = "<group>"; };
@@ -610,6 +630,7 @@
 		A385A90AC63019219A7F59EE /* UserNotePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserNotePresenter.swift; sourceTree = "<group>"; };
 		A3B5DE654D1E8E1904DFA3FC /* PlayVideoInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlayVideoInteractor.swift; sourceTree = "<group>"; };
 		A486F63D1152E61CDDDD4083 /* TVShowWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TVShowWireframe.swift; sourceTree = "<group>"; };
+		A79CDB05210D72D71104385E /* VideosViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		A7C0D7834AE7759A2817A018 /* EpisodeInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EpisodeInteractor.swift; sourceTree = "<group>"; };
 		AA2416AC3B5024A2F4139AB8 /* Pods-ProjectDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectDemo.release.xcconfig"; path = "Target Support Files/Pods-ProjectDemo/Pods-ProjectDemo.release.xcconfig"; sourceTree = "<group>"; };
 		AC9688009E4DA0CE7346F4A0 /* FavoriteInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavoriteInteractor.swift; sourceTree = "<group>"; };
@@ -620,7 +641,10 @@
 		B4700761754DB05DDAA473B5 /* UserNoteInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserNoteInterfaces.swift; sourceTree = "<group>"; };
 		B5862AB066A69C6A6AAD9F5C /* MovieDetailWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MovieDetailWireframe.swift; sourceTree = "<group>"; };
 		BA23EC240311E7E4117506E0 /* FavoriteViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		BE4C156EB9B2C767EE2F6F8E /* VideosViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = VideosViewController.storyboard; sourceTree = "<group>"; };
+		BF9F40761A5673B862F92B8B /* SimilarInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SimilarInteractor.swift; sourceTree = "<group>"; };
 		C0A85DAE3FCC9500A9121969 /* ImagesViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
+		C128D886E1E8D8FB91ECB89B /* SimilarPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SimilarPresenter.swift; sourceTree = "<group>"; };
 		C5919BDA490311D251363ED6 /* TVShowInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TVShowInteractor.swift; sourceTree = "<group>"; };
 		C9242C38CAFCEB3EE47F58F3 /* NoteInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NoteInterfaces.swift; sourceTree = "<group>"; };
 		CADB8CB480694D5800E8749D /* PopularPeopleInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PopularPeopleInteractor.swift; sourceTree = "<group>"; };
@@ -679,6 +703,15 @@
 			path = Season;
 			sourceTree = "<group>";
 		};
+		0AC52A307E2FAECD3860623A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BE4C156EB9B2C767EE2F6F8E /* VideosViewController.storyboard */,
+				A79CDB05210D72D71104385E /* VideosViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0B9D1FBD2552358E99DB8D72 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -695,6 +728,18 @@
 				4293EEC48B0635D7266D0B80 /* ActionViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		0F3F82F9B93F0308BBACF504 /* Similar */ = {
+			isa = PBXGroup;
+			children = (
+				48C9618B4928EC3791B09C98 /* SimilarInterfaces.swift */,
+				C128D886E1E8D8FB91ECB89B /* SimilarPresenter.swift */,
+				BF9F40761A5673B862F92B8B /* SimilarInteractor.swift */,
+				452C77677682820DE234FE60 /* SimilarWireframe.swift */,
+				AF66963FB730857A0498096C /* Views */,
+			);
+			path = Similar;
 			sourceTree = "<group>";
 		};
 		11D3D0AD474EE7FA71B3A853 /* Views */ = {
@@ -1087,6 +1132,8 @@
 				95256A6A5DA86D76BB41198C /* Images */,
 				5A67D6EAAE6CD020E99A1098 /* UserNote */,
 				2E4F0FBA735B2810FB3374AC /* WatchedList */,
+				67C46F7A8DFB0EDD386BB693 /* Videos */,
+				0F3F82F9B93F0308BBACF504 /* Similar */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1148,6 +1195,8 @@
 				52CBDD1C2928DD2D00548E52 /* HeaderView.xib */,
 				52C628EF293CA609009BF3E4 /* AddNoteHeaderView.swift */,
 				52C628F1293CA619009BF3E4 /* AddNoteHeaderView.xib */,
+				52CBDD0529288E6400548E52 /* FilmNoteView.swift */,
+				52CBDD082928D36F00548E52 /* FilmNoteView.xib */,
 			);
 			path = HeaderTableViewCell;
 			sourceTree = "<group>";
@@ -1236,6 +1285,18 @@
 				3FC2042F43163AB7E00F2C5A /* WatchedListViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		67C46F7A8DFB0EDD386BB693 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				609434351191767550C3B11B /* VideosInterfaces.swift */,
+				504A2A94D1245884ECDC98D2 /* VideosPresenter.swift */,
+				186D8A7A307F8CDC12B880B4 /* VideosInteractor.swift */,
+				00614F78991255655A3600ED /* VideosWireframe.swift */,
+				0AC52A307E2FAECD3860623A /* Views */,
+			);
+			path = Videos;
 			sourceTree = "<group>";
 		};
 		7B5DC24F9D1E0E7EBC4AB801 /* MovieDetail */ = {
@@ -1368,6 +1429,15 @@
 			path = PopularPeople;
 			sourceTree = "<group>";
 		};
+		AF66963FB730857A0498096C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				362EF90B3848697C36838971 /* SimilarViewController.storyboard */,
+				15DFF35AEA4D10F1017CACDA /* SimilarViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B10FD01DB29636FA6DED52E2 /* Episode */ = {
 			isa = PBXGroup;
 			children = (
@@ -1387,8 +1457,6 @@
 				180BBA7509645CA488791B48 /* ExampleViewController.swift */,
 				527F93D02925555B0065FE10 /* ABCTableViewCell.swift */,
 				181189642925C62B00E9D883 /* ABC1CollectionViewCell.swift */,
-				52CBDD0529288E6400548E52 /* FilmNoteView.swift */,
-				52CBDD082928D36F00548E52 /* FilmNoteView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1651,6 +1719,8 @@
 				C44E30BB24161F72C8CF42BB /* ImagesViewController.storyboard in Resources */,
 				17606F10A57D56124C58E5D5 /* UserNoteViewController.storyboard in Resources */,
 				0590245166F33F8C3112DEFD /* WatchedListViewController.storyboard in Resources */,
+				B4A1C46F34C1BB85E2325395 /* VideosViewController.storyboard in Resources */,
+				6721DA274782879504D90A6F /* SimilarViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1936,6 +2006,16 @@
 				DB1899346F4914B91AEA9395 /* WatchedListInteractor.swift in Sources */,
 				E57E4A57CF868FEB9D3E2501 /* WatchedListWireframe.swift in Sources */,
 				9AAE300515F091D5A491F193 /* WatchedListViewController.swift in Sources */,
+				7F342A58E675DC3C2AD0939D /* VideosInterfaces.swift in Sources */,
+				7B5EE0963EC7D7A67A03AF6D /* VideosPresenter.swift in Sources */,
+				7C701F9DEDD511210A6AC6E9 /* VideosInteractor.swift in Sources */,
+				EAB498E47D9538885AC1FFCE /* VideosWireframe.swift in Sources */,
+				1F0CD2CF63E4DF03368F9F8B /* VideosViewController.swift in Sources */,
+				7540ACCDEACCE9F995FF23F6 /* SimilarInterfaces.swift in Sources */,
+				88DA75A0A6D3AABA0F900441 /* SimilarPresenter.swift in Sources */,
+				4C31D81DDDF13AC3FBA9CE4B /* SimilarInteractor.swift in Sources */,
+				0C3D2FEA7EBB8B43C17238FA /* SimilarWireframe.swift in Sources */,
+				0306EABBDE5172554FC85083 /* SimilarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
