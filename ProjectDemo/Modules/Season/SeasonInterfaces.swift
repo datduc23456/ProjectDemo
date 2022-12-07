@@ -7,6 +7,7 @@
 //
 
 protocol SeasonViewInterface: ViewInterface {
+    var seasons: [Season] { get }
 }
 
 protocol SeasonPresenterInterface: PresenterInterface {

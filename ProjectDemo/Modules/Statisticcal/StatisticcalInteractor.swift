@@ -17,4 +17,10 @@ extension StatisticcalInteractor: StatisticcalInteractorInterface {
             self.output?.fetchWatchedListObjects(objects)
         })
     }
+    
+    func deleteWatchedListObject(_ object: WatchedListObject) {
+        DTPBusiness.shared.deleteWatchedListObject(object, completion: { object in
+            self.output?.deleteWatchedListObject(object)
+        })
+    }
 }

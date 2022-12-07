@@ -9,18 +9,23 @@
 protocol StatisticcalViewInterface: ViewInterface {
     func fetchWatchedListObjects(_ objects: [WatchedListObject])
     func fetchDataYear(_ data: [String: [WatchedListObject]])
+    func deleteWatchedListObject(_ object: WatchedListObject?)
 }
 
 protocol StatisticcalPresenterInterface: PresenterInterface {
     func didTapSearch()
+    func didTapDeleteWatchListObject(_ object: WatchedListObject)
+    func didChangeChargeType(_ chartType: ChartValueType)
 }
 
 protocol StatisticcalInteractorInterface: InteractorInterface {
     func fetchWatchedListObjects()
+    func deleteWatchedListObject(_ object: WatchedListObject)
 }
 
 protocol StatisticcalInteractorOutputInterface: InteractorOutputInterface {
     func fetchWatchedListObjects(_ objects: [WatchedListObject])
+    func deleteWatchedListObject(_ object: WatchedListObject?)
 }
 
 protocol StatisticcalWireframeInterface: WireframeInterface {

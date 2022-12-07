@@ -48,7 +48,7 @@ class CinemaPopularCollectionViewCell: BaseCollectionViewCell {
             self.payload = payload
             image.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(payload.posterPath)"))
             lbTitle.text = payload.originalTitle.isEmpty ? payload.originalName : payload.originalTitle
-            lbVoteAvg.text = "\(payload.voteAverage)"
+            lbVoteAvg.text = "\(payload.voteAverage.roundToPlaces(places: 1))"
             lbYear.text = CommonUtil.getYearFromDate(payload.releaseDate)
             lbGenres.text = DTPBusiness.shared.mapToGenreName(payload.genreIDS)
         }

@@ -36,15 +36,6 @@ final class HomeViewController: BaseViewController {
             self.presenter.didTapSearch()
         }
         navigation.configContentNav(.home)
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        if isFirstLayout {
-//            tableView.fadeView(style: .bottom)
-//            isFirstLayout = !isFirstLayout
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,8 +53,6 @@ extension HomeViewController: HomeViewInterface {
         self.data.updateValue(response.results, forKey: "\(HomeTableViewDataSource.popular)")
         self.data.updateValue(first8, forKey: "\(HomeTableViewDataSource.pageView)")
         tableView.reloadData()
-//        tableView.reloadSections(IndexSet([2]), with: .none)
-//        tableView.reloadSections(IndexSet([1]), with: .none)
     }
     
     func getGenresList(_ response: GenreResponse) {

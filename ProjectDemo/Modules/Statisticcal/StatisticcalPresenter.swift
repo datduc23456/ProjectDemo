@@ -13,7 +13,7 @@ final class StatisticcalPresenter {
     private var wireframe: StatisticcalWireframeInterface
     private var watchedListObjects: [WatchedListObject] = []
     private var data: [String: [WatchedListObject]] = [:]
-    private var chartType: ChartValueType = .month
+    private var chartType: ChartValueType = .year
     
     init(view: StatisticcalViewInterface,
          interactor: StatisticcalInteractorInterface,
@@ -36,9 +36,23 @@ extension StatisticcalPresenter: StatisticcalPresenterInterface {
     func viewWillAppear(_ animated: Bool) {
         interactor.fetchWatchedListObjects()
     }
+    
+    func didTapDeleteWatchListObject(_ object: WatchedListObject) {
+        interactor.deleteWatchedListObject(object)
+    }
+    
+    func didChangeChargeType(_ chartType: ChartValueType) {
+        self.chartType = chartType
+        interactor.fetchWatchedListObjects()
+    }
 }
 
 extension StatisticcalPresenter: StatisticcalInteractorOutputInterface {
+    func deleteWatchedListObject(_ object: WatchedListObject?) {
+        view?.deleteWatchedListObject(object)
+        interactor.fetchWatchedListObjects()
+    }
+    
     func fetchWatchedListObjects(_ objects: [WatchedListObject]) {
         watchedListObjects = objects
         switch chartType {

@@ -328,6 +328,8 @@ extension MovieDetailViewController: HeaderViewDelegate {
         switch item {
         case .notes, .rate(hasRate: false):
             presenter.didTapUserNote()
+        case .season:
+            presenter.didTapSeason()
         default:
             return
         }

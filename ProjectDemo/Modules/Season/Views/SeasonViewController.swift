@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SeasonViewController: BaseCollectionViewController<TrendingCollectionViewCell> {
+final class SeasonViewController: BaseCollectionViewController<TVShowCollectionViewCell> {
 
     // MARK: - Properties
 	var presenter: SeasonPresenterInterface!
@@ -22,26 +22,37 @@ final class SeasonViewController: BaseCollectionViewController<TrendingCollectio
     }
     
     override var heightForItem: Double {
-       return 95
+       return 153
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.configContentNav(.navigation)
-        navigation.lbTitle.text = "Image"
+        navigation.btnBack.addTapGestureRecognizer {
+            self.popChildViewController(nil, true)
+        }
+        navigation.lbTitle.text = "Season"
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return seasons.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! TrendingCollectionViewCell
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! TVShowCollectionViewCell
+        let item = seasons[indexPath.row]
+        cell.configCell(item, isTVShowDetail: true)
         return cell
     }
 }
 
 // MARK: - SeasonViewInterface
 extension SeasonViewController: SeasonViewInterface {
+    var seasons: [Season] {
+        if let seasons = payload as? [Season] {
+            return seasons
+        }
+        return []
+    }
 }

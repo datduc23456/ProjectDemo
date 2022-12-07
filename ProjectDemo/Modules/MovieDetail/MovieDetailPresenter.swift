@@ -26,6 +26,16 @@ final class MovieDetailPresenter {
 }
 
 extension MovieDetailPresenter: MovieDetailPresenterInterface {
+    func didTapImage() {
+        
+    }
+    
+    func didTapSeason() {
+        if let season = movieDetail?.seasons {
+            wireframe.showSeasonScreen(season)
+        }
+    }
+    
     func didTapUserNote() {
         if let movieDetail = movieDetail {
             wireframe.showUserNoteScreen(movieDetail)

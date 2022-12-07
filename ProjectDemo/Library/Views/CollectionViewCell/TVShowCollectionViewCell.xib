@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,7 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TVShowCollectionViewCell" customModule="Starmovie" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TVShowCollectionViewCell" customModule="Star_Movie" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="198" height="269"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -58,7 +58,7 @@
                             <constraint firstItem="xH5-92-JDt" firstAttribute="leading" secondItem="YTt-e9-Jzp" secondAttribute="leading" id="wJR-V4-C6w"/>
                         </constraints>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2mk-aV-Cjr" customClass="ImageStackView" customModule="Starmovie" customModuleProvider="target">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2mk-aV-Cjr" customClass="ImageStackView" customModule="Star_Movie" customModuleProvider="target">
                         <rect key="frame" x="8" y="109" width="182" height="152"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ny-Fq-hem">
@@ -77,7 +77,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star" translatesAutoresizingMaskIntoConstraints="NO" id="teP-SG-yAQ">
-                                                        <rect key="frame" x="47.333333333333336" y="4.6666666666666714" width="13" height="13"/>
+                                                        <rect key="frame" x="28" y="4.6666666666666714" width="13" height="13"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="13" id="UWu-vm-XqZ"/>
                                                             <constraint firstAttribute="height" constant="13" id="qf6-63-rhy"/>
@@ -87,7 +87,7 @@
                                                 <color key="backgroundColor" red="0.98039215690000003" green="0.78039215689999997" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="TVF-CQ-WgS" firstAttribute="leading" secondItem="vRT-IN-3cU" secondAttribute="leading" constant="6" id="5Bj-tI-2aY"/>
-                                                    <constraint firstAttribute="trailing" secondItem="teP-SG-yAQ" secondAttribute="trailing" constant="7" id="7tV-qA-7kc"/>
+                                                    <constraint firstItem="teP-SG-yAQ" firstAttribute="leading" secondItem="TVF-CQ-WgS" secondAttribute="trailing" constant="2" id="9kR-RZ-KuP"/>
                                                     <constraint firstItem="teP-SG-yAQ" firstAttribute="centerY" secondItem="vRT-IN-3cU" secondAttribute="centerY" id="aFI-8R-z7e"/>
                                                     <constraint firstAttribute="bottom" secondItem="TVF-CQ-WgS" secondAttribute="bottom" constant="2" id="iyh-rk-lF6"/>
                                                     <constraint firstItem="TVF-CQ-WgS" firstAttribute="top" secondItem="vRT-IN-3cU" secondAttribute="top" constant="5" id="qY6-Cr-1Fd"/>
@@ -172,7 +172,7 @@
                                 <rect key="frame" x="0.0" y="52" width="182" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action, Fantasy, Sci..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YxU-pI-xqu">
-                                        <rect key="frame" x="0.0" y="4" width="121" height="12"/>
+                                        <rect key="frame" x="0.0" y="9" width="121" height="12"/>
                                         <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -181,7 +181,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Ez2-XG-OLM"/>
-                                    <constraint firstItem="YxU-pI-xqu" firstAttribute="centerY" secondItem="3I5-n7-PuJ" secondAttribute="centerY" id="S4E-zR-3Vt"/>
+                                    <constraint firstItem="YxU-pI-xqu" firstAttribute="centerY" secondItem="3I5-n7-PuJ" secondAttribute="centerY" constant="5" id="S4E-zR-3Vt"/>
                                     <constraint firstItem="YxU-pI-xqu" firstAttribute="leading" secondItem="3I5-n7-PuJ" secondAttribute="leading" id="WQq-zk-atf"/>
                                 </constraints>
                             </view>

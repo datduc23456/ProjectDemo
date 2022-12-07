@@ -46,23 +46,30 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
     @IBOutlet weak var tableViewheight: NSLayoutConstraint!
     @IBOutlet weak var tableView: TableViewAdjustedHeight!
     @IBOutlet weak var lineChartView: LineChartView!
+    var presenter: StatisticcalPresenterInterface!
+    let months = (1...12).map { Int($0) }
     var bottomSheet: BaseViewBottomSheetViewController!
     let yearStart: Int = 2010
     var chartsLabelFont = UIFont.init(name: "NexaRegular", size: 12)!
+    var years = (2010...Int(CommonUtil.getYearFromDate(Date().toString()))!).map { Int($0) }
     var statisticalType: StatisticalType = .number {
         didSet {
             lbFilter.text = statisticalType.title
+            customizeChart(data: dataSource)
         }
     }
-    var chartType: ChartValueType = .month
-	var presenter: StatisticcalPresenterInterface!
-    let months = (1...12).map { Int($0) }
+    var chartType: ChartValueType = .year {
+        didSet {
+            presenter.didChangeChargeType(chartType)
+        }
+    }
     var dataSource: [String: [WatchedListObject]] = [:] {
         didSet {
             tableView.reloadData()
+            scrollView.isHidden = dataSource.isEmpty
         }
     }
-    var years = (2010...Int(CommonUtil.getYearFromDate(Date().toString()))!).map { Int($0) }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
@@ -72,9 +79,13 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         tableView.registerCell(for: MyNoteTableViewCell.className)
         scrollView.showsVerticalScrollIndicator = false
         tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
+        tableView.sectionHeaderHeight = 0
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
 //        self.view.backgroundColor = .white
 //        viewChart.roundCorners(corners: [.topRight, .bottomLeft, .bottomRight], radius: 8)
-        slider.value = [0]
+        slider.value = [0, 5]
         slider.snapStepSize = 1
         slider.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged)
         let navigation: BaseNavigationView = initCustomNavigation(.base)
@@ -103,17 +114,45 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
                 for key in keys {
                     value += data[key].isNil(value: [])
                 }
-                let dataEntry = ChartDataEntry(x: Double(month), y: Double(value.count))
+                var yValue: Double = 0
+                switch statisticalType {
+                case .number:
+                    yValue = Double(value.count)
+                case .time:
+                    yValue = Double(value.map({$0.runtime / 60}).reduce(0, +))
+                case .percent:
+                    yValue = Double(value.count)
+                }
+                
+                let dataEntry = ChartDataEntry(x: Double(month), y: yValue)
                     dataEmpty.append(dataEntry)
                 if value.count != 0 {
                     dataEntries.append(dataEntry)
                 }
             }
         default:
-            for key in data.keys {
-                let dataEntry = ChartDataEntry(x: Double(key).isNil(value: 2022), y: Double(data[key]!.count))
-                dataEntries.append(dataEntry)
+            for year in years {
+                for key in data.keys {
+                    if let value = data[key], Double(key) == Double(year) {
+                        var yValue: Double = 0
+                        switch statisticalType {
+                        case .number:
+                            yValue = Double(value.count)
+                        case .time:
+                            yValue = Double(value.map({$0.runtime / 60}).reduce(0, +))
+                        case .percent:
+                            yValue = Double(value.count)
+                        }
+                        let dataEntry = ChartDataEntry(x: Double(year), y: yValue)
+                        dataEmpty.append(dataEntry)
+                        dataEntries.append(dataEntry)
+                    } else {
+                        let dataEntry = ChartDataEntry(x: Double(year), y: 0)
+                        dataEmpty.append(dataEntry)
+                    }
+                }
             }
+            
         }
         
         let lineChartDataSetEmpty = LineChartDataSet(entries: dataEmpty, label: "")
@@ -135,7 +174,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         lineChartView.xAxis.axisLineColor = .clear
         lineChartView.xAxis.gridColor = UIColor.init(hexa: "#FFFCFC").withAlphaComponent(0.2)
         lineChartView.xAxis.gridLineDashLengths = [1]
-        lineChartView.xAxis.axisMinimum = 1
+//        lineChartView.xAxis.axisMinimum = 1
         lineChartView.xAxis.gridLineWidth = 1
         lineChartView.xAxis.axisRange = 1
         lineChartView.xAxis.labelPosition = .bottom
@@ -183,6 +222,15 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
             case .quartner:
                 return "\(value)"
             }
+        } else if let _ = axis as? YAxis {
+            switch statisticalType {
+            case .number:
+                return "\(Int(value))"
+            case .time:
+                return "\(Int(value))h"
+            case .percent:
+                return "\(Int(value))%"
+            }
         }
         return "\(Int(value))"
     }
@@ -199,6 +247,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
             deactiveBtnFilter(btn)
         }
         activeBtnFilter(sender as! UIButton)
+        chartType = .month
     }
     
     @IBAction func quarterFilterAction(_ sender: Any) {
@@ -206,12 +255,14 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
             deactiveBtnFilter(btn)
         }
         activeBtnFilter(sender as! UIButton)
+        chartType = .quartner
     }
     @IBAction func yearFilterAction(_ sender: Any) {
         for btn in groupButton {
             deactiveBtnFilter(btn)
         }
         activeBtnFilter(sender as! UIButton)
+        chartType = .year
     }
     
     @IBAction func filterAction(_ sender: Any) {
@@ -223,6 +274,10 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
                 self.bottomSheet.stackContent.delegate = self
             })
 //        })
+    }
+    
+    @IBAction func addWatchedListAction(_ sender: Any) {
+        presenter.didTapSearch()
     }
     
     func deactiveBtnFilter(_ btn: UIButton) {
@@ -297,6 +352,10 @@ extension StatisticcalViewController: UITableViewDataSource, UITableViewDelegate
 
 // MARK: - StatisticcalViewInterface
 extension StatisticcalViewController: StatisticcalViewInterface {
+    func deleteWatchedListObject(_ object: WatchedListObject?) {
+        
+    }
+    
     func fetchWatchedListObjects(_ objects: [WatchedListObject]) {
         
     }
@@ -328,9 +387,10 @@ extension StatisticcalViewController: BoottomSheetStackViewDelegate {
                 break
             }
             self.bottomSheet.dismiss(animated: true)
-        } else if let payload = bottomSheet.payload as? WatchedListObject {
+        } else if let object = bottomSheet.payload as? WatchedListObject {
             switch index {
             case 2:
+                presenter.didTapDeleteWatchListObject(object)
                 self.bottomSheet.dismiss(animated: true)
             case 3:
                 self.bottomSheet.dismiss(animated: true)

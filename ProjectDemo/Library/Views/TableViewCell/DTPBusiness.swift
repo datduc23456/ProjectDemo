@@ -74,6 +74,15 @@ class DTPBusiness {
         completion(query)
     }
     
+    func deleteWatchedListObject(_ movie: WatchedListObject, completion: ((WatchedListObject?) -> Void)) {
+        self.fetchWatchedListObjectWithId(movie._id, completion: { object in
+            if let object = object {
+                self.realmUtils.deleteObject(object: object)
+            }
+            completion(object)
+        })
+    }
+    
     func fetchMovieDetailObjectWatchedListWithId(_ id: Int, completion: ((MovieDetailObject?) -> Void)) {
         fetchRealmMovieDetailObjectWithId(id, completion: { movie in
             if let movie = movie, movie.isWatchedList {

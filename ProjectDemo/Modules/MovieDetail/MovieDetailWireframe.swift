@@ -44,4 +44,8 @@ final class MovieDetailWireframe: MovieDetailWireframeInterface {
     func showUserNoteScreen(_ movieDetail: MovieDetail) {
         navigator.pushScreen(AppScreens.usernote, movieDetail, fromRoot: true)
     }
+    
+    func showSeasonScreen(_ payload: Any) {
+        navigator.pushScreen(AppScreens.season, payload, fromRoot: true)
+    }
 }

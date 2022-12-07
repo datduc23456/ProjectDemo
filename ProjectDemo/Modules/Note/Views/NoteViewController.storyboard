@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,11 +28,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggw-n7-cD9">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="201.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="189.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcN-tc-33r">
-                                        <rect key="frame" x="0.0" y="201.5" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="189.5" width="375" height="90"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_emptyNote" translatesAutoresizingMaskIntoConstraints="NO" id="swR-wB-dct">
                                                 <rect key="frame" x="153.5" y="0.0" width="68" height="68"/>
@@ -46,7 +46,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jve-Xh-N9i">
-                                        <rect key="frame" x="0.0" y="291.5" width="375" height="20"/>
+                                        <rect key="frame" x="0.0" y="279.5" width="375" height="32"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This movie has no note yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuE-xP-ZXV">
                                                 <rect key="frame" x="98.5" y="0.0" width="178" height="14"/>
@@ -57,7 +57,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="Am8-7g-Rt2"/>
+                                            <constraint firstAttribute="height" constant="32" id="Am8-7g-Rt2"/>
                                             <constraint firstItem="tuE-xP-ZXV" firstAttribute="top" secondItem="Jve-Xh-N9i" secondAttribute="top" id="Ffl-Zb-x3C"/>
                                             <constraint firstItem="tuE-xP-ZXV" firstAttribute="centerX" secondItem="Jve-Xh-N9i" secondAttribute="centerX" id="lne-Cs-0G8"/>
                                         </constraints>
