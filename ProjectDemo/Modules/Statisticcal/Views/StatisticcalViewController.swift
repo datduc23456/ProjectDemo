@@ -48,10 +48,12 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
     @IBOutlet weak var lineChartView: LineChartView!
     var presenter: StatisticcalPresenterInterface!
     let months = (1...12).map { Int($0) }
+    let years = (2010...Int(CommonUtil.getYearFromDate(Date().toString()))!).map { Int($0) }
+    let quartner = (1...4).map { Int($0) }
     var bottomSheet: BaseViewBottomSheetViewController!
     let yearStart: Int = 2010
     var chartsLabelFont = UIFont.init(name: "NexaRegular", size: 12)!
-    var years = (2010...Int(CommonUtil.getYearFromDate(Date().toString()))!).map { Int($0) }
+    
     var statisticalType: StatisticalType = .number {
         didSet {
             lbFilter.text = statisticalType.title
@@ -83,8 +85,8 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
-//        self.view.backgroundColor = .white
-//        viewChart.roundCorners(corners: [.topRight, .bottomLeft, .bottomRight], radius: 8)
+        //        self.view.backgroundColor = .white
+        //        viewChart.roundCorners(corners: [.topRight, .bottomLeft, .bottomRight], radius: 8)
         slider.value = [0, 5]
         slider.snapStepSize = 1
         slider.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged)
@@ -125,12 +127,12 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
                 }
                 
                 let dataEntry = ChartDataEntry(x: Double(month), y: yValue)
-                    dataEmpty.append(dataEntry)
+                dataEmpty.append(dataEntry)
                 if value.count != 0 {
                     dataEntries.append(dataEntry)
                 }
             }
-        default:
+        case .year:
             for year in years {
                 for key in data.keys {
                     if let value = data[key], Double(key) == Double(year) {
@@ -152,7 +154,29 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
                     }
                 }
             }
-            
+        case .quartner:
+            for quartner in quartner {
+                for key in data.keys {
+                    if let quart = key.components(separatedBy: " ").first, let quartInt = Int(quart) {
+                        if let value = data[key], Double(quartInt) == Double(quartner) {
+                            var yValue: Double = 0
+                            switch statisticalType {
+                            case .number:
+                                yValue = Double(value.count)
+                            case .time:
+                                yValue = Double(value.map({$0.runtime / 60}).reduce(0, +))
+                            case .percent:
+                                yValue = Double(value.count)
+                            }
+                            let dataEntry = ChartDataEntry(x: Double(quartInt), y: yValue)
+                            dataEmpty.append(dataEntry)
+                            dataEntries.append(dataEntry)
+                        }
+                    }
+                }
+                let dataEntry = ChartDataEntry(x: Double(quartner), y: 0)
+                dataEmpty.append(dataEntry)
+            }
         }
         
         let lineChartDataSetEmpty = LineChartDataSet(entries: dataEmpty, label: "")
@@ -174,7 +198,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         lineChartView.xAxis.axisLineColor = .clear
         lineChartView.xAxis.gridColor = UIColor.init(hexa: "#FFFCFC").withAlphaComponent(0.2)
         lineChartView.xAxis.gridLineDashLengths = [1]
-//        lineChartView.xAxis.axisMinimum = 1
+        //        lineChartView.xAxis.axisMinimum = 1
         lineChartView.xAxis.gridLineWidth = 1
         lineChartView.xAxis.axisRange = 1
         lineChartView.xAxis.labelPosition = .bottom
@@ -238,8 +262,6 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
     @objc func sliderChanged(_ slider: MultiSlider) {
         lineChartView.moveViewToX(Double(2025))
         lineChartView.setNeedsLayout()
-        print("thumb \(slider.draggedThumbIndex) moved")
-        print("now thumbs are at \(slider.value)")
     }
     
     @IBAction func monthFilterAction(_ sender: Any) {
@@ -269,11 +291,11 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         bottomSheet = BaseViewBottomSheetViewController()
         bottomSheet.payload = 0
         bottomSheet.bottomDataSource = StatisticalType.allCases.compactMap({ return .label(title: $0.title, isChoose: $0 == statisticalType)})
-//        delay(0.2, closure: {
-            self.present(self.bottomSheet, animated: true, completion: {
-                self.bottomSheet.stackContent.delegate = self
-            })
-//        })
+        //        delay(0.2, closure: {
+        self.present(self.bottomSheet, animated: true, completion: {
+            self.bottomSheet.stackContent.delegate = self
+        })
+        //        })
     }
     
     @IBAction func addWatchedListAction(_ sender: Any) {
@@ -332,7 +354,7 @@ extension StatisticcalViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView") as! HeaderView
         let key = Array(dataSource.keys)[section]
-        headerView.contentView.backgroundColor = APP_COLOR
+        headerView.contentView.backgroundColor = .clear
         var headerTitle = ""
         switch chartType {
         case .year:
@@ -340,7 +362,7 @@ extension StatisticcalViewController: UITableViewDataSource, UITableViewDelegate
         case .month:
             headerTitle = key.toDateFormat(toFormat: "MMM yyyy")
         default:
-            break
+            headerTitle = "Quartner \(key)"
         }
         headerView.lbTitle.text = headerTitle
         headerView.lbTitle.font = UIFont(name: "Nexa-Bold", size: 14)

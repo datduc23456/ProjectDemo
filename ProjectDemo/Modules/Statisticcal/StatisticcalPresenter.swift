@@ -60,18 +60,29 @@ extension StatisticcalPresenter: StatisticcalInteractorOutputInterface {
             data = Dictionary(grouping: watchedListObjects, by: { CommonUtil.getYearFromDate($0.createdAt) })
             view?.fetchDataYear(data)
         case .month:
-
             data = Dictionary(grouping: watchedListObjects, by: {
-                print("month: \($0.createdAt.toDateFormat(toFormat: "MMM"))")
                 return $0.createdAt.toDateFormat(toFormat: "MM yyyy") })
             view?.fetchDataYear(data)
         default:
-            data = Dictionary(grouping: watchedListObjects, by: { CommonUtil.getYearFromDate($0.createdAt) })
+            data = Dictionary(grouping: watchedListObjects, by: {
+                let month = Int(CommonUtil.getMonthFromDate($0.createdAt)).isNil(value: 0)
+                let quartner = determineQuartner(forMonths: month)
+                let year = CommonUtil.getYearFromDate($0.createdAt)
+                return "\(quartner) \(year)" })
             view?.fetchDataYear(data)
         }
         
     }
     
+    private func determineQuartner(forMonths months: Int) -> Int {
+        switch months {
+        case 1...3: return 1
+        case 4...6: return 2
+        case 7...9: return 3
+        case 10...12: return 4
+        default: return 0
+        }
+    }
     
     func handleError(_ error: Error, _ completion: (() -> Void)?) {
         view?.hideLoading()
