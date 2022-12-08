@@ -41,6 +41,10 @@ final class HomeWireframe: HomeWireframeInterface {
         navigator.pushScreen(AppScreens.search, SearchType.detail, fromRoot: true)
     }
     
+    func showSettingScreen() {
+        navigator.pushScreen(AppScreens.setting, fromRoot: true)
+    }
+    
     func showActionScreen(_ type: ActionViewType) {
         navigator.pushScreen(AppScreens.action, type, fromRoot: true)
     }

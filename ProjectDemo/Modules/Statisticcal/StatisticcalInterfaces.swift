@@ -14,6 +14,7 @@ protocol StatisticcalViewInterface: ViewInterface {
 
 protocol StatisticcalPresenterInterface: PresenterInterface {
     func didTapSearch()
+    func didTapSetting()
     func didTapDeleteWatchListObject(_ object: WatchedListObject)
     func didChangeChargeType(_ chartType: ChartValueType)
 }
@@ -30,4 +31,5 @@ protocol StatisticcalInteractorOutputInterface: InteractorOutputInterface {
 
 protocol StatisticcalWireframeInterface: WireframeInterface {
     func showSearchScreen()
+    func showSettingScreen()
 }

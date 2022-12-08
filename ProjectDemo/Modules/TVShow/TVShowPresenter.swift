@@ -59,6 +59,10 @@ extension TVShowPresenter: TVShowPresenterInterface {
             return
         }
     }
+    
+    func didTapSetting() {
+        wireframe.showSettingScreen()
+    }
 }
 
 extension TVShowPresenter: TVShowInteractorOutputInterface {

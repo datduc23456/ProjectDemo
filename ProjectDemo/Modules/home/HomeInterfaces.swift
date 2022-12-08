@@ -16,6 +16,7 @@ protocol HomeViewInterface: ViewInterface {
 protocol HomePresenterInterface: PresenterInterface {
     func didTapToMovie(_ movie: Movie)
     func didTapSearch()
+    func didTapSetting()
     func didTapToGenre(_ genre: Genre)
     func didTapHeaderView(_ section: HomeTableViewDataSource)
 }
@@ -40,4 +41,5 @@ protocol HomeWireframeInterface: WireframeInterface {
     func showSearchScreen()
     func showActionScreen(_ type: ActionViewType)
     func showGenersScreen()
+    func showSettingScreen()
 }

@@ -45,6 +45,10 @@ extension StatisticcalPresenter: StatisticcalPresenterInterface {
         self.chartType = chartType
         interactor.fetchWatchedListObjects()
     }
+    
+    func didTapSetting() {
+        wireframe.showSettingScreen()
+    }
 }
 
 extension StatisticcalPresenter: StatisticcalInteractorOutputInterface {

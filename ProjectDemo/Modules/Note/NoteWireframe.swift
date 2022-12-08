@@ -32,6 +32,10 @@ final class NoteWireframe: NoteWireframeInterface {
         
     }
     
+    func showSettingScreen() {
+        navigator.pushScreen(AppScreens.setting, fromRoot: true)
+    }
+    
     func showAddNoteScreen(_ payload: Any?) {
         navigator.pushScreen(AppScreens.addnote, payload, fromRoot: true)
     }

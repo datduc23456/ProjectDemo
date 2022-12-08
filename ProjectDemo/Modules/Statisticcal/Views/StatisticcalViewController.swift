@@ -45,6 +45,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
     @IBOutlet weak var slider: MultiSlider!
     @IBOutlet weak var tableViewheight: NSLayoutConstraint!
     @IBOutlet weak var tableView: TableViewAdjustedHeight!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var lineChartView: LineChartView!
     var presenter: StatisticcalPresenterInterface!
     let months = (1...12).map { Int($0) }
@@ -69,6 +70,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         didSet {
             tableView.reloadData()
             scrollView.isHidden = dataSource.isEmpty
+            stackView.isHidden = !dataSource.isEmpty
         }
     }
     
@@ -94,6 +96,10 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
             self.presenter.didTapSearch()
+        }
+        navigation.imgSetting.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self else { return }
+            self.presenter.didTapSetting()
         }
         navigation.lbTitle.text = "Statistical"
         navigation.configContentNav(.tabbar)
@@ -352,9 +358,10 @@ extension StatisticcalViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView") as! HeaderView
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.className) as! HeaderView
         let key = Array(dataSource.keys)[section]
-        headerView.contentView.backgroundColor = .clear
+        headerView.contentView.backgroundColor = APP_COLOR
+//        headerView
         var headerTitle = ""
         switch chartType {
         case .year:

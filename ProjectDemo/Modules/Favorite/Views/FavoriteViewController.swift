@@ -15,6 +15,26 @@ enum FavoriteFilterType {
     case tvshow
 }
 
+enum MovieFilterType: CaseIterable {
+    case all
+    case nameAZ
+    case nameZA
+    case myRating
+    
+    var title: String {
+        switch self {
+        case .all:
+            return "All Movies"
+        case .nameAZ:
+            return "Name A-Z"
+        case .nameZA:
+            return "Name Z-A"
+        case .myRating:
+            return "My rating"
+        }
+    }
+}
+
 final class FavoriteViewController: BaseViewController {
 
     // MARK: - Properties
@@ -26,23 +46,27 @@ final class FavoriteViewController: BaseViewController {
     var dataSource: [String: [MovieDetailObject]] = [:]
     var bottomSheet: BaseViewBottomSheetViewController!
     var filterType: FavoriteFilterType = .movie
+    var movieFilterType: MovieFilterType = .all
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
         presenter.viewDidLoad()
-        bottomSheet = BaseViewBottomSheetViewController()
-        bottomSheet.bottomDataSource = [.content(title: "Remove Favorite", content: "Are you sure you would like to remove this film from the favorite"), .button(title: "Remove", isPrimary: true), .button(title: "No, Thank", isPrimary: false)]
         tableView.registerCell(for: FavoriteTableViewCell.className)
         tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.sectionHeaderHeight = 0
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
             self.presenter.didTapSearch()
+        }
+        navigation.imgSetting.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self else { return }
+            self.presenter.didTapSetting()
         }
         navigation.lbTitle.text = "Favorite"
         navigation.configContentNav(.tabbar)
@@ -87,6 +111,15 @@ final class FavoriteViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    @IBAction func filterAction(_ sender: Any) {
+        bottomSheet = BaseViewBottomSheetViewController()
+        bottomSheet.payload = 0
+        bottomSheet.bottomDataSource = MovieFilterType.allCases.compactMap({ return .label(title: $0.title, isChoose: $0 == movieFilterType)})
+        self.present(self.bottomSheet, animated: true, completion: {
+            self.bottomSheet.stackContent.delegate = self
+        })
     }
 }
 
@@ -138,11 +171,13 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
         cell.filmNoteView.lbTitle.text = !movieObject.originalTitle.isEmpty ? movieObject.originalTitle : movieObject.originalName
         cell.filmNoteView.img.kf.setImage(with: URL(string: "\(baseURLImage)\(movieObject.posterPath)"))
         cell.filmNoteView.lbVoteAvg.text = "\(movieObject.voteAverage.roundToPlaces(places: 1))"
-        cell.filmNoteView.lbYear.text = CommonUtil.getYearFromDate(movieObject.firstAirDate)
+        cell.filmNoteView.lbYear.text = CommonUtil.getYearFromDate(movieObject.isTVShow ? movieObject.firstAirDate : movieObject.releaseDate)
         cell.filmNoteView.lbGenre.text = DTPBusiness.shared.mapToGenreName(Array(movieObject.genreIDS))
         cell.didTapRemove = { [weak self] in
             guard let `self` = self else { return }
             DispatchQueue.main.async {
+                self.bottomSheet = BaseViewBottomSheetViewController()
+                self.bottomSheet.bottomDataSource = [.content(title: "Remove Favorite", content: "Are you sure you would like to remove this film from the favorite"), .button(title: "Remove", isPrimary: true), .button(title: "No, Thank", isPrimary: false)]
                 self.bottomSheet.payload = movieObject
                 self.present(self.bottomSheet, animated: true, completion: {
                     self.bottomSheet.stackContent.delegate = self
@@ -172,7 +207,19 @@ extension FavoriteViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 
 extension FavoriteViewController: BoottomSheetStackViewDelegate {
     func didSelect(_ bottomSheetStackView: BottomSheetStackView, selectedIndex index: Int) {
-        if index == 2, let movieObject = self.bottomSheet.payload as? MovieDetailObject {
+        if let _ = bottomSheet.payload as? Int {
+            switch index {
+            case 1:
+                movieFilterType = .all
+            case 2:
+                movieFilterType = .nameAZ
+            case 3:
+                movieFilterType = .nameZA
+            default:
+                movieFilterType = .myRating
+            }
+            self.bottomSheet.dismiss(animated: true)
+        } else if index == 2, let movieObject = self.bottomSheet.payload as? MovieDetailObject {
             self.realmUtils.deleteObject(object: movieObject)
             self.dataSource = Dictionary(grouping: realmUtils.getListObjects(type: MovieDetailObject.self), by: { $0.releaseDate })
             self.tableView.reloadData()

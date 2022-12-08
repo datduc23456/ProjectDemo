@@ -34,6 +34,10 @@ final class FavoriteWireframe: FavoriteWireframeInterface {
         navigator.pushScreen(AppScreens.search, SearchType.detail, fromRoot: true)
     }
     
+    func showSettingScreen() {
+        navigator.pushScreen(AppScreens.setting, fromRoot: true)
+    }
+    
 	func handleError(_ error: Error, _ completion: (() -> Void)?) {
         
     }

@@ -40,7 +40,7 @@ final class ActionViewController: BaseCollectionViewController<CinemaPopularColl
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.configContentNav(.navigation)
         navigation.btnBack.addTapGestureRecognizer {
-            self.navigationController?.popViewController(animated: true)
+            self.didPopViewController(nil, true)
         }
         
         switch actionViewType {

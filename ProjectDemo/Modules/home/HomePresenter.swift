@@ -64,6 +64,10 @@ extension HomePresenter: HomePresenterInterface {
             return
         }
     }
+    
+    func didTapSetting() {
+        wireframe.showSettingScreen()
+    }
 }
 
 extension HomePresenter: HomeInteractorOutputInterface {

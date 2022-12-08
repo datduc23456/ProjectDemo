@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -385,7 +385,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.050980392156862744" green="0.062745098039215685" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Hrx-ur-xCR" secondAttribute="trailing" id="AGV-ag-gKg"/>
                                     <constraint firstItem="Hrx-ur-xCR" firstAttribute="top" secondItem="PJM-Be-Mzd" secondAttribute="top" id="F4r-7S-R4T"/>
@@ -413,6 +413,7 @@
                         <outlet property="lineChartView" destination="fuT-RU-GRo" id="TXS-gN-nY9"/>
                         <outlet property="scrollView" destination="PJM-Be-Mzd" id="CeX-0B-EFK"/>
                         <outlet property="slider" destination="xpJ-7h-F0U" id="wK2-eq-GyS"/>
+                        <outlet property="stackView" destination="SA2-Ab-veI" id="y7Q-nk-gmh"/>
                         <outlet property="tableView" destination="R3a-Yg-mJ7" id="dtE-vw-rs6"/>
                         <outlet property="tableViewheight" destination="FdN-iH-QRQ" id="3cU-cY-vnL"/>
                         <outlet property="viewChart" destination="Kca-l0-Yah" id="V6b-IC-GfF"/>
@@ -426,6 +427,11 @@
             <point key="canvasLocation" x="194" y="143"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="xpJ-7h-F0U">
+            <size key="intrinsicContentSize" width="-1" height="48"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ic_arrow_white" width="16" height="16"/>
         <image name="ic_plus" width="13" height="13"/>

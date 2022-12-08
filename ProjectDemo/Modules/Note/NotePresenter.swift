@@ -45,6 +45,10 @@ extension NotePresenter: NotePresenterInterface {
     func showReview(_ review: ReviewsResultObject) {
         wireframe.showAddNoteScreen(review)
     }
+    
+    func didTapSetting() {
+        wireframe.showSettingScreen()
+    }
 }
 
 extension NotePresenter: NoteInteractorOutputInterface {
