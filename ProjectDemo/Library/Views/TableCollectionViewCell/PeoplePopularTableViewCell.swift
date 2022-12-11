@@ -10,7 +10,7 @@ import UIKit
 class PeoplePopularTableViewCell: BaseTableCollectionViewCell<PeoplePopularCollectionViewCell> {
 
     override var flowLayout: FlowLayoutAttribute? {
-        return FlowLayoutAttribute(estimatedItemSize: CGSize(width: 106, height: 150), minimumInteritemSpacing: 0, minimumLineSpacing: 8, footerReferenceSize: CGSize(width: 8, height: 150), headerReferenceSize: CGSize(width: 8, height: 150), scrollDirection: .horizontal)
+        return FlowLayoutAttribute(estimatedItemSize: CGSize(width: 106, height: 150), minimumInteritemSpacing: 0, minimumLineSpacing: 8, footerReferenceSize: CGSize(width: 16, height: 150), headerReferenceSize: CGSize(width: 16, height: 150), scrollDirection: .horizontal)
     }
     
     override func awakeFromNib() {

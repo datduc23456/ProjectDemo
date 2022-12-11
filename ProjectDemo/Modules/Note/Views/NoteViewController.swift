@@ -121,7 +121,7 @@ extension NoteViewController: UITableViewDataSource, UITableViewDelegate {
 extension NoteViewController: BoottomSheetStackViewDelegate {
     func didSelect(_ bottomSheetStackView: BottomSheetStackView, selectedIndex index: Int) {
         if index == 2 || index == 3 {
-            self.bottomSheet.dismiss(animated: true)
+            self.bottomSheet.shouldDismissSheet()
         }
         if index == 2, let review = self.bottomSheet.payload as? ReviewsResultObject {
             presenter.showReview(review)

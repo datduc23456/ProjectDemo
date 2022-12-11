@@ -10,14 +10,16 @@ import UIKit
 
 final class SettingWireframe: SettingWireframeInterface {
 	var navigator: BaseNavigator!
+    
     static func generateModule(_ payload: Any?) -> UIViewController {
         let initialViewController = UIStoryboard(name: "SettingViewController", bundle: nil).instantiateInitialViewController() as! SettingViewController
+        let navigator = BaseNavigator()
         initialViewController.payload = payload
-	initialViewController.modalPresentationStyle = .fullScreen
+        initialViewController.modalPresentationStyle = .fullScreen
         // let vc = initialViewController.topViewController as! SettingViewController
         let wireframe = SettingWireframe()
-	wireframe.navigator = BaseNavigator()
-	wireframe.navigator.delegate = initialViewController
+        wireframe.navigator = navigator
+        wireframe.navigator.delegate = initialViewController
         let interactor = SettingInteractor()
         let presenter = SettingPresenter(
             view: initialViewController,

@@ -17,8 +17,8 @@ extension HomeInteractor: HomeInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.popular(1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getMoviePopular(response)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
     
@@ -26,8 +26,8 @@ extension HomeInteractor: HomeInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.trendingMovie(page: 1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getTrending(response)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
     
@@ -36,8 +36,8 @@ extension HomeInteractor: HomeInteractorInterface {
             guard let `self` = self else { return }
             DTPBusiness.shared.listGenres = response.genres
             self.output?.getGenresList(response)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
     
@@ -45,8 +45,8 @@ extension HomeInteractor: HomeInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.movieTopRated(1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getTopRate(response)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
     
@@ -54,8 +54,8 @@ extension HomeInteractor: HomeInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.moviegenreid(genreId: genreId, page: 1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getMoviePopular(response)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
 }

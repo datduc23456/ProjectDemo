@@ -87,8 +87,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
-        //        self.view.backgroundColor = .white
-        //        viewChart.roundCorners(corners: [.topRight, .bottomLeft, .bottomRight], radius: 8)
+        viewChart.roundCorners(corners: [.topRight, .bottomLeft, .bottomRight], radius: 8, borderColor: UIColor(hex: "#3F4249"), borderWidth: 1)
         slider.value = [0, 5]
         slider.snapStepSize = 1
         slider.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged)
@@ -338,6 +337,7 @@ extension StatisticcalViewController: UITableViewDataSource, UITableViewDelegate
         let watchList = dataSource[key].isNil(value: [])
         let object = watchList[indexPath.row]
         cell.configCell(object)
+        cell.setupGradient()
         cell.didTapRemove = { [weak self] in
             guard let `self` = self else { return }
             DispatchQueue.main.async {
@@ -415,14 +415,14 @@ extension StatisticcalViewController: BoottomSheetStackViewDelegate {
             default:
                 break
             }
-            self.bottomSheet.dismiss(animated: true)
+            self.bottomSheet.shouldDismissSheet()
         } else if let object = bottomSheet.payload as? WatchedListObject {
             switch index {
             case 2:
                 presenter.didTapDeleteWatchListObject(object)
-                self.bottomSheet.dismiss(animated: true)
+                self.bottomSheet.shouldDismissSheet()
             case 3:
-                self.bottomSheet.dismiss(animated: true)
+                self.bottomSheet.shouldDismissSheet()
             default:
                 break
             }

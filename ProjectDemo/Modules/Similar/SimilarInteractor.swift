@@ -16,8 +16,8 @@ extension SimilarInteractor: SimilarInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.getSimularMovie(movieId: movieId, page: page), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getMovie(response)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
     
@@ -25,8 +25,8 @@ extension SimilarInteractor: SimilarInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.getSimularTv(tvId: tvId, page: page), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getMovie(response)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
     
@@ -34,8 +34,8 @@ extension SimilarInteractor: SimilarInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.moviepeopleid(peopleId: peopleId, page: page), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getMovie(response)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
 }

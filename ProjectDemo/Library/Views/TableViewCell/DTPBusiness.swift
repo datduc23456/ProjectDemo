@@ -11,6 +11,7 @@ class DTPBusiness {
     static let shared = DTPBusiness()
     var listGenres: [Genre] = []
     var genreSelectedId: Int = 0
+    var movieFilterType: MovieFilterType = .all
     var realmUtils: RealmUtils = AppDelegate.shared.realmUtils!
     
     func mapToGenreName(_ listGenreIds: [Int]) -> String {

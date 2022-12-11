@@ -22,12 +22,34 @@ extension FavoriteInteractor: FavoriteInteractorInterface {
         switch type {
         case .movie:
             let predicate = NSPredicate(format: "isTVShow == %@", NSNumber(booleanLiteral: false))
-            let array = Array(self.realmUtils.dataQueryByPredicate(type: MovieDetailObject.self, predicate:   predicate))
+            var realms = self.realmUtils.dataQueryByPredicate(type: MovieDetailObject.self, predicate: predicate)
+            switch DTPBusiness.shared.movieFilterType {
+            case .nameAZ:
+                realms = realms.sorted(byKeyPath: "originalName", ascending: true)
+            case .nameZA:
+                realms = realms.sorted(byKeyPath: "originalName", ascending: false)
+            case .myRating:
+                realms = realms.sorted(byKeyPath: "voteAverage", ascending: false)
+            default:
+                break
+            }
+            let array = Array(realms)
             let data = Dictionary(grouping: array, by: { $0.releaseDate })
             self.output?.getMovieFavorite(data)
         case .tvshow:
             let predicate = NSPredicate(format: "isTVShow == %@", NSNumber(booleanLiteral: true))
-            let array = Array(self.realmUtils.dataQueryByPredicate(type: MovieDetailObject.self, predicate:   predicate))
+            var realms = self.realmUtils.dataQueryByPredicate(type: MovieDetailObject.self, predicate: predicate)
+            switch DTPBusiness.shared.movieFilterType {
+            case .nameAZ:
+                realms = realms.sorted(byKeyPath: "originalTitle", ascending: true)
+            case .nameZA:
+                realms = realms.sorted(byKeyPath: "originalTitle", ascending: false)
+            case .myRating:
+                realms = realms.sorted(byKeyPath: "voteAverage", ascending: false)
+            default:
+                break
+            }
+            let array = Array(realms)
             let data = Dictionary(grouping: array, by: { $0.firstAirDate })
             self.output?.getMovieFavorite(data)
         }

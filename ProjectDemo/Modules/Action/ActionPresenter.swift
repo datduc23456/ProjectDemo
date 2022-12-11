@@ -34,6 +34,8 @@ extension ActionPresenter: ActionPresenterInterface {
             interactor.getTvShowTrending(1)
         case .movietrending:
             interactor.getMovieTrending(1)
+        case .newmovie:
+            interactor.getNewMovie(1)
         case .genre(let genre):
             interactor.getMoviePopular(genreId: genre.id, 1)
         default:
@@ -43,7 +45,7 @@ extension ActionPresenter: ActionPresenterInterface {
     
     func didTapToMovie(_ movie: Movie) {
         switch view!.actionViewType {
-        case .moviepopular, .topRated, .genre, .movietrending:
+        case .moviepopular, .topRated, .genre, .movietrending, .newmovie:
             wireframe.showMovieDetailScreen(movie.id, isTVShow: false)
         case .tvshowpopular, .tvshowtrending:
             wireframe.showMovieDetailScreen(movie.id, isTVShow: true)
@@ -64,6 +66,8 @@ extension ActionPresenter: ActionPresenterInterface {
             interactor.getTvShowTrending(1)
         case .movietrending:
             interactor.getMovieTrending(1)
+        case .newmovie:
+            interactor.getNewMovie(1)
         case .genre(let genre):
             interactor.getMoviePopular(genreId: genre.id, 1)
         default:
@@ -83,6 +87,8 @@ extension ActionPresenter: ActionPresenterInterface {
             interactor.getTvShowTrending(page)
         case .movietrending:
             interactor.getMovieTrending(page)
+        case .newmovie:
+            interactor.getNewMovie(page)
         case .genre(let genre):
             interactor.getMoviePopular(genreId: genre.id, page)
         default:

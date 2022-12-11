@@ -35,6 +35,7 @@ enum CoreTargetType: TargetType {
     case getTvShowImages(movieId: Int)
     case trendingMovie(page: Int)
     case trendingTvShow(page: Int)
+    case newMovie(page: Int)
     var baseURL: URL { return URL(string: "https://api.themoviedb.org/3/")! }
     
     var path: String {
@@ -87,6 +88,8 @@ enum CoreTargetType: TargetType {
             return "/trending/movie/day"
         case .trendingTvShow:
             return "/trending/tv/day"
+        case .newMovie:
+            return "/movie/upcoming"
         default:
             return ""
         }
@@ -149,6 +152,8 @@ enum CoreTargetType: TargetType {
         case .getSimularMovie(_, let page):
             defaultParams.updateValue(page, forKey: "page")
         case .getSimularTv(_, let page):
+            defaultParams.updateValue(page, forKey: "page")
+        case .newMovie(let page):
             defaultParams.updateValue(page, forKey: "page")
         default:
             break

@@ -15,7 +15,7 @@ enum SearchType {
     case watchedlist
 }
 
-final class SearchViewController: BaseViewController {
+final class SearchViewController: BaseViewController, UITextFieldDelegate {
 
     // MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
@@ -43,6 +43,7 @@ final class SearchViewController: BaseViewController {
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
+        tableView.tableHeaderView = nil
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false
         let navigation: BaseNavigationView = initCustomNavigation(.base)
@@ -51,14 +52,29 @@ final class SearchViewController: BaseViewController {
             guard let `self` = self else { return }
             self.navigationController?.popViewController(animated: true)
         }
+        navigation.imgClearSearch.addTapGestureRecognizer {
+            navigation.textField.text = ""
+        }
+        navigation.imgClearSearch.isHidden = true
         navigation.textField.addTarget(self, action: #selector(changedTextFieldValue), for: .editingChanged)
+        navigation.textField.delegate = self
+        navigation.textField.returnKeyType = .search
+        navigation.textField.keyboardAppearance = .dark
+        self.view.addTapGestureRecognizer {
+            self.view.endEditing(true)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeKeyboardEvents()
     }
     
     override func viewDidLayoutSubviews() {
         self.tableView.reloadData()
     }
     
-    @objc func changedTextFieldValue(){
+    @objc func changedTextFieldValue() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: delayValue, target: self, selector: #selector(self.searchAction), userInfo: nil, repeats: false)
     }
@@ -77,6 +93,25 @@ final class SearchViewController: BaseViewController {
                 tableViewDataSource = SearchViewDataSource.emptyCases
                 presenter.fetchSearchKey()
             }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        (myNavigationBar as! BaseNavigationView).lbPlaceHolder.isHidden = true
+        (myNavigationBar as! BaseNavigationView).imgClearSearch.isHidden = false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text?.isEmpty == true {
+            (myNavigationBar as! BaseNavigationView).lbPlaceHolder.isHidden = false
+            (myNavigationBar as! BaseNavigationView).imgClearSearch.isHidden = true
+        } else {
+            (myNavigationBar as! BaseNavigationView).imgClearSearch.isHidden = false
         }
     }
 }
@@ -183,6 +218,16 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
                 self.presenter.fetchSearchKey()
                 tableView.reloadData()
             }
+            cell.didTapSearch = { [weak self] searchKeyObject in
+                guard let `self` = self, let navigation = self.myNavigationBar as? BaseNavigationView else { return }
+                self.tableViewDataSource = SearchViewDataSource.allCases
+                self.presenter.searchPerson(searchKeyObject.key)
+                self.presenter.searchMoviePopular(searchKeyObject.key)
+                self.presenter.searchTVShowPopular(searchKeyObject.key)
+                navigation.lbPlaceHolder.isHidden = true
+                navigation.textField.text = searchKeyObject.key
+                tableView.reloadData()
+            }
         }
         return cell
     }
@@ -248,5 +293,11 @@ extension SearchViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
         return true
+    }
+}
+
+extension SearchViewController: KeyboardDisplayableViewController {
+    var scrollViewForResizeKeyboard: UIScrollView? {
+        return tableView
     }
 }

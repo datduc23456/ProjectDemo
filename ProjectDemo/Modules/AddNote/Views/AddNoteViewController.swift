@@ -77,6 +77,8 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
     
     func configView() {
         configViewWithPayload()
+        tfTitle.keyboardAppearance = .dark
+        textViewContent.keyboardAppearance = .dark
         textViewContent.contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.lbTitle.text = "Add Note"
@@ -229,7 +231,14 @@ extension AddNoteViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.3, animations: {
-            self.lbTextFieldPlaceHolder.isHidden = false
+            if textField.text?.isEmpty == true {
+                self.lbTextFieldPlaceHolder.isHidden = false
+            }
         })
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

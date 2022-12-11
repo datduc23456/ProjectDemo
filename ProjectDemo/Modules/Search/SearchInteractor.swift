@@ -48,8 +48,8 @@ extension SearchInteractor: SearchInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.searchTVshow(query: query, page: 1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.searchTVShowPopular(response.results)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
     
@@ -57,8 +57,8 @@ extension SearchInteractor: SearchInteractorInterface {
         ServiceCore.shared.request(PersonResponse.self, targetType: CoreTargetType.searchPerson(query: query, page: 1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.searchPerson(response.results)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
     
@@ -66,8 +66,8 @@ extension SearchInteractor: SearchInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.searchMovie(query: query, page: 1), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.searchMoviePopular(response.results)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
     
@@ -75,8 +75,8 @@ extension SearchInteractor: SearchInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.moviegenreid(genreId: genreId, page: page), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.searchMoviePopularWithGenre(response.results)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
     
@@ -84,8 +84,8 @@ extension SearchInteractor: SearchInteractorInterface {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.TVshowgenreid(genreId: genreId, page: page), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.searchTVShowPopularWithGenre(response.results)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
 }

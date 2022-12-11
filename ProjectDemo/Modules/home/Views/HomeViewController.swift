@@ -126,6 +126,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         
         if item == .newMovie, let movieCell = cell as? NewMovieTableViewCell {
             movieCell.configGradientLayer()
+            movieCell.didTapSeeMore = { [weak self] in
+                guard let `self` = self else { return }
+                self.presenter.didTapHeaderView(.newMovie)
+            }
         }
         return cell
     }

@@ -8,6 +8,8 @@
 
 import UIKit
 import Moya
+import RxCocoa
+import RxSwift
 
 open class BaseViewController: UIViewController {
     
@@ -16,12 +18,15 @@ open class BaseViewController: UIViewController {
             AppDelegate.shared.realmUtils
         }
     }
-    var myNavigationBar: NavigationBarView?
     public var currentRootViewController: UIViewController?
     public private(set) var navigator: BaseNavigator!
+    var myNavigationBar: NavigationBarView?
     var isFirstLayout: Bool = true
     var viewGradientBottom: UIView!
     var gradient: CAGradientLayer!
+    var internetSubscribers: [Disposable] = []
+    var alert: UIAlertController!
+    
     open override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -37,6 +42,36 @@ open class BaseViewController: UIViewController {
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         gradient.locations = [0, 1]
         viewGradientBottom.backgroundColor = APP_COLOR
+    }
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        internetSubscribers = [
+        NotificationCenter.default.rx
+            .notification(NSNotification.Name(rawValue: "InternetConnected"))
+            .subscribe(onNext: { [weak self] notification in
+                guard let weakSelf = self else { return }
+                DispatchQueue.main.async {
+                    weakSelf.onConnection(notification: notification)
+                }
+                
+            }),
+        NotificationCenter.default.rx
+            .notification(NSNotification.Name(rawValue: "InternetLost"))
+            .subscribe(onNext: { [weak self] notification in
+                guard let weakSelf = self else { return }
+                DispatchQueue.main.async {
+                    weakSelf.onLostConnection(notification: notification)
+                }
+
+            })
+        ]
+        internetSubscribers.forEach {$0.disposed(by: self)}
+    }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        internetSubscribers.forEach { sub in sub.dispose() }
     }
     
     open override func viewDidLayoutSubviews() {
@@ -212,7 +247,6 @@ extension UIView {
         case top
         case left
         case right
-        
         case vertical
         case horizontal
     }
@@ -255,4 +289,33 @@ extension UIView {
         layer.mask = gradient
     }
 
+}
+
+extension BaseViewController: InternetHandlerViewController {
+    public func onLostConnection(notification: Notification) {
+        alert =  UIAlertController(title: "Can't connect to the internet", message: "Connect to the internet\nin order to access", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Go to setting", style: .default, handler: { (action: UIAlertAction) -> Void in
+//            self.dismiss(animated: true, completion: nil)
+            guard let settingUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingUrl) {
+                UIApplication.shared.open(settingUrl, options: [:], completionHandler: nil)
+            } else {
+                print("cant open settings")
+            }
+        }))
+        self.didPresentViewController(alert, true)
+    }
+    
+    public func onConnection(notification: Notification) {
+        if alert != nil {
+            alert.dismiss(animated: true)
+        }
+    }
+}
+
+public protocol InternetHandlerViewController where Self: UIViewController {
+    func onConnection(notification: Notification)
+    func onLostConnection(notification: Notification)
 }

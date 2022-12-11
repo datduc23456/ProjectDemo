@@ -56,4 +56,5 @@ protocol SearchWireframeInterface: WireframeInterface {
     func showWatchedListScreen(_ response: MovieDetail)
     func showMovieDetailScreen(_ id: Int)
     func showTVShowDetailScreen(_ id: Int)
+    func showPeopleDetail(_ id: Int)
 }

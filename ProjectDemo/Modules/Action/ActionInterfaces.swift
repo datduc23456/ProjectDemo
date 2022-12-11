@@ -31,6 +31,7 @@ protocol ActionInteractorInterface: InteractorInterface {
     func getTVShowTopRate(_ page: Int)
     func getTvShowTrending(_ page: Int)
     func getMovieTrending(_ page: Int)
+    func getNewMovie(_ page: Int)
     func fetchRealmMovieDetailObjectWithId(_ id: Int, completion: ((MovieDetailObject)->Void))
     func deleteMovieDetailObject(_ movie: Movie)
     func insertMovieDetailObject(_ movie: Movie)

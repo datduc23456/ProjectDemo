@@ -452,11 +452,20 @@ extension UIView {
         clipsToBounds = true
     }
     
-    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+    func roundCorners(corners: UIRectCorner, radius: CGFloat, borderColor: UIColor? = nil, borderWidth: CGFloat? = nil) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         layer.mask = mask
+        if let borderColor = borderColor, let borderWidth = borderWidth {
+            let borderLayer = CAShapeLayer()
+            borderLayer.path = mask.path // Reuse the Bezier path
+            borderLayer.fillColor = UIColor.clear.cgColor
+            borderLayer.strokeColor = borderColor.cgColor
+            borderLayer.lineWidth = borderWidth
+            borderLayer.frame = self.bounds
+            layer.addSublayer(borderLayer)
+        }
     }
     
     func rotate(duration: CFTimeInterval = 1.0) {
@@ -534,13 +543,14 @@ extension UIView {
         return gradient
     }
     
-    func linearGradientBackground(angleInDegs: Int, colors: [CGColor]) {
+    func linearGradientBackground(angleInDegs: Int, colors: [CGColor]) -> CAGradientLayer {
           let gradientBaseLayer: CAGradientLayer = CAGradientLayer()
           gradientBaseLayer.frame = self.frame
           gradientBaseLayer.colors = colors
           gradientBaseLayer.startPoint = startAndEndPointsFrom(angle: angleInDegs).startPoint
           gradientBaseLayer.endPoint = startAndEndPointsFrom(angle: angleInDegs).endPoint
           self.layer.insertSublayer(gradientBaseLayer, at: 0)
+        return gradientBaseLayer
       }
 }
 

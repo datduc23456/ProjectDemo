@@ -48,4 +48,8 @@ final class SearchWireframe: SearchWireframeInterface {
     func showWatchedListScreen(_ response: MovieDetail) {
         
     }
+    
+    func showPeopleDetail(_ id: Int) {
+        navigator.pushScreen(AppScreens.popularpeople, id, fromRoot: true)
+    }
 }

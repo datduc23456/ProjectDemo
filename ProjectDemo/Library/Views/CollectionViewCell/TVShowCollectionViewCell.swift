@@ -31,7 +31,7 @@ class TVShowCollectionViewCell: BaseCollectionViewCell {
     override func configCell(_ payload: Any) {
         if let payload = payload as? Movie {
             self.payload = payload
-            image.kf.setImage(with: URL(string: "\(baseURLImage)\(payload.backdropPath)"))
+            image.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(payload.backdropPath)"))
             lbTitle.text = payload.originalName
             lbVoteAvg.text = "\(payload.voteAverage)"
             lbYear.text = CommonUtil.getYearFromDate(payload.releaseDate)
@@ -39,7 +39,7 @@ class TVShowCollectionViewCell: BaseCollectionViewCell {
         }
         if let payload = payload as? Season {
             self.payload = payload
-            image.kf.setImage(with: URL(string: "\(baseURLImage)\(payload.posterPath)"))
+            image.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(payload.posterPath)"))
             lbTitle.text = payload.name
             lbGenres.text = payload.airDate.toDateFormat(toFormat: "MMM dd, yyyy")
             lbNumber.text = "\(payload.seasonNumber)"

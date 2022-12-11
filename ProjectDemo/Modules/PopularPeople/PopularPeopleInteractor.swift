@@ -17,8 +17,8 @@ extension PopularPeopleInteractor: PopularPeopleInteractorInterface {
         ServiceCore.shared.request(PeopleDetail.self, targetType: CoreTargetType.personDetail(personId: id), successBlock: { [weak self] response in
             guard let `self` = self else { return }
             self.output?.getPeopleDetail(response)
-        }, failureBlock: { _ in
-            
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
         })
     }
 }

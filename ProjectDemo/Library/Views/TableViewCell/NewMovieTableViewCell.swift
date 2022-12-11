@@ -11,10 +11,16 @@ class NewMovieTableViewCell: UITableViewCell {
     
     @IBOutlet weak var stackView: UIStackView!
     var gradientLayer: CAGradientLayer!
+    var didTapSeeMore: VoidCallBack?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
+    @IBAction func seeMoreAction(_ sender: Any) {
+        self.didTapSeeMore?()
+    }
+    
     func configGradientLayer() {
         if gradientLayer == nil {
             let colorTop =  UIColor.init(hex: "#98403C").cgColor

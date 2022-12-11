@@ -35,6 +35,10 @@ extension BaseNavigator {
         delegate?.didPresentViewController(vc, true)
     }
     
+    public func showAlert(_ alert: UIAlertController) {
+        delegate?.didPresentViewController(alert, true)
+    }
+    
     public func pushScreen(_ screen: Screen, _ payload: Any? = nil, animate: Bool = true, fromRoot: Bool) {
         let vc = screen.createViewController(payload)
         delegate?.didPushViewController(vc, fromRoot, animate)

@@ -13,6 +13,7 @@ enum BaseNavigationType {
     case search
     case tabbar
     case tvshow
+    case filter
 }
 
 class BaseNavigationView: NavigationBarView {
@@ -28,6 +29,9 @@ class BaseNavigationView: NavigationBarView {
     @IBOutlet weak var imgSetting: UIImageView!
     @IBOutlet weak var imgSearch: UIImageView!
     @IBOutlet weak var imgStarMoviee: UIImageView!
+    @IBOutlet weak var imgClearSearch: UIImageView!
+    @IBOutlet weak var lbPlaceHolder: UILabel!
+    @IBOutlet weak var imgFilter: UIImageView!
     
     func configContentNav(_ type: BaseNavigationType) {
         for view in self.subviews {
@@ -52,6 +56,11 @@ class BaseNavigationView: NavigationBarView {
             lbTitle.isHidden = false
             icBack.isHidden = false
             btnBack.isHidden = false
+        case .filter:
+            lbTitle.isHidden = false
+            icBack.isHidden = false
+            btnBack.isHidden = false
+            imgFilter.isHidden = false
         case .search:
             icBack.isHidden = false
             btnBack.isHidden = false

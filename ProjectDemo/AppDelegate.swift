@@ -7,12 +7,14 @@
 
 import UIKit
 import KafkaRefresh
+import Network
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var realmUtils: RealmUtils!
+    var monitor: NWPathMonitor!
     
     static var shared: AppDelegate {
         guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -31,8 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         let navigation = UINavigationController.init(rootViewController: TabbarViewController())
@@ -40,9 +40,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
         self.realmUtils = RealmUtilsProvider.defaultStorage
+        monitor = NWPathMonitor()
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "InternetConnected"), object: nil)
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "InternetLost"), object: nil)
+            }
+        }
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
         return true
     }
 
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        if monitor.currentPath.status == .satisfied {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "InternetConnected"), object: nil)
+        } else {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "InternetLost"), object: nil)
+        }
+    }
+    
     // MARK: UISceneSession Lifecycle
 
 //    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

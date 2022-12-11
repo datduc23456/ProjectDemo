@@ -12,7 +12,7 @@ class SearchHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var icClose: UIImageView!
     @IBOutlet weak var lbTitle: UILabel!
     
-    
+    var didTapSearch: ((SearchKeyObject) -> Void) = {_ in}
     var didTapRemove: ((SearchKeyObject) -> Void) = {_ in}
     var searchKeyObject: SearchKeyObject?
     
@@ -21,6 +21,11 @@ class SearchHistoryTableViewCell: UITableViewCell {
         icClose.addTapGestureRecognizer {
             if let searchKeyObject = self.searchKeyObject {
                 self.didTapRemove(searchKeyObject)
+            }
+        }
+        lbTitle.addTapGestureRecognizer {
+            if let searchKeyObject = self.searchKeyObject {
+                self.didTapSearch(searchKeyObject)
             }
         }
     }

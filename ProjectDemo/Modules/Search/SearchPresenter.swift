@@ -66,7 +66,7 @@ extension SearchPresenter: SearchPresenterInterface {
     }
     
     func didTapToCast(_ cast: Cast) {
-        
+        wireframe.showPeopleDetail(cast.id)
     }
 }
 

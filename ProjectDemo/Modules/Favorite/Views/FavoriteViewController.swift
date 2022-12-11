@@ -46,17 +46,26 @@ final class FavoriteViewController: BaseViewController {
     var dataSource: [String: [MovieDetailObject]] = [:]
     var bottomSheet: BaseViewBottomSheetViewController!
     var filterType: FavoriteFilterType = .movie
-    var movieFilterType: MovieFilterType = .all
+    var movieFilterType: MovieFilterType {
+        set {
+            DTPBusiness.shared.movieFilterType = newValue
+            presenter.getMovieFavorite(filterType)
+        } get {
+            return DTPBusiness.shared.movieFilterType
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
         presenter.viewDidLoad()
         tableView.registerCell(for: FavoriteTableViewCell.className)
-        tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
+        tableView.register(UINib(nibName: FavoriteHeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: FavoriteHeaderView.reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.sectionHeaderHeight = 0
+//        tableView.header
+        tableView.tableHeaderView = nil
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         let navigation: BaseNavigationView = initCustomNavigation(.base)
@@ -101,6 +110,7 @@ final class FavoriteViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        presenter.getMovieFavorite(filterType)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
     }
     
@@ -146,17 +156,24 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        if section == 0 {
+             return 23
+        }
+        return 43
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView") as! HeaderView
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FavoriteHeaderView.reuseIdentifier) as! FavoriteHeaderView
         let key = Array(dataSource.keys)[section]
+        if section == 0 {
+            headerView.viewSegment.isHidden = true
+        } else {
+            headerView.viewSegment.isHidden = false
+        }
         headerView.contentView.backgroundColor = APP_COLOR
         headerView.lbTitle.text = key.toDateFormat(toFormat: "MMM yyyy")
         headerView.lbTitle.font = UIFont(name: "Nexa-Bold", size: 14)
         headerView.lbTitle.textColor = .white.withAlphaComponent(0.5)
-        headerView.btnSeeMore.isHidden = true
         return headerView
     }
     
@@ -218,14 +235,13 @@ extension FavoriteViewController: BoottomSheetStackViewDelegate {
             default:
                 movieFilterType = .myRating
             }
-            self.bottomSheet.dismiss(animated: true)
+            self.bottomSheet.shouldDismissSheet()
         } else if index == 2, let movieObject = self.bottomSheet.payload as? MovieDetailObject {
             self.realmUtils.deleteObject(object: movieObject)
-            self.dataSource = Dictionary(grouping: realmUtils.getListObjects(type: MovieDetailObject.self), by: { $0.releaseDate })
-            self.tableView.reloadData()
+            self.presenter.getMovieFavorite(self.filterType)
         }
         if index == 2 || index == 3 {
-            self.bottomSheet.dismiss(animated: true)
+            self.bottomSheet.shouldDismissSheet()
         }
     }
 }
