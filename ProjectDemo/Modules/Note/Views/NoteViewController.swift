@@ -126,15 +126,15 @@ extension NoteViewController: BoottomSheetStackViewDelegate {
         if index == 2, let review = self.bottomSheet.payload as? ReviewsResultObject {
             presenter.showReview(review)
         }
+        if index == 3, let review = self.bottomSheet.payload as? ReviewsResultObject {
+            DTPBusiness.shared.deleteReviewsResultObject(review, completion: {_ in})
+            presenter.didRefresh()
+        }
     }
 }
 
 extension NoteViewController: HeaderViewDelegate {
     func headerView(_ customHeader: UITableViewHeaderFooterView, didTapButtonInSection section: Int) {
-        let watchedListVc = AppScreens.watchedList.createViewController()
-        delay(0.1, closure: {
-            self.present(watchedListVc, animated: true)
-        })
-//        self.presenter.didTapAddNote()
+        self.presenter.didTapAddNote()
     }
 }

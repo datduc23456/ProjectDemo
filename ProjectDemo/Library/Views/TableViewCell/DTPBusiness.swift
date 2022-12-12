@@ -103,6 +103,15 @@ class DTPBusiness {
         })
     }
     
+    func deleteReviewsResultObject(_ review: ReviewsResultObject, completion: ((ReviewsResultObject?) -> Void)) {
+        self.fetchMyReviewWithId(review._id, completion: { object in
+            if let object = object {
+                self.realmUtils.deleteObject(object: object)
+            }
+            completion(object)
+        })
+    }
+    
     func insertMovieDetailObject(_ movie: MovieDetail) {
         self.realmUtils.insertOrUpdate(movie.toMovieObject())
     }

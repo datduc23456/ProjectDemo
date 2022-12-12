@@ -31,7 +31,7 @@ extension FavoriteInteractor: FavoriteInteractorInterface {
             case .myRating:
                 realms = realms.sorted(byKeyPath: "voteAverage", ascending: false)
             default:
-                break
+                realms = realms.sorted(byKeyPath: "releaseDate", ascending: false)
             }
             let array = Array(realms)
             let data = Dictionary(grouping: array, by: { $0.releaseDate })
@@ -47,10 +47,11 @@ extension FavoriteInteractor: FavoriteInteractorInterface {
             case .myRating:
                 realms = realms.sorted(byKeyPath: "voteAverage", ascending: false)
             default:
-                break
+                realms = realms.sorted(byKeyPath: "_id", ascending: false)
             }
-            let array = Array(realms)
+            let array = Array(realms).sorted { $0.firstAirDate < $1.firstAirDate }
             let data = Dictionary(grouping: array, by: { $0.firstAirDate })
+//            sorted(data) { $0.0 < $1.0 }
             self.output?.getMovieFavorite(data)
         }
     }
