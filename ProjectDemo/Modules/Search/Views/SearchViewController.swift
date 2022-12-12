@@ -199,6 +199,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
                 case .genre:
                     if let genre = payload as? Genre {
                         if let myNavigationBar = self.myNavigationBar as? BaseNavigationView {
+                            myNavigationBar.lbPlaceHolder.isHidden = true
                             myNavigationBar.textField.text = "Genre: \(genre.name)"
                         }
                         self.tableViewDataSource = SearchViewDataSource.allCases

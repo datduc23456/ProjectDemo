@@ -34,7 +34,7 @@ extension FavoriteInteractor: FavoriteInteractorInterface {
                 realms = realms.sorted(byKeyPath: "releaseDate", ascending: false)
             }
             let array = Array(realms)
-            let data = Dictionary(grouping: array, by: { $0.releaseDate })
+            let data = Dictionary(grouping: array, by: { $0.releaseDate.toDateFormat(toFormat: "MMM yyyy") })
             self.output?.getMovieFavorite(data)
         case .tvshow:
             let predicate = NSPredicate(format: "isTVShow == %@", NSNumber(booleanLiteral: true))
@@ -49,9 +49,8 @@ extension FavoriteInteractor: FavoriteInteractorInterface {
             default:
                 realms = realms.sorted(byKeyPath: "_id", ascending: false)
             }
-            let array = Array(realms).sorted { $0.firstAirDate < $1.firstAirDate }
-            let data = Dictionary(grouping: array, by: { $0.firstAirDate })
-//            sorted(data) { $0.0 < $1.0 }
+            let array = Array(realms)
+            let data = Dictionary(grouping: array, by: { $0.firstAirDate.toDateFormat(toFormat: "MMM yyyy") })
             self.output?.getMovieFavorite(data)
         }
     }

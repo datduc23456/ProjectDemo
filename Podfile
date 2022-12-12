@@ -22,6 +22,9 @@ target 'ProjectDemo' do
   pod 'Charts'
   pod 'DZNEmptyDataSet'
   pod 'KafkaRefresh'
+  pod 'FirebaseCrashlytics'
+  pod 'FirebaseAnalytics'
+  pod 'Google-Mobile-Ads-SDK'
   rxswift
 end
 

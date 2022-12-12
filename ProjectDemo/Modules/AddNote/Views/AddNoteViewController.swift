@@ -62,6 +62,7 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
             filmNoteView.lbGenre.text = DTPBusiness.shared.mapToGenreName(Array(review.genreIDS))
             filmNoteView.img.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(review.posterPath)"))
             tfTitle.text = review.author
+            lbTextFieldPlaceHolder.isHidden = true
             textViewContent.text = review.content
             viewChooseMovie.isHidden = true
             filmNoteView.isHidden = false

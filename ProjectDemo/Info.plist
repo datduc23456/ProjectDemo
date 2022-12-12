@@ -10,5 +10,14 @@
 		<string>Nexa Light.otf</string>
 		<string>Nexa Bold.otf</string>
 	</array>
+    <key>GADApplicationIdentifier</key>
+    <string>ca-app-pub-1343377148417262~6542998719</string>
+    <key>SKAdNetworkItems</key>
+    <array>
+        <dict>
+            <key>SKAdNetworkIdentifier</key>
+            <string>cstr6suwn9.skadnetwork</string>
+        </dict>
+    </array>
 </dict>
 </plist>

@@ -101,6 +101,7 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
             guard let `self` = self, let watched = watched else { return }
             self.slider.value = [watched.authorDetails!.rating]
             self.tfTitle.text = watched.author
+            self.lbTextFieldPlaceHolder.isHidden = true
             self.textViewContent.text = watched.content
             self.configLabelRate()
         })
@@ -214,7 +215,9 @@ extension WatchedListViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.3, animations: {
-            self.lbTextFieldPlaceHolder.isHidden = false
+            if textField.text?.isEmpty == true {
+                self.lbTextFieldPlaceHolder.isHidden = false
+            }
         })
     }
 }

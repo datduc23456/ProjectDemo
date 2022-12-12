@@ -43,7 +43,7 @@ final class FavoriteViewController: BaseViewController {
     @IBOutlet weak var btnTVShow: UIButton!
     @IBOutlet weak var tableView: UITableView!
 	var presenter: FavoritePresenterInterface!
-    var dataSource: [String: [MovieDetailObject]] = [:]
+    var dataSource: [(String, [MovieDetailObject])] = []
     var bottomSheet: BaseViewBottomSheetViewController!
     var filterType: FavoriteFilterType = .movie
     var movieFilterType: MovieFilterType {
@@ -136,7 +136,29 @@ final class FavoriteViewController: BaseViewController {
 // MARK: - FavoriteViewInterface
 extension FavoriteViewController: FavoriteViewInterface {
     func getMovieFavorite(_ data: [String : [MovieDetailObject]]) {
-        dataSource = data
+        var movies = data
+        for key in movies.keys {
+            switch movieFilterType {
+            case .myRating:
+                let sortList = movies[key]?.sorted(by: {$0.voteAverage > $1.voteAverage})
+                movies.updateValue(sortList.isNil(value: []), forKey: key)
+            case .all, .nameAZ:
+                let sortList = movies[key]?.sorted(by: {
+                    let lhsMovieName = $0.isTVShow ? $0.originalName : $0.originalTitle
+                    let rhsMovieName = $1.isTVShow ? $1.originalName : $1.originalTitle
+                    return lhsMovieName < rhsMovieName
+                })
+                movies.updateValue(sortList.isNil(value: []), forKey: key)
+            default:
+                let sortList = movies[key]?.sorted(by: {
+                    let lhsMovieName = $0.isTVShow ? $0.originalName : $0.originalTitle
+                    let rhsMovieName = $1.isTVShow ? $1.originalName : $1.originalTitle
+                    return lhsMovieName > rhsMovieName
+                })
+                movies.updateValue(sortList.isNil(value: []), forKey: key)
+            }
+        }
+        dataSource = movies.sorted(by: { $0.0 > $1.0 })
         tableView.reloadData()
         delay(1, closure: {
             self.tableView.headRefreshControl.endRefreshing()
@@ -151,8 +173,8 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let key = Array(dataSource.keys)[section]
-        return dataSource[key].isNil(value: []).count
+        let values = dataSource[section]
+        return values.1.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -164,14 +186,14 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FavoriteHeaderView.reuseIdentifier) as! FavoriteHeaderView
-        let key = Array(dataSource.keys)[section]
+        let key = dataSource[section].0
         if section == 0 {
             headerView.viewSegment.isHidden = true
         } else {
             headerView.viewSegment.isHidden = false
         }
         headerView.contentView.backgroundColor = APP_COLOR
-        headerView.lbTitle.text = key.toDateFormat(toFormat: "MMM yyyy")
+        headerView.lbTitle.text = key
         headerView.lbTitle.font = UIFont(name: "Nexa-Bold", size: 14)
         headerView.lbTitle.textColor = .white.withAlphaComponent(0.5)
         return headerView
@@ -179,8 +201,8 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.className, for: indexPath) as! FavoriteTableViewCell
-        let key = Array(dataSource.keys)[indexPath.section]
-        let listMovieDetail = dataSource[key].isNil(value: [])
+        let key = dataSource[indexPath.section].0
+        let listMovieDetail = dataSource[indexPath.section].1
         let movieObject = listMovieDetail[indexPath.row]
         cell.selectionStyle = .none
         cell.filmNoteView.viewRating.isHidden = true

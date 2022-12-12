@@ -233,6 +233,7 @@
 		52DEB899292FB88200BCD36F /* AddNoteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DEB897292FB88200BCD36F /* AddNoteViewController.storyboard */; };
 		52DEB89A292FB88200BCD36F /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DEB898292FB88200BCD36F /* AddNoteViewController.swift */; };
 		52DEB89C292FF3AB00BCD36F /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DEB89B292FF3AB00BCD36F /* BaseCollectionViewController.swift */; };
+		52E05F582947646C00503C5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52E05F572947646C00503C5C /* GoogleService-Info.plist */; };
 		52EA75E929333F920076BC87 /* AYImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA75E129333F920076BC87 /* AYImageView.swift */; };
 		52EA75EA29333F920076BC87 /* AYImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA75E229333F920076BC87 /* AYImageDownloader.swift */; };
 		52EA75EB29333F920076BC87 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA75E329333F920076BC87 /* Result.swift */; };
@@ -581,6 +582,7 @@
 		52DEB897292FB88200BCD36F /* AddNoteViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddNoteViewController.storyboard; sourceTree = "<group>"; };
 		52DEB898292FB88200BCD36F /* AddNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 		52DEB89B292FF3AB00BCD36F /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		52E05F572947646C00503C5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52EA75E129333F920076BC87 /* AYImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AYImageView.swift; sourceTree = "<group>"; };
 		52EA75E229333F920076BC87 /* AYImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AYImageDownloader.swift; sourceTree = "<group>"; };
 		52EA75E329333F920076BC87 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -998,6 +1000,7 @@
 				18C3AC072923286A00183695 /* ProjectDemo-Bridging-Header.h */,
 				1899F2952924CC6700D2D978 /* TabbarViewController.swift */,
 				1899F2962924CC6700D2D978 /* TabbarViewController.xib */,
+				52E05F572947646C00503C5C /* GoogleService-Info.plist */,
 			);
 			path = ProjectDemo;
 			sourceTree = "<group>";
@@ -1639,6 +1642,7 @@
 				185DC6BB29000D760056C910 /* Resources */,
 				FE8224FED61A7B50CBA9E969 /* [CP] Embed Pods Frameworks */,
 				18F199D1291E1FDA00E4D911 /* Embed Frameworks */,
+				52E05F592947650C00503C5C /* FirebaseCrashlytics */,
 			);
 			buildRules = (
 			);
@@ -1737,6 +1741,7 @@
 				3AF863B897C2C5555F5C367F /* HomeViewController.storyboard in Resources */,
 				1831BB7E29359E3C00BCE150 /* GenresSearchTableViewCell.xib in Resources */,
 				181189722925E35000E9D883 /* Nexa Bold.otf in Resources */,
+				52E05F582947646C00503C5C /* GoogleService-Info.plist in Resources */,
 				18402BAC293839BA009623C0 /* UserNoteTableViewCell.xib in Resources */,
 				52CBDD3D2928E09000548E52 /* TVShowCollectionViewCell.xib in Resources */,
 				52B84E07292A3446008DA4C2 /* BaseNavigationView.xib in Resources */,
@@ -1790,6 +1795,25 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		52E05F592947650C00503C5C /* FirebaseCrashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			name = FirebaseCrashlytics;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\" -gsp \"${SRCROOT}/ProjectDemo/GoogleService-Info.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
 		};
 		FE8224FED61A7B50CBA9E969 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2081,100 +2105,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		18177E5629079B90006B2849 /* ProjectDemo Dev */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = "ProjectDemo Dev";
-		};
-		18177E5729079B90006B2849 /* ProjectDemo Dev */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD22BA11115260958DA8D837 /* Pods-ProjectDemo.projectdemo dev.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RQ8SAKQNUF;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ProjectDemo/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.datnq.demo.ProjectDemo1;
-				PRODUCT_NAME = "Star Movie";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "ProjectDemo/ProjectDemo-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = "ProjectDemo Dev";
-		};
 		185DC6CF29000D790056C910 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2298,6 +2228,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RQ8SAKQNUF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProjectDemo/Info.plist;
@@ -2313,7 +2244,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.datnq.demo.ProjectDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prox.dtp001;
 				PRODUCT_NAME = "Star Movie";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ProjectDemo/ProjectDemo-Bridging-Header.h";
@@ -2332,7 +2263,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7N5JQMM685;
+				DEVELOPMENT_TEAM = RQ8SAKQNUF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProjectDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2347,7 +2278,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.datnq.demo.ProjectDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prox.dtp001;
 				PRODUCT_NAME = "Star Movie";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ProjectDemo/ProjectDemo-Bridging-Header.h";
@@ -2363,7 +2294,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				185DC6CF29000D790056C910 /* Debug */,
-				18177E5629079B90006B2849 /* ProjectDemo Dev */,
 				185DC6D029000D790056C910 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2373,7 +2303,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				185DC6D229000D790056C910 /* Debug */,
-				18177E5729079B90006B2849 /* ProjectDemo Dev */,
 				185DC6D329000D790056C910 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
