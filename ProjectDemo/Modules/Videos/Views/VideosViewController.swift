@@ -50,6 +50,11 @@ final class VideosViewController: BaseCollectionViewController<TrendingCollectio
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeue(ofType: SmallNativeAdCollectionViewCell.self, indexPath: indexPath)
+            cell.adView.register(id: "")
+            return cell
+        }
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! TrendingCollectionViewCell
         let item = videos[indexPath.row]
         cell.configCell(item)
@@ -65,7 +70,7 @@ final class VideosViewController: BaseCollectionViewController<TrendingCollectio
 extension VideosViewController: VideosViewInterface {
     var videos: [Video] {
         if let videos = payload as? [Video] {
-            return videos
+            return [Video()] + videos
         }
         return []
     }

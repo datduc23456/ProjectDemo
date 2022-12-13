@@ -56,6 +56,11 @@ final class SimilarViewController: BaseCollectionViewController<CinemaPopularCol
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeue(ofType: SmallNativeAdCollectionViewCell.self, indexPath: indexPath)
+            cell.adView.register(id: "")
+            return cell
+        }
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CinemaPopularCollectionViewCell
         let item = movies[indexPath.row]
         cell.configCell(item)
@@ -70,7 +75,7 @@ final class SimilarViewController: BaseCollectionViewController<CinemaPopularCol
 // MARK: - SimilarViewInterface
 extension SimilarViewController: SimilarViewInterface {
     func getMovie(_ response: MovieResponse) {
-        movies = response.results
+        movies = [Movie()] + response.results
         delay(0.5, closure: {
             self.collectionView.headRefreshControl.endRefreshing()
             self.collectionView.footRefreshControl.endRefreshing()

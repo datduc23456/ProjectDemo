@@ -36,6 +36,7 @@ final class ActionWireframe: ActionWireframeInterface {
     }
     
     func showMovieDetailScreen(_ id: Int, isTVShow: Bool) {
+        AdMobManager.shared.show(key: "RewardedInterstitialAd")
         navigator.pushScreen(AppScreens.detail, (id, isTVShow), fromRoot: true)
     }
 }

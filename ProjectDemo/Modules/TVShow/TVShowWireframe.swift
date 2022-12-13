@@ -36,6 +36,7 @@ final class TVShowWireframe: TVShowWireframeInterface {
     }
     
     func showMovieDetailScreen(_ id: Int) {
+        AdMobManager.shared.show(key: "RewardedInterstitialAd")
         navigator.pushScreen(AppScreens.detail, (id, true), fromRoot: true)
     }
     

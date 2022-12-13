@@ -18,6 +18,7 @@ enum SearchType {
 final class SearchViewController: BaseViewController, UITextFieldDelegate {
 
     // MARK: - Properties
+    @IBOutlet weak var adView: SmallNativeAdView!
     @IBOutlet weak var tableView: UITableView!
     var presenter: SearchPresenterInterface!
     var delayValue : Double = 2.0
@@ -28,6 +29,7 @@ final class SearchViewController: BaseViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
+        adView.register(id: "")
         tableView.register(CinemaPopularTableViewCell.self, forCellReuseIdentifier: CinemaPopularTableViewCell.className)
         tableView.register(TVShowPopularTableViewCell.self, forCellReuseIdentifier: TVShowPopularTableViewCell.className)
         tableView.register(PeoplePopularTableViewCell.self, forCellReuseIdentifier: PeoplePopularTableViewCell.className)

@@ -10,6 +10,7 @@ import UIKit
 
 final class SettingViewController: BaseViewController {
 
+    @IBOutlet weak var bannerAdView: BannerAdView!
     // MARK: - Properties
 	var presenter: SettingPresenterInterface!
     override func viewDidLoad() {
@@ -20,6 +21,7 @@ final class SettingViewController: BaseViewController {
             self.didPopViewController(nil, true)
         }
         navigation.lbTitle.text = "Setting"
+        bannerAdView.register(id: "")
     }
     
 }

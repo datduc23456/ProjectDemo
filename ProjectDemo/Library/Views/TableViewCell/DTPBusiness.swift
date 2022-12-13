@@ -13,7 +13,7 @@ class DTPBusiness {
     var genreSelectedId: Int = 0
     var movieFilterType: MovieFilterType = .all
     var realmUtils: RealmUtils = AppDelegate.shared.realmUtils!
-    
+    var numberTapSeemore: Int = 0
     func mapToGenreName(_ listGenreIds: [Int]) -> String {
         var listGenresFilter: [Genre] = []
         

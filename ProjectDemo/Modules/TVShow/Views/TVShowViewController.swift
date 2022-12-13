@@ -41,6 +41,7 @@ final class TVShowViewController: BaseViewController {
         tableView.register(TVShowTopUpTableViewCell.self, forCellReuseIdentifier: TVShowTopUpTableViewCell.className)
         tableView.register(TVShowPopularTableViewCell.self, forCellReuseIdentifier: TVShowPopularTableViewCell.className)
         tableView.register(TrendingTableViewCell.self, forCellReuseIdentifier: TrendingTableViewCell.className)
+        tableView.register(UINib(nibName: BigNativeAdHeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: BigNativeAdHeaderView.reuseIdentifier)
         tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
@@ -54,6 +55,7 @@ final class TVShowViewController: BaseViewController {
         self.view.addSubview(navigation)
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
+            AdMobManager.shared.show(key: "InterstitialAd")
             self.presenter.didTapSearch()
         }
         navigation.imgSetting.addTapGestureRecognizer { [weak self] in
@@ -196,6 +198,25 @@ extension TVShowViewController: UITableViewDataSource, UITableViewDelegate {
             return headerView
         }
         return nil
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let item = tableViewDataSource[section]
+        if item == .popular {
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BigNativeAdHeaderView") as! BigNativeAdHeaderView
+            headerView.contentView.backgroundColor = APP_COLOR
+            headerView.bigNativeadView.register(id: "")
+            return headerView
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        let item = tableViewDataSource[section]
+        if item == .popular {
+            return 60
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

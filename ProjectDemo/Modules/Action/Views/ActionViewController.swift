@@ -89,6 +89,11 @@ final class ActionViewController: BaseCollectionViewController<CinemaPopularColl
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeue(ofType: SmallNativeAdCollectionViewCell.self, indexPath: indexPath)
+            cell.adView.register(id: "")
+            return cell
+        }
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CinemaPopularCollectionViewCell
         let movie = movies[indexPath.row]
         cell.viewFavorite.isHidden = false
@@ -151,7 +156,7 @@ extension ActionViewController: ActionViewInterface {
     }
     
     func appendMovie(_ response: MovieResponse) {
-        self.movies = sortByMovieFilterType(movies) + sortByMovieFilterType(response.results)
+        self.movies = [Movie()] + sortByMovieFilterType(movies) + sortByMovieFilterType(response.results)
         self.collectionView.reloadData()
     }
     

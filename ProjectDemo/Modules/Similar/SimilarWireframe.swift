@@ -33,6 +33,7 @@ final class SimilarWireframe: SimilarWireframeInterface {
     }
     
     func showMovieDetailScreen(_ id: Int, _ isTVShow: Bool) {
+        AdMobManager.shared.show(key: "RewardedInterstitialAd")
         navigator.pushScreen(AppScreens.detail, (id, isTVShow), fromRoot: true)
     }
 }

@@ -94,6 +94,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
+            AdMobManager.shared.show(key: "InterstitialAd")
             self.presenter.didTapSearch()
         }
         navigation.imgSetting.addTapGestureRecognizer { [weak self] in

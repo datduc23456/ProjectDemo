@@ -11,26 +11,37 @@
         <!--Search View Controller-->
         <scene sceneID="9kx-Y6-89Z">
             <objects>
-                <viewController id="ab2-EX-tH2" customClass="SearchViewController" customModule="ProjectDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ab2-EX-tH2" customClass="SearchViewController" customModule="Star_Movie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yMH-WK-99E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0JV-As-mHm" customClass="SmallNativeAdView" customModule="Star_Movie" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Bs2-vt-cod"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IIL-IK-Fbw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="miT-am-cok"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="IIL-IK-Fbw" firstAttribute="top" secondItem="0JV-As-mHm" secondAttribute="bottom" id="2WO-a0-Vbo"/>
+                            <constraint firstItem="0JV-As-mHm" firstAttribute="leading" secondItem="miT-am-cok" secondAttribute="leading" id="4Rd-vB-Ehr"/>
                             <constraint firstItem="miT-am-cok" firstAttribute="trailing" secondItem="IIL-IK-Fbw" secondAttribute="trailing" id="6K0-Ge-dUH"/>
                             <constraint firstItem="IIL-IK-Fbw" firstAttribute="leading" secondItem="miT-am-cok" secondAttribute="leading" id="F61-33-5dG"/>
-                            <constraint firstItem="IIL-IK-Fbw" firstAttribute="top" secondItem="miT-am-cok" secondAttribute="top" id="ZyI-8j-sAR"/>
+                            <constraint firstItem="0JV-As-mHm" firstAttribute="top" secondItem="miT-am-cok" secondAttribute="top" id="K1e-Yx-YC9"/>
                             <constraint firstItem="miT-am-cok" firstAttribute="bottom" secondItem="IIL-IK-Fbw" secondAttribute="bottom" id="eaY-Hr-xK4"/>
+                            <constraint firstItem="miT-am-cok" firstAttribute="trailing" secondItem="0JV-As-mHm" secondAttribute="trailing" id="gqu-y9-yov"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="adView" destination="0JV-As-mHm" id="lMV-oY-tQY"/>
                         <outlet property="tableView" destination="IIL-IK-Fbw" id="lbf-d0-ayb"/>
                     </connections>
                 </viewController>

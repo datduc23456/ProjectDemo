@@ -50,6 +50,11 @@ final class SeasonViewController: BaseCollectionViewController<TVShowCollectionV
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeue(ofType: SmallNativeAdCollectionViewCell.self, indexPath: indexPath)
+            cell.adView.register(id: "")
+            return cell
+        }
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! TVShowCollectionViewCell
         let item = seasons[indexPath.row]
         cell.configCell(item, isTVShowDetail: true)
@@ -61,7 +66,7 @@ final class SeasonViewController: BaseCollectionViewController<TVShowCollectionV
 extension SeasonViewController: SeasonViewInterface {
     var seasons: [Season] {
         if let seasons = payload as? [Season] {
-            return seasons
+            return [Season()] + seasons
         }
         return []
     }

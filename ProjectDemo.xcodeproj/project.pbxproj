@@ -186,6 +186,37 @@
 		52BCB4D5292930A9008E1C32 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCB4D4292930A9008E1C32 /* Genre.swift */; };
 		52C0145B29313CBF0070E5BD /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C0145A29313CBF0070E5BD /* CollectionViewFlowLayout.swift */; };
 		52C19F27292B9A2F00F84415 /* TVShowPopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C19F26292B9A2F00F84415 /* TVShowPopularTableViewCell.swift */; };
+		52C5B83B2948B6FF00024D5B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8142948B6FF00024D5B /* Constants.swift */; };
+		52C5B83C2948B6FF00024D5B /* AppOpenAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8162948B6FF00024D5B /* AppOpenAd.swift */; };
+		52C5B83D2948B6FF00024D5B /* RewardedAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8172948B6FF00024D5B /* RewardedAd.swift */; };
+		52C5B83E2948B6FF00024D5B /* RewardedInterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8182948B6FF00024D5B /* RewardedInterstitialAd.swift */; };
+		52C5B83F2948B6FF00024D5B /* NativeAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8192948B6FF00024D5B /* NativeAd.swift */; };
+		52C5B8402948B6FF00024D5B /* InterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B81A2948B6FF00024D5B /* InterstitialAd.swift */; };
+		52C5B8412948B6FF00024D5B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B81C2948B6FF00024D5B /* UIColorExtension.swift */; };
+		52C5B8422948B6FF00024D5B /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B81D2948B6FF00024D5B /* UIApplicationExtension.swift */; };
+		52C5B8432948B6FF00024D5B /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B81E2948B6FF00024D5B /* UICollectionViewExtension.swift */; };
+		52C5B8442948B6FF00024D5B /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B81F2948B6FF00024D5B /* AdMobManager.swift */; };
+		52C5B8452948B6FF00024D5B /* BigNativeAdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8222948B6FF00024D5B /* BigNativeAdCollectionViewCell.swift */; };
+		52C5B8462948B6FF00024D5B /* MediumNativeAdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8242948B6FF00024D5B /* MediumNativeAdCollectionViewCell.swift */; };
+		52C5B8472948B6FF00024D5B /* SmallNativeAdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8262948B6FF00024D5B /* SmallNativeAdCollectionViewCell.swift */; };
+		52C5B8482948B6FF00024D5B /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8282948B6FF00024D5B /* ViewProtocol.swift */; };
+		52C5B8492948B6FF00024D5B /* BaseCollectionAdsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8292948B6FF00024D5B /* BaseCollectionAdsViewCell.swift */; };
+		52C5B84A2948B6FF00024D5B /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B82A2948B6FF00024D5B /* BaseView.swift */; };
+		52C5B84B2948B6FF00024D5B /* AdProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B82B2948B6FF00024D5B /* AdProtocol.swift */; };
+		52C5B84C2948B6FF00024D5B /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B82C2948B6FF00024D5B /* NetworkMonitor.swift */; };
+		52C5B84D2948B6FF00024D5B /* BigNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C5B82F2948B6FF00024D5B /* BigNativeAdView.xib */; };
+		52C5B84E2948B6FF00024D5B /* BigNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8302948B6FF00024D5B /* BigNativeAdView.swift */; };
+		52C5B84F2948B6FF00024D5B /* MediumNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C5B8322948B6FF00024D5B /* MediumNativeAdView.xib */; };
+		52C5B8502948B6FF00024D5B /* MediumNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8332948B6FF00024D5B /* MediumNativeAdView.swift */; };
+		52C5B8512948B6FF00024D5B /* SmallNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8352948B6FF00024D5B /* SmallNativeAdView.swift */; };
+		52C5B8522948B6FF00024D5B /* SmallNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C5B8362948B6FF00024D5B /* SmallNativeAdView.xib */; };
+		52C5B8532948B6FF00024D5B /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8372948B6FF00024D5B /* BannerAdView.swift */; };
+		52C5B8542948B6FF00024D5B /* FullScreenNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C5B8392948B6FF00024D5B /* FullScreenNativeAdView.xib */; };
+		52C5B8552948B6FF00024D5B /* FullScreenNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B83A2948B6FF00024D5B /* FullScreenNativeAdView.swift */; };
+		52C5B8572948CB5E00024D5B /* BigNativeAdHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B8562948CB5E00024D5B /* BigNativeAdHeaderView.swift */; };
+		52C5B8592948CB8600024D5B /* BigNativeAdHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C5B8582948CB8600024D5B /* BigNativeAdHeaderView.xib */; };
+		52C5B85C2948D25400024D5B /* SmallNativeAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5B85A2948D25400024D5B /* SmallNativeAdTableViewCell.swift */; };
+		52C5B85D2948D25400024D5B /* SmallNativeAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C5B85B2948D25400024D5B /* SmallNativeAdTableViewCell.xib */; };
 		52C628EC293C9746009BF3E4 /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C628EB293C9746009BF3E4 /* UITextView+Ext.swift */; };
 		52C628EE293C98E8009BF3E4 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C628ED293C98E8009BF3E4 /* UITextField+Ext.swift */; };
 		52C628F0293CA609009BF3E4 /* AddNoteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C628EF293CA609009BF3E4 /* AddNoteHeaderView.swift */; };
@@ -534,6 +565,37 @@
 		52BCB4D4292930A9008E1C32 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		52C0145A29313CBF0070E5BD /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		52C19F26292B9A2F00F84415 /* TVShowPopularTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowPopularTableViewCell.swift; sourceTree = "<group>"; };
+		52C5B8142948B6FF00024D5B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		52C5B8162948B6FF00024D5B /* AppOpenAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppOpenAd.swift; sourceTree = "<group>"; };
+		52C5B8172948B6FF00024D5B /* RewardedAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardedAd.swift; sourceTree = "<group>"; };
+		52C5B8182948B6FF00024D5B /* RewardedInterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardedInterstitialAd.swift; sourceTree = "<group>"; };
+		52C5B8192948B6FF00024D5B /* NativeAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAd.swift; sourceTree = "<group>"; };
+		52C5B81A2948B6FF00024D5B /* InterstitialAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstitialAd.swift; sourceTree = "<group>"; };
+		52C5B81C2948B6FF00024D5B /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		52C5B81D2948B6FF00024D5B /* UIApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
+		52C5B81E2948B6FF00024D5B /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
+		52C5B81F2948B6FF00024D5B /* AdMobManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
+		52C5B8222948B6FF00024D5B /* BigNativeAdCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigNativeAdCollectionViewCell.swift; sourceTree = "<group>"; };
+		52C5B8242948B6FF00024D5B /* MediumNativeAdCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumNativeAdCollectionViewCell.swift; sourceTree = "<group>"; };
+		52C5B8262948B6FF00024D5B /* SmallNativeAdCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallNativeAdCollectionViewCell.swift; sourceTree = "<group>"; };
+		52C5B8282948B6FF00024D5B /* ViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
+		52C5B8292948B6FF00024D5B /* BaseCollectionAdsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionAdsViewCell.swift; sourceTree = "<group>"; };
+		52C5B82A2948B6FF00024D5B /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		52C5B82B2948B6FF00024D5B /* AdProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdProtocol.swift; sourceTree = "<group>"; };
+		52C5B82C2948B6FF00024D5B /* NetworkMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		52C5B82F2948B6FF00024D5B /* BigNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BigNativeAdView.xib; sourceTree = "<group>"; };
+		52C5B8302948B6FF00024D5B /* BigNativeAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigNativeAdView.swift; sourceTree = "<group>"; };
+		52C5B8322948B6FF00024D5B /* MediumNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediumNativeAdView.xib; sourceTree = "<group>"; };
+		52C5B8332948B6FF00024D5B /* MediumNativeAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumNativeAdView.swift; sourceTree = "<group>"; };
+		52C5B8352948B6FF00024D5B /* SmallNativeAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallNativeAdView.swift; sourceTree = "<group>"; };
+		52C5B8362948B6FF00024D5B /* SmallNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallNativeAdView.xib; sourceTree = "<group>"; };
+		52C5B8372948B6FF00024D5B /* BannerAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
+		52C5B8392948B6FF00024D5B /* FullScreenNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullScreenNativeAdView.xib; sourceTree = "<group>"; };
+		52C5B83A2948B6FF00024D5B /* FullScreenNativeAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenNativeAdView.swift; sourceTree = "<group>"; };
+		52C5B8562948CB5E00024D5B /* BigNativeAdHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigNativeAdHeaderView.swift; sourceTree = "<group>"; };
+		52C5B8582948CB8600024D5B /* BigNativeAdHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigNativeAdHeaderView.xib; sourceTree = "<group>"; };
+		52C5B85A2948D25400024D5B /* SmallNativeAdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallNativeAdTableViewCell.swift; sourceTree = "<group>"; };
+		52C5B85B2948D25400024D5B /* SmallNativeAdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallNativeAdTableViewCell.xib; sourceTree = "<group>"; };
 		52C628EB293C9746009BF3E4 /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
 		52C628ED293C98E8009BF3E4 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		52C628EF293CA609009BF3E4 /* AddNoteHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteHeaderView.swift; sourceTree = "<group>"; };
@@ -877,6 +939,8 @@
 				18402BAA293839BA009623C0 /* UserNoteTableViewCell.xib */,
 				18402BAD29387FE3009623C0 /* AddNoteTableViewCell.swift */,
 				18402BAE29387FE4009623C0 /* AddNoteTableViewCell.xib */,
+				52C5B85A2948D25400024D5B /* SmallNativeAdTableViewCell.swift */,
+				52C5B85B2948D25400024D5B /* SmallNativeAdTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -1030,6 +1094,7 @@
 		185DC6FA290108D40056C910 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				52C5B8132948B6FF00024D5B /* AdMobManager */,
 				52EA75E029333F920076BC87 /* AYImageKit */,
 				185BC392292F0D6400613EB2 /* AvailableHapticFeedback */,
 				185BC375292F0D1F00613EB2 /* SweeterSwift */,
@@ -1192,6 +1257,136 @@
 			path = RealmObject;
 			sourceTree = "<group>";
 		};
+		52C5B8132948B6FF00024D5B /* AdMobManager */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B8142948B6FF00024D5B /* Constants.swift */,
+				52C5B8152948B6FF00024D5B /* Ads */,
+				52C5B81B2948B6FF00024D5B /* Extension */,
+				52C5B81F2948B6FF00024D5B /* AdMobManager.swift */,
+				52C5B8202948B6FF00024D5B /* AdCollectionViewCell */,
+				52C5B8272948B6FF00024D5B /* Base */,
+				52C5B82C2948B6FF00024D5B /* NetworkMonitor.swift */,
+				52C5B82D2948B6FF00024D5B /* AdView */,
+			);
+			path = AdMobManager;
+			sourceTree = "<group>";
+		};
+		52C5B8152948B6FF00024D5B /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B8162948B6FF00024D5B /* AppOpenAd.swift */,
+				52C5B8172948B6FF00024D5B /* RewardedAd.swift */,
+				52C5B8182948B6FF00024D5B /* RewardedInterstitialAd.swift */,
+				52C5B8192948B6FF00024D5B /* NativeAd.swift */,
+				52C5B81A2948B6FF00024D5B /* InterstitialAd.swift */,
+			);
+			path = Ads;
+			sourceTree = "<group>";
+		};
+		52C5B81B2948B6FF00024D5B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B81C2948B6FF00024D5B /* UIColorExtension.swift */,
+				52C5B81D2948B6FF00024D5B /* UIApplicationExtension.swift */,
+				52C5B81E2948B6FF00024D5B /* UICollectionViewExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		52C5B8202948B6FF00024D5B /* AdCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B8212948B6FF00024D5B /* Big */,
+				52C5B8232948B6FF00024D5B /* Medium */,
+				52C5B8252948B6FF00024D5B /* Small */,
+			);
+			path = AdCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		52C5B8212948B6FF00024D5B /* Big */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B8222948B6FF00024D5B /* BigNativeAdCollectionViewCell.swift */,
+			);
+			path = Big;
+			sourceTree = "<group>";
+		};
+		52C5B8232948B6FF00024D5B /* Medium */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B8242948B6FF00024D5B /* MediumNativeAdCollectionViewCell.swift */,
+			);
+			path = Medium;
+			sourceTree = "<group>";
+		};
+		52C5B8252948B6FF00024D5B /* Small */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B8262948B6FF00024D5B /* SmallNativeAdCollectionViewCell.swift */,
+			);
+			path = Small;
+			sourceTree = "<group>";
+		};
+		52C5B8272948B6FF00024D5B /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B8282948B6FF00024D5B /* ViewProtocol.swift */,
+				52C5B8292948B6FF00024D5B /* BaseCollectionAdsViewCell.swift */,
+				52C5B82A2948B6FF00024D5B /* BaseView.swift */,
+				52C5B82B2948B6FF00024D5B /* AdProtocol.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		52C5B82D2948B6FF00024D5B /* AdView */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B82E2948B6FF00024D5B /* Big */,
+				52C5B8312948B6FF00024D5B /* Medium */,
+				52C5B8342948B6FF00024D5B /* Small */,
+				52C5B8372948B6FF00024D5B /* BannerAdView.swift */,
+				52C5B8382948B6FF00024D5B /* FullScreen */,
+			);
+			path = AdView;
+			sourceTree = "<group>";
+		};
+		52C5B82E2948B6FF00024D5B /* Big */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B82F2948B6FF00024D5B /* BigNativeAdView.xib */,
+				52C5B8302948B6FF00024D5B /* BigNativeAdView.swift */,
+			);
+			path = Big;
+			sourceTree = "<group>";
+		};
+		52C5B8312948B6FF00024D5B /* Medium */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B8322948B6FF00024D5B /* MediumNativeAdView.xib */,
+				52C5B8332948B6FF00024D5B /* MediumNativeAdView.swift */,
+			);
+			path = Medium;
+			sourceTree = "<group>";
+		};
+		52C5B8342948B6FF00024D5B /* Small */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B8352948B6FF00024D5B /* SmallNativeAdView.swift */,
+				52C5B8362948B6FF00024D5B /* SmallNativeAdView.xib */,
+			);
+			path = Small;
+			sourceTree = "<group>";
+		};
+		52C5B8382948B6FF00024D5B /* FullScreen */ = {
+			isa = PBXGroup;
+			children = (
+				52C5B8392948B6FF00024D5B /* FullScreenNativeAdView.xib */,
+				52C5B83A2948B6FF00024D5B /* FullScreenNativeAdView.swift */,
+			);
+			path = FullScreen;
+			sourceTree = "<group>";
+		};
 		52C67BBF2934DFE30044ED40 /* TableCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1219,6 +1414,8 @@
 				52CBDD082928D36F00548E52 /* FilmNoteView.xib */,
 				521883322944E3F500C94536 /* FavoriteHeaderView.swift */,
 				521883342944E40C00C94536 /* FavoriteHeaderView.xib */,
+				52C5B8562948CB5E00024D5B /* BigNativeAdHeaderView.swift */,
+				52C5B8582948CB8600024D5B /* BigNativeAdHeaderView.xib */,
 			);
 			path = HeaderTableViewCell;
 			sourceTree = "<group>";
@@ -1697,6 +1894,7 @@
 				184BB0842934ADEA00FF2249 /* MyNoteTableViewCell.xib in Resources */,
 				181189A8292B2F1400E9D883 /* SeagullLightBT.ttf in Resources */,
 				52CBDD1B2928DD1A00548E52 /* TrendingCollectionViewCell.xib in Resources */,
+				52C5B8542948B6FF00024D5B /* FullScreenNativeAdView.xib in Resources */,
 				185BC365292CC51800613EB2 /* MovieVideosTableViewCell.xib in Resources */,
 				181189A2292B2F1400E9D883 /* seagullm.ttf in Resources */,
 				52C628F2293CA619009BF3E4 /* AddNoteHeaderView.xib in Resources */,
@@ -1722,9 +1920,11 @@
 				52C67BC629350A240044ED40 /* SearchHistoryTableViewCell.xib in Resources */,
 				1899F2982924CC6700D2D978 /* TabbarViewController.xib in Resources */,
 				183F20F22930ACD2001BCB23 /* BottomSheetContentView.xib in Resources */,
+				52C5B8522948B6FF00024D5B /* SmallNativeAdView.xib in Resources */,
 				11F96FBD4B87C9B619D4A842 /* ExampleViewController.storyboard in Resources */,
 				181189B2292B2F1400E9D883 /* seagull italic.ttf in Resources */,
 				181189762925E35000E9D883 /* Nexa Light.otf in Resources */,
+				52C5B85D2948D25400024D5B /* SmallNativeAdTableViewCell.xib in Resources */,
 				181189AC292B2F1400E9D883 /* seagull heavy bt.ttf in Resources */,
 				52CBDD392928DE6500548E52 /* PeoplePopularCollectionViewCell.xib in Resources */,
 				183F20EA2930A77A001BCB23 /* BottomSheetLabelView.xib in Resources */,
@@ -1738,6 +1938,7 @@
 				52BCB4C92929000F008E1C32 /* ActorsCollectionViewCell.xib in Resources */,
 				185BC361292CBD2200613EB2 /* NotesTableViewCell.xib in Resources */,
 				181189742925E35000E9D883 /* Nexa Regular.otf in Resources */,
+				52C5B84D2948B6FF00024D5B /* BigNativeAdView.xib in Resources */,
 				3AF863B897C2C5555F5C367F /* HomeViewController.storyboard in Resources */,
 				1831BB7E29359E3C00BCE150 /* GenresSearchTableViewCell.xib in Resources */,
 				181189722925E35000E9D883 /* Nexa Bold.otf in Resources */,
@@ -1747,6 +1948,7 @@
 				52B84E07292A3446008DA4C2 /* BaseNavigationView.xib in Resources */,
 				C57B1B148ABAABB5F4026D60 /* TVShowViewController.storyboard in Resources */,
 				180C3CBC2930BBF300E56C97 /* BottomSheetDraggableView.xib in Resources */,
+				52C5B8592948CB8600024D5B /* BigNativeAdHeaderView.xib in Resources */,
 				07DE2D0E258E7E48F4882819 /* FavoriteViewController.storyboard in Resources */,
 				18402BB029387FE4009623C0 /* AddNoteTableViewCell.xib in Resources */,
 				52F03F8C29327C66005CAF76 /* TextExpandTableViewCell.xib in Resources */,
@@ -1754,6 +1956,7 @@
 				369A33FEEF64CCA0D82AC74B /* MovieDetailViewController.storyboard in Resources */,
 				AA50EEC73E7FF84E7E383E4B /* StatisticcalViewController.storyboard in Resources */,
 				E57AD9E5500F281C1D59B012 /* SeasonViewController.storyboard in Resources */,
+				52C5B84F2948B6FF00024D5B /* MediumNativeAdView.xib in Resources */,
 				B2C7BFAD25689BDB3C676013 /* PopularPeopleViewController.storyboard in Resources */,
 				3BF5F67519F7150DB35566B4 /* PopularPeopleDetailViewController.storyboard in Resources */,
 				356D64D38038DE4499B8B93C /* EpisodeViewController.storyboard in Resources */,
@@ -1839,6 +2042,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52C5B8532948B6FF00024D5B /* BannerAdView.swift in Sources */,
 				18F19828291A63CC00E4D911 /* ServiceCore.swift in Sources */,
 				185BC3B2292F614F00613EB2 /* StatisticcalTableViewCell.swift in Sources */,
 				52CBDD312928DD2D00548E52 /* NewMovieTableViewCell.swift in Sources */,
@@ -1850,6 +2054,7 @@
 				185BC359292CADAC00613EB2 /* ImageStackView.swift in Sources */,
 				18F1982F291A676B00E4D911 /* BaseModel.swift in Sources */,
 				52DEB89C292FF3AB00BCD36F /* BaseCollectionViewController.swift in Sources */,
+				52C5B8502948B6FF00024D5B /* MediumNativeAdView.swift in Sources */,
 				185DC6EF2900E1860056C910 /* Progressable.swift in Sources */,
 				52CBDD2D2928DD2D00548E52 /* CinemaPopularTableViewCell.swift in Sources */,
 				185BC38B292F0D2A00613EB2 /* UIViewController+Sweeter.swift in Sources */,
@@ -1870,12 +2075,15 @@
 				1899F2972924CC6700D2D978 /* TabbarViewController.swift in Sources */,
 				52BCB4C72929000F008E1C32 /* ActorsCollectionViewCell.swift in Sources */,
 				18118991292B2DF700E9D883 /* TVShowTopUpCollectionViewCell.swift in Sources */,
+				52C5B8462948B6FF00024D5B /* MediumNativeAdCollectionViewCell.swift in Sources */,
+				52C5B83C2948B6FF00024D5B /* AppOpenAd.swift in Sources */,
 				52DEB893292FB87400BCD36F /* AddNoteWireframe.swift in Sources */,
 				185DC6D529000F040056C910 /* CoordinatorType.swift in Sources */,
 				52F03F8B29327C66005CAF76 /* TextExpandTableViewCell.swift in Sources */,
 				185BC384292F0D2A00613EB2 /* String+Sweeter.swift in Sources */,
 				52CBDD142928DD1A00548E52 /* TopRatingCollectionViewCell.swift in Sources */,
 				52CBDD292928DD2D00548E52 /* PageCinemaTableViewCell.swift in Sources */,
+				52C5B8422948B6FF00024D5B /* UIApplicationExtension.swift in Sources */,
 				185BC372292F0BE800613EB2 /* MultiSlider.swift in Sources */,
 				52B84E10292A62C3008DA4C2 /* DTPBusiness.swift in Sources */,
 				52EA75E929333F920076BC87 /* AYImageView.swift in Sources */,
@@ -1883,13 +2091,17 @@
 				18402BB429388AC6009623C0 /* CGFloat+Ext.swift in Sources */,
 				52CBDD162928DD1A00548E52 /* CinemaPopularCollectionViewCell.swift in Sources */,
 				527F93CB2925449E0065FE10 /* UITableView+Ext.swift in Sources */,
+				52C5B8432948B6FF00024D5B /* UICollectionViewExtension.swift in Sources */,
 				52CBDCFD2927EE5B00548E52 /* FSPagerView.swift in Sources */,
 				52EA75EE29333F920076BC87 /* AYImageViewerAnimator.swift in Sources */,
+				52C5B8472948B6FF00024D5B /* SmallNativeAdCollectionViewCell.swift in Sources */,
 				52F03F88293252E1005CAF76 /* ImagesTableViewCell.swift in Sources */,
 				185DC6E42900E15B0056C910 /* PresenterInterface.swift in Sources */,
 				52B91FF62933A2BF005CD445 /* SearchTableViewDataSource.swift in Sources */,
 				52CBDCF12927EE5B00548E52 /* FSPageViewTransformer.swift in Sources */,
 				527F93C2292534050065FE10 /* NSObject+Ext.swift in Sources */,
+				52C5B8402948B6FF00024D5B /* InterstitialAd.swift in Sources */,
+				52C5B8452948B6FF00024D5B /* BigNativeAdCollectionViewCell.swift in Sources */,
 				185BC360292CBD2200613EB2 /* NotesTableViewCell.swift in Sources */,
 				183F20F02930ACB5001BCB23 /* BottomSheetContentView.swift in Sources */,
 				185BC385292F0D2A00613EB2 /* Codable+Sweeter.swift in Sources */,
@@ -1911,6 +2123,7 @@
 				185BC389292F0D2A00613EB2 /* Swift+Sweeter.swift in Sources */,
 				185BC38F292F0D2A00613EB2 /* NSManagedObjectContext+Sweeter.swift in Sources */,
 				52EA75EB29333F920076BC87 /* Result.swift in Sources */,
+				52C5B8552948B6FF00024D5B /* FullScreenNativeAdView.swift in Sources */,
 				52EA75EC29333F920076BC87 /* AYImageViewerViewController.swift in Sources */,
 				1848A475292B89E3005D4431 /* TVShowTopUpTableViewCell.swift in Sources */,
 				52CBDD382928DE6500548E52 /* PeoplePopularCollectionViewCell.swift in Sources */,
@@ -1947,6 +2160,7 @@
 				1848A47A292C5C71005D4431 /* RealmUtils.swift in Sources */,
 				183F20EC2930AAEB001BCB23 /* BottomSheetButtonView.swift in Sources */,
 				183B64D3292C69C600E7BB3E /* BaseCustomView.swift in Sources */,
+				52C5B8572948CB5E00024D5B /* BigNativeAdHeaderView.swift in Sources */,
 				18402BB229388A94009623C0 /* Int+Ext.swift in Sources */,
 				52CBDD192928DD1A00548E52 /* GengesCollectionViewCell.swift in Sources */,
 				52F03F8429320306005CAF76 /* MovieDetail.swift in Sources */,
@@ -1960,10 +2174,12 @@
 				183F20E82930A762001BCB23 /* BottomSheetLabelView.swift in Sources */,
 				52CBDCF72927EE5B00548E52 /* FSPageViewLayout.swift in Sources */,
 				52CBDCF32927EE5B00548E52 /* FSPagerCollectionView.swift in Sources */,
+				52C5B85C2948D25400024D5B /* SmallNativeAdTableViewCell.swift in Sources */,
 				185BC353292CA0B200613EB2 /* DynamicBottomSheetPresentationController.swift in Sources */,
 				52CBDCF52927EE5B00548E52 /* FSPagerViewLayoutAttributes.swift in Sources */,
 				527F93D22925555B0065FE10 /* ABCTableViewCell.swift in Sources */,
 				52BCB4CC2929051A008E1C32 /* APIManager.swift in Sources */,
+				52C5B83B2948B6FF00024D5B /* Constants.swift in Sources */,
 				18A42B8E293702D4001879DD /* InsetLabel.swift in Sources */,
 				185BC35D292CBB9800613EB2 /* ActorsTableViewCell.swift in Sources */,
 				52DEB894292FB87400BCD36F /* AddNoteInterfaces.swift in Sources */,
@@ -1975,6 +2191,9 @@
 				BCFDA48571B66D7FE0825FD7 /* HomeInteractor.swift in Sources */,
 				E8AB5A159EEE81F5A8858822 /* HomeWireframe.swift in Sources */,
 				5AB9A3D412A7075AEC1352F1 /* HomeViewController.swift in Sources */,
+				52C5B8482948B6FF00024D5B /* ViewProtocol.swift in Sources */,
+				52C5B84E2948B6FF00024D5B /* BigNativeAdView.swift in Sources */,
+				52C5B84C2948B6FF00024D5B /* NetworkMonitor.swift in Sources */,
 				185BC364292CC51800613EB2 /* MovieVideosTableViewCell.swift in Sources */,
 				5E85C51A0E9F852C0BCD88D4 /* TVShowInterfaces.swift in Sources */,
 				185BC38A292F0D2A00613EB2 /* UIStackView+Sweeter.swift in Sources */,
@@ -1983,12 +2202,14 @@
 				CD5D8DEC6A6FC52B7883E6DE /* TVShowInteractor.swift in Sources */,
 				FF9679FC3117EAD8D0021879 /* TVShowWireframe.swift in Sources */,
 				181189C0292B563900E9D883 /* TVShowTableViewDataSource.swift in Sources */,
+				52C5B83D2948B6FF00024D5B /* RewardedAd.swift in Sources */,
 				52DEB896292FB87400BCD36F /* AddNotePresenter.swift in Sources */,
 				756DD076F318A9A50B1418CB /* TVShowViewController.swift in Sources */,
 				52DEB89A292FB88200BCD36F /* AddNoteViewController.swift in Sources */,
 				A2AECDC62C3DD3F59E6A3650 /* FavoriteInterfaces.swift in Sources */,
 				14769C4203D8F28B0C3F67E8 /* FavoritePresenter.swift in Sources */,
 				185BC34F292C8ED200613EB2 /* UserRateCollectionViewCell.swift in Sources */,
+				52C5B83F2948B6FF00024D5B /* NativeAd.swift in Sources */,
 				C2588BF5FE1DD34FFD9463FF /* FavoriteInteractor.swift in Sources */,
 				3609C9982063B8DE2E15D369 /* FavoriteWireframe.swift in Sources */,
 				690B08EF695F6629366A9E40 /* FavoriteViewController.swift in Sources */,
@@ -2002,6 +2223,7 @@
 				CDE0AC7EFC3F8922B39473DD /* StatisticcalInterfaces.swift in Sources */,
 				F8FEC04D009AF628642EF8B3 /* StatisticcalPresenter.swift in Sources */,
 				41AC4688BB1D04BEFFDDC92D /* StatisticcalInteractor.swift in Sources */,
+				52C5B84B2948B6FF00024D5B /* AdProtocol.swift in Sources */,
 				C08FB9C5A333889330BA63BC /* StatisticcalWireframe.swift in Sources */,
 				BA3BE0AA4EB6080A8F356F44 /* StatisticcalViewController.swift in Sources */,
 				2A1CF8D70F08D829D81A2FED /* SeasonInterfaces.swift in Sources */,
@@ -2025,8 +2247,10 @@
 				CD372DA02221C06FEEB02E7C /* PopularPeopleDetailViewController.swift in Sources */,
 				C41F25B206CBAD075F1396B1 /* EpisodeInterfaces.swift in Sources */,
 				E528066965BF0A0F8406034D /* EpisodePresenter.swift in Sources */,
+				52C5B84A2948B6FF00024D5B /* BaseView.swift in Sources */,
 				9E58C924178682157B03CC75 /* EpisodeInteractor.swift in Sources */,
 				C9AC379B40FE3B4F9488E0B2 /* EpisodeWireframe.swift in Sources */,
+				52C5B8512948B6FF00024D5B /* SmallNativeAdView.swift in Sources */,
 				CA7347B956394D91A5EA68A6 /* EpisodeViewController.swift in Sources */,
 				DD397072C4B4A89A0F0EE46D /* ActionInterfaces.swift in Sources */,
 				1831BB802935F07B00BCE150 /* PeopleDetail.swift in Sources */,
@@ -2035,7 +2259,9 @@
 				F7D7806DADD0DA242260BAAE /* ActionWireframe.swift in Sources */,
 				0A5B8FA97AE7C9C29764AFC6 /* ActionViewController.swift in Sources */,
 				33F42F20A7AF905D07A55415 /* GenersInterfaces.swift in Sources */,
+				52C5B83E2948B6FF00024D5B /* RewardedInterstitialAd.swift in Sources */,
 				755946601D21210C120B73CF /* GenersPresenter.swift in Sources */,
+				52C5B8412948B6FF00024D5B /* UIColorExtension.swift in Sources */,
 				D5329548ADF574DEF7280F69 /* GenersInteractor.swift in Sources */,
 				18402BAB293839BA009623C0 /* UserNoteTableViewCell.swift in Sources */,
 				C6BAE755791BD93D40E66A94 /* GenersWireframe.swift in Sources */,
@@ -2070,6 +2296,7 @@
 				F2BA60249C3D35252E76F318 /* UserNoteViewController.swift in Sources */,
 				D8F65DE6D65E7C3FDC85BEA1 /* WatchedListInterfaces.swift in Sources */,
 				AF7897F339F45254E101D4EA /* WatchedListPresenter.swift in Sources */,
+				52C5B8442948B6FF00024D5B /* AdMobManager.swift in Sources */,
 				DB1899346F4914B91AEA9395 /* WatchedListInteractor.swift in Sources */,
 				E57E4A57CF868FEB9D3E2501 /* WatchedListWireframe.swift in Sources */,
 				9AAE300515F091D5A491F193 /* WatchedListViewController.swift in Sources */,
@@ -2082,6 +2309,7 @@
 				88DA75A0A6D3AABA0F900441 /* SimilarPresenter.swift in Sources */,
 				4C31D81DDDF13AC3FBA9CE4B /* SimilarInteractor.swift in Sources */,
 				0C3D2FEA7EBB8B43C17238FA /* SimilarWireframe.swift in Sources */,
+				52C5B8492948B6FF00024D5B /* BaseCollectionAdsViewCell.swift in Sources */,
 				0306EABBDE5172554FC85083 /* SimilarViewController.swift in Sources */,
 				E1F85B4C79AE9028C5A85A64 /* SettingInterfaces.swift in Sources */,
 				42830348C770CADF309F4E38 /* SettingPresenter.swift in Sources */,

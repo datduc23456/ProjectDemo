@@ -34,10 +34,12 @@ final class SearchWireframe: SearchWireframeInterface {
     }
     
     func showMovieDetailScreen(_ id: Int) {
+        AdMobManager.shared.show(key: "RewardedInterstitialAd")
         navigator.pushScreen(AppScreens.detail, (id, false), fromRoot: true)
     }
     
     func showTVShowDetailScreen(_ id: Int) {
+        AdMobManager.shared.show(key: "RewardedInterstitialAd")
         navigator.pushScreen(AppScreens.detail, (id, true), fromRoot: true)
     }
     

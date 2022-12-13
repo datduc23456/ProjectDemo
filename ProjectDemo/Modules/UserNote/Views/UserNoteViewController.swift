@@ -12,6 +12,7 @@ import DZNEmptyDataSet
 final class UserNoteViewController: BaseViewController {
     
     // MARK: - Properties
+    @IBOutlet weak var adView: SmallNativeAdView!
     var presenter: UserNotePresenterInterface!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableViewheight: NSLayoutConstraint!
@@ -22,6 +23,7 @@ final class UserNoteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
+        adView.register(id: "")
         reviews = (movieDetail?.reviews.results).isNil(value: [])
         tableView.reloadData()
         configHeader()

@@ -17,7 +17,7 @@
         <!--User Note View Controller-->
         <scene sceneID="9kx-Y6-89Z">
             <objects>
-                <viewController id="ab2-EX-tH2" customClass="UserNoteViewController" customModule="Starmovie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ab2-EX-tH2" customClass="UserNoteViewController" customModule="Star_Movie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yMH-WK-99E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,17 +26,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="613"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YyU-tq-46w">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="680"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="720"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVb-vh-ypE" customClass="FilmNoteView" customModule="Starmovie" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVb-vh-ypE" customClass="FilmNoteView" customModule="Star_Movie" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="0.0" width="343" height="170"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="170" id="MX1-3U-adk"/>
                                                 </constraints>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="s1s-Sl-Dq9" customClass="TableViewAdjustedHeight" customModule="Starmovie" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="180" width="375" height="500"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="78S-nY-DbZ" customClass="SmallNativeAdView" customModule="Star_Movie" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="180" width="375" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="1ON-F8-uyN"/>
+                                                </constraints>
+                                            </view>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="s1s-Sl-Dq9" customClass="TableViewAdjustedHeight" customModule="Star_Movie" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="220" width="375" height="500"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="500" id="FzK-tW-Kqh"/>
@@ -46,12 +53,15 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="PVb-vh-ypE" secondAttribute="trailing" constant="16" id="8cH-gO-9to"/>
+                                            <constraint firstAttribute="trailing" secondItem="78S-nY-DbZ" secondAttribute="trailing" id="Ajx-td-SX8"/>
                                             <constraint firstAttribute="bottom" secondItem="s1s-Sl-Dq9" secondAttribute="bottom" id="Mhq-sX-hsv"/>
+                                            <constraint firstItem="78S-nY-DbZ" firstAttribute="leading" secondItem="YyU-tq-46w" secondAttribute="leading" id="S39-3W-1xi"/>
                                             <constraint firstAttribute="trailing" secondItem="s1s-Sl-Dq9" secondAttribute="trailing" id="XJY-fN-5dI"/>
                                             <constraint firstItem="PVb-vh-ypE" firstAttribute="top" secondItem="YyU-tq-46w" secondAttribute="top" id="aAM-LJ-bnG"/>
                                             <constraint firstItem="s1s-Sl-Dq9" firstAttribute="leading" secondItem="YyU-tq-46w" secondAttribute="leading" id="dHc-4U-Nh6"/>
                                             <constraint firstItem="PVb-vh-ypE" firstAttribute="leading" secondItem="YyU-tq-46w" secondAttribute="leading" constant="16" id="gLH-U4-rdX"/>
-                                            <constraint firstItem="PVb-vh-ypE" firstAttribute="bottom" secondItem="s1s-Sl-Dq9" secondAttribute="top" constant="-10" id="i7S-sh-4i8"/>
+                                            <constraint firstItem="78S-nY-DbZ" firstAttribute="top" secondItem="PVb-vh-ypE" secondAttribute="bottom" constant="10" id="mmL-V6-rZ9"/>
+                                            <constraint firstItem="s1s-Sl-Dq9" firstAttribute="top" secondItem="78S-nY-DbZ" secondAttribute="bottom" constant="10" id="s3D-Lz-oKc"/>
                                             <constraint firstAttribute="height" priority="750" constant="667" id="v4p-Lg-jmi"/>
                                         </constraints>
                                     </view>
@@ -99,6 +109,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="adView" destination="78S-nY-DbZ" id="CxD-TY-RQ1"/>
                         <outlet property="filmNoteView" destination="PVb-vh-ypE" id="Hw4-D4-0e1"/>
                         <outlet property="scrollView" destination="i3C-ti-sN2" id="qVg-cg-oVm"/>
                         <outlet property="tableView" destination="s1s-Sl-Dq9" id="tem-96-WVR"/>

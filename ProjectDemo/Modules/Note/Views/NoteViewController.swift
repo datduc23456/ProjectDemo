@@ -35,6 +35,7 @@ final class NoteViewController: BaseViewController {
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
+            AdMobManager.shared.show(key: "InterstitialAd")
             self.presenter.didTapSearch()
         }
         navigation.imgSetting.addTapGestureRecognizer { [weak self] in
@@ -108,13 +109,14 @@ extension NoteViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: AddNoteHeaderView.reuseIdentifier) as! AddNoteHeaderView
+        headerView.adView.register(id: "")
         headerView.contentView.backgroundColor = APP_COLOR
         headerView.delegate = self
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        return 90
     }
 }
 

@@ -59,6 +59,7 @@ final class FavoriteViewController: BaseViewController {
         super.viewDidLoad()
         configView()
         presenter.viewDidLoad()
+        tableView.registerCell(for: SmallNativeAdTableViewCell.className)
         tableView.registerCell(for: FavoriteTableViewCell.className)
         tableView.register(UINib(nibName: FavoriteHeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: FavoriteHeaderView.reuseIdentifier)
         tableView.delegate = self
@@ -159,6 +160,7 @@ extension FavoriteViewController: FavoriteViewInterface {
             }
         }
         dataSource = movies.sorted(by: { $0.0 > $1.0 })
+        dataSource.append(("", []))
         tableView.reloadData()
         delay(1, closure: {
             self.tableView.headRefreshControl.endRefreshing()
@@ -173,12 +175,14 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 { return 1 }
         let values = dataSource[section]
         return values.1.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
+        if section == 0 { return 0 }
+        if section == 1 {
              return 23
         }
         return 43
@@ -187,7 +191,8 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FavoriteHeaderView.reuseIdentifier) as! FavoriteHeaderView
         let key = dataSource[section].0
-        if section == 0 {
+        if key.isEmpty { return nil }
+        if section == 1 {
             headerView.viewSegment.isHidden = true
         } else {
             headerView.viewSegment.isHidden = false
@@ -200,6 +205,10 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SmallNativeAdTableViewCell.className, for: indexPath) as! SmallNativeAdTableViewCell
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.className, for: indexPath) as! FavoriteTableViewCell
         let key = dataSource[indexPath.section].0
         let listMovieDetail = dataSource[indexPath.section].1
@@ -227,6 +236,7 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 { return 30 }
         return 190
     }
     

@@ -25,6 +25,8 @@ final class HomeViewController: BaseViewController {
         tableView.registerCell(for: PageCinemaTableViewCell.className)
         tableView.registerCell(for: NewMovieTableViewCell.className)
         tableView.registerCell(for: GengesListTableViewCell.className)
+        //BigNativeAdHeaderView
+        tableView.register(UINib(nibName: BigNativeAdHeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: BigNativeAdHeaderView.reuseIdentifier)
         tableView.register(UINib(nibName: HeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderView.reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
@@ -33,6 +35,7 @@ final class HomeViewController: BaseViewController {
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
+            AdMobManager.shared.show(key: "InterstitialAd")
             self.presenter.didTapSearch()
         }
         navigation.imgSetting.addTapGestureRecognizer { [weak self] in
@@ -145,6 +148,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             headerView.delegate = self
             return headerView
         }
+        if item == .newMovie {
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BigNativeAdHeaderView") as! BigNativeAdHeaderView
+            headerView.bigNativeadView.register(id: "")
+            return headerView
+        }
+        
         return nil
     }
     
@@ -153,6 +162,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let titleHeader = item.titleOfHeader()
         if item == .genges {
             return 40
+        }
+        if item == .newMovie {
+            return 60
         }
         return titleHeader.isEmpty ? 0 : 60
     }
@@ -166,6 +178,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomeViewController: HeaderViewDelegate {
     func headerView(_ customHeader: UITableViewHeaderFooterView, didTapButtonInSection section: Int) {
         let item = tableViewDataSource[section]
+        AdMobManager.shared.show(key: "RewardAd")
         self.presenter.didTapHeaderView(item)
     }
 }

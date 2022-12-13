@@ -47,6 +47,7 @@ final class MovieDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
+        tableView.register(UINib(nibName: BigNativeAdHeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: BigNativeAdHeaderView.reuseIdentifier)
         tableView.register(MovieVideosTableViewCell.self, forCellReuseIdentifier: MovieVideosTableViewCell.className)
         tableView.register(TrendingTableViewCell.self, forCellReuseIdentifier: TrendingTableViewCell.className)
         tableView.register(ImagesTableViewCell.self, forCellReuseIdentifier: ImagesTableViewCell.className)
@@ -312,6 +313,25 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
             return UITableView.automaticDimension
         }
         return item.heightForRow()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let item = tableViewDataSource[section]
+        if item == .rate(hasRate: false) || item == .rate(hasRate: true) || (!tableViewDataSource.contains(where: {$0 == .season}) && item == .overview) || (tableViewDataSource.contains(where: {$0 == .season}) && item == .season) {
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BigNativeAdHeaderView") as! BigNativeAdHeaderView
+            headerView.contentView.backgroundColor = APP_COLOR
+            headerView.bigNativeadView.register(id: "")
+            return headerView
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        let item = tableViewDataSource[section]
+        if item == .rate(hasRate: false) || item == .rate(hasRate: true) || (!tableViewDataSource.contains(where: {$0 == .season}) && item == .overview) || (tableViewDataSource.contains(where: {$0 == .season}) && item == .season) {
+            return 60
+        }
+        return 0
     }
 }
 

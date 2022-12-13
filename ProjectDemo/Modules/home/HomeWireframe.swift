@@ -34,6 +34,7 @@ final class HomeWireframe: HomeWireframeInterface {
     }
     
     func showMovieDetailScreen(_ id: Int) {
+        AdMobManager.shared.show(key: "RewardedInterstitialAd")
         navigator.pushScreen(AppScreens.detail, (id, false), fromRoot: true)
     }
     

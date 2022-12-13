@@ -33,6 +33,7 @@ final class PopularPeopleViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
+        tableView.register(UINib(nibName: BigNativeAdHeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: BigNativeAdHeaderView.reuseIdentifier)
         tableView.register(TrendingTableViewCell.self, forCellReuseIdentifier: TrendingTableViewCell.className)
         tableView.register(ImagesTableViewCell.self, forCellReuseIdentifier: ImagesTableViewCell.className)
         tableView.registerCell(for: TextExpandTableViewCell.className)
@@ -196,6 +197,25 @@ extension PopularPeopleViewController: UITableViewDataSource, UITableViewDelegat
             return UITableView.automaticDimension
         }
         return item.heightForRow()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let item = tableViewDataSource[section]
+        if item == .videos {
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BigNativeAdHeaderView") as! BigNativeAdHeaderView
+            headerView.contentView.backgroundColor = APP_COLOR
+            headerView.bigNativeadView.register(id: "")
+            return headerView
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        let item = tableViewDataSource[section]
+        if item == .videos {
+            return 60
+        }
+        return 0
     }
 }
 

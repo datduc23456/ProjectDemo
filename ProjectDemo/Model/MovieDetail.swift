@@ -268,6 +268,16 @@ struct Season: Codable {
         id = try values.decodeIfPresent(Int.self, forKey: .id).isNil(value: 0)
         seasonNumber = try values.decodeIfPresent(Int.self, forKey: .seasonNumber).isNil(value: 0)
     }
+    
+    init() {
+        self.airDate = ""
+        self.posterPath = ""
+        self.overview = ""
+        self.name = ""
+        self.episodeCount = 0
+        self.id = 0
+        self.seasonNumber = 0
+    }
 }
 
 // MARK: - Videos
@@ -290,13 +300,17 @@ struct Videos: Codable {
 
 // MARK: - Result
 struct Video: Codable {
-    let iso639_1, iso3166_1, name, key: String
-    let site: String
-    let size: Int
-    let type: String
-    let official: Bool
-    let publishedAt, id: String
-
+    var iso639_1: String = ""
+    var iso3166_1: String = ""
+    var name: String = ""
+    var key: String = ""
+    var site: String = ""
+    var size: Int = 0
+    var type: String = ""
+    var official: Bool = false
+    var publishedAt: String = ""
+    var id: String = ""
+    
     enum CodingKeys: String, CodingKey {
         case iso639_1 = "iso_639_1"
         case iso3166_1 = "iso_3166_1"
@@ -304,6 +318,8 @@ struct Video: Codable {
         case publishedAt = "published_at"
         case id
     }
+    
+    init() {}
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)

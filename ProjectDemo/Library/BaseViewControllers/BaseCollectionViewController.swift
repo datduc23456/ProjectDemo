@@ -48,6 +48,7 @@ class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController,
             $0.top.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(16)
         }
+        self.collectionView.register(ofType: SmallNativeAdCollectionViewCell.self)
         self.collectionView.registerCell(for: T.className)
         self.collectionView.showsVerticalScrollIndicator = false
         self.collectionView.delegate = self

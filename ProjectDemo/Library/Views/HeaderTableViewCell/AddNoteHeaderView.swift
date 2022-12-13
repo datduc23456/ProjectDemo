@@ -8,6 +8,7 @@
 import UIKit
 
 class AddNoteHeaderView: UITableViewHeaderFooterView {
+    @IBOutlet weak var adView: SmallNativeAdView!
     static let reuseIdentifier = "AddNoteHeaderView"
     weak var delegate: HeaderViewDelegate?
     var sectionNumber: Int = 0

@@ -29,20 +29,24 @@ struct MovieResponse: Codable {
 
 // MARK: - Movie
 struct Movie: Codable {
-    var adult: Bool
-    var backdropPath: String
-    var genreIDS: [Int]
-    var id: Int
-    var originalLanguage, originalTitle, overview: String
-    var popularity: Double
-    var posterPath, releaseDate, title: String
-    var video: Bool
-    var voteAverage: Double
-    var voteCount: Int
-    var firstAirDate: String
-    var originCountry: [String]
-    var originalName: String
-    var name: String
+    var adult: Bool = false
+    var backdropPath: String = ""
+    var genreIDS: [Int] = []
+    var id: Int = 0
+    var originalLanguage: String = ""
+    var originalTitle: String = ""
+    var overview: String = ""
+    var popularity: Double = 0
+    var posterPath: String = ""
+    var releaseDate: String = ""
+    var title: String = ""
+    var video: Bool = false
+    var voteAverage: Double = 0
+    var voteCount: Int = 0
+    var firstAirDate: String = ""
+    var originCountry: [String] = []
+    var originalName: String = ""
+    var name: String = ""
     var dateFavorite: String = ""
     
     enum CodingKeys: String, CodingKey {
@@ -62,6 +66,8 @@ struct Movie: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
+    
+    init() {}
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)

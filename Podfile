@@ -25,6 +25,7 @@ target 'ProjectDemo' do
   pod 'FirebaseCrashlytics'
   pod 'FirebaseAnalytics'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'NVActivityIndicatorView'
   rxswift
 end
 
