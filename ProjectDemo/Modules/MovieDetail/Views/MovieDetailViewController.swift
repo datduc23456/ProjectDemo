@@ -211,6 +211,9 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         if let _ = object {
             btnWatchedList.backgroundColor = UIColor(hex: "#09BB00")
             btnWatchedList.setImage(UIImage(named: "ic_check"), for: .normal)
+        } else {
+            btnWatchedList.backgroundColor = UIColor(hex: "#FB716E")
+            btnWatchedList.setImage(UIImage(named: "ic_plus"), for: .normal)
         }
         watchedListObject = object
     }
@@ -292,6 +295,11 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
         let titleHeader = item.titleOfHeader()
         if !titleHeader.isEmpty {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView") as! HeaderView
+            if item == .rate(hasRate: false) {
+                headerView.btnSeeMore.isHidden = true
+            } else {
+                headerView.btnSeeMore.isHidden = false
+            }
             headerView.contentView.backgroundColor = APP_COLOR
             headerView.lbTitle.text = titleHeader
             headerView.sectionNumber = section

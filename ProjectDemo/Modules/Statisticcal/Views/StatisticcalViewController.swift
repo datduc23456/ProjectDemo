@@ -87,7 +87,6 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
-        viewChart.roundCorners(corners: [.topRight, .bottomLeft, .bottomRight], radius: 8, borderColor: UIColor(hex: "#3F4249"), borderWidth: 1)
         slider.value = [0, 5]
         slider.snapStepSize = 1
         slider.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged)
@@ -109,6 +108,14 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         tableView.reloadData()
         presenter.viewWillAppear(animated)
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isFirstLayout {
+            viewChart.roundCorners(corners: [.topRight, .bottomLeft, .bottomRight], radius: 8, borderColor: UIColor(hex: "#3F4249"), borderWidth: 1)
+            isFirstLayout = !isFirstLayout
+        }
     }
     
     func customizeChart(data: [String: [WatchedListObject]]) {

@@ -12,7 +12,11 @@ final class WatchedListWireframe: WatchedListWireframeInterface {
     
 	var navigator: BaseNavigator!
     static func generateModule(_ payload: Any?) -> UIViewController {
-        let initialViewController = UIStoryboard(name: "WatchedListViewController", bundle: nil).instantiateInitialViewController() as! WatchedListViewController
+        var storyboardName = "WatchedListViewController"
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            storyboardName = "WatchedListViewController_iPad"
+        }
+        let initialViewController = UIStoryboard(name: storyboardName, bundle: nil).instantiateInitialViewController() as! WatchedListViewController
 //        initialViewController.payload = payload
         // let vc = initialViewController.topViewController as! WatchedListViewController
         let wireframe = WatchedListWireframe()

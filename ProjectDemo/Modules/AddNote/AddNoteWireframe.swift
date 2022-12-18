@@ -13,7 +13,11 @@ final class AddNoteWireframe: AddNoteWireframeInterface {
     
 
     static func generateModule(_ payload: Any?) -> UIViewController {
-        let initialViewController = UIStoryboard(name: "AddNoteViewController", bundle: nil).instantiateInitialViewController() as! AddNoteViewController
+        var storyboardName = "AddNoteViewController"
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            storyboardName = "AddNoteViewController_iPad"
+        }
+        let initialViewController = UIStoryboard(name: storyboardName, bundle: nil).instantiateInitialViewController() as! AddNoteViewController
         initialViewController.payload = payload
         // let vc = initialViewController.topViewController as! AddNoteViewController
         let wireframe = AddNoteWireframe()

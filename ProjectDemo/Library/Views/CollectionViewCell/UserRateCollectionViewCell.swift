@@ -18,7 +18,7 @@ class UserRateCollectionViewCell: BaseCollectionViewCell {
         // Initialization code
     }
 
-    override func configCell(_ payload: Any) {
+    override func configCell(_ payload: Any, isNeedFixedLayoutForIPad: Bool = false) {
         if let review = payload as? ReviewsResult {
             lbVoteAvg.text = "\(review.authorDetails.rating.roundToPlaces(places: 1))"
             lbname.text = review.author

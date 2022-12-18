@@ -16,7 +16,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    func configCell(_ payload: Any) {
+    func configCell(_ payload: Any, isNeedFixedLayoutForIPad: Bool = false) {
         self.payload = payload
     }
 }

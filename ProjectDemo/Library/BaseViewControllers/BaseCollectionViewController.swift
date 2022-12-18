@@ -7,9 +7,14 @@
 
 import UIKit
 import KafkaRefresh
+import SnapKit
 
 class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var adView: SmallNativeAdView!
+    var collectionViewHeightConstraint: Constraint!
+    var containerView: UIView!
+    var scrollView: UIScrollView!
     var collectionView: BaseCollectionView!
     var page: Int = 1
     var headerRefresh: VoidCallBack?
@@ -25,6 +30,10 @@ class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController,
     
     var heightForItem: Double {
         return 50
+    }
+    
+    var insets: UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     override func viewDidLoad() {
@@ -43,31 +52,54 @@ class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController,
                 .withSpacingInGrid(spacing)
                 .build()
         }
-        self.view.addSubview(collectionView)
-        self.collectionView.snp.makeConstraints {
+        self.adView = SmallNativeAdView(frame: .zero)
+        self.scrollView = UIScrollView(frame: .zero)
+        self.containerView = UIView(frame: .zero)
+        
+        self.scrollView.addSubview(containerView)
+        self.containerView.addSubview(collectionView)
+        self.containerView.addSubview(adView)
+        self.view.addSubview(scrollView)
+        self.scrollView.fillToSuperView()
+        self.containerView.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(self.insets.left)
+            $0.trailing.equalToSuperview().offset(-self.insets.right)
             $0.top.bottom.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.width.equalTo(self.view.snp.width).offset(-32)
+            $0.height.equalTo(1000).priority(.low)
+        }
+        self.adView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(30)
+        }
+        self.collectionView.snp.makeConstraints {
+            $0.top.equalTo(self.adView.snp.bottom).offset(self.spacing)
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1000)
         }
         self.collectionView.register(ofType: SmallNativeAdCollectionViewCell.self)
         self.collectionView.registerCell(for: T.className)
         self.collectionView.showsVerticalScrollIndicator = false
+        self.collectionView.isScrollEnabled = false
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.collectionView.contentSizeDelegate = self
         
-        self.collectionView.bindHeadRefreshHandler({ [weak self] in
+        self.scrollView.bindHeadRefreshHandler({ [weak self] in
             guard let `self` = self else { return }
             self.page = 1
             self.headerRefresh?()
         }, themeColor: .white, refreshStyle: .replicatorCircle)
         
-        self.collectionView.bindFootRefreshHandler({ [weak self] in
+        self.scrollView.bindFootRefreshHandler({ [weak self] in
             guard let `self` = self else { return }
             self.page += 1
             self.footerRefresh?()
         }, themeColor: .white, refreshStyle: .replicatorCircle)
         
-        self.collectionView.headRefreshControl.layoutIfNeeded()
-        self.collectionView.headRefreshControl.presetContentInsets = UIEdgeInsets(top: spacing, left: spacing, bottom: 0, right: spacing)
+        self.scrollView.headRefreshControl.layoutIfNeeded()
+        self.scrollView.headRefreshControl.presetContentInsets = UIEdgeInsets(top: spacing, left: spacing, bottom: 0, right: spacing)
+        self.adView.register(id: "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,8 +119,20 @@ class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController,
         if numberOfColumn == 0 {
             return CGSize(width: 1, height: 1)
         }
-        let spacing = self.spacing * Double(numberOfColumn - 1)
-        let widthForItem = (collectionView.bounds.width - spacing) / Double(numberOfColumn)
+        let spacing = self.spacing * Double(numberOfColumn - 1) + self.insets.left + self.insets.right
+        let widthForItem = (CommonUtil.SCREEN_WIDTH - spacing) / Double(numberOfColumn)
         return CGSize.init(width: widthForItem, height: heightForItem)
+    }
+}
+
+extension BaseCollectionViewController: CollectionViewAdjustedHeightDelegate {
+    func didChangeContentSize(_ collectionView: BaseCollectionView, size contentSize: CGSize) {
+        self.collectionView.snp.updateConstraints {
+            $0.height.equalTo(contentSize.height)
+        }
+        delay(0.1, closure: {
+            self.view.layoutIfNeeded()
+        })
+
     }
 }

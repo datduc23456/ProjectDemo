@@ -519,13 +519,13 @@ extension UIView {
     }
     
     func addDashedBorder(cornerRadius: CGFloat = 8.0) {
-        let yourViewBorder = CAShapeLayer()
-        yourViewBorder.strokeColor = UIColor.white.cgColor
-        yourViewBorder.lineDashPattern = [2, 2]
-        yourViewBorder.frame = self.bounds
-        yourViewBorder.fillColor = nil
-        yourViewBorder.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius).cgPath
-        self.layer.insertSublayer(yourViewBorder, at:0)
+        let viewBorder = CAShapeLayer()
+        viewBorder.strokeColor = UIColor.white.cgColor
+        viewBorder.lineDashPattern = [2, 2]
+        viewBorder.frame = self.bounds
+        viewBorder.fillColor = nil
+        viewBorder.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius).cgPath
+        self.layer.insertSublayer(viewBorder, at:0)
     }
     
     @discardableResult

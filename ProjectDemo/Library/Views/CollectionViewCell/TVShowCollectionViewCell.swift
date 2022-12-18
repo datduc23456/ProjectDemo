@@ -9,6 +9,7 @@ import UIKit
 
 class TVShowCollectionViewCell: BaseCollectionViewCell {
 
+    @IBOutlet weak var heightImage: NSLayoutConstraint!
     @IBOutlet weak var lbGenres: UILabel!
     @IBOutlet weak var viewVoteAvg: UIView!
     @IBOutlet weak var lbYear: UILabel!
@@ -28,7 +29,7 @@ class TVShowCollectionViewCell: BaseCollectionViewCell {
         })
     }
     
-    override func configCell(_ payload: Any) {
+    override func configCell(_ payload: Any, isNeedFixedLayoutForIPad: Bool = false) {
         if let payload = payload as? Movie {
             self.payload = payload
             image.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(payload.backdropPath)"))
@@ -47,7 +48,7 @@ class TVShowCollectionViewCell: BaseCollectionViewCell {
     }
     
     func configCell(_ payload: Any, isTVShowDetail: Bool = true) {
-        self.configCell(payload)
+        self.configCell(payload, isNeedFixedLayoutForIPad: false)
         if isTVShowDetail {
             viewVoteAvg.isHidden = true
         } else {

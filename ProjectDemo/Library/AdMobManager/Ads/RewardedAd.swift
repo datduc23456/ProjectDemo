@@ -42,42 +42,44 @@ class RewardedAd: NSObject, AdProtocol {
   }
   
   func load() {
-    guard !isLoading else {
-      return
-    }
-    
-    guard !isExist() else {
-      return
-    }
-    
-    guard let adUnitID = adUnitID else {
-      print("RewardAd: failed to load - not initialized yet! Please install ID.")
-      return
-    }
-    
-    self.isLoading = true
-    print("RewardAd: start load!")
-    let request = GADRequest()
-    GADRewardedAd.load(
-      withAdUnitID: adUnitID,
-      request: request
-    ) { [weak self] (ad, error) in
-      guard let self = self else {
-        return
+      DispatchQueue.main.async {
+          guard !self.isLoading else {
+              return
+          }
+          
+          guard !self.isExist() else {
+              return
+          }
+          
+          guard let adUnitID = self.adUnitID else {
+              print("RewardAd: failed to load - not initialized yet! Please install ID.")
+              return
+          }
+          
+          self.isLoading = true
+          print("RewardAd: start load!")
+          let request = GADRequest()
+          GADRewardedAd.load(
+            withAdUnitID: adUnitID,
+            request: request
+          ) { [weak self] (ad, error) in
+              guard let self = self else {
+                  return
+              }
+              self.isLoading = false
+              guard error == nil, let ad = ad else {
+                  self.retryAttempt += 1
+                  let delaySec = pow(2.0, min(5.0, self.retryAttempt))
+                  print("RewardAd: did fail to load. Reload after \(delaySec)s! (\(String(describing: error)))")
+                  DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + delaySec, execute: self.load)
+                  return
+              }
+              print("RewardAd: did load!")
+              self.retryAttempt = 0
+              ad.fullScreenContentDelegate = self
+              self.rewardedAd = ad
+          }
       }
-      self.isLoading = false
-      guard error == nil, let ad = ad else {
-        self.retryAttempt += 1
-        let delaySec = pow(2.0, min(5.0, self.retryAttempt))
-        print("RewardAd: did fail to load. Reload after \(delaySec)s! (\(String(describing: error)))")
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + delaySec, execute: self.load)
-        return
-      }
-      print("RewardAd: did load!")
-      self.retryAttempt = 0
-      ad.fullScreenContentDelegate = self
-      self.rewardedAd = ad
-    }
   }
   
   func isExist() -> Bool {

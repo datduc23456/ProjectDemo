@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class CommonUtil {
     static var SCREEN_WIDTH: CGFloat {
@@ -34,6 +35,30 @@ class CommonUtil {
     
     static func getThumbnailYoutubeUrl(_ key: String) -> URL {
         return URL(string: "https://img.youtube.com/vi/\(key)/maxresdefault.jpg")!
+    }
+    
+    static func saveImageFromPhotosToLocal(info: [UIImagePickerController.InfoKey : Any]) -> String? {
+        guard let image = info[.originalImage] as? UIImage else {
+            return nil
+        }
+        let imgData = NSData(data: image.jpegData(compressionQuality: 1)!)
+//        let imageSize: Int = imgData.count
+//        let sizeMB = Double(imageSize) / (1024.0*1024.0)
+        var fileExtention = "jpeg"
+        if let imgURL = info[.imageURL] as? URL {
+            let subString = imgURL.lastPathComponent.split(separator: ".")
+            fileExtention = String(subString[subString.count - 1])
+        }
+        let fileName = "IMG_\(Int64(Date().timeIntervalSince1970)).\(fileExtention)"
+        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let url = documents.appendingPathComponent(fileName)
+        do {
+            try imgData.write(to: url)
+        } catch {
+            print("Unable to Write Image Data to Disk")
+            return nil
+        }
+        return fileName
     }
 }
 

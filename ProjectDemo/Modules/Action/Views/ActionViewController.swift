@@ -31,6 +31,9 @@ final class ActionViewController: BaseCollectionViewController<CinemaPopularColl
     }
     
     override var heightForItem: Double {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 400
+        }
        return 240
     }
     var bottomSheet: BaseViewBottomSheetViewController!
@@ -89,11 +92,6 @@ final class ActionViewController: BaseCollectionViewController<CinemaPopularColl
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
-            let cell = collectionView.dequeue(ofType: SmallNativeAdCollectionViewCell.self, indexPath: indexPath)
-            cell.adView.register(id: "")
-            return cell
-        }
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CinemaPopularCollectionViewCell
         let movie = movies[indexPath.row]
         cell.viewFavorite.isHidden = false
@@ -104,7 +102,7 @@ final class ActionViewController: BaseCollectionViewController<CinemaPopularColl
         } else {
             cell.icFavorite.image = UIImage(named: "ic_heart")
         }
-        cell.configCell(movie)
+        cell.configCell(movie, isNeedFixedLayoutForIPad: true)
         cell.didTapAction = { [weak self] any in
             guard let `self` = self else { return }
             if let movie = any as? Movie {
@@ -127,8 +125,8 @@ extension ActionViewController: ActionViewInterface {
     }
     
     func hideLoading() {
-        self.collectionView.headRefreshControl.endRefreshing()
-        self.collectionView.footRefreshControl.endRefreshing()
+        self.scrollView.headRefreshControl.endRefreshing()
+        self.scrollView.footRefreshControl.endRefreshing()
     }
     
     func getTVShowPopular(_ response: MovieResponse) {
@@ -156,7 +154,7 @@ extension ActionViewController: ActionViewInterface {
     }
     
     func appendMovie(_ response: MovieResponse) {
-        self.movies = [Movie()] + sortByMovieFilterType(movies) + sortByMovieFilterType(response.results)
+        self.movies = sortByMovieFilterType(movies) + sortByMovieFilterType(response.results)
         self.collectionView.reloadData()
     }
     

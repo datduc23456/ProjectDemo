@@ -22,6 +22,9 @@ final class VideosViewController: BaseCollectionViewController<TrendingCollectio
     }
     
     override var heightForItem: Double {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 256
+        }
        return 95
     }
     
@@ -35,12 +38,12 @@ final class VideosViewController: BaseCollectionViewController<TrendingCollectio
         navigation.lbTitle.text = "Videos"
         self.headerRefresh = {
             delay(0.5, closure: {
-                self.collectionView.headRefreshControl.endRefreshing()
+                self.scrollView.headRefreshControl.endRefreshing()
             })
         }
         self.footerRefresh = {
             delay(0.5, closure: {
-                self.collectionView.footRefreshControl.endRefreshing()
+                self.scrollView.footRefreshControl.endRefreshing()
             })
         }
     }
@@ -50,11 +53,6 @@ final class VideosViewController: BaseCollectionViewController<TrendingCollectio
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
-            let cell = collectionView.dequeue(ofType: SmallNativeAdCollectionViewCell.self, indexPath: indexPath)
-            cell.adView.register(id: "")
-            return cell
-        }
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! TrendingCollectionViewCell
         let item = videos[indexPath.row]
         cell.configCell(item)
@@ -70,7 +68,7 @@ final class VideosViewController: BaseCollectionViewController<TrendingCollectio
 extension VideosViewController: VideosViewInterface {
     var videos: [Video] {
         if let videos = payload as? [Video] {
-            return [Video()] + videos
+            return videos
         }
         return []
     }

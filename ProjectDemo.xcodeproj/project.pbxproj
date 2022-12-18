@@ -158,6 +158,8 @@
 		4C31D81DDDF13AC3FBA9CE4B /* SimilarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F40761A5673B862F92B8B /* SimilarInteractor.swift */; };
 		4F12DF7C1AE7CA9ED771579B /* ImagesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75CCF29DDB57F8F64829DE1 /* ImagesInteractor.swift */; };
 		4F26B21425CB078565C2BB3A /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 079FA3DB3496A9E92CDFA733 /* SettingViewController.storyboard */; };
+		520A758D294F4E7000E5B343 /* MovieDetailViewController_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520A758C294F4E7000E5B343 /* MovieDetailViewController_iPad.storyboard */; };
+		520A7591294F80F500E5B343 /* WatchedListViewController_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 520A7590294F80F500E5B343 /* WatchedListViewController_iPad.storyboard */; };
 		521883332944E3F500C94536 /* FavoriteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521883322944E3F500C94536 /* FavoriteHeaderView.swift */; };
 		521883352944E40C00C94536 /* FavoriteHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521883342944E40C00C94536 /* FavoriteHeaderView.xib */; };
 		5270096E522DBEE73D6E75BD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B013207E9C859C0BDB947EA /* SearchViewController.swift */; };
@@ -257,6 +259,7 @@
 		52CBDD392928DE6500548E52 /* PeoplePopularCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CBDD372928DE6500548E52 /* PeoplePopularCollectionViewCell.xib */; };
 		52CBDD3C2928E09000548E52 /* TVShowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBDD3A2928E09000548E52 /* TVShowCollectionViewCell.swift */; };
 		52CBDD3D2928E09000548E52 /* TVShowCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CBDD3B2928E09000548E52 /* TVShowCollectionViewCell.xib */; };
+		52D71821294F48510085D86F /* AddNoteViewController_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D71820294F48510085D86F /* AddNoteViewController_iPad.storyboard */; };
 		52DEB893292FB87400BCD36F /* AddNoteWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DEB88F292FB87400BCD36F /* AddNoteWireframe.swift */; };
 		52DEB894292FB87400BCD36F /* AddNoteInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DEB890292FB87400BCD36F /* AddNoteInterfaces.swift */; };
 		52DEB895292FB87400BCD36F /* AddNoteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DEB891292FB87400BCD36F /* AddNoteInteractor.swift */; };
@@ -538,6 +541,8 @@
 		504A2A94D1245884ECDC98D2 /* VideosPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VideosPresenter.swift; sourceTree = "<group>"; };
 		510A0D08ADF7F1109286CF1B /* ActionWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActionWireframe.swift; sourceTree = "<group>"; };
 		511AE24F959F0627E1E5D120 /* FavoriteInterfaces.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavoriteInterfaces.swift; sourceTree = "<group>"; };
+		520A758C294F4E7000E5B343 /* MovieDetailViewController_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MovieDetailViewController_iPad.storyboard; sourceTree = "<group>"; };
+		520A7590294F80F500E5B343 /* WatchedListViewController_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WatchedListViewController_iPad.storyboard; sourceTree = "<group>"; };
 		521883322944E3F500C94536 /* FavoriteHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeaderView.swift; sourceTree = "<group>"; };
 		521883342944E40C00C94536 /* FavoriteHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteHeaderView.xib; sourceTree = "<group>"; };
 		527F93B52925257D0065FE10 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommonUtil.swift; path = ProjectDemo/CommonUtil.swift; sourceTree = SOURCE_ROOT; };
@@ -637,6 +642,7 @@
 		52CBDD372928DE6500548E52 /* PeoplePopularCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeoplePopularCollectionViewCell.xib; sourceTree = "<group>"; };
 		52CBDD3A2928E09000548E52 /* TVShowCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowCollectionViewCell.swift; sourceTree = "<group>"; };
 		52CBDD3B2928E09000548E52 /* TVShowCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVShowCollectionViewCell.xib; sourceTree = "<group>"; };
+		52D71820294F48510085D86F /* AddNoteViewController_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddNoteViewController_iPad.storyboard; sourceTree = "<group>"; };
 		52DEB88F292FB87400BCD36F /* AddNoteWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteWireframe.swift; sourceTree = "<group>"; };
 		52DEB890292FB87400BCD36F /* AddNoteInterfaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteInterfaces.swift; sourceTree = "<group>"; };
 		52DEB891292FB87400BCD36F /* AddNoteInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteInteractor.swift; sourceTree = "<group>"; };
@@ -1175,6 +1181,7 @@
 		2B04F3AA267E456162DFC4CF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				520A758C294F4E7000E5B343 /* MovieDetailViewController_iPad.storyboard */,
 				42F145DCD37E428997526D0F /* MovieDetailViewController.storyboard */,
 				69DA44906081D356F496C0E9 /* MovieDetailViewController.swift */,
 				185BC366292CC82D00613EB2 /* MovieDetailTableViewDataSource.swift */,
@@ -1500,6 +1507,7 @@
 		66A1C1B3EF0D3FD94E0E61BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				520A7590294F80F500E5B343 /* WatchedListViewController_iPad.storyboard */,
 				10097A3F21200A77754D7AC9 /* WatchedListViewController.storyboard */,
 				3FC2042F43163AB7E00F2C5A /* WatchedListViewController.swift */,
 			);
@@ -1641,6 +1649,7 @@
 		A5C7D88FCA2C2A84DC8912A1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52D71820294F48510085D86F /* AddNoteViewController_iPad.storyboard */,
 				52DEB897292FB88200BCD36F /* AddNoteViewController.storyboard */,
 				52DEB898292FB88200BCD36F /* AddNoteViewController.swift */,
 			);
@@ -1932,9 +1941,12 @@
 				181189AE292B2F1400E9D883 /* SEAGULLL.ttf in Resources */,
 				181189B0292B2F1400E9D883 /* SeagullBold.ttf in Resources */,
 				181189B6292B2F1400E9D883 /* seagullb.ttf in Resources */,
+				520A7591294F80F500E5B343 /* WatchedListViewController_iPad.storyboard in Resources */,
 				181189A4292B2F1400E9D883 /* SeagullItalic.ttf in Resources */,
 				521883352944E40C00C94536 /* FavoriteHeaderView.xib in Resources */,
 				52EA75ED29333F920076BC87 /* Assets.xcassets in Resources */,
+				52D71821294F48510085D86F /* AddNoteViewController_iPad.storyboard in Resources */,
+				520A758D294F4E7000E5B343 /* MovieDetailViewController_iPad.storyboard in Resources */,
 				52BCB4C92929000F008E1C32 /* ActorsCollectionViewCell.xib in Resources */,
 				185BC361292CBD2200613EB2 /* NotesTableViewCell.xib in Resources */,
 				181189742925E35000E9D883 /* Nexa Regular.otf in Resources */,

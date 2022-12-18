@@ -212,6 +212,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="heightImage" destination="G68-et-9fr" id="cT6-wM-PlX"/>
                 <outlet property="icPlayRate" destination="oZ9-zK-5Sc" id="mbC-JA-f80"/>
                 <outlet property="image" destination="zgi-Cd-r1T" id="zme-F5-2Mo"/>
                 <outlet property="imgPlayTitle" destination="Yln-14-23T" id="QiJ-Ik-GE3"/>

@@ -24,6 +24,12 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
     @IBOutlet weak var tfTitle: UITextField!
     @IBOutlet weak var tfContent: UITextField!
     @IBOutlet weak var imageStackView: ImageStackView!
+    private var imagePicker = UIImagePickerController()
+    var listImages: [String] = [] {
+        didSet {
+            loadImages()
+        }
+    }
     // MARK: - Properties
 	var presenter: WatchedListPresenterInterface!
 
@@ -60,9 +66,7 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
             $0.bottom.equalTo(contentView)
             $0.height.equalTo(96)
         }
-        
-        textViewContent.delegate = self
-        textViewContent.isPlaceHolder = true
+
         tfTitle.delegate = self
         tfTitle.becomeFirstResponder()
         slider.snapStepSize = 0.1
@@ -91,7 +95,11 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
         slider.value = [0.0]
         lbSliderValue.text = "0.0"
         tfTitle.text = ""
-        textViewContent.text = ""
+        textViewContent.delegate = self
+        imagePicker.delegate = self
+        textViewContent.textColor = UIColor(hex: "#FFFFFF").withAlphaComponent(0.5)
+        textViewContent.text = "Type here to add review..."
+        textViewContent.isPlaceHolder = true
         filmNoteView.lbVoteAvg.text = "\(movieDetail.voteAverage.roundToPlaces(places: 1))"
         filmNoteView.lbYear.text = CommonUtil.getYearFromDate(!movieDetail.releaseDate.isEmpty ? movieDetail.releaseDate : movieDetail.firstAirDate)
         filmNoteView.lbTitle.text = movieName
@@ -103,10 +111,13 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
             self.tfTitle.text = watched.author
             self.lbTextFieldPlaceHolder.isHidden = true
             self.textViewContent.text = watched.content
+            self.listImages = Array(watched.listImages)
             self.configLabelRate()
         })
-//        tfTitle.text = ""
-//        textViewContent.text = ""
+        imageStackView.didAdditionImage = {
+            self.present(self.imagePicker, animated: true) {}
+        }
+        loadImages()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -138,6 +149,7 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
             object.runtime = !(movieDetail.runtime == 0) ? movieDetail.runtime : movieDetail.episodeRunTime.isNil(value: []).reduce(0, +)
             object.createdAt = Date().toString()
             object.updatedAt = Date().toString()
+            object.listImages.append(objectsIn: listImages)
             let authorDetails = AuthorDetailsObject()
             authorDetails.rating = rating!
             object.authorDetails = authorDetails
@@ -178,6 +190,14 @@ final class WatchedListViewController: DynamicBottomSheetViewController, UITextV
                 self.viewToast.alpha = 0
             })
         })
+    }
+    
+    fileprivate func loadImages() {
+        let urls = listImages.map({
+            let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            return documents.appendingPathComponent($0)
+        })
+        imageStackView.configView(urls, selectedIndex: -1, isAdditionImage: true)
     }
 }
 
@@ -259,6 +279,33 @@ extension WatchedListViewController {
         } else {
             let rootViewController = AppDelegate.shared.navigationRootViewController
             return currentViewController(from: rootViewController)
+        }
+    }
+}
+
+extension WatchedListViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true) { [weak self] in
+            DispatchQueue.main.async {
+                guard let `self` = self, let imageUrl = CommonUtil.saveImageFromPhotosToLocal(info: info) else { return }
+                self.listImages.append(imageUrl)
+            }
+        }
+        
+        if #available(iOS 11.0, *) {
+            if let imgURL = info[.imageURL] as? URL {
+                print("imgURL: \(imgURL)")
+            }
+        } else {
+            if let imgURL = info[.referenceURL] as? NSURL {
+                print("imgURL: \(imgURL)")
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true) {
+            
         }
     }
 }

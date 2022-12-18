@@ -20,7 +20,7 @@ class ActorsCollectionViewCell: BaseCollectionViewCell {
         })
     }
     
-    override func configCell(_ payload: Any) {
+    override func configCell(_ payload: Any, isNeedFixedLayoutForIPad: Bool = false) {
         if let cast = payload as? Cast {
             self.payload = payload
             img.kf.setImage(with: URL(string: "\(baseURLImage)\(cast.profilePath)"), placeholder: UIImage.init(named: "avatar_default"))

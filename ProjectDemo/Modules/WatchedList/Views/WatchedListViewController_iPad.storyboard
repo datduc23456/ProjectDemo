@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -21,14 +21,14 @@
             <objects>
                 <viewController id="ab2-EX-tH2" customClass="WatchedListViewController" customModule="Star_Movie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yMH-WK-99E">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LE-KU-Ge9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="24" width="1024" height="1322"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4Z-ua-bnu">
-                                        <rect key="frame" x="0.0" y="0.0" width="885.5" height="655"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="885.5" height="727"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="J53-Yb-bt8">
                                                 <rect key="frame" x="12" y="16" width="861.5" height="254"/>
@@ -206,9 +206,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="01E-qw-NsM" customClass="ImageStackView" customModule="Star_Movie" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="587" width="853.5" height="48"/>
+                                                <rect key="frame" x="16" y="587" width="853.5" height="120"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="48" id="JFd-OQ-8eF"/>
+                                                    <constraint firstAttribute="height" constant="120" id="JFd-OQ-8eF"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="count">
@@ -262,7 +262,7 @@
                                 </constraints>
                             </scrollView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSt-gV-wiH">
-                                <rect key="frame" x="39.5" y="531" width="296" height="32"/>
+                                <rect key="frame" x="364" y="1210" width="296" height="32"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title and content must not be empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9X-Wi-vcF">
                                         <rect key="frame" x="8" y="8" width="280" height="16"/>
@@ -286,10 +286,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VXf-fB-hRB">
-                                <rect key="frame" x="16" y="571" width="343" height="96"/>
+                                <rect key="frame" x="16" y="1250" width="992" height="96"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dg0-bJ-Zby">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="992" height="44"/>
                                         <color key="backgroundColor" red="0.98431372549999996" green="0.4431372549" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="q7A-P4-N8c"/>
@@ -309,7 +309,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lyv-qr-NTb">
-                                        <rect key="frame" x="0.0" y="52" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="52" width="992" height="44"/>
                                         <color key="backgroundColor" red="0.23137254901960785" green="0.24313725490196078" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="6Uu-e7-IPf"/>

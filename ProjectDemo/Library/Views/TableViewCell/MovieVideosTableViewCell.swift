@@ -9,6 +9,7 @@ import UIKit
 
 class MovieVideosTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
     
+    @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
     @IBOutlet weak var icPlay: UIImageView!
     @IBOutlet weak var lbPublished: UILabel!
     @IBOutlet weak var lbName: UILabel!
@@ -25,6 +26,9 @@ class MovieVideosTableViewCell: UITableViewCell, BaseWithCollectionTableViewCell
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            stackViewHeight.constant = 120
+        }
         stackView.didTapImage = { [weak self] index in
             guard let `self` = self else { return }
             self.selectedIndex = index

@@ -38,6 +38,9 @@ enum MovieDetailTableViewDataSource: CaseIterable, Equatable {
         case .season:
             return 171
         case .videos:
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                return 270
+            }
             return 195
         case .images:
             return 95

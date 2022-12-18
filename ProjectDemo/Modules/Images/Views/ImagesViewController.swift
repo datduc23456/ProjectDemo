@@ -22,6 +22,9 @@ final class ImagesViewController: BaseCollectionViewController<TrendingCollectio
     }
     
     override var heightForItem: Double {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 256
+        }
        return 95
     }
     
@@ -35,12 +38,12 @@ final class ImagesViewController: BaseCollectionViewController<TrendingCollectio
         navigation.lbTitle.text = "Image"
         self.headerRefresh = {
             delay(0.5, closure: {
-                self.collectionView.headRefreshControl.endRefreshing()
+                self.scrollView.headRefreshControl.endRefreshing()
             })
         }
         self.footerRefresh = {
             delay(0.5, closure: {
-                self.collectionView.footRefreshControl.endRefreshing()
+                self.scrollView.footRefreshControl.endRefreshing()
             })
         }
     }

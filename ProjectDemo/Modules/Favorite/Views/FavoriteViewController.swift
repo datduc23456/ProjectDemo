@@ -41,9 +41,21 @@ final class FavoriteViewController: BaseViewController {
     @IBOutlet weak var btnFilter: UIButton!
     @IBOutlet weak var btnMovie: UIButton!
     @IBOutlet weak var btnTVShow: UIButton!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var tableViewheight: NSLayoutConstraint!
+    @IBOutlet weak var tableView: TableViewAdjustedHeight!
+    @IBOutlet weak var adView: SmallNativeAdView!
+    
 	var presenter: FavoritePresenterInterface!
-    var dataSource: [(String, [MovieDetailObject])] = []
+    var dataSource: [(String, [MovieDetailObject])] = [] {
+        didSet {
+            if dataSource.isEmpty {
+                scrollView.isHidden = true
+            } else {
+                scrollView.isHidden = false
+            }
+        }
+    }
     var bottomSheet: BaseViewBottomSheetViewController!
     var filterType: FavoriteFilterType = .movie
     var movieFilterType: MovieFilterType {
@@ -63,12 +75,12 @@ final class FavoriteViewController: BaseViewController {
         tableView.registerCell(for: FavoriteTableViewCell.className)
         tableView.register(UINib(nibName: FavoriteHeaderView.className, bundle: nil), forHeaderFooterViewReuseIdentifier: FavoriteHeaderView.reuseIdentifier)
         tableView.delegate = self
+        tableView.contentSizeDelegate = self
         tableView.dataSource = self
         tableView.sectionHeaderHeight = 0
-//        tableView.header
+        scrollView.backgroundColor = APP_COLOR
+        tableView.backgroundColor = APP_COLOR
         tableView.tableHeaderView = nil
-        tableView.emptyDataSetSource = self
-        tableView.emptyDataSetDelegate = self
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
@@ -83,7 +95,7 @@ final class FavoriteViewController: BaseViewController {
     }
     
     func configView() {
-        tableView.bindHeadRefreshHandler({ [weak self] in
+        scrollView.bindHeadRefreshHandler({ [weak self] in
             guard let `self` = self else { return }
             self.presenter.getMovieFavorite(self.filterType)
         }, themeColor: .white, refreshStyle: .replicatorCircle)
@@ -160,10 +172,9 @@ extension FavoriteViewController: FavoriteViewInterface {
             }
         }
         dataSource = movies.sorted(by: { $0.0 > $1.0 })
-        dataSource.append(("", []))
         tableView.reloadData()
         delay(1, closure: {
-            self.tableView.headRefreshControl.endRefreshing()
+            self.scrollView.headRefreshControl.endRefreshing()
         })
     }
 }
@@ -175,14 +186,12 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 { return 1 }
         let values = dataSource[section]
         return values.1.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 { return 0 }
-        if section == 1 {
+        if section == 0 {
              return 23
         }
         return 43
@@ -192,7 +201,7 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FavoriteHeaderView.reuseIdentifier) as! FavoriteHeaderView
         let key = dataSource[section].0
         if key.isEmpty { return nil }
-        if section == 1 {
+        if section == 0 {
             headerView.viewSegment.isHidden = true
         } else {
             headerView.viewSegment.isHidden = false
@@ -205,10 +214,6 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: SmallNativeAdTableViewCell.className, for: indexPath) as! SmallNativeAdTableViewCell
-            return cell
-        }
         let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.className, for: indexPath) as! FavoriteTableViewCell
         let key = dataSource[indexPath.section].0
         let listMovieDetail = dataSource[indexPath.section].1
@@ -236,22 +241,9 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 { return 30 }
         return 190
     }
     
-}
-
-extension FavoriteViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
-    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: "ic_emptyFavorite")!
-    }
-    
-    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let title = "No found theater!"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Nexa-Bold", size: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
-        return NSMutableAttributedString(string: title, attributes: attributes as [NSAttributedString.Key : Any])
-    }
 }
 
 extension FavoriteViewController: BoottomSheetStackViewDelegate {
@@ -275,5 +267,12 @@ extension FavoriteViewController: BoottomSheetStackViewDelegate {
         if index == 2 || index == 3 {
             self.bottomSheet.shouldDismissSheet()
         }
+    }
+}
+
+extension FavoriteViewController: TableViewAdjustedHeightDelegate {
+    func didChangeContentSize(_ tableView: TableViewAdjustedHeight, size contentSize: CGSize) {
+        tableViewheight.constant = tableView.contentSize.height
+        self.view.layoutIfNeeded()
     }
 }

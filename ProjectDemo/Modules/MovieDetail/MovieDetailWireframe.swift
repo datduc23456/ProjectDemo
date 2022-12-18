@@ -13,7 +13,11 @@ final class MovieDetailWireframe: MovieDetailWireframeInterface {
     
 
     static func generateModule(_ payload: Any?) -> UIViewController {
-        let initialViewController = UIStoryboard(name: "MovieDetailViewController", bundle: nil).instantiateInitialViewController() as! MovieDetailViewController
+        var storyboardName = "MovieDetailViewController"
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            storyboardName = "MovieDetailViewController_iPad"
+        }
+        let initialViewController = UIStoryboard(name: storyboardName, bundle: nil).instantiateInitialViewController() as! MovieDetailViewController
         initialViewController.payload = payload
         // let vc = initialViewController.topViewController as! MovieDetailViewController
         let wireframe = MovieDetailWireframe()

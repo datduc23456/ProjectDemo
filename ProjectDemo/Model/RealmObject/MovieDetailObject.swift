@@ -205,6 +205,7 @@ class ReviewsResultObject: Object {
     @Persisted var name: String = ""
     @Persisted var dateFavorite: String = ""
     @Persisted var isTVShow: Bool = false
+    @Persisted var listImages: List<String> = List<String>()
 }
 
 class AuthorDetailsObject: Object {
@@ -243,4 +244,5 @@ class WatchedListObject: Object {
     @Persisted var dateFavorite: String = ""
     @Persisted var runtime: Int = 0
     @Persisted var isTVShow: Bool = false
+    @Persisted var listImages: List<String> = List<String>()
 }

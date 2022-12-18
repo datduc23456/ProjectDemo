@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ab2-EX-tH2">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -22,23 +21,23 @@
             <objects>
                 <viewController id="ab2-EX-tH2" customClass="AddNoteViewController" customModule="Star_Movie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yMH-WK-99E">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8eP-pB-R3m">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="24" width="1024" height="1322"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YtH-AO-0Ug">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="731"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NT6-oh-66b">
-                                                <rect key="frame" x="12" y="16" width="351" height="218"/>
+                                                <rect key="frame" x="12" y="16" width="1000" height="258"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pho-Yv-URo">
-                                                        <rect key="frame" x="0.0" y="0.0" width="351" height="48"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="48"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kur-pK-Pu6">
-                                                                <rect key="frame" x="0.0" y="0.0" width="351" height="48"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="1000" height="48"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
@@ -60,28 +59,28 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHT-Hp-prQ" customClass="FilmNoteView" customModule="Star_Movie" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="48" width="351" height="170"/>
+                                                        <rect key="frame" x="0.0" y="48" width="1000" height="210"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="170" id="lBi-Ge-Tr6"/>
+                                                            <constraint firstAttribute="height" constant="210" id="lBi-Ge-Tr6"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eE-bT-Du0">
-                                                <rect key="frame" x="16" y="258" width="42" height="18"/>
+                                                <rect key="frame" x="16" y="298" width="42" height="18"/>
                                                 <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your time to shine. Don’t blow it" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yc8-HC-0hJ">
-                                                <rect key="frame" x="16" y="286" width="211" height="14"/>
+                                                <rect key="frame" x="16" y="326" width="211" height="14"/>
                                                 <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-2Q-iko" customClass="MultiSlider" customModule="Star_Movie" customModuleProvider="target">
-                                                <rect key="frame" x="26" y="312" width="295" height="20"/>
+                                                <rect key="frame" x="26" y="352" width="944" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.98431372549999996" green="0.4431372549" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -113,13 +112,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfO-ie-r7y">
-                                                <rect key="frame" x="333.5" y="314" width="26.5" height="16"/>
+                                                <rect key="frame" x="982.5" y="354" width="26.5" height="16"/>
                                                 <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="16"/>
                                                 <color key="textColor" red="1" green="0.74509803919999995" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rHW-av-1L8">
-                                                <rect key="frame" x="16" y="348" width="343" height="36"/>
+                                                <rect key="frame" x="16" y="388" width="992" height="36"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="6xh-Rm-fea"/>
@@ -137,13 +136,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JcH-O7-vMk">
-                                                <rect key="frame" x="20" y="359" width="29" height="14"/>
+                                                <rect key="frame" x="20" y="399" width="29" height="14"/>
                                                 <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="abc" borderStyle="roundedRect" placeholder="Type here to add review..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bkp-yR-wgQ">
-                                                <rect key="frame" x="16" y="396" width="343" height="114"/>
+                                                <rect key="frame" x="16" y="436" width="992" height="114"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="114" id="MU1-I5-pZk"/>
@@ -161,7 +160,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1af-Cy-Xfm">
-                                                <rect key="frame" x="16" y="396" width="343" height="114"/>
+                                                <rect key="frame" x="16" y="436" width="992" height="114"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
@@ -176,15 +175,15 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image (Ticket, cheking)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGi-Ae-Hd8">
-                                                <rect key="frame" x="16" y="522" width="152.5" height="14"/>
+                                                <rect key="frame" x="16" y="562" width="152.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mlj-M2-KOS" customClass="ImageStackView" customModule="Star_Movie" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="551" width="343" height="48"/>
+                                                <rect key="frame" x="16" y="591" width="992" height="120"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="48" id="uW8-Sc-Ijp"/>
+                                                    <constraint firstAttribute="height" constant="120" id="uW8-Sc-Ijp"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="count">
@@ -238,7 +237,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUX-1b-Vgp">
-                                <rect key="frame" x="16" y="581" width="343" height="44"/>
+                                <rect key="frame" x="16" y="1280" width="992" height="44"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.4431372549" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="wh2-04-Wyl"/>

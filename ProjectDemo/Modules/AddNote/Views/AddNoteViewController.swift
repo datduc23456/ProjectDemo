@@ -11,6 +11,7 @@ import UIKit
 final class AddNoteViewController: BaseViewController, UITextViewDelegate {
 
     @IBOutlet weak var lbTextFieldPlaceHolder: UILabel!
+    private var imagePicker = UIImagePickerController()
     @IBOutlet weak var bottomInsets: NSLayoutConstraint!
     @IBOutlet weak var lbSliderValue: UILabel!
     @IBOutlet weak var slider: MultiSlider!
@@ -22,6 +23,11 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var imageStackView: ImageStackView!
     @IBOutlet weak var scrollView: UIScrollView!
     var isChooseMovie: Bool = false
+    var listImages: [String] = [] {
+        didSet {
+            loadImages()
+        }
+    }
     // MARK: - Properties
 	var presenter: AddNotePresenterInterface!
     
@@ -53,7 +59,6 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
             filmNoteView.lbGenre.text = DTPBusiness.shared.mapToGenreName(movieDetail.genres.map({$0.id}))
             filmNoteView.img.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(movieDetail.posterPath)"))
             tfTitle.text = ""
-            textViewContent.text = ""
             viewChooseMovie.isHidden = true
             filmNoteView.isHidden = false
         } else if let review = self.review {
@@ -62,8 +67,11 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
             filmNoteView.lbGenre.text = DTPBusiness.shared.mapToGenreName(Array(review.genreIDS))
             filmNoteView.img.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(review.posterPath)"))
             tfTitle.text = review.author
+            listImages = Array(review.listImages)
             lbTextFieldPlaceHolder.isHidden = true
             textViewContent.text = review.content
+            textViewContent.textColor = UIColor(hex: "#FFFFFF")
+            textViewContent.isPlaceHolder = false
             viewChooseMovie.isHidden = true
             filmNoteView.isHidden = false
         } else {
@@ -77,7 +85,9 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
     }
     
     func configView() {
-        configViewWithPayload()
+        textViewContent.textColor = UIColor(hex: "#FFFFFF").withAlphaComponent(0.5)
+        textViewContent.text = "Type here to add review..."
+        textViewContent.isPlaceHolder = true
         tfTitle.keyboardAppearance = .dark
         textViewContent.keyboardAppearance = .dark
         textViewContent.contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
@@ -93,9 +103,14 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
             self.view.endEditing(true)
         }
         textViewContent.delegate = self
-        textViewContent.isPlaceHolder = true
+        imagePicker.delegate = self
         tfTitle.delegate = self
+
         tfTitle.becomeFirstResponder()
+        imageStackView.didAdditionImage = {
+            self.present(self.imagePicker, animated: true) {}
+        }
+        configViewWithPayload()
     }
     
     @IBAction func doneAction(_ sender: Any) {
@@ -115,6 +130,7 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
             object.author = name
             object.createdAt = Date().toString()
             object.updatedAt = Date().toString()
+            object.listImages.append(objectsIn: listImages)
             let authorDetails = AuthorDetailsObject()
             authorDetails.rating = rating!
             object.authorDetails = authorDetails
@@ -132,6 +148,7 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
             object.author = name
             object.createdAt = Date().toString()
             object.updatedAt = Date().toString()
+            object.listImages.append(objectsIn: listImages)
             let authorDetails = AuthorDetailsObject()
             authorDetails.rating = rating!
             object.authorDetails = authorDetails
@@ -146,7 +163,7 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        imageStackView.configView()
+        loadImages()
         viewChooseMovie.addDashedBorder()
     }
     
@@ -157,6 +174,14 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
     
     @IBAction func searchAction(_ sender: Any) {
         presenter.didTapSearch()
+    }
+    
+    fileprivate func loadImages() {
+        let urls = listImages.map({
+            let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            return documents.appendingPathComponent($0)
+        })
+        imageStackView.configView(urls, selectedIndex: -1, isAdditionImage: true)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -241,5 +266,32 @@ extension AddNoteViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension AddNoteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true) { [weak self] in
+            DispatchQueue.main.async {
+                guard let `self` = self, let imageUrl = CommonUtil.saveImageFromPhotosToLocal(info: info) else { return }
+                self.listImages.append(imageUrl)
+            }
+        }
+        
+        if #available(iOS 11.0, *) {
+            if let imgURL = info[.imageURL] as? URL {
+                print("imgURL: \(imgURL)")
+            }
+        } else {
+            if let imgURL = info[.referenceURL] as? NSURL {
+                print("imgURL: \(imgURL)")
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true) {
+            
+        }
     }
 }

@@ -35,41 +35,43 @@ class NativeAd: NSObject {
   }
 
   private func load() {
-    guard !isLoading else {
-      return
-    }
-
-    guard !isExist() else {
-      return
-    }
-
-    guard let adUnitID = adUnitID else {
-      print("NativeAd: failed to load - not initialized yet! Please install ID.")
-      return
-    }
-
-    guard let rootViewController = UIApplication.topStackViewController() else {
-      print("NativeAd: failed to load - can't find RootViewController!")
-      return
-    }
-
-    self.isLoading = true
-    print("NativeAd: start load!")
-    
-    var options: [GADAdLoaderOptions]? = nil
-    if self.isFullScreen {
-      let aspectRatioOption = GADNativeAdMediaAdLoaderOptions()
-      aspectRatioOption.mediaAspectRatio = .portrait
-      options = [aspectRatioOption]
-    }
-    let adLoader = GADAdLoader(
-      adUnitID: adUnitID,
-      rootViewController: rootViewController,
-      adTypes: [.native],
-      options: options)
-    adLoader.delegate = self
-    adLoader.load(GADRequest())
-    self.adLoader = adLoader
+      DispatchQueue.main.async {
+          guard !self.isLoading else {
+              return
+          }
+          
+          guard !self.isExist() else {
+              return
+          }
+          
+          guard let adUnitID = self.adUnitID else {
+              print("NativeAd: failed to load - not initialized yet! Please install ID.")
+              return
+          }
+          
+          guard let rootViewController = UIApplication.topStackViewController() else {
+              print("NativeAd: failed to load - can't find RootViewController!")
+              return
+          }
+          
+          self.isLoading = true
+          print("NativeAd: start load!")
+          
+          var options: [GADAdLoaderOptions]? = nil
+          if self.isFullScreen {
+              let aspectRatioOption = GADNativeAdMediaAdLoaderOptions()
+              aspectRatioOption.mediaAspectRatio = .portrait
+              options = [aspectRatioOption]
+          }
+          let adLoader = GADAdLoader(
+            adUnitID: adUnitID,
+            rootViewController: rootViewController,
+            adTypes: [.native],
+            options: options)
+          adLoader.delegate = self
+          adLoader.load(GADRequest())
+          self.adLoader = adLoader
+      }
   }
 
   private func isExist() -> Bool {

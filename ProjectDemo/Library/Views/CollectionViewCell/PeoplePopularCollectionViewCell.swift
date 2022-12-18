@@ -20,7 +20,7 @@ class PeoplePopularCollectionViewCell: BaseCollectionViewCell {
         })
     }
     
-    override func configCell(_ payload: Any) {
+    override func configCell(_ payload: Any, isNeedFixedLayoutForIPad: Bool = false) {
         if let cast = payload as? Cast {
             self.payload = cast
             img.kf.setImage(with: URL(string: "\(baseURLImage)\(cast.profilePath)"), placeholder: UIImage(named: "avatar_default"))

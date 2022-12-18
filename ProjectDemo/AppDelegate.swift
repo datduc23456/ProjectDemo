@@ -53,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let queue = DispatchQueue(label: "Monitor")
         monitor.start(queue: queue)
         FirebaseApp.configure()
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
         AdMobManager.shared.register(key: "RewardAd", type: .rewarded, id: "ca-app-pub-1343377148417262/8494691866")
         AdMobManager.shared.register(key: "InterstitialAd", type: .interstitial, id: "ca-app-pub-1343377148417262/8494691866")
         AdMobManager.shared.register(key: "RewardedInterstitialAd", type: .rewardedInterstitial, id: "ca-app-pub-1343377148417262/8494691866")

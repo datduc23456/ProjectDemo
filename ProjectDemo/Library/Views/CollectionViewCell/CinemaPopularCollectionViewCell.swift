@@ -10,6 +10,7 @@ import Kingfisher
 
 class CinemaPopularCollectionViewCell: BaseCollectionViewCell {
 
+    @IBOutlet weak var imageHeight: NSLayoutConstraint!
     @IBOutlet weak var icFavorite: UIImageView!
     @IBOutlet weak var viewFavorite: UIView!
     @IBOutlet weak var lbGenres: UILabel!
@@ -43,8 +44,11 @@ class CinemaPopularCollectionViewCell: BaseCollectionViewCell {
         })
     }
     
-    override func configCell(_ payload: Any) {
+    override func configCell(_ payload: Any, isNeedFixedLayoutForIPad: Bool = false) {
         if let payload = payload as? Movie {
+            if isNeedFixedLayoutForIPad {
+                imageHeight.constant = 310
+            }
             self.payload = payload
             image.setImageUrlWithPlaceHolder(url: URL(string: "\(baseURLImage)\(payload.posterPath)"))
             lbTitle.text = payload.originalTitle.isEmpty ? payload.originalName : payload.originalTitle

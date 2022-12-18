@@ -19,6 +19,9 @@ final class SimilarViewController: BaseCollectionViewController<CinemaPopularCol
     }
     
     override var heightForItem: Double {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 400
+        }
        return 240
     }
     
@@ -56,14 +59,9 @@ final class SimilarViewController: BaseCollectionViewController<CinemaPopularCol
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
-            let cell = collectionView.dequeue(ofType: SmallNativeAdCollectionViewCell.self, indexPath: indexPath)
-            cell.adView.register(id: "")
-            return cell
-        }
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CinemaPopularCollectionViewCell
         let item = movies[indexPath.row]
-        cell.configCell(item)
+        cell.configCell(item, isNeedFixedLayoutForIPad: true)
         cell.didTapAction = { [weak self] _ in
             guard let `self` = self else { return }
             self.presenter.didTapMovie(item)
@@ -75,10 +73,10 @@ final class SimilarViewController: BaseCollectionViewController<CinemaPopularCol
 // MARK: - SimilarViewInterface
 extension SimilarViewController: SimilarViewInterface {
     func getMovie(_ response: MovieResponse) {
-        movies = [Movie()] + response.results
+        movies = response.results
         delay(0.5, closure: {
-            self.collectionView.headRefreshControl.endRefreshing()
-            self.collectionView.footRefreshControl.endRefreshing()
+            self.scrollView.headRefreshControl.endRefreshing()
+            self.scrollView.footRefreshControl.endRefreshing()
         })
     }
     

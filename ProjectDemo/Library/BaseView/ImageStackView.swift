@@ -13,6 +13,7 @@ class ImageStackView: UIStackView {
     
     @IBInspectable var count: Int = 1
     var didTapImage: ((Int) -> Void)?
+    var didAdditionImage: VoidCallBack?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,48 +23,59 @@ class ImageStackView: UIStackView {
         super.init(coder: coder)
     }
     
-    func selected(_ imageView: UIImageView) {
-        imageView.borderWidth = 1
-        imageView.borderColor = CHOOSE_GENRE_COLOR
+    func selected(_ containerView: UIView) {
+        containerView.borderWidth = 1
+        containerView.borderColor = CHOOSE_GENRE_COLOR
     }
     
-    func unselected(_ imageView: UIImageView) {
-        imageView.borderWidth = 0
+    func unselected(_ containerView: UIView) {
+        containerView.borderWidth = 0
     }
     
-    func configView(_ imageUrl: [URL] = [], selectedIndex: Int = 0) {
+    func configView(_ imageUrl: [URL] = [], selectedIndex: Int = 0, isAdditionImage: Bool = false) {
         self.layoutIfNeeded()
         for subViews in self.subviews {
             subViews.removeFromSuperview()
         }
         let spacingCount: CGFloat = CGFloat(count - 1) * spacing
         let width: CGFloat = (self.frame.width - spacingCount) / CGFloat(count)
+        let indexAddition: Int = isAdditionImage && (imageUrl.count < count) ? imageUrl.count : -1
         for index in 0..<count {
-            let imageView = UIImageView()
+            let containerView = UIView()
+            let imageView = UIImageView(frame: containerView.bounds)
+            containerView.backgroundColor = .clear
+            containerView.addSubview(imageView)
             imageView.contentMode = .scaleAspectFill
-            imageView.cornerRadius = 8
-            imageView.snp.makeConstraints {
+            imageView.fillToSuperView()
+            containerView.cornerRadius = 8
+            containerView.snp.makeConstraints {
                 $0.width.equalTo(width)
             }
-            imageView.addTapGestureRecognizer(action: { [weak self] in
+            containerView.addTapGestureRecognizer(action: { [weak self] in
                 guard let `self` = self else { return }
                 if let _ = imageUrl[safe: index] {
                     for view in self.arrangedSubviews {
-                        if let imageV = view as? UIImageView {
-                            self.unselected(imageV)
-                        }
+                        self.unselected(view)
                     }
-                    self.selected(imageView)
+                    self.selected(containerView)
                     self.didTapImage?(index)
                 }
             })
             if let url = imageUrl[safe: index] {
                 imageView.setImageUrlWithPlaceHolder(url: url)
             }
+            
             if index == selectedIndex {
-                self.selected(imageView)
+                self.selected(containerView)
             }
-            self.addArrangedSubview(imageView)
+            if index == indexAddition {
+                imageView.image = UIImage(named: "Group 2196")
+                imageView.contentMode = .scaleToFill
+                containerView.addTapGestureRecognizer {
+                    self.didAdditionImage?()
+                }
+            }
+            self.addArrangedSubview(containerView)
         }
     }
 }

@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol CollectionViewAdjustedHeightDelegate: AnyObject {
+    func didChangeContentSize(_ collectionView: BaseCollectionView, size contentSize: CGSize)
+}
+
+
 protocol FactoryUICollectionView {
     static func createWith<T: UICollectionViewCell>(_ type: T.Type) -> Self
 }
@@ -76,6 +81,23 @@ class BaseCollectionBuilder {
 }
 
 class BaseCollectionView: UICollectionView {
+    
+    weak var contentSizeDelegate: CollectionViewAdjustedHeightDelegate?
+    
+    override var intrinsicContentSize: CGSize {
+        self.layoutIfNeeded()
+        return self.contentSize
+    }
+    override var contentSize: CGSize {
+        didSet {
+            contentSizeDelegate?.didChangeContentSize(self, size: contentSize)
+            self.invalidateIntrinsicContentSize()
+        }
+    }
+    override func reloadData() {
+        super.reloadData()
+        self.invalidateIntrinsicContentSize()
+    }
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)

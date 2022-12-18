@@ -22,6 +22,9 @@ final class SeasonViewController: BaseCollectionViewController<TVShowCollectionV
     }
     
     override var heightForItem: Double {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 314
+        }
        return 153
     }
     
@@ -35,12 +38,12 @@ final class SeasonViewController: BaseCollectionViewController<TVShowCollectionV
         navigation.lbTitle.text = "Season"
         self.headerRefresh = {
             delay(0.5, closure: {
-                self.collectionView.headRefreshControl.endRefreshing()
+                self.scrollView.headRefreshControl.endRefreshing()
             })
         }
         self.footerRefresh = {
             delay(0.5, closure: {
-                self.collectionView.footRefreshControl.endRefreshing()
+                self.scrollView.footRefreshControl.endRefreshing()
             })
         }
     }
@@ -50,11 +53,6 @@ final class SeasonViewController: BaseCollectionViewController<TVShowCollectionV
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
-            let cell = collectionView.dequeue(ofType: SmallNativeAdCollectionViewCell.self, indexPath: indexPath)
-            cell.adView.register(id: "")
-            return cell
-        }
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! TVShowCollectionViewCell
         let item = seasons[indexPath.row]
         cell.configCell(item, isTVShowDetail: true)
@@ -66,7 +64,7 @@ final class SeasonViewController: BaseCollectionViewController<TVShowCollectionV
 extension SeasonViewController: SeasonViewInterface {
     var seasons: [Season] {
         if let seasons = payload as? [Season] {
-            return [Season()] + seasons
+            return seasons
         }
         return []
     }

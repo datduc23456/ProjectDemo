@@ -27,6 +27,9 @@ enum PeopleTableViewDataSource: CaseIterable {
         case .videos:
             return 195
         case .tvshow:
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                return 270
+            }
             return 195
         case .images:
             return 95

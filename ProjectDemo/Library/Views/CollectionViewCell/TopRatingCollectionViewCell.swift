@@ -27,7 +27,7 @@ class TopRatingCollectionViewCell: BaseCollectionViewCell {
         })
     }
     
-    override func configCell(_ payload: Any) {
+    override func configCell(_ payload: Any, isNeedFixedLayoutForIPad: Bool = false) {
         if let payload = payload as? Movie {
             self.payload = payload
             lbNumber.text = "\(self.tag + 1)"

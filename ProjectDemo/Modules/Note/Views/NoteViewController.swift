@@ -47,8 +47,7 @@ final class NoteViewController: BaseViewController {
     }
     
     func configView() {
-        bottomSheet = BaseViewBottomSheetViewController()
-        bottomSheet.bottomDataSource = [.content(title: bottomTitle, content: bottomContent), .button(title: "Edit", isPrimary: true), .button(title: "Remove", isPrimary: false)]
+        
         tableView.bindHeadRefreshHandler({ [weak self] in
             guard let `self` = self else { return }
             self.presenter.didRefresh()
@@ -91,6 +90,7 @@ extension NoteViewController: UITableViewDataSource, UITableViewDelegate {
         cell.didTapEdit = { [weak self] in
             guard let `self` = self else { return }
             DispatchQueue.main.async {
+                self.bottomSheet = BaseViewBottomSheetViewController()
                 self.bottomSheet.payload = review
                 self.bottomTitle = !review.originalTitle.isEmpty ? review.originalTitle : review.originalName
                 self.bottomContent = DTPBusiness.shared.mapToGenreName(Array(review.genreIDS))
