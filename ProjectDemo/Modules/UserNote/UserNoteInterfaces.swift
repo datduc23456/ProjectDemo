@@ -8,6 +8,7 @@
 
 protocol UserNoteViewInterface: ViewInterface {
     var movieDetail: MovieDetail? { get }
+    func getMyReviews(_ data: [ReviewsResultObject])
 }
 
 protocol UserNotePresenterInterface: PresenterInterface {

@@ -21,7 +21,7 @@ final class SettingViewController: BaseViewController {
             self.didPopViewController(nil, true)
         }
         navigation.lbTitle.text = "Setting"
-        bannerAdView.register(id: "")
+        bannerAdView.register(id: "ca-app-pub-3940256099942544/6300978111")
     }
     
 }

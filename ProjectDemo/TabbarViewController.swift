@@ -105,8 +105,13 @@ class TabbarViewController: UITabBarController {
         if isFirstLayout {
             viewGradientBottom.fadeView(style: .top, percentage: 0.55)
             isFirstLayout = !isFirstLayout
+            NotificationCenter.default.addObserver(self, selector: #selector(showOpenAds), name: Notification.Name("AppOpenAdDidLoad"), object: nil)
         }
 //        gradient.frame = viewGradientBottom.bounds
+    }
+    
+    @objc func showOpenAds() {
+        AdMobManager.shared.show(key: "AppOpenAd")
     }
     
     func unselectAll() {

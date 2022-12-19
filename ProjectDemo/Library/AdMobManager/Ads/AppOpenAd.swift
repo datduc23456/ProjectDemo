@@ -79,6 +79,7 @@ class AppOpenAd: NSObject, AdProtocol {
               self.retryAttempt = 0
               ad.fullScreenContentDelegate = self
               self.appOpenAd = ad
+              NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AppOpenAdDidLoad"), object: nil)
           }
       }
   }
@@ -88,7 +89,8 @@ class AppOpenAd: NSObject, AdProtocol {
   }
   
   func isReady() -> Bool {
-    return isExist() && wasLoadTimeLessThanNHoursAgo()
+    return isExist()
+      //&& wasLoadTimeLessThanNHoursAgo()
   }
   
   func show(willPresent: (() -> Void)?,
@@ -141,9 +143,9 @@ extension AppOpenAd: GADFullScreenContentDelegate {
   func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
     print("AppOpenAd: did hide!")
     didDismiss?()
-    self.appOpenAd = nil
+//    self.appOpenAd = nil
     self.presentState = false
-    load()
+//    load()
     self.lastTimeDisplay = Date()
   }
 }

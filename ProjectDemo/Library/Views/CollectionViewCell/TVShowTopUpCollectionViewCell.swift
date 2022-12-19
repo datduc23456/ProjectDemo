@@ -17,6 +17,7 @@ class TVShowTopUpCollectionViewCell: BaseCollectionViewCell {
         image.addTapGestureRecognizer(action: { [weak self] in
             guard let `self` = self, let payload = self.payload else { return }
             self.didTapAction?(payload)
+            self.icPlay.isHidden = false
         })
     }
     
@@ -25,7 +26,7 @@ class TVShowTopUpCollectionViewCell: BaseCollectionViewCell {
             self.payload = payload
             image.kf.setImage(with: URL(string: "\(baseURLImage)\(payload.posterPath)"))
             lbName.text = payload.originalName
-//            icPlay.text = payload.is
+            icPlay.isHidden = DTPBusiness.shared.tvShowSelectedId != payload.id
         }
     }
 }

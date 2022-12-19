@@ -8,7 +8,7 @@
 import UIKit
 
 class MovieVideosTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
-    
+    var collectionView: BaseCollectionView!
     @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
     @IBOutlet weak var icPlay: UIImageView!
     @IBOutlet weak var lbPublished: UILabel!

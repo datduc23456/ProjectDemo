@@ -15,6 +15,7 @@ protocol TVShowViewInterface: ViewInterface {
     func fetchRealmMovieDetailObjectWithId(_ object: [MovieDetailObject])
     func didDeleteMovieObject()
     func didInsertMovieObject()
+    func getTVShowDetail(_ response: MovieDetail)
 }
 
 protocol TVShowPresenterInterface: PresenterInterface {
@@ -24,6 +25,7 @@ protocol TVShowPresenterInterface: PresenterInterface {
     func didTapFavorite(_ movie: Movie, isFavorite: Bool)
     func didTapSearch()
     func didTapSetting()
+    func didTapPlayVideo(_ video: Video)
 }
 
 protocol TVShowInteractorInterface: InteractorInterface {
@@ -34,6 +36,7 @@ protocol TVShowInteractorInterface: InteractorInterface {
     func fetchRealmMovieDetailObjectWithId(_ id: Int, completion: ((MovieDetailObject)->Void))
     func deleteMovieDetailObject(_ movie: Movie)
     func insertMovieDetailObject(_ movie: Movie)
+    func getTVShowDetail(_ id: Int)
 }
 
 protocol TVShowInteractorOutputInterface: InteractorOutputInterface {
@@ -44,6 +47,7 @@ protocol TVShowInteractorOutputInterface: InteractorOutputInterface {
     func deleteMovieDetailObject(_ movie: Movie)
     func insertMovieDetailObject(_ movie: Movie)
     func fetchRealmMovieDetailObjectWithId(_ object: [MovieDetailObject])
+    func getTVShowDetail(_ response: MovieDetail)
 }
 
 protocol TVShowWireframeInterface: WireframeInterface {

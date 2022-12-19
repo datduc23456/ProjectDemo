@@ -18,6 +18,15 @@ final class TVShowInteractor {
 }
 
 extension TVShowInteractor: TVShowInteractorInterface {
+    func getTVShowDetail(_ id: Int) {
+        ServiceCore.shared.request(MovieDetail.self, targetType: CoreTargetType.TVshowDetail(id), successBlock: { [weak self] response in
+            guard let `self` = self else { return }
+            self.output?.getTVShowDetail(response)
+        }, failureBlock: { error in
+            self.output?.handleError(error, {})
+        })
+    }
+    
     func getTrendingTv() {
         ServiceCore.shared.request(MovieResponse.self, targetType: CoreTargetType.trendingTvShow(page: 1), successBlock: { [weak self] response in
             guard let `self` = self else { return }

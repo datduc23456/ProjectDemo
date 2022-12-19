@@ -26,6 +26,7 @@ final class TVShowViewController: BaseViewController {
     var tableViewDataSource: [TVShowTableViewDataSource] = TVShowTableViewDataSource.allCases
     var data: [String: Any] = [:]
     var movie: Movie?
+    var movieDetail: MovieDetail?
     var isFavorite: Bool = false {
         didSet {
             if isFavorite {
@@ -90,14 +91,18 @@ final class TVShowViewController: BaseViewController {
     }
     
     @IBAction func playAction(_ sender: Any) {
-        if let movie = movie {
-            self.presenter.didTapToMovie(movie)
+        if let movie = movieDetail, let video = movie.videos.video.first {
+            self.presenter.didTapPlayVideo(video)
         }
     }
 }
 
 // MARK: - TVShowViewInterface
 extension TVShowViewController: TVShowViewInterface {
+    func getTVShowDetail(_ response: MovieDetail) {
+        self.configMovieDetail(response)
+    }
+    
     func didDeleteMovieObject() {
         self.isFavorite = false
     }
@@ -115,11 +120,11 @@ extension TVShowViewController: TVShowViewInterface {
     }
     
     func getTVShowLastest(_ response: MovieResponse) {
-        let listMovie = response.results
+//        let listMovie = response.results
 //        let first5 = Array(listMovie.prefix(5))
-        self.data.updateValue(listMovie, forKey: "\(TVShowTableViewDataSource.topUp)")
-        tableView.reloadSections(IndexSet([0]), with: .none)
-        self.configMovieDetail(listMovie.first!)
+//        self.data.updateValue(listMovie, forKey: "\(TVShowTableViewDataSource.topUp)")
+//        tableView.reloadSections(IndexSet([0]), with: .none)
+//        self.presenter.didChangeMovieHeader(listMovie.first!)
     }
     
     func getGenresList(_ response: GenreResponse) {
@@ -127,8 +132,13 @@ extension TVShowViewController: TVShowViewInterface {
     }
     
     func getTopRate(_ response: MovieResponse) {
-//        self.data.updateValue(response.results, forKey: "\(TVShowTableViewDataSource.trending)")
-//        tableView.reloadSections(IndexSet([2]), with: .none)
+        let listMovie = response.results
+//        let first5 = Array(listMovie.prefix(5))
+        
+        self.data.updateValue(listMovie, forKey: "\(TVShowTableViewDataSource.topUp)")
+        DTPBusiness.shared.tvShowSelectedId = listMovie.first!.id
+        tableView.reloadSections(IndexSet([0]), with: .none)
+        self.presenter.didChangeMovieHeader(listMovie.first!)
     }
     
     func getTVShowPopular(_ response: MovieResponse) {
@@ -144,13 +154,13 @@ extension TVShowViewController: TVShowViewInterface {
 
 
 extension TVShowViewController: UITableViewDataSource, UITableViewDelegate {
-    fileprivate func configMovieDetail(_ movie: Movie) {
-        self.movie = movie
+    fileprivate func configMovieDetail(_ movie: MovieDetail) {
+        self.movieDetail = movie
         self.imgBackGround.kf.setImage(with: URL(string: "\(baseURLImage)\(movie.posterPath)"))
         self.lbTitle.text = movie.name
-        self.lbVoteAvg.text = "\(movie.voteAverage)"
+        self.lbVoteAvg.text = "\(movie.voteAverage.roundToPlaces(places: 1))"
         self.lbYear.text = CommonUtil.getYearFromDate(movie.releaseDate)
-        presenter.didChangeMovieHeader(movie)
+//        self.tableView.reloadSections(IndexSet([0]), with: .automatic)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -158,13 +168,20 @@ extension TVShowViewController: UITableViewDataSource, UITableViewDelegate {
         let T = item.typeOfCell()
         let cell = tableView.dequeueReusableCell(withIdentifier: T.className, for: indexPath)
         cell.selectionStyle = .none
-        if let baseCell = cell as? BaseWithCollectionTableViewCellHandler, let data = self.data["\(item)"] as? [Any] {
-            baseCell.listPayload = data
-            baseCell.didTapActionInCell = { payload in
+        if let tableViewCell = cell as? BaseWithCollectionTableViewCellHandler, let data = self.data["\(item)"] as? [Any] {
+            tableViewCell.listPayload = data
+            tableViewCell.didTapActionInCell = { payload in
                 switch item {
                 case .topUp:
                     if let movie = payload as? Movie {
-                        self.configMovieDetail(movie)
+                        for collectionViewCell in tableViewCell.collectionView.visibleCells {
+                            if let tvShowTopUpCollectionViewCell = collectionViewCell as? TVShowTopUpCollectionViewCell {
+                                tvShowTopUpCollectionViewCell.icPlay.isHidden = true
+                            }
+                        }
+                        DTPBusiness.shared.tvShowSelectedId = movie.id
+                        self.movie = movie
+                        self.presenter.didChangeMovieHeader(movie)
                     }
                 case .popular, .trending:
                     if let movie = payload as? Movie {
@@ -205,7 +222,6 @@ extension TVShowViewController: UITableViewDataSource, UITableViewDelegate {
         if item == .popular {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BigNativeAdHeaderView") as! BigNativeAdHeaderView
             headerView.contentView.backgroundColor = APP_COLOR
-            headerView.bigNativeadView.register(id: "ca-app-pub-3940256099942544/3986624511")
             return headerView
         }
         return nil

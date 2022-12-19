@@ -19,10 +19,11 @@ struct FlowLayoutAttribute {
 protocol BaseWithCollectionTableViewCellHandler: AnyObject {
     var listPayload: [Any] { get set }
     var didTapActionInCell: ((Any)->Void) { get set }
+    var collectionView: BaseCollectionView! { get set }
 }
 
 class BaseTableCollectionViewCell<T: UICollectionViewCell>: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, BaseWithCollectionTableViewCellHandler {
-    
+
     var didTapActionInCell: ((Any) -> Void) = {_ in}
     var collectionView: BaseCollectionView!
     var listPayload: [Any] = [] {

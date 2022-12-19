@@ -23,6 +23,10 @@ final class UserNotePresenter {
 
 extension UserNotePresenter: UserNotePresenterInterface {
     func viewDidLoad() {
+        
+    }
+    
+    func viewWillAppear(_ animated: Bool) {
         if let movieDetail = view?.movieDetail {
             interactor.fetchMyReview(movieDetail.id)
         }
@@ -41,6 +45,7 @@ extension UserNotePresenter: UserNotePresenterInterface {
 extension UserNotePresenter: UserNoteInteractorOutputInterface {
     func getMyReviews(_ data: [ReviewsResultObject]) {
         self.reviewsObject = data
+        view?.getMyReviews(data)
     }
 
     func handleError(_ error: Error, _ completion: (() -> Void)?) {

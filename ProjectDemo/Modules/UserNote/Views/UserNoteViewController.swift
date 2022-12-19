@@ -14,24 +14,27 @@ final class UserNoteViewController: BaseViewController {
     // MARK: - Properties
     @IBOutlet weak var adView: SmallNativeAdView!
     var presenter: UserNotePresenterInterface!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableViewheight: NSLayoutConstraint!
     @IBOutlet weak var filmNoteView: FilmNoteView!
     @IBOutlet weak var tableView: TableViewAdjustedHeight!
-    var reviews: [ReviewsResult] = []
+    var reviews: [ReviewsResult] = [] {
+        didSet {
+            stackView.isHidden = !reviews.isEmpty
+            tableView.isHidden = reviews.isEmpty
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
         adView.register(id: "ca-app-pub-3940256099942544/3986624511")
-        reviews = (movieDetail?.reviews.results).isNil(value: [])
-        tableView.reloadData()
         configHeader()
         tableView.registerCell(for: UserNoteTableViewCell.className)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.emptyDataSetSource = self
-        tableView.emptyDataSetDelegate = self
         tableView.contentSizeDelegate = self
         scrollView.bounces = false
         scrollView.showsVerticalScrollIndicator = false
@@ -44,11 +47,11 @@ final class UserNoteViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+//        DTPBusiness.shared.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        presenter.viewWillAppear(animated)
     }
     
     func configHeader() {
@@ -73,6 +76,14 @@ extension UserNoteViewController: UserNoteViewInterface {
             return movieDetail
         }
         return nil
+    }
+    
+    func getMyReviews(_ data: [ReviewsResultObject]) {
+        reviews = data.compactMap({
+            var review = ReviewsResult()
+            review.cloneFromReviewsObject($0)
+            return review
+        }) + (movieDetail?.reviews.results).isNil(value: [])
     }
 }
 

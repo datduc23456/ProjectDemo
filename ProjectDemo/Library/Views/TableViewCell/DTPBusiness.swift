@@ -10,6 +10,7 @@ import Foundation
 class DTPBusiness {
     static let shared = DTPBusiness()
     var listGenres: [Genre] = []
+    var tvShowSelectedId: Int = 0
     var genreSelectedId: Int = 0
     var movieFilterType: MovieFilterType = .all
     var realmUtils: RealmUtils = AppDelegate.shared.realmUtils!

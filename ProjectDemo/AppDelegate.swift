@@ -57,7 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AdMobManager.shared.register(key: "InterstitialAd", type: .interstitial, id: "ca-app-pub-3940256099942544/3986624511")
         AdMobManager.shared.register(key: "RewardedInterstitialAd", type: .rewardedInterstitial, id: "ca-app-pub-3940256099942544/6978759866")
         AdMobManager.shared.register(key: "RewardedInterstitialAd", type: .appOpen, id: "ca-app-pub-1343377148417262/8494691866")
-        //InterstitialAd
         return true
     }
 
@@ -67,6 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "InternetLost"), object: nil)
         }
+        AdMobManager.shared.show(key: "AppOpenAd")
     }
     
     // MARK: UISceneSession Lifecycle

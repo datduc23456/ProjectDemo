@@ -23,6 +23,6 @@ class BigNativeAdHeaderView: UITableViewHeaderFooterView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        bigNativeadView.register(id: "ca-app-pub-3940256099942544/3986624511")
+        bigNativeadView.register(id: "ca-app-pub-3940256099942544/3986624511")
     }
 }

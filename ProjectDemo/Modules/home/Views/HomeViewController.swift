@@ -178,7 +178,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomeViewController: HeaderViewDelegate {
     func headerView(_ customHeader: UITableViewHeaderFooterView, didTapButtonInSection section: Int) {
         let item = tableViewDataSource[section]
-        AdMobManager.shared.show(key: "RewardAd")
         self.presenter.didTapHeaderView(item)
     }
 }

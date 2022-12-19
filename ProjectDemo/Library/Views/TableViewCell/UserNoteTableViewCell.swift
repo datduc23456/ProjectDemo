@@ -25,7 +25,7 @@ class UserNoteTableViewCell: UITableViewCell {
     }
     
     func congfigCell(_ review: ReviewsResult) {
-        lbName.text = review.authorDetails.username
+        lbName.text = review.authorDetails.username.isEmpty ? "You" : review.authorDetails.username
         lbContent.text = review.content
         lbRating.text = "\(review.authorDetails.rating)"
         avatar.setImageUrlWithPlaceHolder(url: URL.init(string: "\(baseURLImage)\(review.authorDetails.avatarPath)"), UIImage(named: "ava_default")!)

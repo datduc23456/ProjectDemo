@@ -22,7 +22,12 @@ final class TVShowPresenter {
 }
 
 extension TVShowPresenter: TVShowPresenterInterface {
+    func didTapPlayVideo(_ video: Video) {
+        wireframe.showPlayVideo(video.key, false)
+    }
+    
     func didChangeMovieHeader(_ movie: Movie) {
+        interactor.getTVShowDetail(movie.id)
         interactor.fetchRealmMovieDetailObjectWithId(movie.id, completion: {_ in})
     }
     
@@ -66,6 +71,10 @@ extension TVShowPresenter: TVShowPresenterInterface {
 }
 
 extension TVShowPresenter: TVShowInteractorOutputInterface {
+    func getTVShowDetail(_ response: MovieDetail) {
+        view?.getTVShowDetail(response)
+    }
+    
     func getTrendingTv(_ response: MovieResponse) {
         view?.getTrendingTv(response)
     }

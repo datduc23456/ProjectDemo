@@ -8,11 +8,12 @@
 import UIKit
 
 class FavoriteTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
-    
+
     @IBOutlet weak var filmNoteView: FilmNoteView!
     var didTapRemove: VoidCallBack?
     var listPayload: [Any] = []
     var didTapActionInCell: ((Any) -> Void) = {_ in}
+    var collectionView: BaseCollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

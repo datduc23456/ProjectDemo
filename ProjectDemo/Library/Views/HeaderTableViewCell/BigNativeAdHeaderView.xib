@@ -14,16 +14,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcd-WX-Es0" customClass="BigNativeAdView" customModule="Star_Movie" customModuleProvider="target">
-                    <rect key="frame" x="-19" y="-133.66666666666666" width="428" height="370.33333333333331"/>
+                    <rect key="frame" x="-0.66666666666665719" y="-133.66666666666666" width="391.33333333333326" height="370.33333333333331"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="428" id="8dS-d7-AwW"/>
                         <constraint firstAttribute="height" constant="370" id="q4s-kD-IUm"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="8dS-d7-AwW"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="dcd-WX-Es0" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" constant="1" id="7GY-DH-T4i"/>
                 <constraint firstItem="dcd-WX-Es0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="egf-dh-8Kc"/>
                 <constraint firstItem="dcd-WX-Es0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mRc-ps-Ur6"/>
             </constraints>

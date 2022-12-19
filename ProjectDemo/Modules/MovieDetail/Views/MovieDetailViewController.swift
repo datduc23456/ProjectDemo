@@ -295,11 +295,6 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
         let titleHeader = item.titleOfHeader()
         if !titleHeader.isEmpty {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView") as! HeaderView
-            if item == .rate(hasRate: false) {
-                headerView.btnSeeMore.isHidden = true
-            } else {
-                headerView.btnSeeMore.isHidden = false
-            }
             headerView.contentView.backgroundColor = APP_COLOR
             headerView.lbTitle.text = titleHeader
             headerView.sectionNumber = section
@@ -328,7 +323,6 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
         if item == .rate(hasRate: false) || item == .rate(hasRate: true) || (!tableViewDataSource.contains(where: {$0 == .season}) && item == .overview) || (tableViewDataSource.contains(where: {$0 == .season}) && item == .season) {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BigNativeAdHeaderView") as! BigNativeAdHeaderView
             headerView.contentView.backgroundColor = APP_COLOR
-            headerView.bigNativeadView.register(id: "ca-app-pub-3940256099942544/3986624511")
             return headerView
         }
         return nil

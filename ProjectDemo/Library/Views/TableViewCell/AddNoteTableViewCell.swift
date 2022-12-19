@@ -8,6 +8,7 @@
 import UIKit
 
 class AddNoteTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
+    var collectionView: BaseCollectionView!
     var listPayload: [Any] = []
     
     var didTapActionInCell: ((Any) -> Void) = {_ in}

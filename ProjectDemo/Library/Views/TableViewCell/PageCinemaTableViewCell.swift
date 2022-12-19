@@ -9,8 +9,7 @@ import UIKit
 
 class PageCinemaTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
     
-    
-    
+    var collectionView: BaseCollectionView!
     @IBOutlet weak var lbYear: UILabel!
     @IBOutlet weak var lbRate: UILabel!
     @IBOutlet weak var lbGenre: UILabel!

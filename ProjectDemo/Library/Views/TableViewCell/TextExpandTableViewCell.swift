@@ -9,6 +9,7 @@ import UIKit
 
 class TextExpandTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
     
+    var collectionView: BaseCollectionView!
     var listPayload: [Any] = [] {
         didSet {
             self.configCell()

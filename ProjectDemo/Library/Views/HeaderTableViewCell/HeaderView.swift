@@ -18,7 +18,19 @@ class HeaderView: UITableViewHeaderFooterView {
     weak var delegate: HeaderViewDelegate?
     var sectionNumber: Int!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        btnSeeMore.addTapGestureRecognizer {
+            DTPBusiness.shared.numberTapSeemore += 1
+            if DTPBusiness.shared.numberTapSeemore == 2 {
+                AdMobManager.shared.show(key: "RewardAd")
+                DTPBusiness.shared.numberTapSeemore = 0
+            }
+            self.delegate?.headerView(self, didTapButtonInSection: self.sectionNumber)
+        }
+    }
+    
     @IBAction func didTapButton(_ sender: Any) {
-        delegate?.headerView(self, didTapButtonInSection: sectionNumber)
+        
     }
 }

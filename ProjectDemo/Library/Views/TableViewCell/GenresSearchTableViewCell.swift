@@ -1,45 +1,46 @@
 import UIKit
 
 class GenresSearchTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
-
-    @IBOutlet weak var collectionView: UICollectionView!
+    var collectionView: BaseCollectionView!
+    
+    @IBOutlet weak var genresCollectionView: UICollectionView!
     var listPayload: [Any] = []
     
     var didTapActionInCell: ((Any) -> Void) = {_ in}
     
     var payload: [Genre] = [] {
         didSet {
-            collectionView.reloadData()
+            genresCollectionView.reloadData()
         }
     }
     
     var collectionViewOffset: CGFloat {
         get {
-            return collectionView.contentOffset.x
+            return genresCollectionView.contentOffset.x
         }
         
         set {
-            collectionView.contentOffset.x = newValue
+            genresCollectionView.contentOffset.x = newValue
         }
     }
     
     func initCollectionViewCell() {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.collectionViewLayout.invalidateLayout()
-        collectionView.reloadData()
+        genresCollectionView.dataSource = self
+        genresCollectionView.delegate = self
+        genresCollectionView.collectionViewLayout.invalidateLayout()
+        genresCollectionView.reloadData()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear
-        collectionView.registerCell(for: GengesCollectionViewCell.className)
+        genresCollectionView.registerCell(for: GengesCollectionViewCell.className)
         let collectionViewFlowLayout = CollectionViewFlowLayout()
         collectionViewFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionViewFlowLayout.minimumLineSpacing = 8
         collectionViewFlowLayout.headerReferenceSize = CGSize(width: 16, height: 1)
         collectionViewFlowLayout.scrollDirection = .vertical
-        collectionView.collectionViewLayout = collectionViewFlowLayout
+        genresCollectionView.collectionViewLayout = collectionViewFlowLayout
         initCollectionViewCell()
     }
     

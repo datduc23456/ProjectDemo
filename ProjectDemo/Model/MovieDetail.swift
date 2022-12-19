@@ -366,10 +366,13 @@ struct Reviews: Codable {
 
 // MARK: - ReviewsResult
 struct ReviewsResult: Codable {
-    let author: String
-    let authorDetails: AuthorDetails
-    let content, createdAt, id, updatedAt: String
-    let url: String
+    var author: String = ""
+    var authorDetails: AuthorDetails = AuthorDetails()
+    var content: String = ""
+    var createdAt: String = ""
+    var id: String = ""
+    var updatedAt: String = ""
+    var url: String = ""
 
     enum CodingKeys: String, CodingKey {
         case author
@@ -392,6 +395,20 @@ struct ReviewsResult: Codable {
         id = try values.decodeIfPresent(String.self, forKey: .id).isNil(value: "")
     }
     
+    init() {
+        
+    }
+    
+    mutating func cloneFromReviewsObject(_ object: ReviewsResultObject) {
+        self.content = object.content
+        self.id = "\(object._id)"
+        self.updatedAt = object.updatedAt
+        self.url = object.url
+        self.author = object.author
+        if let authorDetails = object.authorDetails {
+            self.authorDetails.cloneFromAuthorDetailsObject(authorDetails)
+        }
+    }
 //    func toReviewsResultObject() -> ReviewsResultObject {
 //        let object = ReviewsResultObject()
 //        object.author = self.author
@@ -408,9 +425,9 @@ struct ReviewsResult: Codable {
 
 // MARK: - AuthorDetails
 struct AuthorDetails: Codable {
-    let name, username: String
-    let avatarPath: String
-    let rating: Double
+    var name, username: String
+    var avatarPath: String
+    var rating: Double
 
     enum CodingKeys: String, CodingKey {
         case name, username
@@ -440,6 +457,13 @@ struct AuthorDetails: Codable {
         object.username = self.username
         object.rating = self.rating
         return object
+    }
+    
+    mutating func cloneFromAuthorDetailsObject(_ object: AuthorDetailsObject) {
+        self.avatarPath = object.avatarPath
+        self.name = object.name
+        self.username = object.username
+        self.rating = object.rating
     }
 }
 
