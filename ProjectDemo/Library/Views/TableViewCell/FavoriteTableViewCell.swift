@@ -7,10 +7,12 @@
 
 import UIKit
 
-class FavoriteTableViewCell: UITableViewCell {
-
+class FavoriteTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandler {
+    
     @IBOutlet weak var filmNoteView: FilmNoteView!
     var didTapRemove: VoidCallBack?
+    var listPayload: [Any] = []
+    var didTapActionInCell: ((Any) -> Void) = {_ in}
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,6 +20,10 @@ class FavoriteTableViewCell: UITableViewCell {
         filmNoteView.btnProperties.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
             self.didTapRemove?()
+        }
+        contentView.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self else { return }
+            self.didTapActionInCell(0)
         }
     }
 

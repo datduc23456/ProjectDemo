@@ -237,6 +237,10 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
                 })
             }
         }
+        cell.didTapActionInCell = { [weak self] _ in
+            guard let `self` = self else { return }
+            self.presenter.didTapMovie(movieObject)
+        }
         return cell
     }
     

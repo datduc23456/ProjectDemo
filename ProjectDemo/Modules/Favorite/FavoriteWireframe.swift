@@ -38,6 +38,11 @@ final class FavoriteWireframe: FavoriteWireframeInterface {
         navigator.pushScreen(AppScreens.setting, fromRoot: true)
     }
     
+    func showMovieDetailScreen(_ id: Int, _ isTVShow: Bool) {
+        AdMobManager.shared.show(key: "RewardedInterstitialAd")
+        navigator.pushScreen(AppScreens.detail, (id, isTVShow), fromRoot: true)
+    }
+    
 	func handleError(_ error: Error, _ completion: (() -> Void)?) {
         
     }

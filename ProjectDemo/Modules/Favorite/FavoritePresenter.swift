@@ -34,6 +34,10 @@ extension FavoritePresenter: FavoritePresenterInterface {
         wireframe.showSettingScreen()
     }
     
+    func didTapMovie(_ movie: MovieDetailObject) {
+        wireframe.showMovieDetailScreen(movie._id, movie.isTVShow)
+    }
+    
     func getMovieFavorite(_ type: FavoriteFilterType) {
         interactor.getMovieFavorite(type)
     }
