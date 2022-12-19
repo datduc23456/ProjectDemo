@@ -92,6 +92,7 @@ final class FavoriteViewController: BaseViewController {
         }
         navigation.lbTitle.text = "Favorite"
         navigation.configContentNav(.tabbar)
+        adView.register(id: "ca-app-pub-3940256099942544/3986624511")
     }
     
     func configView() {

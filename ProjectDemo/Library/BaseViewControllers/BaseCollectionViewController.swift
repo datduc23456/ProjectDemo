@@ -70,7 +70,7 @@ class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController,
         }
         self.adView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(30)
+            $0.height.equalTo(100)
         }
         self.collectionView.snp.makeConstraints {
             $0.top.equalTo(self.adView.snp.bottom).offset(self.spacing)
@@ -99,7 +99,7 @@ class BaseCollectionViewController<T: UICollectionViewCell>: BaseViewController,
         
         self.scrollView.headRefreshControl.layoutIfNeeded()
         self.scrollView.headRefreshControl.presetContentInsets = UIEdgeInsets(top: spacing, left: spacing, bottom: 0, right: spacing)
-        self.adView.register(id: "")
+        self.adView.register(id: "ca-app-pub-3940256099942544/3986624511")
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -150,7 +150,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
         if item == .newMovie {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BigNativeAdHeaderView") as! BigNativeAdHeaderView
-            headerView.bigNativeadView.register(id: "")
+//            headerView.bigNativeadView.register(id: "ca-app-pub-3940256099942544/3986624511")
             return headerView
         }
         
@@ -164,7 +164,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return 40
         }
         if item == .newMovie {
-            return 60
+            return 370
         }
         return titleHeader.isEmpty ? 0 : 60
     }

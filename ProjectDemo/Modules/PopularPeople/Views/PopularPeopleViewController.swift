@@ -204,7 +204,7 @@ extension PopularPeopleViewController: UITableViewDataSource, UITableViewDelegat
         if item == .videos {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BigNativeAdHeaderView") as! BigNativeAdHeaderView
             headerView.contentView.backgroundColor = APP_COLOR
-            headerView.bigNativeadView.register(id: "")
+            headerView.bigNativeadView.register(id: "ca-app-pub-3940256099942544/3986624511")
             return headerView
         }
         return nil
@@ -213,7 +213,7 @@ extension PopularPeopleViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         let item = tableViewDataSource[section]
         if item == .videos {
-            return 60
+            return 370
         }
         return 0
     }

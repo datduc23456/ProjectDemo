@@ -29,7 +29,7 @@ final class SearchViewController: BaseViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
-        adView.register(id: "")
+        adView.register(id: "ca-app-pub-3940256099942544/3986624511")
         tableView.register(CinemaPopularTableViewCell.self, forCellReuseIdentifier: CinemaPopularTableViewCell.className)
         tableView.register(TVShowPopularTableViewCell.self, forCellReuseIdentifier: TVShowPopularTableViewCell.className)
         tableView.register(PeoplePopularTableViewCell.self, forCellReuseIdentifier: PeoplePopularTableViewCell.className)

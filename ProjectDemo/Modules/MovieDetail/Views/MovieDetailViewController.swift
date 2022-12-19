@@ -328,7 +328,7 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
         if item == .rate(hasRate: false) || item == .rate(hasRate: true) || (!tableViewDataSource.contains(where: {$0 == .season}) && item == .overview) || (tableViewDataSource.contains(where: {$0 == .season}) && item == .season) {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BigNativeAdHeaderView") as! BigNativeAdHeaderView
             headerView.contentView.backgroundColor = APP_COLOR
-            headerView.bigNativeadView.register(id: "")
+            headerView.bigNativeadView.register(id: "ca-app-pub-3940256099942544/3986624511")
             return headerView
         }
         return nil
@@ -337,7 +337,7 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         let item = tableViewDataSource[section]
         if item == .rate(hasRate: false) || item == .rate(hasRate: true) || (!tableViewDataSource.contains(where: {$0 == .season}) && item == .overview) || (tableViewDataSource.contains(where: {$0 == .season}) && item == .season) {
-            return 60
+            return 370
         }
         return 0
     }

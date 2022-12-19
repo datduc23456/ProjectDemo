@@ -109,14 +109,14 @@ extension NoteViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: AddNoteHeaderView.reuseIdentifier) as! AddNoteHeaderView
-        headerView.adView.register(id: "")
+        headerView.adView.register(id: "ca-app-pub-3940256099942544/3986624511")
         headerView.contentView.backgroundColor = APP_COLOR
         headerView.delegate = self
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 90
+        return 160
     }
 }
 

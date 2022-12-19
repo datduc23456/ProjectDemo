@@ -205,7 +205,7 @@ extension TVShowViewController: UITableViewDataSource, UITableViewDelegate {
         if item == .popular {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BigNativeAdHeaderView") as! BigNativeAdHeaderView
             headerView.contentView.backgroundColor = APP_COLOR
-            headerView.bigNativeadView.register(id: "")
+            headerView.bigNativeadView.register(id: "ca-app-pub-3940256099942544/3986624511")
             return headerView
         }
         return nil
@@ -214,7 +214,7 @@ extension TVShowViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         let item = tableViewDataSource[section]
         if item == .popular {
-            return 60
+            return 370
         }
         return 0
     }

@@ -41,10 +41,10 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v37-Lu-dpv" customClass="SmallNativeAdView" customModule="Star_Movie" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="132" width="390" height="30"/>
+                    <rect key="frame" x="0.0" y="62" width="390" height="100"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="COS-Nt-aXf"/>
+                        <constraint firstAttribute="height" constant="100" id="COS-Nt-aXf"/>
                     </constraints>
                 </view>
             </subviews>

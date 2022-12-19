@@ -23,7 +23,7 @@ final class UserNoteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
-        adView.register(id: "")
+        adView.register(id: "ca-app-pub-3940256099942544/3986624511")
         reviews = (movieDetail?.reviews.results).isNil(value: [])
         tableView.reloadData()
         configHeader()
