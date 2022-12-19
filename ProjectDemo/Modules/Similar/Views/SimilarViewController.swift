@@ -61,7 +61,8 @@ final class SimilarViewController: BaseCollectionViewController<CinemaPopularCol
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CinemaPopularCollectionViewCell
         let item = movies[indexPath.row]
-        cell.configCell(item, isNeedFixedLayoutForIPad: true)
+        let isNeedFixedLayoutForIPad = UIDevice.current.userInterfaceIdiom == .pad
+        cell.configCell(item, isNeedFixedLayoutForIPad: isNeedFixedLayoutForIPad)
         cell.didTapAction = { [weak self] _ in
             guard let `self` = self else { return }
             self.presenter.didTapMovie(item)

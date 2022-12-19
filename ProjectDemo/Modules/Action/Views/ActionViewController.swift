@@ -102,7 +102,8 @@ final class ActionViewController: BaseCollectionViewController<CinemaPopularColl
         } else {
             cell.icFavorite.image = UIImage(named: "ic_heart")
         }
-        cell.configCell(movie, isNeedFixedLayoutForIPad: true)
+        let isNeedFixedLayoutForIPad = UIDevice.current.userInterfaceIdiom == .pad
+        cell.configCell(movie, isNeedFixedLayoutForIPad: isNeedFixedLayoutForIPad)
         cell.didTapAction = { [weak self] any in
             guard let `self` = self else { return }
             if let movie = any as? Movie {
