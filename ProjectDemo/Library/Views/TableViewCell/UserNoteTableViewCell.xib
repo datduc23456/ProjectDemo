@@ -22,7 +22,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YcY-A4-1r6">
-                        <rect key="frame" x="16" y="16" width="288" height="118"/>
+                        <rect key="frame" x="16" y="0.0" width="288" height="336"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Of-5U-WFj">
                                 <rect key="frame" x="0.0" y="0.0" width="288" height="45"/>
@@ -68,7 +68,7 @@
                                     <constraint firstAttribute="trailing" secondItem="BPH-Ge-Wd0" secondAttribute="trailing" constant="12" id="zOr-1m-LyT"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lcx-bW-M5h">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lcx-bW-M5h">
                                 <rect key="frame" x="0.0" y="45" width="288" height="73"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAu-G1-mxu">
@@ -101,14 +101,14 @@
                                     <constraint firstItem="CAu-G1-mxu" firstAttribute="leading" secondItem="Lcx-bW-M5h" secondAttribute="leading" constant="12" id="xpU-Bz-VZH"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nke-wx-bEJ">
-                                <rect key="frame" x="0.0" y="118" width="288" height="0.0"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nke-wx-bEJ">
+                                <rect key="frame" x="0.0" y="118" width="288" height="218"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvp-fE-l9Y" customClass="ImageStackView" customModule="Star_Movie" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="0.0"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cvp-fE-l9Y" customClass="ImageStackView" customModule="Star_Movie" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="0.0" width="256" height="218"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="count">
-                                                <integer key="value" value="6"/>
+                                                <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </stackView>
@@ -116,9 +116,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="cvp-fE-l9Y" firstAttribute="top" secondItem="Nke-wx-bEJ" secondAttribute="top" id="6r1-mK-8Q5"/>
-                                    <constraint firstItem="cvp-fE-l9Y" firstAttribute="leading" secondItem="Nke-wx-bEJ" secondAttribute="leading" id="CBv-OD-L2O"/>
-                                    <constraint firstAttribute="trailing" secondItem="cvp-fE-l9Y" secondAttribute="trailing" id="HYt-Bk-VLN"/>
-                                    <constraint firstAttribute="bottom" secondItem="cvp-fE-l9Y" secondAttribute="bottom" id="mI9-1n-Geh"/>
+                                    <constraint firstAttribute="height" constant="64" id="872-Qq-Eb5"/>
+                                    <constraint firstItem="cvp-fE-l9Y" firstAttribute="leading" secondItem="Nke-wx-bEJ" secondAttribute="leading" constant="16" id="CBv-OD-L2O"/>
+                                    <constraint firstAttribute="trailing" secondItem="cvp-fE-l9Y" secondAttribute="trailing" constant="16" id="HYt-Bk-VLN"/>
+                                    <constraint firstAttribute="bottom" secondItem="cvp-fE-l9Y" secondAttribute="bottom" constant="16" id="mI9-1n-Geh"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -163,7 +164,9 @@
                 <outlet property="lbContent" destination="6oV-Wc-QWC" id="pL5-ZF-B9Z"/>
                 <outlet property="lbName" destination="tl0-Q3-Omi" id="Rpf-gD-n8P"/>
                 <outlet property="lbRating" destination="GKz-hy-wpN" id="rMF-1Q-0tN"/>
+                <outlet property="stackImages" destination="cvp-fE-l9Y" id="Czc-XO-Vtj"/>
                 <outlet property="stackView" destination="YcY-A4-1r6" id="ZUX-Uf-2fC"/>
+                <outlet property="viewImages" destination="Nke-wx-bEJ" id="EuI-gk-Ib1"/>
             </connections>
             <point key="canvasLocation" x="129.7709923664122" y="89.436619718309871"/>
         </tableViewCell>

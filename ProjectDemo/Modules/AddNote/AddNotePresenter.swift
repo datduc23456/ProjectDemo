@@ -37,7 +37,7 @@ extension AddNotePresenter: AddNotePresenterInterface {
 
 extension AddNotePresenter: AddNoteInteractorOutputInterface {
     func insertReviewsResultObject(_ review: ReviewsResultObject) {
-        view?.didInsertReviewsResultObject()
+        view?.didInsertReviewsResultObject(review)
     }
     func getMovieDetail(_ response: MovieDetail) {
         

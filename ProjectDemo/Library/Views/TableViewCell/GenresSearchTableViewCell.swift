@@ -72,9 +72,9 @@ extension GenresSearchTableViewCell: UICollectionViewDataSource, UICollectionVie
     }
     
     override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
-        self.collectionView.layoutIfNeeded()
+        self.genresCollectionView.layoutIfNeeded()
         self.layoutIfNeeded()
-        let contentSize = self.collectionView.collectionViewLayout.collectionViewContentSize
+        let contentSize = self.genresCollectionView.collectionViewLayout.collectionViewContentSize
         return CGSize.init(width: contentSize.width, height: contentSize.height)
     }
 }

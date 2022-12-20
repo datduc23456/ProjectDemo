@@ -36,6 +36,8 @@ final class UserNoteViewController: BaseViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.contentSizeDelegate = self
+        tableView.estimatedRowHeight = 144
+        tableView.rowHeight = UITableView.automaticDimension
         scrollView.bounces = false
         scrollView.showsVerticalScrollIndicator = false
         let navigation: BaseNavigationView = initCustomNavigation(.base)
@@ -104,9 +106,12 @@ extension UserNoteViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserNoteTableViewCell.className, for: indexPath) as! UserNoteTableViewCell
         let review = reviews[indexPath.section]
         cell.selectionStyle = .none
+        cell.stackView.layoutIfNeeded()
         cell.congfigCell(review)
+//        cell.stackView.linearGradientBackground(angleInDegs: 180, colors: [UIColor(hex: "#171A21").cgColor, UIColor(hex: "#0D1015").cgColor])
+
         cell.layoutIfNeeded()
-        cell.stackView.linearGradientBackground(angleInDegs: 180, colors: [UIColor(hex: "#171A21").cgColor, UIColor(hex: "#0D1015").cgColor])
+        
         return cell
     }
     
@@ -116,9 +121,6 @@ extension UserNoteViewController: UITableViewDataSource, UITableViewDelegate {
         return headerView
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 114
-    }
 }
 
 extension UserNoteViewController: TableViewAdjustedHeightDelegate {

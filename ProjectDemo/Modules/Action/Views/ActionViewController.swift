@@ -34,7 +34,7 @@ final class ActionViewController: BaseCollectionViewController<CinemaPopularColl
         if UIDevice.current.userInterfaceIdiom == .pad {
             return 400
         }
-       return 240
+       return 260
     }
     var bottomSheet: BaseViewBottomSheetViewController!
     var movies: [Movie] = []
@@ -94,6 +94,7 @@ final class ActionViewController: BaseCollectionViewController<CinemaPopularColl
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! CinemaPopularCollectionViewCell
         let movie = movies[indexPath.row]
+        cell.imageHeight.constant = 169
         cell.viewFavorite.isHidden = false
         let predicate = NSPredicate(format: "_id == %@", NSNumber(value: movie.id))
         let query = self.realmUtils.dataQueryByPredicate(type: MovieDetailObject.self, predicate: predicate)

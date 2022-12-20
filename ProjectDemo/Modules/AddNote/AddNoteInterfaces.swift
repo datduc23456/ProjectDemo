@@ -8,7 +8,7 @@
 
 protocol AddNoteViewInterface: ViewInterface {
     var movieDetail: MovieDetail? { get }
-    func didInsertReviewsResultObject()
+    func didInsertReviewsResultObject(_ review: ReviewsResultObject)
 }
 
 protocol AddNotePresenterInterface: PresenterInterface {

@@ -15,7 +15,7 @@ final class UserNoteInteractor {
 
 extension UserNoteInteractor: UserNoteInteractorInterface {
     func fetchMyReview(_ id: Int) {
-        let predicate = NSPredicate(format: "_id == %@", NSNumber(value: id))
+        let predicate = NSPredicate(format: "movieId == %@", NSNumber(value: id))
         let query = realmUtils.dataQueryByPredicate(type: ReviewsResultObject.self, predicate: predicate)
         self.output?.getMyReviews(Array(query))
     }

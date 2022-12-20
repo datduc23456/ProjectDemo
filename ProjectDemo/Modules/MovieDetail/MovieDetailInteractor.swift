@@ -62,11 +62,10 @@ extension MovieDetailInteractor: MovieDetailInteractorInterface {
     }
     
     func fetchMyReview(_ id: Int) {
-        let predicate = NSPredicate(format: "_id == %@", NSNumber(value: id))
-        let query = realmUtils.dataQueryByPredicate(type: ReviewsResultObject.self, predicate: predicate)
-        if !query.isEmpty {
-            self.output?.fetchMyReview(query[0])
-        }
+        DTPBusiness.shared.fetchMyReviewWithMovieId(id, completion: { [weak self] query in
+            guard let `self` = self else { return }
+            self.output?.fetchMyReview(query)
+        })
     }
     
     func fetchWatchedListObjectWithId(_ id: Int) {

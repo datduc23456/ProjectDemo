@@ -9,6 +9,8 @@ import UIKit
 
 class UserNoteTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var stackImages: ImageStackView!
+    @IBOutlet weak var viewImages: UIView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var avatar: UIImageView!
@@ -29,5 +31,15 @@ class UserNoteTableViewCell: UITableViewCell {
         lbContent.text = review.content
         lbRating.text = "\(review.authorDetails.rating)"
         avatar.setImageUrlWithPlaceHolder(url: URL.init(string: "\(baseURLImage)\(review.authorDetails.avatarPath)"), UIImage(named: "ava_default")!)
+        if review.images.isEmpty {
+            viewImages.isHidden = true
+        } else {
+            viewImages.isHidden = false
+            let urls = review.images.map({
+                let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                return documents.appendingPathComponent($0)
+            })
+            stackImages.configView(urls, selectedIndex: -1)
+        }
     }
 }

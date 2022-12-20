@@ -187,7 +187,8 @@ class ReviewsResultObject: Object {
     @Persisted var adult: Bool = false
     @Persisted var backdropPath: String = ""
     @Persisted var genreIDS: List<Int> = List<Int>()
-    @Persisted (primaryKey: true) var _id: Int = 0
+    @Persisted (primaryKey: true) var _id: String = ""
+    @Persisted var movieId: Int = 0
     @Persisted var originalLanguage: String = ""
     @Persisted var originalTitle: String = ""
     @Persisted var overview: String = ""

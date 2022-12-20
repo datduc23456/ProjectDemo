@@ -10,7 +10,7 @@ protocol MovieDetailViewInterface: ViewInterface {
     var id: (Int, Bool) { get }
     func getMovieDetail(_ response: MovieDetail)
     func getTVShowDetail(_ response: MovieDetail)
-    func fetchMyReview(_ review: ReviewsResultObject)
+    func fetchMyReview(_ reviews: [ReviewsResultObject])
     func fetchRealmMovieDetailObjectWithId(_ object: MovieDetailObject)
     func fetchMovieDetailObjectWatchedListWithId(_ object: WatchedListObject?)
     func didDeleteMovieObject()
@@ -44,7 +44,7 @@ protocol MovieDetailInteractorInterface: InteractorInterface {
 protocol MovieDetailInteractorOutputInterface: InteractorOutputInterface {
     func getMovieDetail(_ response: MovieDetail)
     func getTVShowDetail(_ response: MovieDetail)
-    func fetchMyReview(_ review: ReviewsResultObject)
+    func fetchMyReview(_ reviews: [ReviewsResultObject])
     func fetchRealmMovieDetailObjectWithId(_ object: MovieDetailObject)
     func fetchMovieDetailObjectWatchedListWithId(_ object: WatchedListObject?)
     func deleteMovieDetailObject(_ movie: MovieDetail)

@@ -29,6 +29,7 @@ final class MovieDetailViewController: BaseViewController {
     var tableViewDataSource: [MovieDetailTableViewDataSource] = MovieDetailTableViewDataSource.allCases
     var data: [String: Any] = [:]
     var trailer: Video?
+    var myReviews: [ReviewsResult] = []
     var isExpandTextView: Bool = false
     var isFavorite: Bool = false {
         didSet {
@@ -130,7 +131,8 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         if response.overview.isEmpty {
             self.tableViewDataSource.removeAll(where: {$0 == .overview})
         }
-        if response.reviews.results.isEmpty {
+        let reviews = self.myReviews + response.reviews.results
+        if reviews.isEmpty {
             self.tableViewDataSource.removeAll(where: {$0 == .notes})
             if let index = self.tableViewDataSource.firstIndex(where: {$0.isRate()}) {
                 var rateRow = self.tableViewDataSource[index]
@@ -162,7 +164,7 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         self.data.updateValue((totalVote: response.popularity, voteAvg: voteAvg), forKey: "\(MovieDetailTableViewDataSource.notes)")
         self.data.updateValue(response.recommendations.results, forKey: "\(MovieDetailTableViewDataSource.trending)")
         self.data.updateValue([], forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: false))")
-        self.data.updateValue(response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: true))")
+        self.data.updateValue(self.myReviews + response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: true))")
         self.data.updateValue([response.overview], forKey: "\(MovieDetailTableViewDataSource.overview)")
         self.data.updateValue(response.seasons, forKey: "\(MovieDetailTableViewDataSource.season)")
         self.tableView.reloadData()
@@ -182,7 +184,7 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         self.data.updateValue((totalVote: response.popularity, voteAvg: voteAvg), forKey: "\(MovieDetailTableViewDataSource.notes)")
         self.data.updateValue(response.recommendations.results, forKey: "\(MovieDetailTableViewDataSource.trending)")
         self.data.updateValue([], forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: false))")
-        self.data.updateValue(response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: true))")
+        self.data.updateValue(self.myReviews + response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: true))")
         self.data.updateValue([response.overview], forKey: "\(MovieDetailTableViewDataSource.overview)")
         self.tableView.reloadData()
     }
@@ -191,8 +193,12 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         self.isFavorite = true
     }
     
-    func fetchMyReview(_ review: ReviewsResultObject) {
-        
+    func fetchMyReview(_ reviews: [ReviewsResultObject]) {
+        self.myReviews = reviews.compactMap({
+            var review = ReviewsResult()
+            review.cloneFromReviewsObject($0)
+            return review
+        })
     }
     
     func didDeleteMovieObject() {
@@ -381,6 +387,13 @@ extension MovieDetailViewController: BackFromNextHandleable {
             watchedListObject = result
             btnWatchedList.backgroundColor = UIColor(hex: "#09BB00")
             btnWatchedList.setImage(UIImage(named: "ic_check"), for: .normal)
+        } else if let result = result as? ReviewsResultObject, let movieDetail = self.movieDetail {
+            var review = ReviewsResult()
+            review.cloneFromReviewsObject(result)
+            self.myReviews = [review] + self.myReviews
+            let reviews = self.myReviews + movieDetail.reviews.results
+            self.data.updateValue(reviews, forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: true))")
+            self.tableView.reloadData()
         }
     }
 }

@@ -122,14 +122,15 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
             let object = ReviewsResultObject()
             object.originalName = movieDetail.originalName
             object.originalTitle = movieDetail.originalTitle
-            object._id = movieDetail.id
+            object._id = UUID().uuidString
+            object.movieId = movieDetail.id
             object.posterPath = movieDetail.posterPath
             object.backdropPath = movieDetail.backdropPath
             object.genreIDS.append(objectsIn: movieDetail.genres.map({$0.id}))
             object.content = content
             object.author = name
-            object.createdAt = Date().toString()
-            object.updatedAt = Date().toString()
+            object.createdAt = Date().timeIntervalSince1970.stringFromTimeInterval()
+            object.updatedAt = Date().timeIntervalSince1970.stringFromTimeInterval()
             object.listImages.append(objectsIn: listImages)
             let authorDetails = AuthorDetailsObject()
             authorDetails.rating = rating!
@@ -144,10 +145,11 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
             object.posterPath = review.posterPath
             object.backdropPath = review.backdropPath
             object.genreIDS.append(objectsIn: review.genreIDS)
+            object.movieId = review.movieId
             object.content = content
             object.author = name
-            object.createdAt = Date().toString()
-            object.updatedAt = Date().toString()
+            object.createdAt = Date().timeIntervalSince1970.stringFromTimeInterval()
+            object.updatedAt = Date().timeIntervalSince1970.stringFromTimeInterval()
             object.listImages.append(objectsIn: listImages)
             let authorDetails = AuthorDetailsObject()
             authorDetails.rating = rating!
@@ -206,8 +208,8 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
 
 // MARK: - AddNoteViewInterface
 extension AddNoteViewController: AddNoteViewInterface {
-    func didInsertReviewsResultObject() {
-        self.navigationController?.popViewController(animated: true)
+    func didInsertReviewsResultObject(_ review: ReviewsResultObject) {
+        self.popChildViewController(review, true)
     }
     
     var movieDetail: MovieDetail? {
@@ -234,13 +236,7 @@ extension AddNoteViewController: KeyboardDisplayableViewController {
 extension AddNoteViewController: BackFromNextHandleable {
     func onBackFromNext(_ result: Any?) {
         if let result = result as? MovieDetail {
-            DTPBusiness.shared.fetchMyReviewWithId(result.id, completion: { [weak self] review in
-                guard let `self` = self, let review = review else {
-                    self?.payload = result
-                    return
-                }
-                self.payload = review
-            })
+            self.payload = result
             self.configViewWithPayload()
         }
     }

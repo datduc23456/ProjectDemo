@@ -134,6 +134,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showsThumbImageShadow" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwa-1Y-Mru">
@@ -372,9 +373,4 @@
             <point key="canvasLocation" x="194" y="143"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="aXc-li-Hr2">
-            <size key="intrinsicContentSize" width="-1" height="63"/>
-        </designable>
-    </designables>
 </document>

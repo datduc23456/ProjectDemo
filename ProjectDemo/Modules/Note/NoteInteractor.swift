@@ -18,7 +18,9 @@ final class NoteInteractor {
 extension NoteInteractor: NoteInteractorInterface {
     
     func getMyReviews() {
-        let reviews = Array(realmUtils.dataQuery(type: ReviewsResultObject.self))
+        var query = realmUtils.dataQuery(type: ReviewsResultObject.self)
+        query = query.sorted(byKeyPath: "createdAt", ascending: false)
+        let reviews = Array(query)
         self.output?.getMyReviews(reviews)
     }
     

@@ -209,7 +209,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         lineChartDataSet.drawIconsEnabled = false
         lineChartDataSet.lineWidth = 3
         lineChartView.xAxis.axisLineColor = .clear
-        lineChartView.xAxis.gridColor = UIColor.init(hexa: "#FFFCFC").withAlphaComponent(0.2)
+        lineChartView.xAxis.gridColor = .white.withAlphaComponent(0.5)
         lineChartView.xAxis.gridLineDashLengths = [1]
         //        lineChartView.xAxis.axisMinimum = 1
         lineChartView.xAxis.gridLineWidth = 1
@@ -225,7 +225,8 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         lineChartView.leftAxis.labelTextColor = .white.withAlphaComponent(0.5)
         lineChartView.leftAxis.axisMinimum = 0
         lineChartView.leftAxis.labelXOffset = 0
-        lineChartView.leftAxis.axisLineColor = .clear
+        lineChartView.leftAxis.axisLineDashLengths = [1]
+        lineChartView.leftAxis.axisLineColor = .white.withAlphaComponent(0.5)
         lineChartView.leftAxis.valueFormatter = self
         lineChartView.leftAxis.granularityEnabled = true
         lineChartView.leftAxis.axisLineWidth = 1

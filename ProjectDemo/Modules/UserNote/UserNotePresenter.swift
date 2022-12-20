@@ -33,11 +33,12 @@ extension UserNotePresenter: UserNotePresenterInterface {
     }
     
     func didTapAddNote() {
-        if reviewsObject.isEmpty, let movieDetail = view?.movieDetail {
+        if let movieDetail = view?.movieDetail {
             wireframe.showAddNoteScreen(movieDetail)
-        } else {
-            wireframe.showAddNoteScreen(reviewsObject[0])
         }
+//        else {
+//            wireframe.showAddNoteScreen(reviewsObject[0])
+//        }
     }
     
 }

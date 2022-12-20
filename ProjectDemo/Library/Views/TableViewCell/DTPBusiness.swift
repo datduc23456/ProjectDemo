@@ -41,14 +41,21 @@ class DTPBusiness {
         }
     }
     
-    func fetchMyReviewWithId(_ movieId: Int, completion: ((ReviewsResultObject?) -> Void)) {
-        let predicate = NSPredicate(format: "_id == %@", NSNumber(value: movieId))
+    func fetchMyReviewWithId(_ id: String, completion: ((ReviewsResultObject?) -> Void)) {
+        let predicate = NSPredicate(format: "_id == %@", id)
         let query = realmUtils.dataQueryByPredicate(type: ReviewsResultObject.self, predicate: predicate)
         if !query.isEmpty {
             completion(query[0])
         } else {
             completion(nil)
         }
+    }
+    
+    func fetchMyReviewWithMovieId(_ movieId: Int, completion: (([ReviewsResultObject]) -> Void)) {
+        let predicate = NSPredicate(format: "movieId == %@", NSNumber(value: movieId))
+        var query = realmUtils.dataQueryByPredicate(type: ReviewsResultObject.self, predicate: predicate)
+        query = query.sorted(byKeyPath: "createdAt", ascending: false)
+        completion(Array(query))
     }
     
     func fetchRealmMovieDetailObjectWithId(_ id: Int, completion: ((MovieDetailObject?) -> Void)) {

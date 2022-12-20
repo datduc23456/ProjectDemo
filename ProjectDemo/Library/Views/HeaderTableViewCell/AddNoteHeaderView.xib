@@ -59,6 +59,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="adView" destination="v37-Lu-dpv" id="JM1-lP-BfE"/>
+                <outlet property="btnAddNote" destination="Ez1-9r-ZTP" id="dSA-Xo-Ptr"/>
             </connections>
             <point key="canvasLocation" x="67.692307692307693" y="-253.79146919431278"/>
         </view>

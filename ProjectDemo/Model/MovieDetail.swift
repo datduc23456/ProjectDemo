@@ -373,7 +373,8 @@ struct ReviewsResult: Codable {
     var id: String = ""
     var updatedAt: String = ""
     var url: String = ""
-
+    var images: [String] = []
+    
     enum CodingKeys: String, CodingKey {
         case author
         case authorDetails = "author_details"
@@ -408,6 +409,7 @@ struct ReviewsResult: Codable {
         if let authorDetails = object.authorDetails {
             self.authorDetails.cloneFromAuthorDetailsObject(authorDetails)
         }
+        self.images = Array(object.listImages)
     }
 //    func toReviewsResultObject() -> ReviewsResultObject {
 //        let object = ReviewsResultObject()

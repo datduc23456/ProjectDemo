@@ -13,7 +13,7 @@ final class MovieDetailPresenter {
     private var wireframe: MovieDetailWireframeInterface
     private var movieDetailObject: MovieDetailObject?
     private var movieDetail: MovieDetail?
-    private var myReviewObject: ReviewsResultObject?
+    private var myReviewObject: [ReviewsResultObject]?
     private var watchedListObject: WatchedListObject?
     
     init(view: MovieDetailViewInterface,
@@ -56,9 +56,10 @@ extension MovieDetailPresenter: MovieDetailPresenterInterface {
     }
     
     func didTapAddnote() {
-        if let myReviewObject = myReviewObject {
-            wireframe.showAddNoteScreen(myReviewObject)
-        } else if let movieDetail = movieDetail {
+//        if let myReviewObject = myReviewObject {
+//            wireframe.showAddNoteScreen(myReviewObject)
+//        } else
+        if let movieDetail = movieDetail {
             wireframe.showAddNoteScreen(movieDetail)
         }
     }
@@ -87,6 +88,7 @@ extension MovieDetailPresenter: MovieDetailPresenterInterface {
         } else {
             interactor.getTVShowDetail(movie.id)
         }
+        interactor.fetchMyReview(movie.id)
     }
     
     func viewWillAppear(_ animated: Bool) {
@@ -111,9 +113,9 @@ extension MovieDetailPresenter: MovieDetailInteractorOutputInterface {
         view?.fetchMovieDetailObjectWatchedListWithId(object)
     }
     
-    func fetchMyReview(_ review: ReviewsResultObject) {
-        self.myReviewObject = review
-        view?.fetchMyReview(review)
+    func fetchMyReview(_ reviews: [ReviewsResultObject]) {
+        self.myReviewObject = reviews
+        view?.fetchMyReview(reviews)
     }
     
     func deleteMovieDetailObject(_ movie: MovieDetail) {
