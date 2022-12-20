@@ -10,6 +10,7 @@ import UIKit
 
 final class SettingViewController: BaseViewController {
 
+    @IBOutlet weak var viewPrivacy: UIView!
     @IBOutlet weak var bannerAdView: BannerAdView!
     // MARK: - Properties
 	var presenter: SettingPresenterInterface!
@@ -22,6 +23,9 @@ final class SettingViewController: BaseViewController {
         }
         navigation.lbTitle.text = "Setting"
         bannerAdView.register(id: "ca-app-pub-3940256099942544/6300978111")
+        viewPrivacy.addTapGestureRecognizer {
+            self.navigationController?.pushViewController(AppScreens.webView.createViewController(), animated: true)
+        }
     }
     
 }

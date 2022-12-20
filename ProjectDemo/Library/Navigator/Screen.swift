@@ -39,6 +39,7 @@ enum AppScreens: String, Screen, CaseIterable {
     case videos
     case similar
     case setting
+    case webView
     
     var path: String {
         return rawValue
@@ -95,6 +96,8 @@ enum AppScreens: String, Screen, CaseIterable {
             return SimilarWireframe.generateModule(payload)
         case .setting:
             return SettingWireframe.generateModule(payload)
+        case .webView:
+            return WebViewWireframe.generateModule(payload)
         }
     }
 }

@@ -1,0 +1,15 @@
+//
+//  WebViewInteractor.swift
+//  ProjectDemo
+//
+//  Created by Nguyễn Đạt on 20/12/2022.
+//  Copyright © 2022 dat.nguyen. All rights reserved.
+//
+
+final class WebViewInteractor {
+
+    weak var output: WebViewInteractorOutputInterface?
+}
+
+extension WebViewInteractor: WebViewInteractorInterface {
+}
