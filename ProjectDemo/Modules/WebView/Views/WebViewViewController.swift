@@ -33,7 +33,12 @@ final class WebViewViewController: BaseViewController {
         navigation.lbTitle.text = titleString
         webView = WKWebView(frame: .zero)
         self.view.addSubview(webView)
-        webView.fillToSuperView()
+        webView.snp.makeConstraints {
+            $0.top.equalTo(myNavigationBar!.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
         let url = URL(string: "https://www.termsfeed.com/live/42c4732e-7915-40dd-8181-9fcdd0acfce6")!
         webView!.load(URLRequest(url: url))
     }

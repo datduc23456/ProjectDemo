@@ -301,7 +301,10 @@
                     </view>
                     <connections>
                         <outlet property="bannerAdView" destination="7Kb-5B-SwW" id="WWU-wf-Cey"/>
+                        <outlet property="viewFeedback" destination="FAo-S6-d5x" id="Nm9-Mb-uRp"/>
                         <outlet property="viewPrivacy" destination="GCS-sd-X45" id="Hea-z5-93H"/>
+                        <outlet property="viewRatingApp" destination="0UR-64-L8z" id="xSW-0S-fUy"/>
+                        <outlet property="viewShareApp" destination="8XX-Uo-99D" id="b1C-QE-9Ga"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZ1-oP-p5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
