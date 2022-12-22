@@ -12,8 +12,14 @@ import Kingfisher
 class ImageStackView: UIStackView {
     
     @IBInspectable var count: Int = 1
+    @IBInspectable var isAllowToOpenImage: Bool = false
     var didTapImage: ((Int) -> Void)?
     var didAdditionImage: VoidCallBack?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.distribution = .fillEqually
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,49 +39,43 @@ class ImageStackView: UIStackView {
     }
     
     func configView(_ imageUrl: [URL] = [], selectedIndex: Int = 0, isAdditionImage: Bool = false) {
-        self.layoutIfNeeded()
         for subViews in self.subviews {
             subViews.removeFromSuperview()
         }
-        let spacingCount: CGFloat = CGFloat(count - 1) * spacing
-        let width: CGFloat = (self.frame.width - spacingCount) / CGFloat(count)
         let indexAddition: Int = isAdditionImage && (imageUrl.count < count) ? imageUrl.count : -1
         for index in 0..<count {
-            let containerView = UIView()
-            let imageView = UIImageView(frame: containerView.bounds)
-            containerView.backgroundColor = .clear
-            containerView.addSubview(imageView)
-            imageView.contentMode = .scaleAspectFill
-            imageView.fillToSuperView()
-            containerView.cornerRadius = 8
-            containerView.snp.makeConstraints {
-                $0.width.equalTo(width)
-            }
-            containerView.addTapGestureRecognizer(action: { [weak self] in
+            let imageView = AYImageView(frame: .zero)
+            imageView.currentViewController = AppDelegate.shared.appRootViewController
+            imageView.imageContentMode = .scaleAspectFill
+            imageView.placeHolderImage = UIImage(named: "placeholder")
+            imageView.isAllowToOpenImage = self.isAllowToOpenImage
+            imageView.cornerRadius = 8
+            imageView.addTapGestureRecognizer(action: { [weak self] in
                 guard let `self` = self else { return }
                 if let _ = imageUrl[safe: index] {
                     for view in self.arrangedSubviews {
                         self.unselected(view)
                     }
-                    self.selected(containerView)
+                    self.selected(imageView)
                     self.didTapImage?(index)
                 }
             })
             if let url = imageUrl[safe: index] {
-                imageView.setImageUrlWithPlaceHolder(url: url)
+                imageView.setImageFromUrl(url: url.absoluteString)
             }
             
             if index == selectedIndex {
-                self.selected(containerView)
+                self.selected(imageView)
             }
             if index == indexAddition {
-                imageView.image = UIImage(named: "Group 2196")
-                imageView.contentMode = .scaleToFill
-                containerView.addTapGestureRecognizer {
+                imageView.imageContentMode = .scaleToFill
+                imageView.setImage(UIImage(named: "Group 2196")!)
+                
+                imageView.addTapGestureRecognizer {
                     self.didAdditionImage?()
                 }
             }
-            self.addArrangedSubview(containerView)
+            self.addArrangedSubview(imageView)
         }
     }
 }

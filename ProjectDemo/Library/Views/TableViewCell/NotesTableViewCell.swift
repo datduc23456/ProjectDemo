@@ -33,12 +33,11 @@ class NotesTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandle
         self.didTapActionInCell(0)
     }
     
-    func configCell(totalVote: Double, voteAvg: Double, myReviews: [ReviewsResult]) {
+    func configCell(totalVote: Double, totalReviews: [ReviewsResult]) {
         lbTotalVote.text = "\(totalVote) rating"
-        let myReviewsVoteAvg = myReviews.compactMap({$0.authorDetails.rating}).reduce(0.0, +) / Double(myReviews.count)
-        let vote = (voteAvg + myReviewsVoteAvg) / 2
-        lbVoteAvg.text = "\(vote.roundToPlaces(places: 1))"
-        let urls = myReviews.compactMap({$0.images}).reduce([], +).compactMap({
+        let voteAvg = totalReviews.isEmpty ? 0 : totalReviews.compactMap({$0.authorDetails.rating}).reduce(0.0, +) / Double(totalReviews.count)
+        lbVoteAvg.text = "\(voteAvg.roundToPlaces(places: 1))"
+        let urls = totalReviews.compactMap({$0.images}).reduce([], +).compactMap({
             let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             return documents.appendingPathComponent($0)
         })

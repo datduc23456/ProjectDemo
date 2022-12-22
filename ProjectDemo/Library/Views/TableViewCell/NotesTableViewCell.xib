@@ -82,6 +82,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="count">
                                 <integer key="value" value="5"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isAllowToOpenImage" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </stackView>
                 </subviews>

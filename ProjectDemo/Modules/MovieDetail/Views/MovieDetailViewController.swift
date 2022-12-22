@@ -122,9 +122,8 @@ extension MovieDetailViewController: MovieDetailViewInterface {
     }
     
     func configHeaderView(_ response: MovieDetail) {
-        let voteAvgResponse = response.voteAverage.roundToPlaces(places: 1)
-        let myReviewsVoteAvg = self.myReviews.compactMap({$0.authorDetails.rating}).reduce(0.0, +) / Double(self.myReviews.count)
-        let voteAvg = (voteAvgResponse + myReviewsVoteAvg) / 2
+        let totalReviews = response.reviews.results + myReviews
+        let voteAvg = totalReviews.isEmpty ? 0 : totalReviews.compactMap({$0.authorDetails.rating}).reduce(0.0, +) / Double(totalReviews.count)
         let listVideos = response.videos.video
         if listVideos.isEmpty {
             self.tableViewDataSource.removeAll(where: {$0 == .videos || $0 == .images})
@@ -159,7 +158,6 @@ extension MovieDetailViewController: MovieDetailViewInterface {
     
     func getTVShowDetail(_ response: MovieDetail) {
         self.tableViewDataSource = MovieDetailTableViewDataSource.tvShowCases
-        let voteAvg = response.voteAverage.roundToPlaces(places: 1)
         let listVideos = response.videos.video
         self.configHeaderView(response)
         if response.createdBy.isEmpty {
@@ -168,7 +166,7 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         self.data.updateValue(response.createdBy, forKey: "\(MovieDetailTableViewDataSource.actors)")
         self.data.updateValue(response.videos, forKey: "\(MovieDetailTableViewDataSource.videos)")
         self.data.updateValue(listVideos.map({CommonUtil.getThumbnailYoutubeUrl($0.key)}), forKey: "\(MovieDetailTableViewDataSource.images)")
-        self.data.updateValue((totalVote: response.popularity, voteAvg: voteAvg, myReviews: self.myReviews), forKey: "\(MovieDetailTableViewDataSource.notes)")
+        self.data.updateValue((totalVote: response.popularity, totalReviews: response.reviews.results + myReviews), forKey: "\(MovieDetailTableViewDataSource.notes)")
         self.data.updateValue(response.recommendations.results, forKey: "\(MovieDetailTableViewDataSource.trending)")
         self.data.updateValue([], forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: false))")
         self.data.updateValue(self.myReviews + response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: true))")
@@ -179,7 +177,6 @@ extension MovieDetailViewController: MovieDetailViewInterface {
     
     func getMovieDetail(_ response: MovieDetail) {
         self.tableViewDataSource = MovieDetailTableViewDataSource.movieCases
-        let voteAvg = response.voteAverage.roundToPlaces(places: 1)
         let listVideos = response.videos.video
         self.configHeaderView(response)
         if response.credits.cast.isEmpty {
@@ -188,7 +185,7 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         self.data.updateValue(response.credits.cast, forKey: "\(MovieDetailTableViewDataSource.actors)")
         self.data.updateValue(response.videos, forKey: "\(MovieDetailTableViewDataSource.videos)")
         self.data.updateValue(listVideos.map({CommonUtil.getThumbnailYoutubeUrl($0.key)}), forKey: "\(MovieDetailTableViewDataSource.images)")
-        self.data.updateValue((totalVote: response.popularity, voteAvg: voteAvg, myReviews: self.myReviews), forKey: "\(MovieDetailTableViewDataSource.notes)")
+        self.data.updateValue((totalVote: response.popularity, totalReviews: response.reviews.results + myReviews), forKey: "\(MovieDetailTableViewDataSource.notes)")
         self.data.updateValue(response.recommendations.results, forKey: "\(MovieDetailTableViewDataSource.trending)")
         self.data.updateValue([], forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: false))")
         self.data.updateValue(self.myReviews + response.reviews.results, forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: true))")
@@ -272,8 +269,8 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
             }
         }
         
-        if let cell = cell as? NotesTableViewCell, let data = self.data["\(item)"] as? (totalVote: Double, voteAvg: Double, myReviews: [ReviewsResult])  {
-            cell.configCell(totalVote: data.totalVote, voteAvg: data.voteAvg, myReviews: data.myReviews)
+        if let cell = cell as? NotesTableViewCell, let data = self.data["\(item)"] as? (totalVote: Double, totalReviews: [ReviewsResult])  {
+            cell.configCell(totalVote: data.totalVote, totalReviews: data.totalReviews)
             cell.didTapActionInCell = { [weak self] _ in
                 guard let `self` = self else { return }
                 self.presenter.didTapAddnote()

@@ -110,9 +110,11 @@ public class AYImageView: UIView {
     
     /// add tapGesture to open Image in full screen. if "isAllowToOpenImage" set true
     private func addTapGesture() {
-        isUserInteractionEnabled = isAllowToOpenImage
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showImageViewer(_:)))
-        self.addGestureRecognizer(tapGesture)
+        isUserInteractionEnabled = true
+        if isAllowToOpenImage {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showImageViewer(_:)))
+            self.addGestureRecognizer(tapGesture)
+        }
     }
     
     /// initialization of activity indicator

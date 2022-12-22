@@ -108,10 +108,7 @@ extension UserNoteViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none
         cell.stackView.layoutIfNeeded()
         cell.congfigCell(review)
-//        cell.stackView.linearGradientBackground(angleInDegs: 180, colors: [UIColor(hex: "#171A21").cgColor, UIColor(hex: "#0D1015").cgColor])
-
         cell.layoutIfNeeded()
-        
         return cell
     }
     
