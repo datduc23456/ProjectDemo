@@ -28,6 +28,7 @@ protocol MovieDetailPresenterInterface: PresenterInterface {
     func didTapImage()
     func didTapVideos()
     func didTapSimilar()
+    func refresh()
 }
 
 protocol MovieDetailInteractorInterface: InteractorInterface {

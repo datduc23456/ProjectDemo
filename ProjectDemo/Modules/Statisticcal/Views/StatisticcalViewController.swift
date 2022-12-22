@@ -61,7 +61,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
             customizeChart(data: dataSource)
         }
     }
-    var chartType: ChartValueType = .year {
+    var chartType: ChartValueType = .month {
         didSet {
             presenter.didChangeChargeType(chartType)
         }

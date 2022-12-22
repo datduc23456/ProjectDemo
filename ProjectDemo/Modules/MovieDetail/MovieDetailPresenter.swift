@@ -26,6 +26,17 @@ final class MovieDetailPresenter {
 }
 
 extension MovieDetailPresenter: MovieDetailPresenterInterface {
+    func refresh() {
+        if let movieDetail = self.movieDetail {
+            interactor.fetchMyReview(movieDetail.id)
+            if movieDetail.isTVShow() {
+                view?.getTVShowDetail(movieDetail)
+            } else {
+                view?.getMovieDetail(movieDetail)
+            }
+        }
+    }
+    
     func didTapSimilar() {
         wireframe.showSimilarScreen((view!.id.0, view!.id.1))
     }

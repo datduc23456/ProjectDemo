@@ -10,6 +10,7 @@ import UIKit
 
 final class AddNoteViewController: BaseViewController, UITextViewDelegate {
 
+    @IBOutlet weak var viewToast: UIView!
     @IBOutlet weak var lbTextFieldPlaceHolder: UILabel!
     private var imagePicker = UIImagePickerController()
     @IBOutlet weak var bottomInsets: NSLayoutConstraint!
@@ -114,7 +115,7 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
     }
     
     @IBAction func doneAction(_ sender: Any) {
-        guard let name = tfTitle.text, let content = textViewContent.text else {
+        guard let name = tfTitle.text, let content = textViewContent.text, !name.isEmpty, !content.isEmpty else {
             return
         }
         if let movieDetail = movieDetail {
@@ -203,6 +204,16 @@ final class AddNoteViewController: BaseViewController, UITextViewDelegate {
             textView.text = "Type here to add review..."
             textView.isPlaceHolder = true
         }
+    }
+    
+    func showToastAlert() {
+        UIView.animate(withDuration: 2, delay: 0, options: .curveEaseIn, animations: {
+            self.viewToast.alpha = 1
+        }, completion: {_ in
+            UIView.animate(withDuration: 2, delay: 0, options: .curveEaseIn, animations: {
+                self.viewToast.alpha = 0
+            })
+        })
     }
 }
 

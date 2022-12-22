@@ -238,6 +238,30 @@
                                     <constraint firstAttribute="trailing" secondItem="YtH-AO-0Ug" secondAttribute="trailing" id="iHr-MY-VhZ"/>
                                 </constraints>
                             </scrollView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4L-pf-y5s">
+                                <rect key="frame" x="39.5" y="541" width="296" height="32"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title and content must not be empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEH-ty-P9q">
+                                        <rect key="frame" x="8" y="8" width="280" height="16"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Nexa-Bold" family="Nexa-Bold" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="JEH-ty-P9q" firstAttribute="top" secondItem="i4L-pf-y5s" secondAttribute="top" constant="8" id="BEC-m7-3v9"/>
+                                    <constraint firstAttribute="trailing" secondItem="JEH-ty-P9q" secondAttribute="trailing" constant="8" id="kpT-tx-wRk"/>
+                                    <constraint firstAttribute="bottom" secondItem="JEH-ty-P9q" secondAttribute="bottom" constant="8" id="uf3-Pr-Aax"/>
+                                    <constraint firstItem="JEH-ty-P9q" firstAttribute="leading" secondItem="i4L-pf-y5s" secondAttribute="leading" constant="8" id="wub-a1-NAc"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUX-1b-Vgp">
                                 <rect key="frame" x="16" y="581" width="343" height="44"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.4431372549" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -263,11 +287,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ygr-xs-g2j" firstAttribute="trailing" secondItem="XUX-1b-Vgp" secondAttribute="trailing" constant="16" id="0kv-YP-gwl"/>
+                            <constraint firstItem="i4L-pf-y5s" firstAttribute="centerX" secondItem="Ygr-xs-g2j" secondAttribute="centerX" id="2yq-or-RQ2"/>
                             <constraint firstItem="Ygr-xs-g2j" firstAttribute="bottom" secondItem="8eP-pB-R3m" secondAttribute="bottom" id="9NL-zj-4O5"/>
                             <constraint firstItem="8eP-pB-R3m" firstAttribute="top" secondItem="Ygr-xs-g2j" secondAttribute="top" id="9jC-pn-rwZ"/>
                             <constraint firstAttribute="bottom" secondItem="XUX-1b-Vgp" secondAttribute="bottom" constant="42" id="a7n-5X-TV2"/>
                             <constraint firstItem="YtH-AO-0Ug" firstAttribute="width" secondItem="Ygr-xs-g2j" secondAttribute="width" id="fbt-Od-GBY"/>
                             <constraint firstItem="XUX-1b-Vgp" firstAttribute="leading" secondItem="Ygr-xs-g2j" secondAttribute="leading" constant="16" id="hPj-Ou-ijU"/>
+                            <constraint firstItem="XUX-1b-Vgp" firstAttribute="top" secondItem="i4L-pf-y5s" secondAttribute="bottom" constant="8" id="iaJ-Rh-p8b"/>
                             <constraint firstItem="Ygr-xs-g2j" firstAttribute="trailing" secondItem="8eP-pB-R3m" secondAttribute="trailing" id="qH0-48-gwm"/>
                             <constraint firstItem="8eP-pB-R3m" firstAttribute="leading" secondItem="Ygr-xs-g2j" secondAttribute="leading" id="r8V-W8-zwG"/>
                         </constraints>
@@ -284,6 +310,7 @@
                         <outlet property="tfContent" destination="Bkp-yR-wgQ" id="8Fm-hN-czP"/>
                         <outlet property="tfTitle" destination="rHW-av-1L8" id="w1U-c0-va7"/>
                         <outlet property="viewChooseMovie" destination="pho-Yv-URo" id="OXZ-N5-9Iq"/>
+                        <outlet property="viewToast" destination="i4L-pf-y5s" id="LkQ-Lj-ekQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZ1-oP-p5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -291,6 +318,11 @@
             <point key="canvasLocation" x="194" y="143"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="aYy-2Q-iko">
+            <size key="intrinsicContentSize" width="-1" height="63"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ic_plus_white" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">

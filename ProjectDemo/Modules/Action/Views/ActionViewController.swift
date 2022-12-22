@@ -170,12 +170,13 @@ extension ActionViewController: ActionViewInterface {
         case .nameZA:
             results.sort(by: {$0.originalTitle > $1.originalTitle})
         case .myRating:
-            let listMovieFavorites = Array(self.realmUtils.dataQuery(type: MovieDetailObject.self))
-            results.sort(by: { lhs, rhs in
-                let leftRating = listMovieFavorites.first(where: {$0._id == lhs.id}) != nil ? listMovieFavorites.first(where: {$0._id == lhs.id})!._id : 0
-                let rightRating = listMovieFavorites.first(where: {$0._id == rhs.id}) != nil ? listMovieFavorites.first(where: {$0._id == rhs.id})!._id : 0
-                return leftRating > rightRating
-            })
+            results.sort(by: {$0.voteAverage > $1.voteAverage})
+//            let listMovieFavorites = Array(self.realmUtils.dataQuery(type: MovieDetailObject.self))
+//            results.sort(by: { lhs, rhs in
+//                let leftRating = listMovieFavorites.first(where: {$0._id == lhs.id}) != nil ? listMovieFavorites.first(where: {$0._id == lhs.id})!._id : 0
+//                let rightRating = listMovieFavorites.first(where: {$0._id == rhs.id}) != nil ? listMovieFavorites.first(where: {$0._id == rhs.id})!._id : 0
+//                return leftRating > rightRating
+//            })
         }
         return results
     }

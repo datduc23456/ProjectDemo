@@ -303,6 +303,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
                                                                         <real key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showsThumbImageShadow" value="NO"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>

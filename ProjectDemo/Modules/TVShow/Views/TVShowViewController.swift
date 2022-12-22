@@ -70,6 +70,13 @@ final class TVShowViewController: BaseViewController {
             guard let `self` = self, let movie = self.movie else { return }
             self.presenter.didTapFavorite(movie, isFavorite: self.isFavorite)
         }
+        
+        viewLayer.addTapGestureRecognizer { [weak self] in
+            guard let `self` = self else { return }
+            if let movie = self.movieDetail, let video = movie.videos.video.first {
+                self.presenter.didTapPlayVideo(video)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

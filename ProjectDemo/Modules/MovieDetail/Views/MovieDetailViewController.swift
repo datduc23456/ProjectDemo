@@ -142,7 +142,7 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         }
         self.movieDetail = response
         self.trailer = listVideos.first
-        imgPoster.kf.setImage(with: URL(string: "\(baseURLImage)\(response.posterPath)"))
+        imgPoster.kf.setImage(with: URL(string: "\(baseURLImage)\(response.backdropPath)"))
         imgBackDrop.kf.setImage(with: URL(string: "\(baseURLImage)\(response.backdropPath)"))
         lbYear.text = CommonUtil.getYearFromDate(response.lastAirDate)
         lbVoteAvg.text = "\(voteAvg)"
@@ -388,12 +388,14 @@ extension MovieDetailViewController: BackFromNextHandleable {
             btnWatchedList.backgroundColor = UIColor(hex: "#09BB00")
             btnWatchedList.setImage(UIImage(named: "ic_check"), for: .normal)
         } else if let result = result as? ReviewsResultObject, let movieDetail = self.movieDetail {
-            var review = ReviewsResult()
-            review.cloneFromReviewsObject(result)
-            self.myReviews = [review] + self.myReviews
-            let reviews = self.myReviews + movieDetail.reviews.results
-            self.data.updateValue(reviews, forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: true))")
-            self.tableView.reloadData()
+//            var review = ReviewsResult()
+//            review.cloneFromReviewsObject(result)
+//            self.myReviews = [review] + self.myReviews
+//            let reviews = self.myReviews + movieDetail.reviews.results
+//            self.data.updateValue(reviews, forKey: "\(MovieDetailTableViewDataSource.rate(hasRate: true))")
+//            self.tableView.reloadData()
+//            presenter.didTapMovie(movieDetail)
+            presenter.refresh()
         }
     }
 }
