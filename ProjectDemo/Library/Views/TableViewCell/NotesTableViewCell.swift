@@ -15,6 +15,7 @@ class NotesTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandle
     var didTapActionInCell: ((Any) -> Void) = {_ in}
     
 
+    @IBOutlet weak var imageStackView: ImageStackView!
     @IBOutlet weak var lbTotalVote: UILabel!
     @IBOutlet weak var lbVoteAvg: UILabel!
     override func awakeFromNib() {
@@ -32,8 +33,15 @@ class NotesTableViewCell: UITableViewCell, BaseWithCollectionTableViewCellHandle
         self.didTapActionInCell(0)
     }
     
-    func configCell(totalVote: Double, voteAvg: Double) {
+    func configCell(totalVote: Double, voteAvg: Double, myReviews: [ReviewsResult]) {
         lbTotalVote.text = "\(totalVote) rating"
-        lbVoteAvg.text = "\(voteAvg)"
+        let myReviewsVoteAvg = myReviews.compactMap({$0.authorDetails.rating}).reduce(0.0, +) / Double(myReviews.count)
+        let vote = (voteAvg + myReviewsVoteAvg) / 2
+        lbVoteAvg.text = "\(vote.roundToPlaces(places: 1))"
+        let urls = myReviews.compactMap({$0.images}).reduce([], +).compactMap({
+            let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            return documents.appendingPathComponent($0)
+        })
+        imageStackView.configView(urls, selectedIndex: -1)
     }
 }

@@ -60,6 +60,42 @@ class CommonUtil {
         }
         return fileName
     }
+    
+    static func shareApp(_ viewController: UIViewController, _ view: UIView) {
+        let secondActivityItem : NSURL = NSURL(string: "https://apps.apple.com/us/app/facebook/id284882215")!
+        
+        // If you want to use an image
+//                let image : UIImage = UIImage(named: "Black_adam")!
+        let activityViewController : UIActivityViewController = UIActivityViewController(
+            activityItems: [secondActivityItem], applicationActivities: nil)
+        
+        // This lines is for the popover you need to show in iPad
+        activityViewController.popoverPresentationController?.sourceView = view
+        // This line remove the arrow of the popover to show in iPad
+        activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
+        
+        // Pre-configuring activity items
+        activityViewController.activityItemsConfiguration = [
+        UIActivity.ActivityType.message
+        ] as? UIActivityItemsConfigurationReading
+        
+        // Anything you want to exclude
+        activityViewController.excludedActivityTypes = [
+            UIActivity.ActivityType.postToWeibo,
+            UIActivity.ActivityType.print,
+            UIActivity.ActivityType.assignToContact,
+            UIActivity.ActivityType.saveToCameraRoll,
+            UIActivity.ActivityType.addToReadingList,
+            UIActivity.ActivityType.postToFlickr,
+            UIActivity.ActivityType.postToVimeo,
+            UIActivity.ActivityType.postToTencentWeibo,
+            UIActivity.ActivityType.postToFacebook
+        ]
+        
+        activityViewController.isModalInPresentation = true
+        viewController.present(activityViewController, animated: true, completion: nil)
+    }
 }
 
 public func delay(_ delay:Double, closure:@escaping ()->()) {

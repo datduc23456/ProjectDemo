@@ -461,6 +461,7 @@
                         <outlet property="tableViewheight" destination="rwA-rm-P4J" id="jfK-vi-gD9"/>
                         <outlet property="viewFavorite" destination="4gz-e2-BVs" id="vPq-4k-cBa"/>
                         <outlet property="viewGradient" destination="cSW-GU-Tml" id="RUc-qH-C1D"/>
+                        <outlet property="viewShareApp" destination="mJA-WR-wB7" id="o5r-3j-4oo"/>
                         <outlet property="viewToast" destination="tfg-F9-9Yd" id="FyO-Ch-cZh"/>
                     </connections>
                 </viewController>
