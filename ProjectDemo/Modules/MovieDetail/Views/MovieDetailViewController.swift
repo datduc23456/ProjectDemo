@@ -117,7 +117,7 @@ extension MovieDetailViewController: MovieDetailViewInterface {
     }
     
     func configHeaderView(_ response: MovieDetail) {
-        let voteAvg = response.voteAverage.roundToPlaces(places: 1)
+        let voteAvg = (response.voteAverage.roundToPlaces(places: 1) + self.myReviews.compactMap({$0.authorDetails.rating}).reduce(0, +)) / (self.myReviews.count + 1)
         let listVideos = response.videos.video
         if listVideos.isEmpty {
             self.tableViewDataSource.removeAll(where: {$0 == .videos || $0 == .images})
@@ -145,7 +145,7 @@ extension MovieDetailViewController: MovieDetailViewInterface {
         imgPoster.kf.setImage(with: URL(string: "\(baseURLImage)\(response.backdropPath)"))
         imgBackDrop.kf.setImage(with: URL(string: "\(baseURLImage)\(response.backdropPath)"))
         lbYear.text = CommonUtil.getYearFromDate(response.lastAirDate)
-        lbVoteAvg.text = "\(voteAvg)"
+        lbVoteAvg.text = "\(voteAvg.roundToPlaces(places: 1))"
         lbName.text = response.title
         lbGenres.text = DTPBusiness.shared.mapToGenreName(response.genres.map({$0.id}))
     }
