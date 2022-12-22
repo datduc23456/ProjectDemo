@@ -30,7 +30,7 @@ final class WebViewViewController: BaseViewController {
         navigation.btnBack.addTapGestureRecognizer {
             self.didPopViewController(nil, true)
         }
-        navigation.lbTitle.text = titleString
+        navigation.lbTitle.text = "Privacy"
         webView = WKWebView(frame: .zero)
         self.view.addSubview(webView)
         webView.snp.makeConstraints {

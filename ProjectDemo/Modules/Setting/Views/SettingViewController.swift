@@ -30,7 +30,7 @@ final class SettingViewController: BaseViewController {
             self.navigationController?.pushViewController(AppScreens.webView.createViewController(), animated: true)
         }
         
-        viewPrivacy.addTapGestureRecognizer {
+        viewFeedback.addTapGestureRecognizer {
             let url = URL(string: "mailto:datnq@proxglobal.com)")!
             UIApplication.shared.open(url)
         }
