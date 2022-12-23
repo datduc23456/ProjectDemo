@@ -72,8 +72,8 @@ class CommonUtil {
         // This lines is for the popover you need to show in iPad
         activityViewController.popoverPresentationController?.sourceView = view
         // This line remove the arrow of the popover to show in iPad
-        activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
-        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
+        activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 300, height: view.frame.height)
         
         // Pre-configuring activity items
         activityViewController.activityItemsConfiguration = [
@@ -93,7 +93,7 @@ class CommonUtil {
             UIActivity.ActivityType.postToFacebook
         ]
         
-        activityViewController.isModalInPresentation = true
+        activityViewController.isModalInPresentation = false
         viewController.present(activityViewController, animated: true, completion: nil)
     }
 }
