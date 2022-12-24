@@ -172,6 +172,7 @@
 		527F93C829253D0E0065FE10 /* BaseTableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F93C729253D0E0065FE10 /* BaseTableCollectionViewCell.swift */; };
 		527F93CB2925449E0065FE10 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F93CA2925449E0065FE10 /* UITableView+Ext.swift */; };
 		527F93D22925555B0065FE10 /* ABCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F93D02925555B0065FE10 /* ABCTableViewCell.swift */; };
+		5290486F29571D6800318177 /* OptionalUnwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5290486E29571D6800318177 /* OptionalUnwrap.swift */; };
 		52B84E04292A3437008DA4C2 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B84E03292A3437008DA4C2 /* BaseNavigationView.swift */; };
 		52B84E07292A3446008DA4C2 /* BaseNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B84E06292A3446008DA4C2 /* BaseNavigationView.xib */; };
 		52B84E0B292A3A43008DA4C2 /* GengesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B84E09292A3A43008DA4C2 /* GengesListTableViewCell.swift */; };
@@ -563,6 +564,7 @@
 		527F93C729253D0E0065FE10 /* BaseTableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableCollectionViewCell.swift; sourceTree = "<group>"; };
 		527F93CA2925449E0065FE10 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		527F93D02925555B0065FE10 /* ABCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABCTableViewCell.swift; sourceTree = "<group>"; };
+		5290486E29571D6800318177 /* OptionalUnwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalUnwrap.swift; sourceTree = "<group>"; };
 		52B84E03292A3437008DA4C2 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
 		52B84E06292A3446008DA4C2 /* BaseNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseNavigationView.xib; sourceTree = "<group>"; };
 		52B84E09292A3A43008DA4C2 /* GengesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GengesListTableViewCell.swift; sourceTree = "<group>"; };
@@ -878,6 +880,7 @@
 				52B84E0F292A62C3008DA4C2 /* DTPBusiness.swift */,
 				1848A479292C5C71005D4431 /* RealmUtils.swift */,
 				18F1982A291A64C200E4D911 /* CoreTargetType.swift */,
+				5290486E29571D6800318177 /* OptionalUnwrap.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1494,7 +1497,6 @@
 				11961BF0876096F51D89A356 /* WebViewWireframe.swift */,
 				5D4F34C1C10D0BDC98266894 /* Views */,
 			);
-			name = WebView;
 			path = WebView;
 			sourceTree = "<group>";
 		};
@@ -1539,7 +1541,6 @@
 				091B2F7EEC37F3F7030E9B97 /* WebViewViewController_iPad.storyboard */,
 				10AB85210264F0C0353BEAE0 /* WebViewViewController.swift */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -2281,6 +2282,7 @@
 				BA3BE0AA4EB6080A8F356F44 /* StatisticcalViewController.swift in Sources */,
 				2A1CF8D70F08D829D81A2FED /* SeasonInterfaces.swift in Sources */,
 				F28C5F5C136B3D3467FB5EE8 /* SeasonPresenter.swift in Sources */,
+				5290486F29571D6800318177 /* OptionalUnwrap.swift in Sources */,
 				52C67BC529350A240044ED40 /* SearchHistoryTableViewCell.swift in Sources */,
 				1C63734259362711D08ACA16 /* SeasonInteractor.swift in Sources */,
 				52C628F0293CA609009BF3E4 /* AddNoteHeaderView.swift in Sources */,

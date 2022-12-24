@@ -67,9 +67,7 @@ final class VideosViewController: BaseCollectionViewController<TrendingCollectio
 // MARK: - VideosViewInterface
 extension VideosViewController: VideosViewInterface {
     var videos: [Video] {
-        if let videos = payload as? [Video] {
-            return videos
-        }
-        return []
+        @OptionalUnwrap(defaultValue: [], (payload as? [Video])) var videos
+        return videos
     }
 }

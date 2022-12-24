@@ -85,7 +85,7 @@ class DTPBusiness {
     
     func deleteWatchedListObject(_ movie: WatchedListObject, completion: ((WatchedListObject?) -> Void)) {
         self.fetchWatchedListObjectWithId(movie._id, completion: { object in
-            if let object = object {
+            if let object {
                 self.realmUtils.deleteObject(object: object)
             }
             completion(object)
@@ -94,7 +94,7 @@ class DTPBusiness {
     
     func fetchMovieDetailObjectWatchedListWithId(_ id: Int, completion: ((MovieDetailObject?) -> Void)) {
         fetchRealmMovieDetailObjectWithId(id, completion: { movie in
-            if let movie = movie, movie.isWatchedList {
+            if let movie, movie.isWatchedList {
                 completion(movie)
             } else {
                 completion(nil)
@@ -104,7 +104,7 @@ class DTPBusiness {
     
     func deleteMovieDetailObject(_ movie: MovieDetail, completion: ((MovieDetailObject?) -> Void)) {
         self.fetchRealmMovieDetailObjectWithId(movie.id, completion: { object in
-            if let object = object {
+            if let object {
                 self.realmUtils.deleteObject(object: object)
             }
             completion(object)
@@ -113,7 +113,7 @@ class DTPBusiness {
     
     func deleteReviewsResultObject(_ review: ReviewsResultObject, completion: ((ReviewsResultObject?) -> Void)) {
         self.fetchMyReviewWithId(review._id, completion: { object in
-            if let object = object {
+            if let object {
                 self.realmUtils.deleteObject(object: object)
             }
             completion(object)

@@ -193,10 +193,9 @@ enum CoreTargetType: TargetType {
             let fileKey: String = url.md5
             let directory: URL = FileSystem.downloadDirectory
             var fileURL = directory.appendingPathComponent(fileKey)
-            if let name = fileName {
-                let pathExtension: String = (name as NSString).pathExtension.lowercased()
-                fileURL = fileURL.appendingPathExtension(pathExtension)
-            }
+            @OptionalUnwrap(defaultValue: "", fileName) var fileName
+            let pathExtension: String = (fileName as NSString).pathExtension.lowercased()
+            fileURL = fileURL.appendingPathExtension(pathExtension)
             return fileURL
         default:
             return URL(string: "")!

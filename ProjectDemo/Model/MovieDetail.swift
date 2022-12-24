@@ -143,7 +143,8 @@ struct MovieDetail: Codable {
     }
     
     func isTVShow() -> Bool {
-        if let _ = self.episodeRunTime {
+        @OptionalUnwrap(defaultValue: [], self.episodeRunTime) var episodeRunTime
+        if !episodeRunTime.isEmpty {
             return true
         }
         return false

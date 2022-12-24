@@ -92,13 +92,13 @@ final class MovieDetailViewController: BaseViewController {
     }
     
     @IBAction func trailerAction(_ sender: Any) {
-        if let trailer = self.trailer {
+        if let trailer {
             presenter.didTapPlayVideo(trailer)
         }
     }
     
     @IBAction func addNoteAction(_ sender: Any) {
-        if let movieDetail = movieDetail, watchedListObject == nil {
+        if let movieDetail, watchedListObject == nil {
             watchedListVc.payload = movieDetail
             self.present(watchedListVc, animated: true)
         }
@@ -114,10 +114,8 @@ extension MovieDetailViewController: MovieDetailViewInterface {
     
     var id: (Int, Bool) {
         get {
-            if let id = payload as? (Int, Bool) {
-                return id
-            }
-            return (299536, false)
+            @OptionalUnwrap(defaultValue: (299536, false), (payload as? (Int, Bool))) var id
+            return id
         }
     }
     
