@@ -62,7 +62,7 @@ class CommonUtil {
     }
     
     static func shareApp(_ viewController: UIViewController, _ view: UIView) {
-        let secondActivityItem : NSURL = NSURL(string: "https://apps.apple.com/us/app/facebook/id284882215")!
+        let secondActivityItem : NSURL = NSURL(string: "https://apps.apple.com/us/app/id1661605738")!
         
         // If you want to use an image
 //                let image : UIImage = UIImage(named: "Black_adam")!

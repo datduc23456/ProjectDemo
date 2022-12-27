@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>111000570675-d6agcim3666dlaeccuikk2v1gn82tdpt.apps.googleusercontent.com</string>
+	<string>111000570675-d937da2cv092mrgn9a8ae9knjodi2laa.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.111000570675-d6agcim3666dlaeccuikk2v1gn82tdpt</string>
+	<string>com.googleusercontent.apps.111000570675-d937da2cv092mrgn9a8ae9knjodi2laa</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDcR2Ic8MO6MEyb4i7oH9ykYI9znz_VzwU</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.prox.dtp001</string>
+	<string>com.conmi.factzu.infos</string>
 	<key>PROJECT_ID</key>
 	<string>starmovie-d4ead</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:111000570675:ios:11b0008c07740e280f8c46</string>
+	<string>1:111000570675:ios:0768253fe9a110b00f8c46</string>
 </dict>
 </plist>

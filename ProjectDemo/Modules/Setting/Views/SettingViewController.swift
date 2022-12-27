@@ -36,7 +36,7 @@ final class SettingViewController: BaseViewController {
         }
         
         viewRatingApp.addTapGestureRecognizer {
-            let url = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=284882215")!
+            let url = URL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1661605738")!
             UIApplication.shared.open(url)
         }
         

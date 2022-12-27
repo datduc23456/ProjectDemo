@@ -127,6 +127,7 @@
 		1899F2972924CC6700D2D978 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899F2952924CC6700D2D978 /* TabbarViewController.swift */; };
 		1899F2982924CC6700D2D978 /* TabbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1899F2962924CC6700D2D978 /* TabbarViewController.xib */; };
 		18A42B8E293702D4001879DD /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A42B8D293702D4001879DD /* InsetLabel.swift */; };
+		18CAF255295AC1BF00E24EB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18CAF254295AC1BF00E24EB1 /* GoogleService-Info.plist */; };
 		18F19828291A63CC00E4D911 /* ServiceCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F19827291A63CC00E4D911 /* ServiceCore.swift */; };
 		18F1982B291A64C200E4D911 /* CoreTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1982A291A64C200E4D911 /* CoreTargetType.swift */; };
 		18F1982F291A676B00E4D911 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1982E291A676B00E4D911 /* BaseModel.swift */; };
@@ -269,7 +270,6 @@
 		52DEB899292FB88200BCD36F /* AddNoteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DEB897292FB88200BCD36F /* AddNoteViewController.storyboard */; };
 		52DEB89A292FB88200BCD36F /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DEB898292FB88200BCD36F /* AddNoteViewController.swift */; };
 		52DEB89C292FF3AB00BCD36F /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DEB89B292FF3AB00BCD36F /* BaseCollectionViewController.swift */; };
-		52E05F582947646C00503C5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52E05F572947646C00503C5C /* GoogleService-Info.plist */; };
 		52EA75E929333F920076BC87 /* AYImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA75E129333F920076BC87 /* AYImageView.swift */; };
 		52EA75EA29333F920076BC87 /* AYImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA75E229333F920076BC87 /* AYImageDownloader.swift */; };
 		52EA75EB29333F920076BC87 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA75E329333F920076BC87 /* Result.swift */; };
@@ -489,7 +489,7 @@
 		185BC393292F0D7000613EB2 /* AvailableHapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableHapticFeedback.swift; sourceTree = "<group>"; };
 		185BC3B0292F614F00613EB2 /* StatisticcalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticcalTableViewCell.swift; sourceTree = "<group>"; };
 		185BC3B1292F614F00613EB2 /* StatisticcalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticcalTableViewCell.xib; sourceTree = "<group>"; };
-		185DC6BD29000D760056C910 /* Star Movie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Star Movie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		185DC6BD29000D760056C910 /* Conmifactzu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Conmifactzu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185DC6C029000D760056C910 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		185DC6C229000D760056C910 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		185DC6C929000D790056C910 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -517,6 +517,7 @@
 		1899F2962924CC6700D2D978 /* TabbarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabbarViewController.xib; sourceTree = "<group>"; };
 		18A42B8D293702D4001879DD /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		18C3AC072923286A00183695 /* ProjectDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjectDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		18CAF254295AC1BF00E24EB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18EDE5FCA334DCD44B9353D8 /* WatchedListPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WatchedListPresenter.swift; sourceTree = "<group>"; };
 		18F19827291A63CC00E4D911 /* ServiceCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCore.swift; sourceTree = "<group>"; };
 		18F1982A291A64C200E4D911 /* CoreTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTargetType.swift; sourceTree = "<group>"; };
@@ -662,7 +663,6 @@
 		52DEB897292FB88200BCD36F /* AddNoteViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddNoteViewController.storyboard; sourceTree = "<group>"; };
 		52DEB898292FB88200BCD36F /* AddNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 		52DEB89B292FF3AB00BCD36F /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
-		52E05F572947646C00503C5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52EA75E129333F920076BC87 /* AYImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AYImageView.swift; sourceTree = "<group>"; };
 		52EA75E229333F920076BC87 /* AYImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AYImageDownloader.swift; sourceTree = "<group>"; };
 		52EA75E329333F920076BC87 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -1063,7 +1063,7 @@
 		185DC6BE29000D760056C910 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				185DC6BD29000D760056C910 /* Star Movie.app */,
+				185DC6BD29000D760056C910 /* Conmifactzu.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1087,7 +1087,7 @@
 				18C3AC072923286A00183695 /* ProjectDemo-Bridging-Header.h */,
 				1899F2952924CC6700D2D978 /* TabbarViewController.swift */,
 				1899F2962924CC6700D2D978 /* TabbarViewController.xib */,
-				52E05F572947646C00503C5C /* GoogleService-Info.plist */,
+				18CAF254295AC1BF00E24EB1 /* GoogleService-Info.plist */,
 			);
 			path = ProjectDemo;
 			sourceTree = "<group>";
@@ -1896,7 +1896,7 @@
 			);
 			name = ProjectDemo;
 			productName = ProjectDemo;
-			productReference = 185DC6BD29000D760056C910 /* Star Movie.app */;
+			productReference = 185DC6BD29000D760056C910 /* Conmifactzu.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1994,13 +1994,13 @@
 				3AF863B897C2C5555F5C367F /* HomeViewController.storyboard in Resources */,
 				1831BB7E29359E3C00BCE150 /* GenresSearchTableViewCell.xib in Resources */,
 				181189722925E35000E9D883 /* Nexa Bold.otf in Resources */,
-				52E05F582947646C00503C5C /* GoogleService-Info.plist in Resources */,
 				18402BAC293839BA009623C0 /* UserNoteTableViewCell.xib in Resources */,
 				52CBDD3D2928E09000548E52 /* TVShowCollectionViewCell.xib in Resources */,
 				52B84E07292A3446008DA4C2 /* BaseNavigationView.xib in Resources */,
 				C57B1B148ABAABB5F4026D60 /* TVShowViewController.storyboard in Resources */,
 				180C3CBC2930BBF300E56C97 /* BottomSheetDraggableView.xib in Resources */,
 				52C5B8592948CB8600024D5B /* BigNativeAdHeaderView.xib in Resources */,
+				18CAF255295AC1BF00E24EB1 /* GoogleService-Info.plist in Resources */,
 				07DE2D0E258E7E48F4882819 /* FavoriteViewController.storyboard in Resources */,
 				18402BB029387FE4009623C0 /* AddNoteTableViewCell.xib in Resources */,
 				52F03F8C29327C66005CAF76 /* TextExpandTableViewCell.xib in Resources */,
@@ -2520,6 +2520,7 @@
 				DEVELOPMENT_TEAM = RQ8SAKQNUF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProjectDemo/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to photos to rate Movie";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -2532,8 +2533,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.prox.dtp001;
-				PRODUCT_NAME = "Star Movie";
+				PRODUCT_BUNDLE_IDENTIFIER = com.conmi.factzu.infos;
+				PRODUCT_NAME = Conmifactzu;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ProjectDemo/ProjectDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2554,6 +2555,7 @@
 				DEVELOPMENT_TEAM = RQ8SAKQNUF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProjectDemo/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to photos to rate Movie";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -2566,8 +2568,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.prox.dtp001;
-				PRODUCT_NAME = "Star Movie";
+				PRODUCT_BUNDLE_IDENTIFIER = com.conmi.factzu.infos;
+				PRODUCT_NAME = Conmifactzu;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ProjectDemo/ProjectDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
