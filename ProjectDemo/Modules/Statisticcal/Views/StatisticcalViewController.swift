@@ -11,8 +11,8 @@ import Charts
 
 enum ChartValueType {
     case month
-    case quartner
-    case year
+    case week
+    case day
 }
 
 enum StatisticalType: CaseIterable {
@@ -39,7 +39,9 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
     
     // MARK: - Properties
     @IBOutlet weak var lbFilter: UILabel!
-    @IBOutlet var groupButton: [UIButton]!
+    @IBOutlet weak var lbMonth: UILabel!
+    @IBOutlet weak var lbWeek: UILabel!
+    @IBOutlet weak var lbYear: UILabel!
     @IBOutlet weak var viewChart: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var slider: MultiSlider!
@@ -47,12 +49,24 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
     @IBOutlet weak var tableView: TableViewAdjustedHeight!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var lineChartView: LineChartView!
+    var datePicker: MIDatePicker?
     var presenter: StatisticcalPresenterInterface!
     let months = (1...12).map { Int($0) }
     let years = (2010...Int(CommonUtil.getYearFromDate(Date().toString()))!).map { Int($0) }
     let quartner = (1...4).map { Int($0) }
     var bottomSheet: BaseViewBottomSheetViewController!
-    let yearStart: Int = 2010
+    var yearSelected: Int = Int(CommonUtil.getYearFromDate(Date().toString()))!
+    var monthSelected: Int = 0
+    var weekSelected: Int = 0
+    var weeks: [Int] {
+        let dateComponents = DateComponents(year: yearSelected, month: monthSelected)
+        let calendar = Calendar.current
+        let date = calendar.date(from: dateComponents)!
+        let range = calendar.range(of: .weekOfMonth, in: .month, for: date)!
+        return range.map { Int($0) }
+    }
+    
+    var days = (1...7).map { Int($0) }
     var chartsLabelFont = UIFont.init(name: "NexaRegular", size: 12)!
     
     var statisticalType: StatisticalType = .number {
@@ -87,9 +101,6 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
-        slider.value = [0, 5]
-        slider.snapStepSize = 1
-        slider.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged)
         let navigation: BaseNavigationView = initCustomNavigation(.base)
         navigation.imgSearch.addTapGestureRecognizer { [weak self] in
             guard let `self` = self else { return }
@@ -102,11 +113,14 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         }
         navigation.lbTitle.text = "Statistical"
         navigation.configContentNav(.tabbar)
+        self.datePicker = MIDatePicker.getFromNib()
+        self.datePicker?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         presenter.viewWillAppear(animated)
+        self.datePicker?.config.bouncingOffset = -AppDelegate.shared.appRootViewController.customTabbarHeight
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
     }
     
@@ -145,8 +159,8 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
                     dataEntries.append(dataEntry)
                 }
             }
-        case .year:
-            for year in years {
+        case .week:
+            for year in dayForMonth {
                 for key in data.keys {
                     if let value = data[key], Double(key) == Double(year) {
                         var yValue: Double = 0
@@ -167,7 +181,7 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
                     }
                 }
             }
-        case .quartner:
+        case .day:
             for quartner in quartner {
                 for key in data.keys {
                     if let quart = key.components(separatedBy: " ").first, let quartInt = Int(quart) {
@@ -255,9 +269,9 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
             case .month:
                 let monthText = CommonUtil.convertNumberMonthToText(value)
                 return "\(monthText)"
-            case .year:
+            case .week:
                 return "\(value)"
-            case .quartner:
+            case .day:
                 return "\(value)"
             }
         } else if let _ = axis as? YAxis {
@@ -273,32 +287,19 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         return "\(Int(value))"
     }
     
-    @objc func sliderChanged(_ slider: MultiSlider) {
-        lineChartView.moveViewToX(Double(2025))
-        lineChartView.setNeedsLayout()
-    }
-    
     @IBAction func monthFilterAction(_ sender: Any) {
-        for btn in groupButton {
-            deactiveBtnFilter(btn)
-        }
-        activeBtnFilter(sender as! UIButton)
-        chartType = .month
+        self.datePicker?.config.datePickerType = .month
+        self.datePicker?.show(inVC: self)
     }
     
-    @IBAction func quarterFilterAction(_ sender: Any) {
-        for btn in groupButton {
-            deactiveBtnFilter(btn)
-        }
-        activeBtnFilter(sender as! UIButton)
-        chartType = .quartner
+    @IBAction func weekFilterAction(_ sender: Any) {
+        self.datePicker?.config.datePickerType = .week(year: yearSelected, month: monthSelected)
+        self.datePicker?.show(inVC: self)
     }
+    
     @IBAction func yearFilterAction(_ sender: Any) {
-        for btn in groupButton {
-            deactiveBtnFilter(btn)
-        }
-        activeBtnFilter(sender as! UIButton)
-        chartType = .year
+        self.datePicker?.config.datePickerType = .year
+        self.datePicker?.show(inVC: self)
     }
     
     @IBAction func filterAction(_ sender: Any) {
@@ -309,23 +310,13 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter, 
         self.present(self.bottomSheet, animated: true, completion: {
             self.bottomSheet.stackContent.delegate = self
         })
-        //        })
+//                })
+        
+        
     }
     
     @IBAction func addWatchedListAction(_ sender: Any) {
         presenter.didTapSearch()
-    }
-    
-    func deactiveBtnFilter(_ btn: UIButton) {
-        btn.borderWidth = 1
-        btn.setTitleColor(.white, for: .normal)
-        btn.backgroundColor = UIColor(hex: "#232228")
-    }
-    
-    func activeBtnFilter(_ btn: UIButton) {
-        btn.borderWidth = 0
-        btn.setTitleColor(.black, for: .normal)
-        btn.backgroundColor = UIColor(hex: "#FB716E")
     }
 }
 
@@ -370,11 +361,10 @@ extension StatisticcalViewController: UITableViewDataSource, UITableViewDelegate
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.className) as! HeaderView
         let key = Array(dataSource.keys)[section]
         headerView.contentView.backgroundColor = APP_COLOR
-//        headerView
         var headerTitle = ""
         switch chartType {
-        case .year:
-            headerTitle = "Year \(key)"
+        case .week:
+            headerTitle = "Week \(key)"
         case .month:
             headerTitle = key.toDateFormat(toFormat: "MMM yyyy")
         default:
@@ -436,5 +426,32 @@ extension StatisticcalViewController: BoottomSheetStackViewDelegate {
                 break
             }
         }
+    }
+}
+
+extension StatisticcalViewController: MIDatePickerDelegate {
+    func miDatePicker(amDatePicker: MIDatePicker, didSelect value: Int, forType: DatePickerType) {
+        switch forType {
+        case .year:
+            self.lbYear.text = "\(value)"
+            self.yearSelected = value
+            self.chartType = .month
+        case .month:
+            self.lbMonth.text = "\(value)"
+            self.monthSelected = value
+            self.chartType = .week
+        case .week:
+            self.lbWeek.text = "\(value)"
+            self.weekSelected = value
+            self.chartType = .day
+        }
+    }
+    
+    func miDatePicker(amDatePicker: MIDatePicker, didSelect date: NSDate) {
+        
+    }
+    
+    func miDatePickerDidCancelSelection(amDatePicker: MIDatePicker) {
+        
     }
 }

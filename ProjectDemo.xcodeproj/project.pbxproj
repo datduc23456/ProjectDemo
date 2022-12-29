@@ -49,6 +49,8 @@
 		1831BB7E29359E3C00BCE150 /* GenresSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1831BB7C29359E3C00BCE150 /* GenresSearchTableViewCell.xib */; };
 		1831BB802935F07B00BCE150 /* PeopleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831BB7F2935F07B00BCE150 /* PeopleDetail.swift */; };
 		1831BB822935F37900BCE150 /* PeopleTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831BB812935F37900BCE150 /* PeopleTableViewDataSource.swift */; };
+		1831DB5C295D6D7D00FA8460 /* MIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831DB5A295D6D7D00FA8460 /* MIDatePicker.swift */; };
+		1831DB5D295D6D7D00FA8460 /* MIDatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1831DB5B295D6D7D00FA8460 /* MIDatePicker.xib */; };
 		183B64D3292C69C600E7BB3E /* BaseCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183B64D2292C69C600E7BB3E /* BaseCustomView.swift */; };
 		183F20E82930A762001BCB23 /* BottomSheetLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183F20E72930A762001BCB23 /* BottomSheetLabelView.swift */; };
 		183F20EA2930A77A001BCB23 /* BottomSheetLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183F20E92930A77A001BCB23 /* BottomSheetLabelView.xib */; };
@@ -435,6 +437,8 @@
 		1831BB7C29359E3C00BCE150 /* GenresSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenresSearchTableViewCell.xib; sourceTree = "<group>"; };
 		1831BB7F2935F07B00BCE150 /* PeopleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleDetail.swift; sourceTree = "<group>"; };
 		1831BB812935F37900BCE150 /* PeopleTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewDataSource.swift; sourceTree = "<group>"; };
+		1831DB5A295D6D7D00FA8460 /* MIDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDatePicker.swift; sourceTree = "<group>"; };
+		1831DB5B295D6D7D00FA8460 /* MIDatePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MIDatePicker.xib; sourceTree = "<group>"; };
 		183B64D2292C69C600E7BB3E /* BaseCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomView.swift; sourceTree = "<group>"; };
 		183F20E72930A762001BCB23 /* BottomSheetLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetLabelView.swift; sourceTree = "<group>"; };
 		183F20E92930A77A001BCB23 /* BottomSheetLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetLabelView.xib; sourceTree = "<group>"; };
@@ -968,6 +972,15 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		1831DB59295D6D7D00FA8460 /* MIDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				1831DB5A295D6D7D00FA8460 /* MIDatePicker.swift */,
+				1831DB5B295D6D7D00FA8460 /* MIDatePicker.xib */,
+			);
+			path = MIDatePicker;
+			sourceTree = "<group>";
+		};
 		184CEB972913C82A003492CD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -1117,6 +1130,7 @@
 		185DC6FA290108D40056C910 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				1831DB59295D6D7D00FA8460 /* MIDatePicker */,
 				52C5B8132948B6FF00024D5B /* AdMobManager */,
 				52EA75E029333F920076BC87 /* AYImageKit */,
 				185BC392292F0D6400613EB2 /* AvailableHapticFeedback */,
@@ -1949,6 +1963,7 @@
 				52C628F2293CA619009BF3E4 /* AddNoteHeaderView.xib in Resources */,
 				181189AA292B2F1400E9D883 /* SeagullRegular.ttf in Resources */,
 				52CBDD182928DD1A00548E52 /* TopRatingCollectionViewCell.xib in Resources */,
+				1831DB5D295D6D7D00FA8460 /* MIDatePicker.xib in Resources */,
 				181189BA292B2F1400E9D883 /* seagull bold italic.ttf in Resources */,
 				52CBDD282928DD2D00548E52 /* PageCinemaTableViewCell.xib in Resources */,
 				52DEB899292FB88200BCD36F /* AddNoteViewController.storyboard in Resources */,
@@ -2208,6 +2223,7 @@
 				185BC35B292CBA9200613EB2 /* UserRateTableViewCell.swift in Sources */,
 				185DC6D729000F4A0056C910 /* ExtensionUseful.swift in Sources */,
 				4505B88542B7CE6E6B466969 /* ExampleInterfaces.swift in Sources */,
+				1831DB5C295D6D7D00FA8460 /* MIDatePicker.swift in Sources */,
 				B2DDCAF28156F4313F22B841 /* ExamplePresenter.swift in Sources */,
 				185BC387292F0D2A00613EB2 /* NSObject+Sweeter.swift in Sources */,
 				185DC7072901367F0056C910 /* Screen.swift in Sources */,

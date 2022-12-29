@@ -13,7 +13,7 @@ final class StatisticcalPresenter {
     private var wireframe: StatisticcalWireframeInterface
     private var watchedListObjects: [WatchedListObject] = []
     private var data: [String: [WatchedListObject]] = [:]
-    private var chartType: ChartValueType = .year
+    private var chartType: ChartValueType = .month
     
     init(view: StatisticcalViewInterface,
          interactor: StatisticcalInteractorInterface,
@@ -60,32 +60,21 @@ extension StatisticcalPresenter: StatisticcalInteractorOutputInterface {
     func fetchWatchedListObjects(_ objects: [WatchedListObject]) {
         watchedListObjects = objects
         switch chartType {
-        case .year:
-            data = Dictionary(grouping: watchedListObjects, by: { CommonUtil.getYearFromDate($0.createdAt) })
+        case .week:
+            data = Dictionary(grouping: watchedListObjects, by: {
+                let week = CommonUtil.getWeekFromDate($0.createdAt)
+                return "\(week)"
+            })
             view?.fetchDataYear(data)
         case .month:
             data = Dictionary(grouping: watchedListObjects, by: {
                 return $0.createdAt.toDateFormat(toFormat: "MM yyyy") })
             view?.fetchDataYear(data)
-        default:
-            data = Dictionary(grouping: watchedListObjects, by: {
-                let month = Int(CommonUtil.getMonthFromDate($0.createdAt)).isNil(value: 0)
-                let quartner = determineQuartner(forMonths: month)
-                let year = CommonUtil.getYearFromDate($0.createdAt)
-                return "\(quartner) \(year)" })
+        case .day:
+            data = Dictionary(grouping: watchedListObjects, by: { CommonUtil.getDayFromDate($0.createdAt) })
             view?.fetchDataYear(data)
         }
         
-    }
-    
-    private func determineQuartner(forMonths months: Int) -> Int {
-        switch months {
-        case 1...3: return 1
-        case 4...6: return 2
-        case 7...9: return 3
-        case 10...12: return 4
-        default: return 0
-        }
     }
     
     func handleError(_ error: Error, _ completion: (() -> Void)?) {

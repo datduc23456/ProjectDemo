@@ -13,6 +13,14 @@ class CommonUtil {
         return (AppDelegate.shared.window?.bounds.width)!
     }
     
+    static func getWeekFromDate(_ dateString: String, dateFormat: String = "yyyy-MM-dd") -> String {
+//        let dateComponents = DateComponents(year: 2015, month: 7)
+        let calendar = Calendar.current
+        let date = dateString.toDate()!
+        let week = calendar.component(.weekOfMonth, from: date)
+        return "\(week)"
+    }
+    
     static func getYearFromDate(_ dateString: String, dateFormat: String = "yyyy-MM-dd") -> String {
         let date = dateString.toDate(dateFormat: dateFormat)
         return "\((date?.get(.year)).isNil(value: 1996))"
