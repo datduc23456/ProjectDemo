@@ -285,6 +285,7 @@
 		52F03F88293252E1005CAF76 /* ImagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F03F87293252E1005CAF76 /* ImagesTableViewCell.swift */; };
 		52F03F8B29327C66005CAF76 /* TextExpandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F03F8929327C66005CAF76 /* TextExpandTableViewCell.swift */; };
 		52F03F8C29327C66005CAF76 /* TextExpandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F03F8A29327C66005CAF76 /* TextExpandTableViewCell.xib */; };
+		52F20132296322D100D892D5 /* StatisticcalViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F20131296322D100D892D5 /* StatisticcalViewController+Extension.swift */; };
 		52F98F22292D2085007F5CCF /* BottomSheetStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52F98F21292D2085007F5CCF /* BottomSheetStackView.xib */; };
 		52F98F24292D2175007F5CCF /* BottomSheetStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F98F23292D2175007F5CCF /* BottomSheetStackView.swift */; };
 		5AB9A3D412A7075AEC1352F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B999BFE7A77D10C74395B /* HomeViewController.swift */; };
@@ -680,6 +681,7 @@
 		52F03F87293252E1005CAF76 /* ImagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesTableViewCell.swift; sourceTree = "<group>"; };
 		52F03F8929327C66005CAF76 /* TextExpandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExpandTableViewCell.swift; sourceTree = "<group>"; };
 		52F03F8A29327C66005CAF76 /* TextExpandTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextExpandTableViewCell.xib; sourceTree = "<group>"; };
+		52F20131296322D100D892D5 /* StatisticcalViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticcalViewController+Extension.swift"; sourceTree = "<group>"; };
 		52F98F21292D2085007F5CCF /* BottomSheetStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetStackView.xib; sourceTree = "<group>"; };
 		52F98F23292D2175007F5CCF /* BottomSheetStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStackView.swift; sourceTree = "<group>"; };
 		530AE70379884AEBDA5B7371 /* NoteInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NoteInteractor.swift; sourceTree = "<group>"; };
@@ -1618,6 +1620,7 @@
 			children = (
 				D37DB22A36128CAFC42400AA /* StatisticcalViewController.storyboard */,
 				7E8B369BF7DBDF176DEDB2DF /* StatisticcalViewController.swift */,
+				52F20131296322D100D892D5 /* StatisticcalViewController+Extension.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2153,6 +2156,7 @@
 				52CBDD142928DD1A00548E52 /* TopRatingCollectionViewCell.swift in Sources */,
 				52CBDD292928DD2D00548E52 /* PageCinemaTableViewCell.swift in Sources */,
 				52C5B8422948B6FF00024D5B /* UIApplicationExtension.swift in Sources */,
+				52F20132296322D100D892D5 /* StatisticcalViewController+Extension.swift in Sources */,
 				185BC372292F0BE800613EB2 /* MultiSlider.swift in Sources */,
 				52B84E10292A62C3008DA4C2 /* DTPBusiness.swift in Sources */,
 				52EA75E929333F920076BC87 /* AYImageView.swift in Sources */,

@@ -14,10 +14,9 @@ class CommonUtil {
     }
     
     static func getWeekFromDate(_ dateString: String, dateFormat: String = "yyyy-MM-dd") -> String {
-//        let dateComponents = DateComponents(year: 2015, month: 7)
         let calendar = Calendar.current
         let date = dateString.toDate()!
-        let week = calendar.component(.weekOfMonth, from: date)
+        let week = calendar.component(.weekdayOrdinal, from: date)
         return "\(week)"
     }
     
@@ -38,7 +37,13 @@ class CommonUtil {
 
     static func convertNumberMonthToText(_ month: Int) -> String {
         let df = DateFormatter()
+//        df.weekdaySymbols
         return df.shortMonthSymbols[safe: month - 1].isNil(value: "Null")
+    }
+    
+    static func convertNumberDayToText(_ month: Int) -> String {
+        let df = DateFormatter()
+        return df.shortWeekdaySymbols[safe: month - 1].isNil(value: "Null")
     }
     
     static func getThumbnailYoutubeUrl(_ key: String) -> URL {

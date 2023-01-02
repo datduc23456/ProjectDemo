@@ -8,6 +8,11 @@
 
 import UIKit
 
+
+protocol MIDatePickerDelegate: AnyObject {
+    func miDatePicker(amDatePicker: MIDatePicker, didSelect value: Int, forType: DatePickerType)
+}
+
 enum DatePickerType {
     case year
     case month
@@ -27,13 +32,6 @@ enum DatePickerType {
             return range.map { Int($0) }
         }
     }
-}
-
-protocol MIDatePickerDelegate: AnyObject {
-    func miDatePicker(amDatePicker: MIDatePicker, didSelect value: Int, forType: DatePickerType)
-    func miDatePicker(amDatePicker: MIDatePicker, didSelect date: NSDate)
-    func miDatePickerDidCancelSelection(amDatePicker: MIDatePicker)
-    
 }
 
 // MARK: - Config
@@ -95,7 +93,6 @@ public class MIDatePicker: UIView {
 
     @IBAction func cancelButtonDidTapped(_ sender: AnyObject) {
         dismiss()
-        delegate?.miDatePickerDidCancelSelection(amDatePicker: self)
     }
     
     // MARK: - Private
@@ -235,9 +232,19 @@ extension MIDatePicker: UIPickerViewDataSource {
     
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         @OptionalUnwrap(defaultValue: .year, config.datePickerType) var type
+        
         @OptionalUnwrap(defaultValue: 0, type.values[safe: row]) var value
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Nexa-Bold", size: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
-        return NSMutableAttributedString(string: "\(value)", attributes: attributes as [NSAttributedString.Key : Any])
+        switch config.datePickerType {
+        case .month:
+            let monthString = CommonUtil.convertNumberMonthToText(value)
+            return NSMutableAttributedString(string: monthString, attributes: attributes as [NSAttributedString.Key : Any])
+        case .week:
+            let dayString = CommonUtil.convertNumberDayToText(value)
+            return NSMutableAttributedString(string: dayString, attributes: attributes as [NSAttributedString.Key : Any])
+        default:
+            return NSMutableAttributedString(string: "\(value)", attributes: attributes as [NSAttributedString.Key : Any])
+        }
     }
 }
 

@@ -321,10 +321,10 @@
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y84-YR-RDS">
                                                                                 <rect key="frame" x="12" y="11" width="88.5" height="14"/>
                                                                                 <fontDescription key="fontDescription" name="NexaRegular" family="NexaRegular" pointSize="14"/>
-                                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_arrow_white" translatesAutoresizingMaskIntoConstraints="NO" id="PqB-eB-VbP">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ic_arrow_white_0.3" translatesAutoresizingMaskIntoConstraints="NO" id="PqB-eB-VbP">
                                                                                 <rect key="frame" x="315" y="10" width="16" height="16"/>
                                                                             </imageView>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9W6-Cz-6SL">
@@ -611,6 +611,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="icArrowWeek" destination="PqB-eB-VbP" id="4Sg-Ql-LMP"/>
                         <outlet property="lbFilter" destination="70H-Gn-qfK" id="7UR-iI-JQL"/>
                         <outlet property="lbMonth" destination="Qdc-h7-h9U" id="b8c-h4-Rcq"/>
                         <outlet property="lbWeek" destination="Y84-YR-RDS" id="nK4-cd-FRC"/>
@@ -629,8 +630,14 @@
             <point key="canvasLocation" x="194" y="143"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="xpJ-7h-F0U">
+            <size key="intrinsicContentSize" width="-1" height="48"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ic_arrow_white" width="16" height="16"/>
+        <image name="ic_arrow_white_0.3" width="16" height="16"/>
         <image name="ic_plus" width="13" height="13"/>
         <image name="ic_plus_pink" width="24" height="24"/>
         <image name="ic_slider" width="16" height="16"/>

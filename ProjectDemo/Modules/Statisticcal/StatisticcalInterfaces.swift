@@ -8,7 +8,7 @@
 
 protocol StatisticcalViewInterface: ViewInterface {
     func fetchWatchedListObjects(_ objects: [WatchedListObject])
-    func fetchDataYear(_ data: [String: [WatchedListObject]])
+    func fetchData(_ data: [String: [WatchedListObject]])
     func deleteWatchedListObject(_ object: WatchedListObject?)
 }
 
