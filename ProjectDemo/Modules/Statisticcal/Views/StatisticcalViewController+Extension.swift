@@ -40,7 +40,7 @@ extension StatisticcalViewController: ValueFormatter {
             for weekData in weeks {
                 for key in data.keys {
                     print("key: \(key)")
-                    let a = "\(monthSelected) \(yearSelected)".toDateFormat(toFormat: "MM yyyy")
+                    let a = "\(monthSelected) \(yearSelected)"
                     print("weekData: \(a)")
                     if let value = data[key], key == "\(weekData) \(a)" {
                         

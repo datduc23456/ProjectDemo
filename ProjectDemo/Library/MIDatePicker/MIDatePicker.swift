@@ -75,7 +75,7 @@ public class MIDatePicker: UIView {
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     
-    var selectedValue: Int?
+    var selectedValue: Int = 1
     var bottomConstraint: NSLayoutConstraint!
     var overlayButton: UIButton!
     
@@ -113,7 +113,6 @@ public class MIDatePicker: UIView {
 //        if let maxDate = config.maxDate {
 //            datePicker.maximumDate = maxDate as Date
 //        }
-        
         datePicker.dataSource = self
         datePicker.delegate = self
         datePicker.reloadAllComponents()
@@ -232,7 +231,6 @@ extension MIDatePicker: UIPickerViewDataSource {
     
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         @OptionalUnwrap(defaultValue: .year, config.datePickerType) var type
-        
         @OptionalUnwrap(defaultValue: 0, type.values[safe: row]) var value
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Nexa-Bold", size: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
         switch config.datePickerType {
@@ -240,7 +238,7 @@ extension MIDatePicker: UIPickerViewDataSource {
             let monthString = CommonUtil.convertNumberMonthToText(value)
             return NSMutableAttributedString(string: monthString, attributes: attributes as [NSAttributedString.Key : Any])
         case .week:
-            let dayString = CommonUtil.convertNumberDayToText(value)
+            let dayString = "Week \(value)"
             return NSMutableAttributedString(string: dayString, attributes: attributes as [NSAttributedString.Key : Any])
         default:
             return NSMutableAttributedString(string: "\(value)", attributes: attributes as [NSAttributedString.Key : Any])

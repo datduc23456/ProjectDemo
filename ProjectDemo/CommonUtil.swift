@@ -37,7 +37,6 @@ class CommonUtil {
 
     static func convertNumberMonthToText(_ month: Int) -> String {
         let df = DateFormatter()
-//        df.weekdaySymbols
         return df.shortMonthSymbols[safe: month - 1].isNil(value: "Null")
     }
     

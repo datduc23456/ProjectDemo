@@ -63,7 +63,7 @@ extension StatisticcalPresenter: StatisticcalInteractorOutputInterface {
         case .week:
             data = Dictionary(grouping: watchedListObjects, by: {
                 let week = CommonUtil.getWeekFromDate($0.createdAt)
-                let monthYear = $0.createdAt.toDateFormat(toFormat: "MM yyyy")
+                let monthYear = $0.createdAt.toDateFormat(toFormat: "M yyyy")
                 return "\(week) \(monthYear)"
             })
             view?.fetchData(data)

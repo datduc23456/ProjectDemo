@@ -50,7 +50,9 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var icArrowWeek: UIImageView!
-    var datePicker: MIDatePicker?
+    var yearPicker: MIDatePicker?
+    var monthPicker: MIDatePicker?
+    var weekPicker: MIDatePicker?
     var presenter: StatisticcalPresenterInterface!
     let months = (1...12).map { Int($0) }
     let years = (2010...Int(CommonUtil.getYearFromDate(Date().toString()))!).map { Int($0) }
@@ -114,14 +116,25 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter {
         }
         navigation.lbTitle.text = "Statistical"
         navigation.configContentNav(.tabbar)
-        self.datePicker = MIDatePicker.getFromNib()
-        self.datePicker?.delegate = self
+        self.lbYear.text = "\(years.last!)"
+        self.yearPicker = MIDatePicker.getFromNib()
+        self.monthPicker = MIDatePicker.getFromNib()
+        self.weekPicker = MIDatePicker.getFromNib()
+        self.yearPicker?.delegate = self
+        self.monthPicker?.delegate = self
+        self.weekPicker?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         presenter.viewWillAppear(animated)
-        self.datePicker?.config.bouncingOffset = -AppDelegate.shared.appRootViewController.customTabbarHeight
+        self.yearPicker?.config.bouncingOffset = -AppDelegate.shared.appRootViewController.customTabbarHeight
+        self.monthPicker?.config.bouncingOffset = -AppDelegate.shared.appRootViewController.customTabbarHeight
+        self.weekPicker?.config.bouncingOffset = -AppDelegate.shared.appRootViewController.customTabbarHeight
+        self.yearPicker?.selectedValue = years.count - 1
+        self.yearPicker?.config.datePickerType = .year
+        self.monthPicker?.config.datePickerType = .month
+        self.weekPicker?.config.datePickerType = .week(year: yearSelected, month: monthSelected)
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: AppDelegate.shared.appRootViewController.customTabbarHeight + 20, right: 0)
     }
     
@@ -134,32 +147,25 @@ final class StatisticcalViewController: BaseViewController, AxisValueFormatter {
     }
 
     @IBAction func monthFilterAction(_ sender: Any) {
-        self.datePicker?.config.datePickerType = .month
-        self.datePicker?.show(inVC: self)
+        self.monthPicker?.show(inVC: self)
     }
     
     @IBAction func weekFilterAction(_ sender: Any) {
         guard monthSelected != 0 else { return }
-        self.datePicker?.config.datePickerType = .week(year: yearSelected, month: monthSelected)
-        self.datePicker?.show(inVC: self)
+        self.weekPicker?.show(inVC: self)
     }
     
     @IBAction func yearFilterAction(_ sender: Any) {
-        self.datePicker?.config.datePickerType = .year
-        self.datePicker?.show(inVC: self)
+        self.yearPicker?.show(inVC: self)
     }
     
     @IBAction func filterAction(_ sender: Any) {
         bottomSheet = BaseViewBottomSheetViewController()
         bottomSheet.payload = 0
         bottomSheet.bottomDataSource = StatisticalType.allCases.compactMap({ return .label(title: $0.title, isChoose: $0 == statisticalType)})
-        //        delay(0.2, closure: {
         self.present(self.bottomSheet, animated: true, completion: {
             self.bottomSheet.stackContent.delegate = self
         })
-//                })
-        
-        
     }
     
     @IBAction func addWatchedListAction(_ sender: Any) {
@@ -282,6 +288,7 @@ extension StatisticcalViewController: MIDatePickerDelegate {
         case .year:
             self.lbYear.text = "\(value)"
             self.yearSelected = value
+            self.weekPicker?.config.datePickerType = .week(year: yearSelected, month: monthSelected)
             self.lbMonth.text = "Choose month"
             self.lbWeek.text = "Choose week"
             self.icArrowWeek.image = UIImage(named: "ic_arrow_white_0.3")
@@ -290,6 +297,7 @@ extension StatisticcalViewController: MIDatePickerDelegate {
         case .month:
             self.lbMonth.text = CommonUtil.convertNumberMonthToText(value)
             self.monthSelected = value
+            self.weekPicker?.config.datePickerType = .week(year: yearSelected, month: monthSelected)
             self.lbWeek.textColor = UIColor.white
             self.lbWeek.text = "Choose week"
             self.icArrowWeek.image = UIImage(named: "ic_arrow_white")
